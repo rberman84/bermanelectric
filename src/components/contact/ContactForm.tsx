@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const services = [
   "Residential",
@@ -16,13 +17,31 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success("Thank you! We'll get back to you within 24 hours.");
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+        service: formData.get('service') as string,
+        message: formData.get('message') as string,
+      };
+
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: data
+      });
+
+      if (error) throw error;
+
+      toast.success("Thank you! We'll get back to you within 24 hours.");
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("There was an error sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
