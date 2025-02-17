@@ -38,10 +38,16 @@ const Navbar = () => {
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
               alt="Berman Electric Logo" 
               className={cn(
-                "h-32 w-auto transition-all duration-300 group-hover:scale-105 group-hover:brightness-110",
+                "h-32 w-auto transition-all duration-300",
                 isScrolled ? "brightness-0 invert" : "brightness-100",
-                "animate-pulse"
+                "animate-[wiggle_3s_ease-in-out_infinite]"
               )}
+              style={{
+                animation: `
+                  scale 4s ease-in-out infinite,
+                  colorize 4s ease-in-out infinite
+                `
+              }}
             />
           </a>
 
