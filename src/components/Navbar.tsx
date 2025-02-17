@@ -54,10 +54,10 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             <ServicesDropdown isScrolled={isScrolled} />
-            <NavLink href="#about" isScrolled={isScrolled}>About</NavLink>
-            <NavLink href="#projects" isScrolled={isScrolled}>Projects</NavLink>
-            <NavLink href="#testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
-            <NavLink href="#contact" isScrolled={isScrolled}>Contact</NavLink>
+            <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
+            <NavLink to="#projects" isScrolled={isScrolled}>Projects</NavLink>
+            <NavLink to="#testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
+            <NavLink to="#contact" isScrolled={isScrolled}>Contact</NavLink>
 
             {/* CTAs */}
             <div className="flex items-center space-x-4">

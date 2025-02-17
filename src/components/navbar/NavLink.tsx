@@ -1,17 +1,35 @@
 
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 interface NavLinkProps {
-  href: string;
+  to: string;
   children: React.ReactNode;
   isScrolled: boolean;
   onClick?: () => void;
 }
 
-const NavLink = ({ href, children, isScrolled, onClick }: NavLinkProps) => {
+const NavLink = ({ to, children, isScrolled, onClick }: NavLinkProps) => {
+  const isHashLink = to.startsWith('#');
+  
+  if (isHashLink) {
+    return (
+      <a
+        href={to}
+        className={cn(
+          "nav-link",
+          isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
+        )}
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <a
-      href={href}
+    <Link
+      to={to}
       className={cn(
         "nav-link",
         isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
@@ -19,7 +37,7 @@ const NavLink = ({ href, children, isScrolled, onClick }: NavLinkProps) => {
       onClick={onClick}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 
