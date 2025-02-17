@@ -37,7 +37,7 @@ const Contact = () => {
         <div className="py-16 bg-gray-50">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-12">
-              <div>
+              <div id="contact-form">
                 <h2 className="text-3xl font-bold mb-8">📩 Request a Quote</h2>
                 <p className="text-gray-600 mb-8">
                   Fill out the form below, and one of our electricians will get back to you 

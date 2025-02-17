@@ -17,6 +17,11 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
     { name: "EV Charger Installation", href: "/ev-charger" },
   ];
 
+  const scrollToContactForm = () => {
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    onClose();
+  };
+
   return (
     <div
       className={cn(
@@ -58,13 +63,12 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
           <Phone className="mr-2 h-4 w-4" />
           (516) 361-4068
         </a>
-        <a
-          href="#contact"
+        <button
+          onClick={scrollToContactForm}
           className="button-primary w-full text-center bg-green-600 hover:bg-green-700"
-          onClick={onClose}
         >
           Get a Quote
-        </a>
+        </button>
       </div>
     </div>
   );

@@ -2,6 +2,10 @@
 import { Phone, Mail } from "lucide-react";
 
 const ProjectsCTA = () => {
+  const scrollToContactForm = () => {
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="py-16 bg-electric-600">
       <div className="container">
@@ -21,13 +25,13 @@ const ProjectsCTA = () => {
               <Phone className="w-5 h-5 mr-2" />
               Call Us: (516) 361-4068
             </a>
-            <a 
-              href="#contact"
+            <button 
+              onClick={scrollToContactForm}
               className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors"
             >
               <Mail className="w-5 h-5 mr-2" />
               Request a Free Quote
-            </a>
+            </button>
           </div>
           <p className="text-white/90 mt-8 font-semibold">
             Berman Electric – Experience. Innovation. Reliability.
