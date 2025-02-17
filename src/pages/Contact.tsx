@@ -10,6 +10,13 @@ const Contact = () => {
       <Navbar />
       <div className="pt-20">
         <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
+          <div className="absolute inset-0 z-0 opacity-30">
+            <img 
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              alt="Professional electrical service"
+              className="object-cover w-full h-full"
+            />
+          </div>
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
