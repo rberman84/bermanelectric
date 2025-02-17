@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import { Car, Zap, Shield, Clock, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -64,8 +63,8 @@ const EVCharger = () => {
         <div className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70">
             <img 
-              src="/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png" 
-              alt="EV Charging Station Installation" 
+              src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png" 
+              alt="EV Charging Port" 
               className="w-full h-full object-cover opacity-70"
             />
           </div>
