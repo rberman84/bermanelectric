@@ -18,10 +18,7 @@ const ServicesDropdown = ({ isScrolled }: ServicesDropdownProps) => {
   return (
     <div className="relative group">
       <button 
-        className={cn(
-          "nav-link inline-flex items-center",
-          isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-        )}
+        className="button-primary inline-flex items-center"
       >
         Services
         <ChevronDown className="ml-1 h-4 w-4" />
