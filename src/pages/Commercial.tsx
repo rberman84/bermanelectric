@@ -125,17 +125,17 @@ const Commercial = () => {
         <div className="relative py-24">
           <div className="absolute inset-0">
             <img
-              src="/lovable-uploads/c5858c5c-0ce3-4e8d-b5b5-79f91d0563a5.png"
-              alt="Modern office lighting installation showcasing our commercial expertise"
+              src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
+              alt="Professional electrician installing commercial electrical equipment"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-white/[0.51]"></div>
+            <div className="absolute inset-0 bg-white/[0.92]"></div>
           </div>
           <div className="container relative">
             <h2 className="text-3xl font-bold text-center mb-16">Our Commercial Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
-                <div key={index} className="card p-6 hover:translate-y-[-4px] bg-white/80 backdrop-blur-sm">
+                <div key={index} className="card p-6 hover:translate-y-[-4px] bg-white/90 backdrop-blur-sm border-electric-100">
                   <div className="flex items-center gap-4 mb-4">
                     {service.icon}
                     <h3 className="text-xl font-semibold">{service.title}</h3>
