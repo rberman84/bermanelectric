@@ -88,8 +88,16 @@ const Residential = () => {
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}
-        <div className="relative py-24 bg-gradient-to-b from-slate-900 to-slate-800">
-          <div className="container">
+        <div className="relative py-24">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50">
+            <img
+              src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
+              alt="Vintage light bulb with protective cage representing our commitment to quality electrical work"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">
               <Home className="w-16 h-16 mx-auto mb-6 text-electric-400" />
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -98,7 +106,7 @@ const Residential = () => {
               <p className="text-xl text-gray-300 mb-8">
                 Powering Your Home with Safety & Expertise
               </p>
-              <p className="text-lg text-gray-400 mb-8">
+              <p className="text-lg text-gray-200 mb-8">
                 At Berman Electric, we provide top-tier residential electrical services to homeowners 
                 across Long Island. Whether you need new installations, repairs, or energy-efficient 
                 upgrades, our licensed and experienced electricians are here to ensure your home is 
