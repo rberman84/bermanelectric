@@ -38,7 +38,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         <NavLink to="/about" isScrolled={isScrolled} onClick={onClose}>
           About
         </NavLink>
-        <NavLink to="#projects" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/projects" isScrolled={isScrolled} onClick={onClose}>
           Projects
         </NavLink>
         <NavLink to="#testimonials" isScrolled={isScrolled} onClick={onClose}>
