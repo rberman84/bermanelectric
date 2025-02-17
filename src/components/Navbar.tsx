@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -57,7 +56,7 @@ const Navbar = () => {
             <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
             <NavLink to="/projects" isScrolled={isScrolled}>Projects</NavLink>
             <NavLink to="/testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
-            <NavLink to="#contact" isScrolled={isScrolled}>Contact</NavLink>
+            <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
 
             {/* CTAs */}
             <div className="flex items-center space-x-4">
@@ -72,7 +71,7 @@ const Navbar = () => {
                 (516) 361-4068
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="button-primary bg-green-600 hover:bg-green-700"
               >
                 Get a Quote
