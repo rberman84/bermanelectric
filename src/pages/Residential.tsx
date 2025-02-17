@@ -89,24 +89,24 @@ const Residential = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70">
             <img
               src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
               alt="Vintage light bulb with protective cage representing our commitment to quality electrical work"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-70"
               loading="lazy"
             />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">
-              <Home className="w-16 h-16 mx-auto mb-6 text-electric-400" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <Home className="w-16 h-16 mx-auto mb-6 text-electric-400 drop-shadow-lg" />
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.4)]">
                 Residential Electrical Services
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-electric-100 mb-8 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
                 Powering Your Home with Safety & Expertise
               </p>
-              <p className="text-lg text-gray-200 mb-8">
+              <p className="text-lg text-white mb-8 leading-relaxed bg-black/30 p-6 rounded-lg backdrop-blur-sm">
                 At Berman Electric, we provide top-tier residential electrical services to homeowners 
                 across Long Island. Whether you need new installations, repairs, or energy-efficient 
                 upgrades, our licensed and experienced electricians are here to ensure your home is 
