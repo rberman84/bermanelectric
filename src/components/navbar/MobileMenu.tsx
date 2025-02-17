@@ -1,3 +1,4 @@
+
 import { Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
@@ -10,10 +11,10 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
   const servicesDropdown = [
-    { name: "Residential", href: "#residential" },
-    { name: "Commercial", href: "#commercial" },
-    { name: "Emergency Services", href: "#emergency" },
-    { name: "EV Charger Installation", href: "#ev-charger" },
+    { name: "Residential", href: "/residential" },
+    { name: "Commercial", href: "/commercial" },
+    { name: "Emergency Services", href: "/emergency" },
+    { name: "EV Charger Installation", href: "/ev-charger" },
   ];
 
   return (
