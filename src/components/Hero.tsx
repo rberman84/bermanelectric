@@ -1,7 +1,11 @@
 
 import { ChevronRight } from "lucide-react";
+import { useState } from "react";
+import ServicesDropdown from "./navbar/ServicesDropdown";
 
 const Hero = () => {
+  const [isScrolled] = useState(false);
+
   return (
     <div className="relative min-h-screen flex items-center">
       {/* Background with overlay */}
@@ -36,12 +40,9 @@ const Hero = () => {
               Get a Free Quote
               <ChevronRight className="ml-2 h-5 w-5" />
             </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gray-800/80 backdrop-blur-sm rounded-lg hover:bg-gray-800 transition-all duration-200"
-            >
-              Our Services
-            </a>
+            <div className="relative">
+              <ServicesDropdown isScrolled={isScrolled} />
+            </div>
           </div>
         </div>
       </div>
