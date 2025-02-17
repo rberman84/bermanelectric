@@ -1,6 +1,7 @@
 
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 
 const Hero = () => {
@@ -33,13 +34,13 @@ const Hero = () => {
             both residential and commercial needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="button-primary"
             >
               Get a Free Quote
               <ChevronRight className="ml-2 h-5 w-5" />
-            </a>
+            </Link>
             <div className="relative">
               <ServicesDropdown isScrolled={isScrolled} />
             </div>
