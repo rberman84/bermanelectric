@@ -28,23 +28,23 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         {servicesDropdown.map((item) => (
           <NavLink
             key={item.name}
-            href={item.href}
+            to={item.href}
             isScrolled={isScrolled}
             onClick={onClose}
           >
             {item.name}
           </NavLink>
         ))}
-        <NavLink href="#about" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/about" isScrolled={isScrolled} onClick={onClose}>
           About
         </NavLink>
-        <NavLink href="#projects" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="#projects" isScrolled={isScrolled} onClick={onClose}>
           Projects
         </NavLink>
-        <NavLink href="#testimonials" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="#testimonials" isScrolled={isScrolled} onClick={onClose}>
           Testimonials
         </NavLink>
-        <NavLink href="#contact" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="#contact" isScrolled={isScrolled} onClick={onClose}>
           Contact
         </NavLink>
         <a
