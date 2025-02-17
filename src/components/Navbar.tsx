@@ -30,14 +30,15 @@ const Navbar = () => {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a 
-            href="/" 
-            className={cn(
-              "text-2xl font-bold transition-colors duration-300",
-              isScrolled ? "text-white" : "text-gray-900"
-            )}
-          >
-            Berman Electric
+          <a href="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
+              alt="Berman Electric Logo" 
+              className={cn(
+                "h-12 w-auto transition-opacity duration-300",
+                isScrolled ? "brightness-0 invert" : "brightness-100"
+              )}
+            />
           </a>
 
           {/* Desktop Navigation */}
