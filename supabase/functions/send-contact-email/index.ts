@@ -57,7 +57,7 @@ const handler = async (req: Request): Promise<Response> => {
           <li>Service Needed: ${service}</li>
           <li>Message: ${message}</li>
         </ul>
-        <p>If you need immediate assistance, please call us at (516) 123-4567.</p>
+        <p>If you need immediate assistance, please call us at (516) 361-4068.</p>
         <p>Best regards,<br>The Berman Electric Team</p>
       `,
     });
