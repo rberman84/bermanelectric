@@ -1,4 +1,3 @@
-
 import { Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
@@ -41,7 +40,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         <NavLink to="/projects" isScrolled={isScrolled} onClick={onClose}>
           Projects
         </NavLink>
-        <NavLink to="#testimonials" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/testimonials" isScrolled={isScrolled} onClick={onClose}>
           Testimonials
         </NavLink>
         <NavLink to="#contact" isScrolled={isScrolled} onClick={onClose}>
