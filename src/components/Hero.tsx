@@ -7,8 +7,8 @@ const Hero = () => {
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20">
         <img
-          src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80"
-          alt="Electrical work"
+          src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80"
+          alt="Professional electrician working"
           className="w-full h-full object-cover"
           loading="lazy"
         />
