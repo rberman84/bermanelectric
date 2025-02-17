@@ -12,7 +12,7 @@ const ServicesDropdown = ({ isScrolled }: ServicesDropdownProps) => {
     { name: "Residential", href: "/residential" },
     { name: "Commercial", href: "/commercial" },
     { name: "Emergency Services", href: "/emergency" },
-    { name: "EV Charger Installation", href: "#ev-charger" },
+    { name: "EV Charger Installation", href: "/ev-charger" },
   ];
 
   return (
