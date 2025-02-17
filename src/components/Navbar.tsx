@@ -30,13 +30,17 @@ const Navbar = () => {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <a 
+            href="/" 
+            className="flex items-center group"
+          >
             <img 
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
               alt="Berman Electric Logo" 
               className={cn(
-                "h-32 w-auto transition-opacity duration-300",
-                isScrolled ? "brightness-0 invert" : "brightness-100"
+                "h-32 w-auto transition-all duration-300 group-hover:scale-105 group-hover:brightness-110",
+                isScrolled ? "brightness-0 invert" : "brightness-100",
+                "animate-pulse"
               )}
             />
           </a>
