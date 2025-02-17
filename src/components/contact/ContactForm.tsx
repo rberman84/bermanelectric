@@ -28,12 +28,18 @@ const ContactForm = () => {
         message: formData.get('message') as string,
       };
 
+      console.log('Submitting form data:', data); // Debug log
+
       const { error } = await supabase.functions.invoke('send-contact-email', {
         body: data
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase function error:', error); // Debug log
+        throw error;
+      }
 
+      console.log('Form submitted successfully'); // Debug log
       toast.success("Thank you! We'll get back to you within 24 hours.");
       (e.target as HTMLFormElement).reset();
     } catch (error) {
