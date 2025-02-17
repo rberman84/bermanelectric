@@ -28,7 +28,7 @@ const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+          : "bg-white/90 backdrop-blur-sm shadow-sm"
       )}
     >
       <div className="container">
@@ -51,7 +51,7 @@ const Navbar = () => {
               <button 
                 className={cn(
                   "nav-link inline-flex items-center",
-                  isScrolled ? "text-gray-200 hover:text-electric-400" : ""
+                  isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
                 )}
               >
                 Services
@@ -76,7 +76,7 @@ const Navbar = () => {
               href="#about" 
               className={cn(
                 "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : ""
+                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
               )}
             >
               About
@@ -85,7 +85,7 @@ const Navbar = () => {
               href="#projects" 
               className={cn(
                 "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : ""
+                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
               )}
             >
               Projects
@@ -94,7 +94,7 @@ const Navbar = () => {
               href="#testimonials" 
               className={cn(
                 "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : ""
+                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
               )}
             >
               Testimonials
@@ -103,7 +103,7 @@ const Navbar = () => {
               href="#contact" 
               className={cn(
                 "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : ""
+                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
               )}
             >
               Contact
