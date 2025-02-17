@@ -2,6 +2,7 @@
 import { Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
+import { useNavigate } from "react-router-dom";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -10,6 +11,8 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
+  const navigate = useNavigate();
+  
   const servicesDropdown = [
     { name: "Residential", href: "/residential" },
     { name: "Commercial", href: "/commercial" },
@@ -17,8 +20,8 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
     { name: "EV Charger Installation", href: "/ev-charger" },
   ];
 
-  const scrollToContactForm = () => {
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  const handleGetQuote = () => {
+    navigate('/contact');
     onClose();
   };
 
@@ -64,7 +67,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
           (516) 361-4068
         </a>
         <button
-          onClick={scrollToContactForm}
+          onClick={handleGetQuote}
           className="button-primary w-full text-center bg-green-600 hover:bg-green-700"
         >
           Get a Quote
