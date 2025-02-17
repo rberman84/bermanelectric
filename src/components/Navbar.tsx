@@ -35,7 +35,7 @@ const Navbar = () => {
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
               alt="Berman Electric Logo" 
               className={cn(
-                "h-24 w-auto transition-opacity duration-300",
+                "h-32 w-auto transition-opacity duration-300",
                 isScrolled ? "brightness-0 invert" : "brightness-100"
               )}
             />
