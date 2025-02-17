@@ -3,7 +3,7 @@ name: Deploy Vite to Hostinger
 on:
   push:
     branches:
-      - main
+      - main  # Change to your branch name if different
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4  # Use the correct version
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
