@@ -1,7 +1,10 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import NavLink from "./navbar/NavLink";
+import ServicesDropdown from "./navbar/ServicesDropdown";
+import MobileMenu from "./navbar/MobileMenu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,13 +17,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const servicesDropdown = [
-    { name: "Residential", href: "#residential" },
-    { name: "Commercial", href: "#commercial" },
-    { name: "Emergency Services", href: "#emergency" },
-    { name: "EV Charger Installation", href: "#ev-charger" },
-  ];
 
   return (
     <nav
@@ -46,68 +42,11 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            {/* Services Dropdown */}
-            <div className="relative group">
-              <button 
-                className={cn(
-                  "nav-link inline-flex items-center",
-                  isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-                )}
-              >
-                Services
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-                <div className="py-2 bg-white rounded-lg shadow-xl border border-gray-100">
-                  {servicesDropdown.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-electric-600"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <a 
-              href="#about" 
-              className={cn(
-                "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-            >
-              About
-            </a>
-            <a 
-              href="#projects" 
-              className={cn(
-                "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-            >
-              Projects
-            </a>
-            <a 
-              href="#testimonials" 
-              className={cn(
-                "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-            >
-              Testimonials
-            </a>
-            <a 
-              href="#contact" 
-              className={cn(
-                "nav-link",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-            >
-              Contact
-            </a>
+            <ServicesDropdown isScrolled={isScrolled} />
+            <NavLink href="#about" isScrolled={isScrolled}>About</NavLink>
+            <NavLink href="#projects" isScrolled={isScrolled}>Projects</NavLink>
+            <NavLink href="#testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
+            <NavLink href="#contact" isScrolled={isScrolled}>Contact</NavLink>
 
             {/* CTAs */}
             <div className="flex items-center space-x-4">
@@ -142,87 +81,11 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={cn(
-            "md:hidden transition-all duration-300 ease-in-out",
-            isOpen ? "h-auto opacity-100 visible" : "h-0 opacity-0 invisible"
-          )}
-        >
-          <div className="flex flex-col space-y-4 pb-6">
-            {servicesDropdown.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-            <a
-              href="#about"
-              className={cn(
-                "text-sm font-medium transition-colors",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="#projects"
-              className={cn(
-                "text-sm font-medium transition-colors",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              Projects
-            </a>
-            <a
-              href="#testimonials"
-              className={cn(
-                "text-sm font-medium transition-colors",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              Testimonials
-            </a>
-            <a
-              href="#contact"
-              className={cn(
-                "text-sm font-medium transition-colors",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </a>
-            <a
-              href="tel:+15163614068"
-              className={cn(
-                "inline-flex items-center text-sm font-medium transition-colors",
-                isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              <Phone className="mr-2 h-4 w-4" />
-              (516) 361-4068
-            </a>
-            <a
-              href="#contact"
-              className="button-primary w-full text-center bg-green-600 hover:bg-green-700"
-              onClick={() => setIsOpen(false)}
-            >
-              Get a Quote
-            </a>
-          </div>
-        </div>
+        <MobileMenu 
+          isOpen={isOpen}
+          isScrolled={isScrolled}
+          onClose={() => setIsOpen(false)}
+        />
       </div>
     </nav>
   );

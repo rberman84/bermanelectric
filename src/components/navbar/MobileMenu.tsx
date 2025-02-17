@@ -1,0 +1,73 @@
+
+import { Phone } from "lucide-react";
+import { cn } from "@/lib/utils";
+import NavLink from "./NavLink";
+
+interface MobileMenuProps {
+  isOpen: boolean;
+  isScrolled: boolean;
+  onClose: () => void;
+}
+
+const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
+  const servicesDropdown = [
+    { name: "Residential", href: "#residential" },
+    { name: "Commercial", href: "#commercial" },
+    { name: "Emergency Services", href: "#emergency" },
+    { name: "EV Charger Installation", href: "#ev-charger" },
+  ];
+
+  return (
+    <div
+      className={cn(
+        "md:hidden transition-all duration-300 ease-in-out",
+        isOpen ? "h-auto opacity-100 visible" : "h-0 opacity-0 invisible"
+      )}
+    >
+      <div className="flex flex-col space-y-4 pb-6">
+        {servicesDropdown.map((item) => (
+          <NavLink
+            key={item.name}
+            href={item.href}
+            isScrolled={isScrolled}
+            onClick={onClose}
+          >
+            {item.name}
+          </NavLink>
+        ))}
+        <NavLink href="#about" isScrolled={isScrolled} onClick={onClose}>
+          About
+        </NavLink>
+        <NavLink href="#projects" isScrolled={isScrolled} onClick={onClose}>
+          Projects
+        </NavLink>
+        <NavLink href="#testimonials" isScrolled={isScrolled} onClick={onClose}>
+          Testimonials
+        </NavLink>
+        <NavLink href="#contact" isScrolled={isScrolled} onClick={onClose}>
+          Contact
+        </NavLink>
+        <a
+          href="tel:+15163614068"
+          className={cn(
+            "inline-flex items-center text-sm font-medium transition-colors",
+            isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
+          )}
+          onClick={onClose}
+        >
+          <Phone className="mr-2 h-4 w-4" />
+          (516) 361-4068
+        </a>
+        <a
+          href="#contact"
+          className="button-primary w-full text-center bg-green-600 hover:bg-green-700"
+          onClick={onClose}
+        >
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default MobileMenu;
