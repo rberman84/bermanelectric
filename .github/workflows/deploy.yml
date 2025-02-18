@@ -21,7 +21,7 @@ jobs:
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: novawebhq.com 
+          server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}  # ✅ Correct format
           password: ${{ secrets.FTP_PASS }}  # ✅ Correct format
           local-dir: dist/
