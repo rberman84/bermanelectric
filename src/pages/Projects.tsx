@@ -4,6 +4,7 @@ import Hero from "@/components/projects/Hero";
 import ProjectCategory from "@/components/projects/ProjectCategory";
 import WhyChooseUs from "@/components/projects/WhyChooseUs";
 import ProjectsCTA from "@/components/projects/ProjectsCTA";
+import SEO from "@/components/SEO";
 
 const residentialProjects = [
   {
@@ -71,6 +72,12 @@ const emergencyProjects = [
 const Projects = () => {
   return (
     <>
+      <SEO 
+        title="Our Electrical Projects - Berman Electric Long Island Portfolio"
+        description="View our completed electrical projects across Long Island, Suffolk County & Nassau County. Residential upgrades, commercial installations, emergency repairs, EV charger installations, and generator systems. Licensed electrician Ronkonkoma NY."
+        keywords="electrical projects Long Island, electrician portfolio Suffolk County, electrical installations Nassau County, electrical upgrades Ronkonkoma NY, commercial electrical projects"
+        canonical="https://bermanelectrical.com/projects"
+      />
       <Navbar />
       <div className="pt-20">
         <Hero 

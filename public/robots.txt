@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://bermanelectrical.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Block unnecessary crawling
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: *.pdf$
