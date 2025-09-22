@@ -3,6 +3,10 @@ import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
 import ServicesList from "@/components/contact/ServicesList";
+import GoogleMap from "@/components/shared/GoogleMap";
+import NAP from "@/components/shared/NAP";
+import CTASection from "@/components/shared/CTASection";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 
 const Contact = () => {
@@ -43,8 +47,8 @@ const Contact = () => {
 
         <div className="py-16 bg-gray-50">
           <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div id="contact-form">
+            <div className="grid lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2" id="contact-form">
                 <h2 className="text-3xl font-bold mb-8">📩 Request a Quote</h2>
                 <p className="text-gray-600 mb-8">
                   Fill out the form below, and one of our electricians will get back to you 
@@ -52,16 +56,39 @@ const Contact = () => {
                 </p>
                 <ContactForm />
               </div>
-              <div>
-                <ContactInfo />
-                <div className="mt-8">
-                  <ServicesList />
-                </div>
+              
+              <div className="space-y-8">
+                <NAP variant="contact" showHours={true} />
+                <ServicesList />
               </div>
             </div>
           </div>
         </div>
+
+        {/* Google Map Section */}
+        <div className="py-16 bg-white">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold mb-4">Find Us & Our Service Area</h2>
+                <p className="text-lg text-gray-600">
+                  Located in Ronkonkoma, serving all of Long Island with professional electrical services
+                </p>
+              </div>
+              <GoogleMap showDirectionsLink={true} />
+            </div>
+          </div>
+        </div>
+
+        {/* Final CTA */}
+        <CTASection 
+          variant="service"
+          title="Ready to Schedule Your Electrical Service?"
+          subtitle="Get your free estimate today and experience the Berman Electric difference"
+          showTrustSignals={true}
+        />
       </div>
+      <Footer />
     </>
   );
 };

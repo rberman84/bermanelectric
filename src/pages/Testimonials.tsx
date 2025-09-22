@@ -4,6 +4,7 @@ import Hero from "@/components/testimonials/Hero";
 import TestimonialSection from "@/components/testimonials/TestimonialSection";
 import TrustReasons from "@/components/testimonials/TrustReasons";
 import ReviewCTA from "@/components/testimonials/ReviewCTA";
+import Footer from "@/components/shared/Footer";
 
 const residentialTestimonials = [
   {
@@ -66,6 +67,7 @@ const Testimonials = () => {
         <TrustReasons />
         <ReviewCTA />
       </div>
+      <Footer />
     </>
   );
 };

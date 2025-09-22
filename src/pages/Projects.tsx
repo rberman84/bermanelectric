@@ -4,6 +4,8 @@ import Hero from "@/components/projects/Hero";
 import ProjectCategory from "@/components/projects/ProjectCategory";
 import WhyChooseUs from "@/components/projects/WhyChooseUs";
 import ProjectsCTA from "@/components/projects/ProjectsCTA";
+import ReviewsSection from "@/components/shared/ReviewsSection";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 
 const residentialProjects = [
@@ -94,8 +96,13 @@ const Projects = () => {
           </div>
         </div>
         <WhyChooseUs />
+        <ReviewsSection 
+          title="Featured Project Reviews"
+          subtitle="See what customers say about our completed electrical projects"
+        />
         <ProjectsCTA />
       </div>
+      <Footer />
     </>
   );
 };

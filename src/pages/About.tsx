@@ -6,6 +6,8 @@ import Benefits from "@/components/about/Benefits";
 import Services from "@/components/about/Services";
 import TeamLocation from "@/components/about/TeamLocation";
 import ContactCTA from "@/components/about/ContactCTA";
+import ReviewsSection from "@/components/shared/ReviewsSection";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 
 const About = () => {
@@ -38,9 +40,14 @@ const About = () => {
         <Story />
         <Benefits />
         <Services />
+        <ReviewsSection 
+          title="What Our Long Island Customers Say"
+          subtitle="Real testimonials from satisfied residential and commercial clients"
+        />
         <TeamLocation />
         <ContactCTA />
       </div>
+      <Footer />
     </>
   );
 };
