@@ -22,7 +22,9 @@ const Footer = () => {
     { name: "About Us", href: "/about" },
     { name: "Our Projects", href: "/projects" }, 
     { name: "Testimonials", href: "/testimonials" },
-    { name: "Contact Us", href: "/contact" }
+    { name: "Contact Us", href: "/contact" },
+    { name: "Electrical Blog", href: "/blog" },
+    { name: "Resources & Tools", href: "/resources" }
   ];
 
   return (

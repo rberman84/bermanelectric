@@ -14,6 +14,9 @@ import Residential from "./pages/Residential";
 import Commercial from "./pages/Commercial";
 import Emergency from "./pages/Emergency";
 import EVCharger from "./pages/EVCharger";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Resources from "./pages/Resources";
 import ElectricianRonkonkoma from "./pages/ElectricianRonkonkoma";
 import ElectricianSuffolkCounty from "./pages/ElectricianSuffolkCounty";
 import ElectricianLongIsland from "./pages/ElectricianLongIsland";
@@ -38,6 +41,9 @@ const App = () => (
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/emergency" element={<Emergency />} />
           <Route path="/ev-charger" element={<EVCharger />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="/electrician-ronkonkoma" element={<ElectricianRonkonkoma />} />
           <Route path="/electrician-suffolk-county" element={<ElectricianSuffolkCounty />} />
           <Route path="/electrician-long-island" element={<ElectricianLongIsland />} />
