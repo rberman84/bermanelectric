@@ -8,12 +8,15 @@ import { HelmetProvider } from 'react-helmet-async';
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import Testimonials from "./pages/Testimonials";
+import Testimonials from "./pages/Testimonials";  
 import Contact from "./pages/Contact";
 import Residential from "./pages/Residential";
 import Commercial from "./pages/Commercial";
 import Emergency from "./pages/Emergency";
 import EVCharger from "./pages/EVCharger";
+import ElectricianRonkonkoma from "./pages/ElectricianRonkonkoma";
+import ElectricianSuffolkCounty from "./pages/ElectricianSuffolkCounty";
+import ElectricianLongIsland from "./pages/ElectricianLongIsland";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +38,9 @@ const App = () => (
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/emergency" element={<Emergency />} />
           <Route path="/ev-charger" element={<EVCharger />} />
+          <Route path="/electrician-ronkonkoma" element={<ElectricianRonkonkoma />} />
+          <Route path="/electrician-suffolk-county" element={<ElectricianSuffolkCounty />} />
+          <Route path="/electrician-long-island" element={<ElectricianLongIsland />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -8,12 +8,13 @@ import {
   Lightbulb,
   FlaskConical,
   CheckCircle2,
-  Phone,
+  Phone,  
   Mail,
   AlertCircle
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 
 const Emergency = () => {
   const services = [{
@@ -81,6 +82,12 @@ const Emergency = () => {
 
   return (
     <>
+      <SEO 
+        title="24/7 Emergency Electrician Long Island - Emergency Electrical Repairs" 
+        description="24/7 emergency electrician serving Long Island. Fast response for electrical emergencies, power outages, sparking outlets, electrical fires. Licensed emergency electrical repairs Suffolk & Nassau County. Call (516) 361-4068"
+        keywords="emergency electrician Long Island, 24/7 electrical repairs Suffolk County, electrical emergency Nassau County, power outage repair, electrical fire safety, emergency electrical service"
+        canonical="https://bermanelectrical.com/emergency"
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}

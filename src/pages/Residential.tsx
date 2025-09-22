@@ -1,6 +1,8 @@
 import { Plug, Lightbulb, Shield, Wrench, Car, Power, CheckCircle2, Phone, Mail, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
+
 const Residential = () => {
   const services = [{
     title: "Electrical Installations & Upgrades",
@@ -29,6 +31,12 @@ const Residential = () => {
   }];
   const benefits = ["Over 20 Years of Experience – Trusted by homeowners across Long Island", "Licensed & Insured Electricians – Ensuring top-tier quality & safety", "Fast, Reliable Service – We get the job done right the first time", "Upfront Pricing – No hidden fees, just honest, competitive rates", "Customer Satisfaction Guaranteed – 5-star rated service"];
   return <>
+      <SEO 
+        title="Residential Electrical Services Long Island - Licensed Home Electrician"
+        description="Professional residential electrical services on Long Island. Licensed electrician for home wiring, panel upgrades, lighting installation, EV chargers, smart home automation. Serving Suffolk & Nassau County. Call (516) 361-4068"
+        keywords="residential electrician Long Island, home electrical services Suffolk County, electrical panel upgrades, home rewiring, lighting installation, EV charger installation, smart home wiring, GFCI installation"
+        canonical="https://bermanelectrical.com/residential"
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}

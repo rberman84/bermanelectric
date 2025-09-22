@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HomeContent from "@/components/home/HomeContent";
 import SEO from "@/components/SEO";
 
 const Index = () => {
@@ -14,6 +15,7 @@ const Index = () => {
       />
       <Navbar />
       <Hero />
+      <HomeContent />
     </div>
   );
 };
