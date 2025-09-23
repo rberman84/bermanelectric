@@ -4,19 +4,35 @@ const ReadingProgress = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let rafId: number;
+    
     const updateProgress = () => {
-      const winHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight - winHeight;
-      const scrollTop = window.pageYOffset;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      
-      setProgress(Math.min(100, Math.max(0, scrollPercent)));
+      rafId = requestAnimationFrame(() => {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight - winHeight;
+        const scrollTop = window.scrollY;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        
+        setProgress(Math.min(100, Math.max(0, scrollPercent)));
+      });
     };
 
-    window.addEventListener('scroll', updateProgress);
+    const handleScroll = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      updateProgress();
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     updateProgress(); // Initial calculation
     
-    return () => window.removeEventListener('scroll', updateProgress);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (
