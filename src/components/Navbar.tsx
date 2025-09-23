@@ -55,6 +55,7 @@ const Navbar = () => {
             <ServicesDropdown isScrolled={isScrolled} />
             <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
             <NavLink to="/projects" isScrolled={isScrolled}>Projects</NavLink>
+            <NavLink to="/blog" isScrolled={isScrolled}>Blog</NavLink>
             <NavLink to="/testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
             <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
 
