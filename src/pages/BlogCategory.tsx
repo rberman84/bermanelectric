@@ -105,11 +105,26 @@ const categories = ["Safety", "Upgrades", "Tips", "EV Charging", "Emergency Prep
 const BlogCategory = () => {
   const { category } = useParams<{ category: string }>();
   
-  if (!category || !categories.includes(category)) {
+  // Transform URL parameter back to proper category name
+  const getCategoryName = (urlCategory: string) => {
+    const categoryMap: Record<string, string> = {
+      "safety": "Safety",
+      "upgrades": "Upgrades", 
+      "tips": "Tips",
+      "ev-charging": "EV Charging",
+      "emergency-prep": "Emergency Prep",
+      "smart-home": "Smart Home"
+    };
+    return categoryMap[urlCategory] || urlCategory;
+  };
+  
+  const actualCategory = getCategoryName(category || "");
+  
+  if (!category || !categories.includes(actualCategory)) {
     return <div>Category not found</div>;
   }
 
-  const categoryPosts = blogPosts.filter(post => post.category === category);
+  const categoryPosts = blogPosts.filter(post => post.category === actualCategory);
   const categoryDescriptions: Record<string, string> = {
     "Safety": "Essential electrical safety tips and guidelines to protect your Long Island home and family from electrical hazards.",
     "Upgrades": "Expert guidance on electrical system upgrades, panel modernization, and home electrical improvements.",
@@ -131,10 +146,10 @@ const BlogCategory = () => {
   return (
     <>
       <BlogSEO
-        title={`${category} - Electrical Articles & Guides`}
-        description={categoryDescriptions[category]}
-        keywords={categoryKeywords[category]}
-        canonical={`https://bermanelectrical.com/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+        title={`${actualCategory} - Electrical Articles & Guides`}
+        description={categoryDescriptions[actualCategory]}
+        keywords={categoryKeywords[actualCategory]}
+        canonical={`https://bermanelectrical.com/blog/category/${category}`}
       />
       <Navbar />
       <div className="pt-20">
@@ -156,11 +171,11 @@ const BlogCategory = () => {
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {category}
+                {actualCategory}
               </h1>
               
               <p className="text-xl text-electric-100 mb-8">
-                {categoryDescriptions[category]}
+                {categoryDescriptions[actualCategory]}
               </p>
               
               <div className="text-electric-200">
