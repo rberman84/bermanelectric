@@ -2,7 +2,7 @@ import { Calendar, User, ArrowRight, Clock, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
-import SEO from "@/components/SEO";
+import BlogSEO from "@/components/blog/BlogSEO";
 
 interface BlogPost {
   id: string;
@@ -114,11 +114,22 @@ const Blog = () => {
 
   return (
     <>
-      <SEO 
+      <BlogSEO 
         title="Electrical Tips & Guides Blog - Berman Electric Long Island"
         description="Expert electrical tips, safety guides, and home improvement advice from Long Island's trusted electrician. Learn about electrical safety, panel upgrades, EV chargers, and more from licensed professionals."
         keywords="electrical blog Long Island, electrical safety tips, panel upgrade guide, EV charger installation, licensed electrician advice, electrical maintenance tips"
         canonical="https://bermanelectrical.com/blog"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Berman Electric Blog",
+          "description": "Expert electrical advice and safety tips for Long Island homeowners",
+          "url": "https://bermanelectrical.com/blog",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Berman Electric"
+          }
+        }}
       />
       <Navbar />
       <div className="pt-20">
@@ -135,12 +146,22 @@ const Blog = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 {categories.map((category) => (
-                  <span 
-                    key={category}
-                    className="px-4 py-2 bg-electric-700 text-electric-100 rounded-full text-sm hover:bg-electric-600 transition-colors cursor-pointer"
-                  >
-                    {category}
-                  </span>
+                  category === "All" ? (
+                    <span 
+                      key={category}
+                      className="px-4 py-2 bg-electric-700 text-electric-100 rounded-full text-sm hover:bg-electric-600 transition-colors cursor-pointer"
+                    >
+                      {category}
+                    </span>
+                  ) : (
+                    <Link
+                      key={category}
+                      to={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="px-4 py-2 bg-electric-700 text-electric-100 rounded-full text-sm hover:bg-electric-600 transition-colors"
+                    >
+                      {category}
+                    </Link>
+                  )
                 ))}
               </div>
             </div>

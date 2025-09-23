@@ -16,6 +16,7 @@ import Emergency from "./pages/Emergency";
 import EVCharger from "./pages/EVCharger";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import BlogCategory from "./pages/BlogCategory";
 import Resources from "./pages/Resources";
 import ElectricianRonkonkoma from "./pages/ElectricianRonkonkoma";
 import ElectricianSuffolkCounty from "./pages/ElectricianSuffolkCounty";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/emergency" element={<Emergency />} />
           <Route path="/ev-charger" element={<EVCharger />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/category/:category" element={<BlogCategory />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/electrician-ronkonkoma" element={<ElectricianRonkonkoma />} />

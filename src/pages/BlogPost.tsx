@@ -3,7 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import CTASection from "@/components/shared/CTASection";
-import SEO from "@/components/SEO";
+import BlogSEO from "@/components/blog/BlogSEO";
+import TableOfContents from "@/components/blog/TableOfContents";
+import RelatedPosts from "@/components/blog/RelatedPosts";
+import SocialShare from "@/components/blog/SocialShare";
+import AuthorBio from "@/components/blog/AuthorBio";
+import ReadingProgress from "@/components/blog/ReadingProgress";
 
 // This would typically come from a CMS or API
 const getBlogPost = (slug: string) => {
@@ -270,31 +275,90 @@ const getBlogPost = (slug: string) => {
   return posts[slug] || null;
 };
 
+// All blog posts for related posts functionality
+const allBlogPosts = [
+  {
+    id: "1",
+    title: "Top 5 Electrical Safety Tips for Long Island Homeowners",
+    slug: "electrical-safety-tips-long-island-homeowners",
+    excerpt: "Protect your family and home with these essential electrical safety tips every Long Island homeowner should know.",
+    author: "Rob Berman",
+    date: "2024-01-20",
+    readTime: "5 min read",
+    category: "Safety",
+    tags: ["electrical safety", "home maintenance", "Long Island", "prevention"],
+    image: "/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png"
+  },
+  {
+    id: "2",
+    title: "How to Know When It's Time to Upgrade Your Electrical Panel",
+    slug: "when-to-upgrade-electrical-panel",
+    excerpt: "Is your electrical panel outdated? Learn the warning signs that indicate it's time for an upgrade.",
+    author: "Rob Berman",
+    date: "2024-01-18",
+    readTime: "7 min read",
+    category: "Upgrades",
+    tags: ["electrical panel", "home upgrades", "electrical safety", "Suffolk County"],
+    image: "/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
+  },
+  {
+    id: "3",
+    title: "Why Licensed Electricians Save You Money in the Long Run",
+    slug: "licensed-electricians-save-money",
+    excerpt: "Discover why hiring a licensed electrician is always worth the investment.",
+    author: "Rob Berman",
+    date: "2024-01-15",
+    readTime: "6 min read",
+    category: "Tips",
+    tags: ["licensed electrician", "cost savings", "quality work", "Nassau County"],
+    image: "/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
+  }
+];
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getBlogPost(slug) : null;
+  const currentPost = allBlogPosts.find(p => p.slug === slug);
 
   if (!post) {
     return <div>Post not found</div>;
   }
 
+  const cleanDescription = post.content.substring(0, 160).replace(/<[^>]*>/g, '').trim() + "...";
+  const currentUrl = `https://bermanelectrical.com/blog/${slug}`;
+
   return (
     <>
-      <SEO 
+      <ReadingProgress />
+      <BlogSEO 
         title={`${post.title} - Berman Electric Blog`}
-        description={post.content.substring(0, 160).replace(/<[^>]*>/g, '') + "..."}
+        description={cleanDescription}
         keywords={post.tags.join(", ")}
-        canonical={`https://bermanelectrical.com/blog/${slug}`}
+        canonical={currentUrl}
+        article={{
+          publishedTime: new Date(post.date).toISOString(),
+          author: post.author,
+          section: post.category,
+          tags: post.tags
+        }}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",
           "headline": post.title,
+          "description": cleanDescription,
+          "image": {
+            "@type": "ImageObject",
+            "url": `https://bermanelectrical.com${post.image}`,
+            "width": 1200,
+            "height": 630
+          },
           "author": {
             "@type": "Person",
-            "name": post.author
+            "name": post.author,
+            "jobTitle": "Licensed Electrician"
           },
-          "datePublished": post.date,
-          "image": post.image,
+          "datePublished": new Date(post.date).toISOString(),
+          "dateModified": new Date(post.date).toISOString(),
           "publisher": {
             "@type": "Organization",
             "name": "Berman Electric",
@@ -302,7 +366,14 @@ const BlogPost = () => {
               "@type": "ImageObject",
               "url": "https://bermanelectrical.com/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
             }
-          }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": currentUrl
+          },
+          "wordCount": post.content.replace(/<[^>]*>/g, '').split(' ').length,
+          "articleSection": post.category,
+          "keywords": post.tags.join(", ")
         }}
       />
       <Navbar />
@@ -370,26 +441,50 @@ const BlogPost = () => {
         <div className="py-16 bg-white">
           <div className="container">
             <div className="max-w-4xl mx-auto">
+              {/* Table of Contents */}
+              <TableOfContents content={post.content} />
+              
+              {/* Article Content */}
               <div 
-                className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900"
+                className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-headings:scroll-mt-16"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
               
+              {/* Social Share */}
+              <div className="mt-12">
+                <SocialShare 
+                  title={post.title}
+                  url={currentUrl}
+                  description={cleanDescription}
+                />
+              </div>
+              
               {/* Tags */}
-              <div className="mt-12 pt-8 border-t">
+              <div className="mt-8 pt-8 border-t">
                 <div className="flex items-center gap-2 flex-wrap">
                   <Tag className="w-4 h-4 text-gray-500" />
                   <span className="text-sm text-gray-500 mr-2">Tags:</span>
                   {post.tags.map((tag: string) => (
                     <span 
                       key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-electric-50 hover:text-electric-700 transition-colors"
+                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-electric-50 hover:text-electric-700 transition-colors cursor-pointer"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
+
+              {/* Author Bio */}
+              <AuthorBio author={post.author} />
+
+              {/* Related Posts */}
+              {currentPost && (
+                <RelatedPosts 
+                  currentPost={currentPost} 
+                  allPosts={allBlogPosts} 
+                />
+              )}
             </div>
           </div>
         </div>
