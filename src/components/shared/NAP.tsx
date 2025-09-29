@@ -13,7 +13,7 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
     fullAddress: "Long Island, NY - Serving Nassau & Suffolk Counties",
     phone: "(516) 361-4068",
     phoneHref: "+15163614068",
-    email: "Rob@bermanelectrical.com",
+    email: "info@bermanelectrical.com",
     hours: {
       weekdays: "Monday – Friday: 7:00 AM – 7:00 PM",
       weekends: "Saturday – Sunday: Emergency Services Available"
