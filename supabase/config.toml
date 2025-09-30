@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.ai-help-chat]
 verify_jwt = false
+
+[functions.resend-status]
+verify_jwt = false
