@@ -20,7 +20,7 @@ const ContactForm = () => {
 
     try {
       const formData = new FormData(e.currentTarget);
-      const data = {
+      const payload = {
         name: formData.get('name') as string,
         email: formData.get('email') as string,
         phone: formData.get('phone') as string,
@@ -28,18 +28,20 @@ const ContactForm = () => {
         message: formData.get('message') as string,
       };
 
-      console.log('Submitting form data:', data); // Debug log
+      console.log('Submitting form data:', payload); // Debug log
 
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: data
+      const { data: response, error } = await supabase.functions.invoke('send-contact-email', {
+        body: payload
       });
 
       if (error) {
         console.error('Supabase function error:', error); // Debug log
-        throw error;
+        const details = (error as any)?.context?.response?.error || (error as any)?.message || 'There was an error sending your message.';
+        toast.error(details);
+        return;
       }
 
-      console.log('Form submitted successfully'); // Debug log
+      console.log('Form submitted successfully', response); // Debug log
       toast.success("Thank you! We'll get back to you within 24 hours.");
       (e.target as HTMLFormElement).reset();
     } catch (error) {

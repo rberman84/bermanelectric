@@ -1,6 +1,6 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "https://esm.sh/resend@4.0.0";
+import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
@@ -51,12 +51,13 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const { name, email, phone, service, message } = parsed.data;
+    console.log("send-contact-email invoked", { name, email, phone, service, ts: new Date().toISOString() });
 
     // Send email to business
     const businessEmailResponse = await resend.emails.send({
       from: "Berman Electric Contact Form <onboarding@resend.dev>",
       reply_to: email,
-      to: "info@bermanelectrical.com",
+      to: ["info@bermanelectrical.com"],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -73,7 +74,7 @@ const handler = async (req: Request): Promise<Response> => {
     const customerEmailResponse = await resend.emails.send({
       from: "Berman Electric <onboarding@resend.dev>",
       reply_to: "info@bermanelectrical.com",
-      to: email,
+      to: [email],
       subject: "Thank you for contacting Berman Electric",
       html: `
         <h2>Thank you for contacting Berman Electric</h2>
