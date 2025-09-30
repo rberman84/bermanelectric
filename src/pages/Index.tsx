@@ -6,6 +6,7 @@ import ReviewsSection from "@/components/shared/ReviewsSection";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import { AiHelpChat } from "@/components/shared/AiHelpChat";
 
 const Index = () => {
   return (
@@ -31,6 +32,7 @@ const Index = () => {
         showUrgency={true}
       />
       <Footer />
+      <AiHelpChat />
     </div>
   );
 };
