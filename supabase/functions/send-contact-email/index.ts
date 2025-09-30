@@ -1,6 +1,7 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@4.0.0";
+import { z } from "https://esm.sh/zod@3.23.8";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -18,6 +19,14 @@ interface ContactFormData {
   message: string;
 }
 
+const contactSchema = z.object({
+  name: z.string().trim().min(1, { message: "Name is required" }).max(100),
+  email: z.string().trim().email({ message: "Invalid email" }).max(255),
+  phone: z.string().trim().max(30).optional().or(z.literal("")).transform(v => v ?? ""),
+  service: z.string().trim().max(100),
+  message: z.string().trim().min(1, { message: "Message is required" }).max(1000),
+});
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -25,7 +34,23 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, phone, service, message }: ContactFormData = await req.json();
+    if (!Deno.env.get("RESEND_API_KEY")) {
+      return new Response(
+        JSON.stringify({ error: "Missing RESEND_API_KEY" }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const body = await req.json();
+    const parsed = contactSchema.safeParse(body);
+    if (!parsed.success) {
+      return new Response(
+        JSON.stringify({ error: "Invalid input", details: parsed.error.flatten() }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const { name, email, phone, service, message } = parsed.data;
 
     // Send email to business
     const businessEmailResponse = await resend.emails.send({
@@ -64,13 +89,24 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
+    const businessError = (businessEmailResponse as any)?.error;
+    const customerError = (customerEmailResponse as any)?.error;
+
+    if (businessError) {
+      console.error("Business email failed:", businessError);
+      return new Response(
+        JSON.stringify({ success: false, error: "Business email failed", provider: "resend", details: businessError }),
+        { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     console.log("Emails sent successfully:", {
       business: businessEmailResponse,
-      customer: customerEmailResponse
+      customer: customerEmailResponse,
     });
 
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, customerEmailId: (customerEmailResponse as any)?.data?.id ?? null }),
       {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
