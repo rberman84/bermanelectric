@@ -29,7 +29,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to business
     const businessEmailResponse = await resend.emails.send({
-      from: "Contact Form <contact@bermanelectric.com>",
+      from: "Berman Electric Contact Form <onboarding@resend.dev>",
+      reply_to: email,
       to: "info@bermanelectrical.com",
       subject: `New Contact Form Submission from ${name}`,
       html: `
@@ -45,7 +46,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to customer
     const customerEmailResponse = await resend.emails.send({
-      from: "Berman Electric <contact@bermanelectric.com>",
+      from: "Berman Electric <onboarding@resend.dev>",
+      reply_to: "info@bermanelectrical.com",
       to: email,
       subject: "Thank you for contacting Berman Electric",
       html: `
