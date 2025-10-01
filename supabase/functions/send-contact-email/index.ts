@@ -57,7 +57,7 @@ const handler = async (req: Request): Promise<Response> => {
     const businessEmailResponse = await resend.emails.send({
       from: Deno.env.get("RESEND_FROM") ?? "Berman Electric Contact Form <onboarding@resend.dev>",
       reply_to: email,
-      to: ["info@bermanelectrical.com"],
+      to: ["contact@bermanelectrical.com"],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
