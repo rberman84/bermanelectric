@@ -309,6 +309,16 @@ const Dashboard = () => {
             </Link>
           </section>
 
+          {/* Admin Link (if needed) */}
+          <section className="mb-8">
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
+            >
+              View Admin Submissions →
+            </Link>
+          </section>
+
           {/* Content Grid */}
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2 mb-8">
             {/* Upcoming Appointments */}

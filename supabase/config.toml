@@ -21,6 +21,9 @@ verify_jwt = false
 [functions.portal-estimate]
 verify_jwt = false
 
+[functions.portal-admin-submissions]
+verify_jwt = false
+
 [functions.ai-help-chat]
 verify_jwt = false
 
