@@ -11,11 +11,11 @@ import { z } from "zod";
 import { User, Session } from "@supabase/supabase-js";
 
 const signupSchema = z.object({
-  email: z.string().trim().email({ message: "Invalid email address" }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
-  displayName: z.string().trim().min(2, { message: "Name must be at least 2 characters" }),
-  phone: z.string().trim().optional(),
-  companyName: z.string().trim().optional(),
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255, { message: "Email must be less than 255 characters" }),
+  password: z.string().min(8, { message: "Password must be at least 8 characters" }).max(100, { message: "Password must be less than 100 characters" }),
+  displayName: z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100, { message: "Name must be less than 100 characters" }),
+  phone: z.string().trim().regex(/^[0-9()\-\s+]{10,20}$/, { message: "Please provide a valid phone number" }).optional().or(z.literal("")),
+  companyName: z.string().trim().max(100, { message: "Company name must be less than 100 characters" }).optional(),
 });
 
 const loginSchema = z.object({
@@ -251,6 +251,9 @@ const Auth = () => {
                     name="phone"
                     type="tel"
                     placeholder="(555) 123-4567"
+                    pattern="[0-9()\-\s+]*"
+                    minLength={10}
+                    maxLength={20}
                   />
                 </div>
                 <div className="space-y-2">
@@ -269,6 +272,7 @@ const Auth = () => {
                     name="signup-password"
                     type="password"
                     placeholder="••••••••"
+                    minLength={8}
                     required
                   />
                 </div>

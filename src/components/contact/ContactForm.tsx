@@ -28,24 +28,19 @@ const ContactForm = () => {
         message: formData.get('message') as string,
       };
 
-      console.log('Submitting form data:', payload); // Debug log
-
       const { data: response, error } = await supabase.functions.invoke('send-contact-email', {
         body: payload
       });
 
       if (error) {
-        console.error('Supabase function error:', error); // Debug log
         const details = (error as any)?.context?.response?.error || (error as any)?.message || 'There was an error sending your message.';
         toast.error(details);
         return;
       }
 
-      console.log('Form submitted successfully', response); // Debug log
       toast.success("Thank you! We'll get back to you within 24 hours.");
       (e.target as HTMLFormElement).reset();
     } catch (error) {
-      console.error('Error submitting form:', error);
       toast.error("There was an error sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -78,8 +73,11 @@ const ContactForm = () => {
             id="phone"
             name="phone"
             required
+            pattern="[0-9()\-\s+]+"
+            minLength={10}
+            maxLength={20}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-600 focus:border-transparent"
-            placeholder="Enter your phone number"
+            placeholder="(555) 123-4567"
           />
         </div>
 

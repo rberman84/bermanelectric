@@ -36,7 +36,6 @@ export const AiHelpChat = () => {
 
       setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
     } catch (error) {
-      console.error("Error sending message:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",

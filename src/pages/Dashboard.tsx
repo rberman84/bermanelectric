@@ -18,9 +18,9 @@ import Footer from "@/components/shared/Footer";
 
 const serviceRequestSchema = z.object({
   serviceType: z.string().min(1, { message: "Please select a service type" }),
-  description: z.string().trim().min(10, { message: "Description must be at least 10 characters" }),
-  address: z.string().trim().min(5, { message: "Please provide a valid address" }),
-  phone: z.string().trim().min(10, { message: "Please provide a valid phone number" }),
+  description: z.string().trim().min(10, { message: "Description must be at least 10 characters" }).max(2000, { message: "Description must be less than 2000 characters" }),
+  address: z.string().trim().min(10, { message: "Please provide a complete address" }).max(200, { message: "Address must be less than 200 characters" }),
+  phone: z.string().trim().regex(/^[0-9()\-\s+]{10,20}$/, { message: "Please provide a valid phone number" }),
   preferredDate: z.string().optional(),
 });
 
@@ -241,6 +241,9 @@ const Dashboard = () => {
                           name="phone"
                           type="tel"
                           placeholder="(555) 123-4567"
+                          pattern="[0-9()\-\s+]+"
+                          minLength={10}
+                          maxLength={20}
                           required
                         />
                       </div>
