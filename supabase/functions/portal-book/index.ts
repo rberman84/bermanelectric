@@ -114,6 +114,32 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Service booking email sent successfully:", emailResponse);
 
+    // Forward to Google Sheet webhook (fire and forget)
+    const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "book",
+            name,
+            email,
+            phone: phone || "",
+            address: address || "",
+            service: serviceType,
+            preferredDate: preferredDate || "",
+            notes: notes || "",
+            timestamp: new Date().toISOString(),
+          }),
+        });
+        console.log("Forwarded booking to Google Sheet webhook");
+      } catch (webhookError) {
+        // Don't fail the request if webhook fails
+        console.error("Failed to forward to webhook:", webhookError);
+      }
+    }
+
     return new Response(
       JSON.stringify({ ok: true, id: (emailResponse as any)?.data?.id }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
