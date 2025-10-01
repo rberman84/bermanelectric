@@ -66,7 +66,7 @@ const handler = async (req: Request): Promise<Response> => {
     const businessEmailResponse = await resend.emails.send({
       from: Deno.env.get("RESEND_FROM") ?? "Berman Electric Service Request <onboarding@resend.dev>",
       reply_to: customerEmail,
-      to: ["info@bermanelectrical.com"],
+      to: ["contact@bermanelectrical.com"],
       subject: `New Service Request: ${serviceType} from ${customerName}`,
       html: `
         <h2>New Service Request Submitted</h2>
