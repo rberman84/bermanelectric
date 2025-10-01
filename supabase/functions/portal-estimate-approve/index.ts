@@ -10,16 +10,11 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const bookServiceSchema = z.object({
+const approveEstimateSchema = z.object({
+  estimateId: z.string().trim().min(1),
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().email().max(255),
-  phone: z.string().trim().max(30).optional().or(z.literal("")),
-  address: z.string().trim().max(200).optional().or(z.literal("")),
-  serviceType: z.string().trim().min(1).max(100),
-  preferredDate: z.string().optional().or(z.literal("")),
-  notes: z.string().trim().max(2000).optional().or(z.literal("")),
-  membership: z.boolean().optional(),
-  _hp: z.string().optional(), // Honeypot field
+  upsells: z.array(z.string()).optional(),
 });
 
 function escapeHtml(text: string): string {
@@ -54,16 +49,8 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const body = await req.json();
+    const parsed = approveEstimateSchema.safeParse(body);
     
-    // Check honeypot - if filled, it's a bot
-    if (body._hp) {
-      return new Response(
-        JSON.stringify({ ok: true }),
-        { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
-
-    const parsed = bookServiceSchema.safeParse(body);
     if (!parsed.success) {
       return new Response(
         JSON.stringify({ error: "Invalid input", details: parsed.error.flatten() }),
@@ -71,7 +58,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, email, phone, address, serviceType, preferredDate, notes, membership } = parsed.data;
+    const { estimateId, name, email, upsells } = parsed.data;
     
     const dest = (Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com")
       .split(",")
@@ -79,23 +66,29 @@ const handler = async (req: Request): Promise<Response> => {
       .filter(Boolean);
 
     const FROM = Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>";
-    const subject = `Service Booking: ${serviceType} — ${name}`;
+    const subject = `Estimate Approved: ${estimateId} — ${name}`;
+    
+    const upsellsSection = upsells && upsells.length > 0 
+      ? `<h3 style="margin-top:20px;color:#16a34a">✅ Selected Add-ons:</h3>
+         <ul style="margin-top:10px">
+           ${upsells.map(u => `<li>${escapeHtml(u)}</li>`).join("")}
+         </ul>`
+      : "";
     
     const html = `
       <div style="font-family:system-ui,Arial,sans-serif;font-size:16px;line-height:1.6">
-        <h2>New Service Booking Request</h2>
-        <p><b>Name:</b> ${escapeHtml(name)}</p>
-        <p><b>Email:</b> ${escapeHtml(email)}</p>
-        ${phone ? `<p><b>Phone:</b> ${escapeHtml(phone)}</p>` : ""}
-        ${address ? `<p><b>Address:</b> ${escapeHtml(address)}</p>` : ""}
-        <p><b>Service Type:</b> ${escapeHtml(serviceType)}</p>
-        ${preferredDate ? `<p><b>Preferred Date:</b> ${escapeHtml(preferredDate)}</p>` : ""}
-        ${membership ? `<p><b>Berman Plus Membership:</b> ✅ YES - $19/month (Priority scheduling, annual safety check, 10% off service calls)</p>` : ""}
-        ${notes ? `<p><b>Notes:</b><br>${escapeHtml(notes).replace(/\n/g, "<br>")}</p>` : ""}
+        <h2 style="color:#16a34a">✅ Estimate Approved</h2>
+        <p><b>Estimate ID:</b> ${escapeHtml(estimateId)}</p>
+        <p><b>Customer Name:</b> ${escapeHtml(name)}</p>
+        <p><b>Customer Email:</b> ${escapeHtml(email)}</p>
+        ${upsellsSection}
+        <p style="margin-top:20px;padding:15px;background:#f3f4f6;border-left:4px solid #16a34a">
+          <b>Next Steps:</b> Contact customer to schedule the approved work.
+        </p>
       </div>
     `;
 
-    console.log("Sending service booking email:", { name, email, serviceType });
+    console.log("Sending estimate approval email:", { estimateId, name, email, upsells: upsells?.length || 0 });
 
     const emailResponse = await resend.emails.send({
       from: FROM,
@@ -114,7 +107,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    console.log("Service booking email sent successfully:", emailResponse);
+    console.log("Estimate approval email sent successfully:", emailResponse);
 
     // Forward to Google Sheet webhook (fire and forget)
     const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
@@ -124,21 +117,16 @@ const handler = async (req: Request): Promise<Response> => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            type: "book",
+            type: "estimate_approval",
+            estimateId,
             name,
             email,
-            phone: phone || "",
-            address: address || "",
-            service: serviceType,
-            preferredDate: preferredDate || "",
-            membership: membership || false,
-            notes: notes || "",
+            upsells: upsells || [],
             timestamp: new Date().toISOString(),
           }),
         });
-        console.log("Forwarded booking to Google Sheet webhook");
+        console.log("Forwarded estimate approval to Google Sheet webhook");
       } catch (webhookError) {
-        // Don't fail the request if webhook fails
         console.error("Failed to forward to webhook:", webhookError);
       }
     }
@@ -148,7 +136,7 @@ const handler = async (req: Request): Promise<Response> => {
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Error in portal-book function:", error);
+    console.error("Error in portal-estimate-approve function:", error);
     return new Response(
       JSON.stringify({ error: error.message }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }

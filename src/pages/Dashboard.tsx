@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Calendar, Wrench, FileText, Phone, Mail } from "lucide-react";
 import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
+import { BookNowStrip } from "@/components/shared/BookNowStrip";
 
 const serviceRequestSchema = z.object({
   serviceType: z.string().min(1, { message: "Please select a service type" }),
@@ -131,6 +133,7 @@ const Dashboard = () => {
       address: formData.get("address") as string,
       phone: formData.get("phone") as string,
       preferredDate: formData.get("preferred-date") as string,
+      membership: formData.get("membership") === "on",
     };
 
     try {
@@ -155,7 +158,7 @@ const Dashboard = () => {
         .eq("id", user?.id)
         .single();
 
-      // Send email notification
+      // Send email notification with membership info
       const { error: emailError } = await supabase.functions.invoke("send-service-request-email", {
         body: {
           customerName: profile?.display_name || "Customer",
@@ -165,6 +168,7 @@ const Dashboard = () => {
           description: validated.description,
           address: validated.address,
           preferredDate: validated.preferredDate || undefined,
+          membership: data.membership,
         },
       });
 
@@ -175,7 +179,9 @@ const Dashboard = () => {
 
       toast({
         title: "Request submitted!",
-        description: "We'll contact you soon to schedule your service.",
+        description: data.membership 
+          ? "We'll contact you soon to schedule your service and set up your Berman Plus membership."
+          : "We'll contact you soon to schedule your service.",
       });
 
       e.currentTarget.reset();
@@ -566,6 +572,23 @@ const Dashboard = () => {
                 />
               </div>
 
+              <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+                <Label 
+                  htmlFor="membership" 
+                  className="flex items-start gap-3 cursor-pointer"
+                >
+                  <Checkbox id="membership" name="membership" />
+                  <div className="flex-1">
+                    <div className="font-semibold text-neutral-900">
+                      Add Berman Plus — $19/month
+                    </div>
+                    <div className="mt-1 text-sm text-neutral-600">
+                      Priority scheduling, annual safety check, 10% off service calls
+                    </div>
+                  </div>
+                </Label>
+              </div>
+
               <Button
                 type="submit"
                 className="w-full bg-neutral-900 hover:bg-neutral-800"
@@ -590,6 +613,7 @@ const Dashboard = () => {
           </footer>
         </div>
       </main>
+      <BookNowStrip />
       <Footer />
     </div>
   );
