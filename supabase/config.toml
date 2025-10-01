@@ -24,6 +24,12 @@ verify_jwt = false
 [functions.portal-estimate-approve]
 verify_jwt = false
 
+[functions.portal-job-complete]
+verify_jwt = false
+
+[functions.portal-maintenance-reminders]
+verify_jwt = false
+
 [functions.portal-admin-submissions]
 verify_jwt = false
 

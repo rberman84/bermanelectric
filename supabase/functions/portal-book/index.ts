@@ -116,6 +116,43 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Service booking email sent successfully:", emailResponse);
 
+    // Send confirmation email to customer
+    const customerHtml = `
+      <div style="font-family:system-ui,Arial,sans-serif;font-size:16px;line-height:1.6">
+        <h2>Thanks, ${escapeHtml(name)} — we've got it.</h2>
+        <p>We received your request for <b>${escapeHtml(serviceType)}</b>${preferredDate ? ` on ${escapeHtml(preferredDate)}` : ''}.</p>
+        
+        <h3 style="margin-top:24px;color:#16a34a">What to do before we arrive:</h3>
+        <ol style="margin-top:10px;padding-left:20px">
+          <li style="margin-bottom:8px">Clear access to electrical panel and work area</li>
+          <li style="margin-bottom:8px">Secure pets in a separate room</li>
+          <li style="margin-bottom:8px">Have photos or notes about the issue ready</li>
+        </ol>
+        
+        <p style="margin-top:24px;padding:15px;background:#f3f4f6;border-left:4px solid #16a34a">
+          <b>Questions?</b> Call us at <a href="tel:5163614068">516-361-4068</a> or reply to this email.
+        </p>
+        
+        <p style="margin-top:20px;color:#6b7280;font-size:14px">
+          — The Berman Electric Team
+        </p>
+      </div>
+    `;
+
+    try {
+      await resend.emails.send({
+        from: FROM,
+        to: [email],
+        subject: `We got your request: ${serviceType}`,
+        html: customerHtml,
+        reply_to: Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com",
+      });
+      console.log("Customer confirmation email sent");
+    } catch (confirmError) {
+      console.error("Failed to send customer confirmation:", confirmError);
+      // Don't fail the request if customer email fails
+    }
+
     // Forward to Google Sheet webhook (fire and forget)
     const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
     if (webhookUrl) {
