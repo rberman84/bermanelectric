@@ -7,19 +7,19 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.portal-me]
-verify_jwt = false
+verify_jwt = true
 
 [functions.portal-jobs]
-verify_jwt = false
+verify_jwt = true
 
 [functions.portal-appointments]
-verify_jwt = false
+verify_jwt = true
 
 [functions.portal-book]
-verify_jwt = false
+verify_jwt = true
 
 [functions.portal-estimate]
-verify_jwt = false
+verify_jwt = true
 
 [functions.portal-admin-submissions]
 verify_jwt = false
