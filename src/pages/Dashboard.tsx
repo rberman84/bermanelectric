@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Calendar, MapPin, Phone, FileText } from "lucide-react";
+import { Loader2, Calendar, Wrench, FileText, Phone, Mail } from "lucide-react";
 import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
@@ -34,6 +30,19 @@ type ServiceRequest = {
   phone: string;
   created_at: string;
 };
+
+// Helper functions
+function formatDate(d: string) {
+  try {
+    return new Date(d).toLocaleDateString();
+  } catch {
+    return d;
+  }
+}
+
+function classNames(...xs: (string | false | undefined)[]) {
+  return xs.filter(Boolean).join(" ");
+}
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -155,26 +164,21 @@ const Dashboard = () => {
   };
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case "pending":
-        return "bg-yellow-500";
-      case "scheduled":
-        return "bg-blue-500";
-      case "in_progress":
-        return "bg-purple-500";
-      case "completed":
-        return "bg-green-500";
-      case "cancelled":
-        return "bg-red-500";
-      default:
-        return "bg-gray-500";
-    }
+    const map: Record<string, string> = {
+      pending: "bg-amber-100 text-amber-700",
+      scheduled: "bg-blue-100 text-blue-700",
+      in_progress: "bg-purple-100 text-purple-700",
+      completed: "bg-emerald-100 text-emerald-700",
+      cancelled: "bg-red-100 text-red-700",
+    };
+    return map[status] || "bg-neutral-100 text-neutral-700";
   };
 
   const formatStatus = (status: string) => {
-    return status.split("_").map(word => 
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(" ");
+    return status
+      .split("_")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   };
 
   if (authLoading) {
@@ -189,183 +193,353 @@ const Dashboard = () => {
     return null;
   }
 
+  const upcomingRequests = requests.filter(
+    (r) => r.status === "scheduled" || r.status === "pending"
+  );
+  const recentRequests = requests.slice(0, 5);
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-neutral-50">
       <Navbar />
-      <main className="flex-1 pt-24 pb-12 bg-gradient-to-br from-background to-muted">
-        <div className="container max-w-6xl">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Customer Dashboard</h1>
-            <p className="text-muted-foreground">
-              Manage your service requests and view your history
-            </p>
-          </div>
+      <main className="flex-1 pt-24 pb-12">
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          {/* Header */}
+          <section className="mb-6 rounded-2xl bg-neutral-900 p-6 text-white">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h1 className="text-2xl font-bold">
+                  Welcome{user ? `, ${user.email?.split("@")[0]}` : ""}
+                </h1>
+                <p className="text-white/80">
+                  Manage jobs, book service, and request estimates — all in one place.
+                </p>
+              </div>
+              <div className="text-sm md:text-right">
+                <div>
+                  Need help now?{" "}
+                  <span className="font-semibold">(516) 361-4068</span>
+                </div>
+                <div className="text-white/70">
+                  Berman Electric • White‑glove local service
+                </div>
+              </div>
+            </div>
+          </section>
 
-          <Tabs defaultValue="new-request" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="new-request">New Request</TabsTrigger>
-              <TabsTrigger value="history">Request History</TabsTrigger>
-            </TabsList>
+          {/* Quick Actions */}
+          <section className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <button
+              onClick={() => {
+                const form = document.getElementById("service-request-form");
+                form?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group block rounded-2xl border border-neutral-200 bg-white p-4 hover:shadow-md transition text-left"
+            >
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-100 group-hover:bg-neutral-900 group-hover:text-white transition">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="font-semibold">Book a Service</div>
+                  <div className="text-sm text-neutral-500">
+                    Pick a time that works
+                  </div>
+                </div>
+              </div>
+            </button>
 
-            <TabsContent value="new-request">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Submit Service Request</CardTitle>
-                  <CardDescription>
-                    Tell us about your electrical needs and we'll get back to you
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmitRequest} className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="service-type">Service Type *</Label>
-                      <Select name="service-type" required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Residential">Residential Electrical</SelectItem>
-                          <SelectItem value="Commercial">Commercial Electrical</SelectItem>
-                          <SelectItem value="Emergency">Emergency Service</SelectItem>
-                          <SelectItem value="EV Charger">EV Charger Installation</SelectItem>
-                          <SelectItem value="Panel Upgrade">Panel Upgrade</SelectItem>
-                          <SelectItem value="Wiring">Wiring/Rewiring</SelectItem>
-                          <SelectItem value="Lighting">Lighting Installation</SelectItem>
-                          <SelectItem value="Inspection">Electrical Inspection</SelectItem>
-                          <SelectItem value="Other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+            <button
+              onClick={() => {
+                const form = document.getElementById("service-request-form");
+                form?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group block rounded-2xl border border-neutral-200 bg-white p-4 hover:shadow-md transition text-left"
+            >
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-100 group-hover:bg-neutral-900 group-hover:text-white transition">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="font-semibold">Request an Estimate</div>
+                  <div className="text-sm text-neutral-500">
+                    Share details & photos
+                  </div>
+                </div>
+              </div>
+            </button>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="description">Description *</Label>
-                      <Textarea
-                        id="description"
-                        name="description"
-                        placeholder="Please describe the work you need done..."
-                        rows={5}
-                        required
-                      />
-                    </div>
+            <Link
+              to="/"
+              className="group block rounded-2xl border border-neutral-200 bg-white p-4 hover:shadow-md transition"
+            >
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-100 group-hover:bg-neutral-900 group-hover:text-white transition">
+                  <Wrench className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="font-semibold">View Services</div>
+                  <div className="text-sm text-neutral-500">
+                    Browse our offerings
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </section>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="address">Service Address *</Label>
-                      <Input
-                        id="address"
-                        name="address"
-                        type="text"
-                        placeholder="123 Main St, Town, NY 11111"
-                        required
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Contact Phone *</Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="(555) 123-4567"
-                          pattern="[0-9()\-\s+]+"
-                          minLength={10}
-                          maxLength={20}
-                          required
-                        />
+          {/* Content Grid */}
+          <section className="grid grid-cols-1 gap-6 md:grid-cols-2 mb-8">
+            {/* Upcoming Appointments */}
+            <div className="rounded-2xl border border-neutral-200 bg-white p-4">
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="text-lg font-semibold">Upcoming Appointments</h2>
+              </div>
+              {loadingRequests ? (
+                <div className="animate-pulse space-y-2">
+                  <div className="h-4 w-1/2 rounded bg-neutral-200" />
+                  <div className="h-3 w-2/3 rounded bg-neutral-200" />
+                </div>
+              ) : upcomingRequests.length ? (
+                <ul className="divide-y divide-neutral-100">
+                  {upcomingRequests.map((r) => (
+                    <li
+                      key={r.id}
+                      className="flex items-center justify-between py-3"
+                    >
+                      <div>
+                        <div className="font-medium">{r.service_type}</div>
+                        <div className="text-xs text-neutral-500">
+                          {r.preferred_date
+                            ? formatDate(r.preferred_date)
+                            : "Date pending"}
+                        </div>
                       </div>
+                      <span
+                        className={classNames(
+                          "inline-flex items-center rounded-full px-2 py-0.5 text-xs",
+                          getStatusColor(r.status)
+                        )}
+                      >
+                        {formatStatus(r.status)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="rounded-2xl border border-dashed border-neutral-200 p-6 text-center text-neutral-500">
+                  <div className="font-medium text-neutral-700">
+                    No appointments scheduled
+                  </div>
+                  <div className="mt-2 text-sm">
+                    <button
+                      onClick={() => {
+                        const form = document.getElementById(
+                          "service-request-form"
+                        );
+                        form?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="underline"
+                    >
+                      Schedule one now
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
 
-                      <div className="space-y-2">
-                        <Label htmlFor="preferred-date">Preferred Date</Label>
-                        <Input
-                          id="preferred-date"
-                          name="preferred-date"
-                          type="date"
-                          min={new Date().toISOString().split('T')[0]}
-                        />
-                      </div>
-                    </div>
+            {/* Contact Card */}
+            <div className="rounded-2xl border border-neutral-200 bg-white p-4">
+              <div className="mb-3">
+                <h2 className="text-lg font-semibold">Need Immediate Help?</h2>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-neutral-50">
+                  <Phone className="h-5 w-5 text-neutral-600" />
+                  <div>
+                    <div className="text-sm text-neutral-500">Call us</div>
+                    <a
+                      href="tel:5163614068"
+                      className="font-semibold hover:underline"
+                    >
+                      (516) 361-4068
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-neutral-50">
+                  <Mail className="h-5 w-5 text-neutral-600" />
+                  <div>
+                    <div className="text-sm text-neutral-500">Email us</div>
+                    <a
+                      href="mailto:info@bermanelectrical.com"
+                      className="font-semibold hover:underline"
+                    >
+                      info@bermanelectrical.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <Button type="submit" className="w-full" disabled={loading}>
-                      {loading ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        "Submit Request"
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="history">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Your Service Requests</CardTitle>
-                  <CardDescription>
-                    View the status of your current and past requests
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {loadingRequests ? (
-                    <div className="flex items-center justify-center py-8">
-                      <Loader2 className="h-8 w-8 animate-spin" />
-                    </div>
-                  ) : requests.length === 0 ? (
-                    <div className="text-center py-8 text-muted-foreground">
-                      <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                      <p>No service requests yet</p>
-                      <p className="text-sm">Submit your first request to get started!</p>
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      {requests.map((request) => (
-                        <Card key={request.id} className="border-l-4" style={{ borderLeftColor: `var(--${getStatusColor(request.status)})` }}>
-                          <CardHeader>
-                            <div className="flex items-start justify-between">
-                              <div>
-                                <CardTitle className="text-lg">{request.service_type}</CardTitle>
-                                <CardDescription className="mt-1">
-                                  Submitted {new Date(request.created_at).toLocaleDateString()}
-                                </CardDescription>
-                              </div>
-                              <Badge className={getStatusColor(request.status)}>
-                                {formatStatus(request.status)}
-                              </Badge>
-                            </div>
-                          </CardHeader>
-                          <CardContent>
-                            <div className="space-y-3">
-                              <div className="flex items-start gap-2">
-                                <FileText className="h-4 w-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                                <p className="text-sm">{request.description}</p>
-                              </div>
-                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <MapPin className="h-4 w-4 flex-shrink-0" />
-                                <span>{request.address}</span>
-                              </div>
-                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <Phone className="h-4 w-4 flex-shrink-0" />
-                                <span>{request.phone}</span>
-                              </div>
-                              {request.preferred_date && (
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                  <Calendar className="h-4 w-4 flex-shrink-0" />
-                                  <span>Preferred: {new Date(request.preferred_date).toLocaleDateString()}</span>
-                                </div>
+            {/* Recent Jobs */}
+            <div className="rounded-2xl border border-neutral-200 bg-white p-4 md:col-span-2">
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="text-lg font-semibold">Recent Jobs</h2>
+              </div>
+              {loadingRequests ? (
+                <div className="animate-pulse space-y-2">
+                  <div className="h-4 w-1/3 rounded bg-neutral-200" />
+                  <div className="h-3 w-2/3 rounded bg-neutral-200" />
+                  <div className="h-3 w-1/2 rounded bg-neutral-200" />
+                </div>
+              ) : recentRequests.length ? (
+                <div className="overflow-hidden rounded-xl border border-neutral-200">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-neutral-50 text-neutral-600">
+                      <tr>
+                        <th className="px-3 py-2">Date</th>
+                        <th className="px-3 py-2">Service</th>
+                        <th className="px-3 py-2">Status</th>
+                        <th className="px-3 py-2">Location</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {recentRequests.map((r) => (
+                        <tr key={r.id} className="border-t border-neutral-100">
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            {formatDate(r.created_at)}
+                          </td>
+                          <td className="px-3 py-2">{r.service_type}</td>
+                          <td className="px-3 py-2">
+                            <span
+                              className={classNames(
+                                "inline-flex items-center rounded-full px-2 py-0.5 text-xs",
+                                getStatusColor(r.status)
                               )}
-                            </div>
-                          </CardContent>
-                        </Card>
+                            >
+                              {formatStatus(r.status)}
+                            </span>
+                          </td>
+                          <td className="px-3 py-2 text-neutral-600">
+                            {r.address}
+                          </td>
+                        </tr>
                       ))}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-dashed border-neutral-200 p-6 text-center text-neutral-500">
+                  <div className="font-medium text-neutral-700">No jobs yet</div>
+                  <div className="mt-2 text-sm">
+                    Book a service to get started.
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* Service Request Form */}
+          <section
+            id="service-request-form"
+            className="rounded-2xl border border-neutral-200 bg-white p-6"
+          >
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold mb-2">Submit Service Request</h2>
+              <p className="text-neutral-600">
+                Tell us about your electrical needs and we'll get back to you
+              </p>
+            </div>
+            <form onSubmit={handleSubmitRequest} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="service-type">Service Type *</Label>
+                  <select
+                    id="service-type"
+                    name="service-type"
+                    required
+                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-900 focus:border-transparent"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="Residential">Residential Electrical</option>
+                    <option value="Commercial">Commercial Electrical</option>
+                    <option value="Emergency">Emergency Service</option>
+                    <option value="EV Charger">EV Charger Installation</option>
+                    <option value="Panel Upgrade">Panel Upgrade</option>
+                    <option value="Wiring">Wiring/Rewiring</option>
+                    <option value="Lighting">Lighting Installation</option>
+                    <option value="Inspection">Electrical Inspection</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Contact Phone *</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="(555) 123-4567"
+                    pattern="[0-9()\-\s+]+"
+                    minLength={10}
+                    maxLength={20}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="address">Service Address *</Label>
+                <Input
+                  id="address"
+                  name="address"
+                  type="text"
+                  placeholder="123 Main St, Town, NY 11111"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="preferred-date">Preferred Date</Label>
+                <Input
+                  id="preferred-date"
+                  name="preferred-date"
+                  type="date"
+                  min={new Date().toISOString().split("T")[0]}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="description">Description *</Label>
+                <Textarea
+                  id="description"
+                  name="description"
+                  placeholder="Please describe the work you need done..."
+                  rows={5}
+                  required
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-neutral-900 hover:bg-neutral-800"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Request"
+                )}
+              </Button>
+            </form>
+          </section>
+
+          {/* Footer */}
+          <footer className="mt-10 text-center text-xs text-neutral-400">
+            © {new Date().getFullYear()} Berman Electric — Licensed & Insured —
+            Ronkonkoma, NY
+          </footer>
         </div>
       </main>
       <Footer />
