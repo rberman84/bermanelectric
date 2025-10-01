@@ -6,6 +6,15 @@ verify_jwt = false
 [functions.send-service-request-email]
 verify_jwt = false
 
+[functions.portal-me]
+verify_jwt = false
+
+[functions.portal-jobs]
+verify_jwt = false
+
+[functions.portal-appointments]
+verify_jwt = false
+
 [functions.ai-help-chat]
 verify_jwt = false
 

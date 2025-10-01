@@ -51,6 +51,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [requests, setRequests] = useState<ServiceRequest[]>([]);
   const [loadingRequests, setLoadingRequests] = useState(true);
+  const [userName, setUserName] = useState<string>("");
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -60,22 +61,42 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-      fetchServiceRequests();
+      fetchPortalData();
     }
   }, [user]);
 
-  const fetchServiceRequests = async () => {
+  const fetchPortalData = async () => {
     try {
-      const { data, error } = await supabase
-        .from("service_requests")
-        .select("*")
-        .order("created_at", { ascending: false });
+      setLoadingRequests(true);
+      
+      // Fetch user profile
+      const { data: profileData, error: profileError } = await supabase.functions.invoke("portal-me");
+      if (!profileError && profileData) {
+        setUserName(profileData.name);
+      }
 
-      if (error) throw error;
-      setRequests(data || []);
+      // Fetch jobs (service requests)
+      const { data: jobsData, error: jobsError } = await supabase.functions.invoke("portal-jobs", {
+        body: { limit: 50 }
+      });
+      
+      if (jobsError) throw jobsError;
+
+      // Transform back to ServiceRequest format
+      if (jobsData) {
+        const { data: fullRequests, error } = await supabase
+          .from("service_requests")
+          .select("*")
+          .order("created_at", { ascending: false });
+        
+        if (!error) {
+          setRequests(fullRequests || []);
+        }
+      }
     } catch (error: any) {
+      console.error("Error loading portal data:", error);
       toast({
-        title: "Error loading requests",
+        title: "Error loading data",
         description: error.message,
         variant: "destructive",
       });
@@ -83,6 +104,8 @@ const Dashboard = () => {
       setLoadingRequests(false);
     }
   };
+
+  const fetchServiceRequests = fetchPortalData;
 
   const handleSubmitRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -208,7 +231,7 @@ const Dashboard = () => {
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div>
                 <h1 className="text-2xl font-bold">
-                  Welcome{user ? `, ${user.email?.split("@")[0]}` : ""}
+                  Welcome{userName ? `, ${userName}` : user ? `, ${user.email?.split("@")[0]}` : ""}
                 </h1>
                 <p className="text-white/80">
                   Manage jobs, book service, and request estimates — all in one place.
