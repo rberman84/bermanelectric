@@ -52,6 +52,7 @@ const Dashboard = () => {
   const [requests, setRequests] = useState<ServiceRequest[]>([]);
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [userName, setUserName] = useState<string>("");
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -73,6 +74,18 @@ const Dashboard = () => {
       const { data: profileData, error: profileError } = await supabase.functions.invoke("portal-me");
       if (!profileError && profileData) {
         setUserName(profileData.name);
+      }
+
+      // Check if user has admin role
+      if (user?.id) {
+        const { data: roleData } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", user.id)
+          .eq("role", "admin")
+          .single();
+        
+        setIsAdmin(!!roleData);
       }
 
       // Fetch jobs (service requests)
@@ -309,15 +322,17 @@ const Dashboard = () => {
             </Link>
           </section>
 
-          {/* Admin Link (if needed) */}
-          <section className="mb-8">
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
-            >
-              View Admin Submissions →
-            </Link>
-          </section>
+          {/* Admin Link - only show for admin users */}
+          {isAdmin && (
+            <section className="mb-8">
+              <Link
+                to="/admin"
+                className="inline-flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50 transition"
+              >
+                View Admin Submissions →
+              </Link>
+            </section>
+          )}
 
           {/* Content Grid */}
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2 mb-8">
