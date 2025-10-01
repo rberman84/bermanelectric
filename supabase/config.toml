@@ -15,6 +15,12 @@ verify_jwt = false
 [functions.portal-appointments]
 verify_jwt = false
 
+[functions.portal-book]
+verify_jwt = false
+
+[functions.portal-estimate]
+verify_jwt = false
+
 [functions.ai-help-chat]
 verify_jwt = false
 
