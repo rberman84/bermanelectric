@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
@@ -8,6 +9,7 @@ import MobileMenu from "./navbar/MobileMenu";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     let rafId: number;
@@ -49,7 +51,6 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
               alt="Berman Electric Logo"
-              fetchPriority="high"
               className={cn(
                 "h-32 w-auto transition-all duration-300",
                 isScrolled ? "brightness-0 invert" : "brightness-100",
@@ -85,6 +86,29 @@ const Navbar = () => {
                 <Phone className="mr-2 h-4 w-4" />
                 (516) 361-4068
               </a>
+              {user ? (
+                <button
+                  onClick={signOut}
+                  className={cn(
+                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md",
+                    isScrolled ? "text-gray-200 hover:text-electric-400 hover:bg-white/10" : "text-gray-700 hover:text-electric-600 hover:bg-gray-100"
+                  )}
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  Sign Out
+                </button>
+              ) : (
+                <a
+                  href="/auth"
+                  className={cn(
+                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md",
+                    isScrolled ? "text-gray-200 hover:text-electric-400 hover:bg-white/10" : "text-gray-700 hover:text-electric-600 hover:bg-gray-100"
+                  )}
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  Sign In
+                </a>
+              )}
               <a
                 href="/contact"
                 className="button-primary bg-green-600 hover:bg-green-700"

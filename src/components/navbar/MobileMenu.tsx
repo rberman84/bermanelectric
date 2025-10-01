@@ -1,8 +1,9 @@
 
-import { Phone } from "lucide-react";
+import { Phone, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   
   const servicesDropdown = [
     { name: "Residential", href: "/residential" },
@@ -22,6 +24,16 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
 
   const handleGetQuote = () => {
     navigate('/contact');
+    onClose();
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    onClose();
+  };
+
+  const handleSignIn = () => {
+    navigate('/auth');
     onClose();
   };
 
@@ -69,6 +81,29 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
           <Phone className="mr-2 h-4 w-4" />
           (516) 361-4068
         </a>
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className={cn(
+              "inline-flex items-center text-sm font-medium transition-colors w-full",
+              isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
+            )}
+          >
+            <User className="mr-2 h-4 w-4" />
+            Sign Out
+          </button>
+        ) : (
+          <button
+            onClick={handleSignIn}
+            className={cn(
+              "inline-flex items-center text-sm font-medium transition-colors w-full",
+              isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
+            )}
+          >
+            <User className="mr-2 h-4 w-4" />
+            Sign In
+          </button>
+        )}
         <button
           onClick={handleGetQuote}
           className="button-primary w-full text-center bg-green-600 hover:bg-green-700"
