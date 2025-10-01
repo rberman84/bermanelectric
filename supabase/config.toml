@@ -3,6 +3,9 @@ project_id = "ivmnpukucidiclxcbugp"
 [functions.send-contact-email]
 verify_jwt = false
 
+[functions.send-service-request-email]
+verify_jwt = false
+
 [functions.ai-help-chat]
 verify_jwt = false
 

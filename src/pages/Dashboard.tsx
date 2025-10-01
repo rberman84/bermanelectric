@@ -91,6 +91,7 @@ const Dashboard = () => {
     try {
       const validated = serviceRequestSchema.parse(data);
 
+      // Insert service request into database
       const { error } = await supabase.from("service_requests").insert({
         user_id: user?.id,
         service_type: validated.serviceType,
@@ -101,6 +102,31 @@ const Dashboard = () => {
       });
 
       if (error) throw error;
+
+      // Get user's email from their profile
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("display_name")
+        .eq("id", user?.id)
+        .single();
+
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke("send-service-request-email", {
+        body: {
+          customerName: profile?.display_name || "Customer",
+          customerEmail: user?.email || "",
+          phone: validated.phone,
+          serviceType: validated.serviceType,
+          description: validated.description,
+          address: validated.address,
+          preferredDate: validated.preferredDate || undefined,
+        },
+      });
+
+      if (emailError) {
+        console.error("Email notification error:", emailError);
+        // Don't fail the whole request if email fails
+      }
 
       toast({
         title: "Request submitted!",
