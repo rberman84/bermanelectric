@@ -55,6 +55,11 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
             {item.name}
           </NavLink>
         ))}
+        {user && (
+          <NavLink to="/dashboard" isScrolled={isScrolled} onClick={onClose}>
+            Dashboard
+          </NavLink>
+        )}
         <NavLink to="/about" isScrolled={isScrolled} onClick={onClose}>
           About
         </NavLink>

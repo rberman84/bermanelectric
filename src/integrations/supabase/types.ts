@@ -41,6 +41,45 @@ export type Database = {
         }
         Relationships: []
       }
+      service_requests: {
+        Row: {
+          address: string
+          created_at: string
+          description: string
+          id: string
+          phone: string
+          preferred_date: string | null
+          service_type: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          description: string
+          id?: string
+          phone: string
+          preferred_date?: string | null
+          service_type: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          description?: string
+          id?: string
+          phone?: string
+          preferred_date?: string | null
+          service_type?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
