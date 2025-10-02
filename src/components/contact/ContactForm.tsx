@@ -28,7 +28,7 @@ const ContactForm = () => {
         message: formData.get('message') as string,
       };
 
-      const { data: response, error } = await supabase.functions.invoke('send-contact-email', {
+      const { data: response, error } = await supabase.functions.invoke('send-email', {
         body: payload
       });
 

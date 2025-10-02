@@ -1,9 +1,6 @@
 project_id = "ivmnpukucidiclxcbugp"
 
-[functions.send-contact-email]
-verify_jwt = false
-
-[functions.send-service-request-email]
+[functions.send-email]
 verify_jwt = false
 
 [functions.portal-me]
