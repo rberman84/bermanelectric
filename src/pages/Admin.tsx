@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
+import GooglePlaceConfig from "@/components/admin/GooglePlaceConfig";
 
 type Row = { [key: string]: string };
 
@@ -118,6 +119,11 @@ const Admin = () => {
               Back to Portal
             </Link>
           </header>
+
+          {/* Google Place Configuration */}
+          <section className="mb-8">
+            <GooglePlaceConfig />
+          </section>
 
           {/* Filters */}
           <section className="mb-4 grid grid-cols-1 gap-3 md:grid-cols-5">

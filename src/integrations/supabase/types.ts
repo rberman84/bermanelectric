@@ -14,6 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
+      google_reviews: {
+        Row: {
+          author_name: string
+          author_photo_url: string | null
+          created_at: string
+          id: string
+          rating: number
+          review_id: string
+          text: string
+          time: number
+          updated_at: string
+        }
+        Insert: {
+          author_name: string
+          author_photo_url?: string | null
+          created_at?: string
+          id?: string
+          rating: number
+          review_id: string
+          text: string
+          time: number
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string
+          author_photo_url?: string | null
+          created_at?: string
+          id?: string
+          rating?: number
+          review_id?: string
+          text?: string
+          time?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      google_settings: {
+        Row: {
+          created_at: string
+          id: string
+          last_synced_at: string | null
+          place_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          last_synced_at?: string | null
+          place_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          last_synced_at?: string | null
+          place_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string | null
