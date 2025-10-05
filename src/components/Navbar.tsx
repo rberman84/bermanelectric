@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
+import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
@@ -44,8 +45,8 @@ const Navbar = () => {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a 
-            href="/" 
+          <Link 
+            to="/" 
             className="flex items-center group"
           >
             <img 
@@ -60,10 +61,10 @@ const Navbar = () => {
                 animation: `
                   scale 4s ease-in-out infinite,
                   colorize 4s ease-in-out infinite
-                `
-              }}
+              `
+            }}
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
@@ -99,8 +100,8 @@ const Navbar = () => {
                   Sign Out
                 </button>
               ) : (
-                <a
-                  href="/auth"
+                <Link
+                  to="/auth"
                   className={cn(
                     "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md",
                     isScrolled ? "text-gray-200 hover:text-electric-400 hover:bg-white/10" : "text-gray-700 hover:text-electric-600 hover:bg-gray-100"
@@ -108,14 +109,14 @@ const Navbar = () => {
                 >
                   <User className="mr-2 h-4 w-4" />
                   Sign In
-                </a>
+                </Link>
               )}
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="button-primary bg-green-600 hover:bg-green-700"
               >
                 Get a Quote
-              </a>
+              </Link>
             </div>
           </div>
 
