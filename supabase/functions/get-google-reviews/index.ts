@@ -19,7 +19,6 @@ serve(async (req) => {
 
     console.log('Fetching reviews from database...')
     
-    // Get reviews from database, ordered by time descending
     const { data: reviews, error } = await supabase
       .from('google_reviews')
       .select('*')
@@ -32,11 +31,10 @@ serve(async (req) => {
 
     console.log(`Found ${reviews?.length || 0} reviews`)
 
-    // Get last sync time
     const { data: settings } = await supabase
       .from('google_settings')
       .select('last_synced_at')
-      .single()
+      .maybeSingle()
 
     return new Response(
       JSON.stringify({ 
