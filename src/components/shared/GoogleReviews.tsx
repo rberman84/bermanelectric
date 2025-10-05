@@ -41,15 +41,18 @@ const GoogleReviews = () => {
     setSyncing(true);
     try {
       console.log('Syncing Google reviews...');
-      const { data, error } = await supabase.functions.invoke('sync-google-reviews');
+      const { data, error } = await supabase.functions.invoke('get-google-reviews', {
+        body: { refresh: true }
+      });
       
       if (error) throw error;
       
-      toast.success(`Synced ${data.synced} reviews successfully`);
-      await fetchReviews();
-    } catch (error) {
+      setReviews(data.reviews || []);
+      setLastSynced(data.lastSynced || null);
+      toast.success(`Synced ${data.reviews?.length || 0} reviews successfully`);
+    } catch (error: any) {
       console.error('Error syncing reviews:', error);
-      toast.error('Failed to sync reviews');
+      toast.error(error?.message || 'Failed to sync reviews');
     } finally {
       setSyncing(false);
     }
