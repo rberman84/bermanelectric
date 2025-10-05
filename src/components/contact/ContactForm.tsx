@@ -29,19 +29,26 @@ const ContactForm = () => {
         message: formData.get('message') as string,
       };
 
-      const { error } = await supabase.functions.invoke('send-email', {
+      console.log('Submitting contact form with payload:', payload);
+
+      const { data, error } = await supabase.functions.invoke('send-email', {
         body: payload
       });
 
+      console.log('Response from send-email:', { data, error });
+
       if (error) {
+        console.error('Email send error:', error);
         const details = (error as any)?.context?.response?.error || (error as any)?.message || 'There was an error sending your message.';
         toast.error(details);
         return;
       }
 
+      console.log('Email sent successfully!');
       toast.success("Thank you! We'll get back to you within 24 hours.");
       (e.target as HTMLFormElement).reset();
     } catch (error) {
+      console.error('Caught error:', error);
       toast.error("There was an error sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
