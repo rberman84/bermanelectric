@@ -10,13 +10,28 @@ const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center">
       {/* Background with overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20">
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-400 to-sky-600">
         <img
           src="/lovable-uploads/hero-electrician-night.png"
           alt="Professional electrician working on electrical panel at night"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover mix-blend-multiply opacity-80"
           loading="lazy"
         />
+        {/* Star effects */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 3}s`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Content */}
