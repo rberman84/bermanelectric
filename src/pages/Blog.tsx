@@ -31,7 +31,7 @@ const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     category: "Safety",
     tags: ["electrical safety", "home maintenance", "DIY tips", "cost savings", "preventive maintenance"],
-    image: "/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png",
+    image: "/lovable-uploads/5-electrical-mistakes-hero.png",
     featured: true
   },
   {
