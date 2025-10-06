@@ -33,7 +33,7 @@ const Hero = () => {
         <img
           src="/lovable-uploads/hero-electrician-night.png"
           alt="Professional electrician working on electrical panel at night"
-          className="max-w-md md:max-w-lg object-contain"
+          className="w-full h-full object-contain"
           loading="lazy"
         />
       </div>
