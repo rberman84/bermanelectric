@@ -18,14 +18,9 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Electrician image on top */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <img src="/lovable-uploads/hero-electrician-night.png" alt="Professional electrician working on electrical panel at night" className="w-full h-full object-contain" loading="lazy" />
-      </div>
-
       {/* Content */}
-      <div className="container relative pt-32">
-        <div className="max-w-3xl fade-in">
+      <div className="container relative pt-32 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="max-w-xl fade-in z-10">
           <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-electric-600 bg-white rounded-full">
             20+ Years of Excellence
           </span>
@@ -47,6 +42,11 @@ needs.</p>
               <ServicesDropdown isScrolled={isScrolled} />
             </div>
           </div>
+        </div>
+        
+        {/* Electrician image */}
+        <div className="flex items-center justify-center pointer-events-none">
+          <img src="/lovable-uploads/hero-electrician-night.png" alt="Professional electrician working on electrical panel at night" className="w-full h-full object-contain max-w-2xl" loading="lazy" />
         </div>
       </div>
 
