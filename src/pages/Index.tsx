@@ -8,6 +8,7 @@ import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { AiHelpChat } from "@/components/shared/AiHelpChat";
 import { useEffect } from "react";
+import ScrollDoctor from "@/components/ScrollDoctor";
 
 const Index = () => {
   // Safety unlock in case a component left the body locked
@@ -33,6 +34,7 @@ const Index = () => {
         canonical="https://bermanelectrical.com/"
       />
       <Navbar />
+      <ScrollDoctor />
       <main className="grow">
         <Hero />
         <HomeContent />
