@@ -64,7 +64,7 @@ export const AiHelpChat = () => {
         <MessageCircle className="h-6 w-6" />
       </Button>
 
-      <Dialog modal={false} open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-[500px] h-[600px] flex flex-col p-0">
           <DialogHeader className="p-6 pb-4">
             <DialogTitle className="flex items-center justify-between">

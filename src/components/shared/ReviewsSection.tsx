@@ -1,7 +1,4 @@
-import { Star, Quote, CheckCircle, ExternalLink, RefreshCw } from "lucide-react";
-import { useGoogleReviews, useSyncGoogleReviews } from "@/hooks/useGoogleReviews";
-import { useState } from "react";
-import { toast } from "@/hooks/use-toast";
+import { Star, Quote, CheckCircle, ExternalLink } from "lucide-react";
 
 interface Review {
   id: string;
@@ -89,50 +86,11 @@ const ReviewsSection = ({
   title = "What Our Customers Say",
   subtitle = "Real reviews from satisfied customers across Long Island",
   showSchema = true,
-  reviews: propReviews,
+  reviews = defaultReviews,
   className = ""
 }: ReviewsSectionProps) => {
-  const { data: googleReviews, isLoading, refetch } = useGoogleReviews();
-  const { syncReviews } = useSyncGoogleReviews();
-  const [isSyncing, setIsSyncing] = useState(false);
-
-  // Convert Google reviews to Review format or use provided reviews
-  const reviews = googleReviews && googleReviews.length > 0
-    ? googleReviews.map(review => ({
-        id: review.id,
-        author: review.author_name,
-        location: "Long Island, NY", // Default location since Google doesn't always provide it
-        rating: review.rating,
-        text: review.text,
-        service: "Google Review",
-        date: new Date(review.time * 1000).toISOString().split('T')[0],
-        verified: true
-      }))
-    : propReviews || defaultReviews;
-
   const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
   const totalReviews = reviews.length;
-
-  const handleSync = async () => {
-    setIsSyncing(true);
-    try {
-      await syncReviews();
-      await refetch();
-      toast({
-        title: "Success",
-        description: "Google reviews synced successfully!",
-      });
-    } catch (error) {
-      console.error('Error syncing reviews:', error);
-      toast({
-        title: "Error",
-        description: "Failed to sync reviews. Please check your Google Place ID configuration.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSyncing(false);
-    }
-  };
 
   const renderStars = (rating: number, size: 'sm' | 'md' | 'lg' = 'md') => {
     const sizeClasses = {
@@ -197,17 +155,7 @@ const ReviewsSection = ({
       <div className="container">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <h2 className="text-3xl font-bold">{title}</h2>
-            <button
-              onClick={handleSync}
-              disabled={isSyncing}
-              className="p-2 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50"
-              title="Sync Google Reviews"
-            >
-              <RefreshCw className={`w-5 h-5 ${isSyncing ? 'animate-spin' : ''}`} />
-            </button>
-          </div>
+          <h2 className="text-3xl font-bold mb-4">{title}</h2>
           <p className="text-lg text-gray-600 mb-6">{subtitle}</p>
           
           {/* Rating Summary */}
