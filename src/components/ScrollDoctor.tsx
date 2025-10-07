@@ -21,6 +21,41 @@ export default function ScrollDoctor() {
     const t2 = setTimeout(unlock, 1000);
     const t3 = setTimeout(unlock, 2500);
 
+    // One-time diagnostics to identify blockers on mobile
+    const diag = () => {
+      const bodyO = getComputedStyle(document.body).overflowY;
+      const htmlO = getComputedStyle(document.documentElement).overflowY;
+      console.info("[ScrollDoctor] Diagnostics", {
+        bodyOverflowY: bodyO,
+        htmlOverflowY: htmlO,
+        bodyClass: document.body.className,
+      });
+      const offenders = Array.from(document.querySelectorAll<HTMLElement>("body *")).filter((el) => {
+        const cs = getComputedStyle(el);
+        const z = parseInt(cs.zIndex || "0", 10);
+        const isFull =
+          cs.position === "fixed" &&
+          el.offsetWidth >= window.innerWidth - 2 &&
+          el.offsetHeight >= window.innerHeight - 2 &&
+          cs.pointerEvents !== "none" &&
+          cs.visibility !== "hidden" &&
+          cs.display !== "none" &&
+          z >= 10;
+        return isFull;
+      }).map((el) => ({
+        tag: el.tagName,
+        id: el.id,
+        className: (el as HTMLElement).className,
+        zIndex: getComputedStyle(el).zIndex,
+        opacity: getComputedStyle(el).opacity,
+        ariaHidden: el.getAttribute("aria-hidden"),
+      }));
+      if (offenders.length) {
+        console.warn("[ScrollDoctor] Fullscreen fixed elements capturing events", offenders.slice(0, 5));
+      }
+    };
+    diag();
+
     // Watch for anything re-locking scroll on <html> or <body>
     const mo = new MutationObserver((muts) => {
       let relocked = false;
@@ -69,9 +104,13 @@ export default function ScrollDoctor() {
 
         if (isFullscreenFixed) {
           const ariaHidden = el.getAttribute("aria-hidden") === "true";
+          const hiddenByStyle = cs.opacity === "0" || cs.visibility === "hidden" || cs.display === "none";
           const hasPENone = cs.pointerEvents === "none" || el.classList.contains("pointer-events-none");
-          if (ariaHidden || hasPENone) {
-            el.style.pointerEvents = "none";
+          // If it's visually hidden or marked hidden, never capture events
+          if (ariaHidden || hiddenByStyle || hasPENone) {
+            if (el.style.pointerEvents !== "none") {
+              el.style.pointerEvents = "none";
+            }
           }
         }
       });
