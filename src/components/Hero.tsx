@@ -8,7 +8,7 @@ const Hero = () => {
   const [isScrolled] = useState(false);
 
   return (
-    <div className="relative min-h-screen flex items-center">
+    <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
       {/* Background with overlay */}
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" aria-hidden="true">
         <img
