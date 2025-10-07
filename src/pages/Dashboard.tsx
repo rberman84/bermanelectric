@@ -159,8 +159,9 @@ const Dashboard = () => {
         .single();
 
       // Send email notification with membership info
-      const { error: emailError } = await supabase.functions.invoke("send-service-request-email", {
+      const { error: emailError } = await supabase.functions.invoke("send-email", {
         body: {
+          type: "service-request",
           customerName: profile?.display_name || "Customer",
           customerEmail: user?.email || "",
           phone: validated.phone,

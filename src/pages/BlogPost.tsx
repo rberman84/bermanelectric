@@ -270,6 +270,81 @@ const getBlogPost = (slug: string) => {
       tags: ["licensed electrician", "cost savings", "quality work", "Nassau County"],
       image: "/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
     },
+    "5-electrical-mistakes-homeowners-make-cost-thousands": {
+      title: "5 Electrical Mistakes Homeowners Make That Could Cost Thousands",
+      content: `
+        <p>Ever flipped a breaker and thought, "Hmm, that's weird — it just tripped again?" Or maybe your lights dim every time your AC kicks on? You're not alone.</p>
+        
+        <p>At Berman Electric, we see these "little issues" every week — and the truth is, most start as small DIY oversights or outdated systems that quietly become expensive emergencies.</p>
+        
+        <p>So, whether you own a home, manage a business, or just love understanding how your electrical system works, here are 5 electrical mistakes that can cost you serious money (and how to avoid them).</p>
+
+        <h2>1. Ignoring Flickering or Dimming Lights</h2>
+        <p>That "flicker" isn't just annoying — it's your home's way of saying "something's off." It might be loose wiring, overloaded circuits, or poor connections in your panel. Left unchecked, it can lead to shorts, fire hazards, or premature appliance failure.</p>
+        
+        <h3>💡 DIY Tip:</h3>
+        <p>Check if the issue happens only in one room (bad bulb or socket) or across the house (panel issue). If it's widespread — call us. That's a red flag.</p>
+        
+        <h3>📞 Pro Fix:</h3>
+        <p>Schedule a free home safety inspection with Berman Electric at <a href="mailto:Rob@bermanelectrical.com">Rob@bermanelectrical.com</a> or call <a href="tel:+15163614068">516-361-4068</a>.</p>
+
+        <h2>2. Overloading Power Strips & Extension Cords</h2>
+        <p>We get it — too many gadgets, not enough outlets. But stacking power strips or "daisy-chaining" extensions can create a dangerous overload, especially for space heaters or high-draw appliances.</p>
+        
+        <h3>⚠️ DIY Tip:</h3>
+        <p>Each strip should handle a max of ~1,500 watts total. Plug heavy-draw items (like heaters, toasters, or air conditioners) directly into wall outlets.</p>
+        
+        <h3>🔌 Pro Move:</h3>
+        <p>Have us install additional dedicated outlets or upgrade your circuit capacity safely.</p>
+
+        <h2>3. DIY Wiring Without Understanding Circuit Load</h2>
+        <p>YouTube is great… until it's not. Many homeowners attempt small electrical projects — replacing outlets, light fixtures, or even breakers — without calculating amperage and load balance.</p>
+        
+        <p>That "it worked fine for a year" moment ends fast when your breaker overheats or wires melt behind drywall.</p>
+        
+        <h3>💡 DIY Tip:</h3>
+        <p>Always cut power at the breaker panel before any work, and test with a non-contact voltage tester. If you're not 100% confident — call in a pro. Electricity doesn't forgive guesswork.</p>
+
+        <h2>4. Ignoring Outdated Panels & Aluminum Wiring</h2>
+        <p>Homes built before 1990 often have breaker panels or wiring types that don't meet modern load demands. We're talking about fuse boxes, Federal Pacific panels, or aluminum branch wiring — all potential fire risks.</p>
+        
+        <h3>🔥 Pro Tip:</h3>
+        <p>If your home's panel hasn't been updated in 20+ years, it's time for a checkup. It's not just safety — modern panels improve efficiency, add EV charger readiness, and boost resale value.</p>
+        
+        <h3>📘 Learn more:</h3>
+        <p><a href="https://www.energy.gov/energysaver/home-electrical-safety" target="_blank" rel="noopener noreferrer">Energy.gov: Home Electrical Safety Checklist</a></p>
+
+        <h2>5. Skipping Annual Electrical Inspections</h2>
+        <p>Think of your electrical system like your car — it needs regular checkups. Small issues (loose breakers, corroded wires, bad GFCIs) can cause inefficiency or damage appliances over time.</p>
+        
+        <h3>🏡 DIY Tip:</h3>
+        <p>Once a year, walk around and test GFCI outlets, check for warm wall plates, and ensure outdoor plugs are sealed. Then let us handle the deep diagnostics.</p>
+
+        <h2>⚙️ Why It Pays to Stay Proactive</h2>
+        <p>Electrical issues compound. What costs $150 today can easily become a $3,000 repair tomorrow.</p>
+        
+        <p>At Berman Electric, we believe in education first, service second — because a smarter homeowner is a safer homeowner.</p>
+        
+        <p>That's why we offer:</p>
+        <ul>
+          <li>🧰 Free home or business safety inspections</li>
+          <li>💡 Energy efficiency consultations</li>
+          <li>⚡ Upgrades for EV chargers, panels, and lighting</li>
+          <li>🏢 Commercial maintenance & emergency response</li>
+        </ul>
+
+        <h2>📞 Ready to Check Your Electrical System?</h2>
+        <p>Call <a href="tel:+15163614068">516-361-4068</a> or email <a href="mailto:Rob@bermanelectrical.com">Rob@bermanelectrical.com</a> to schedule your free home safety and energy checkup.</p>
+        
+        <p>Stay safe, stay powered, and remember — when in doubt, call the pros at Berman Electric.</p>
+      `,
+      author: "Rob Berman",
+      date: "2024-02-10",
+      readTime: "6 min read",
+      category: "Safety",
+      tags: ["electrical safety", "home maintenance", "DIY tips", "cost savings", "preventive maintenance"],
+      image: "/lovable-uploads/5-electrical-mistakes-hero.png"
+    },
     "ev-charger-installation-guide-long-island": {
       title: "EV Charger Installation Guide for Long Island Homes",
       content: `

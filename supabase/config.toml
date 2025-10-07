@@ -1,9 +1,6 @@
 project_id = "ivmnpukucidiclxcbugp"
 
-[functions.send-contact-email]
-verify_jwt = false
-
-[functions.send-service-request-email]
+[functions.send-email]
 verify_jwt = false
 
 [functions.portal-me]
@@ -37,4 +34,10 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.resend-status]
+verify_jwt = false
+
+[functions.sync-google-reviews]
+verify_jwt = false
+
+[functions.get-google-reviews]
 verify_jwt = false
