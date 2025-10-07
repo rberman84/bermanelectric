@@ -122,6 +122,10 @@ export default function ScrollDoctor() {
       if (ev.defaultPrevented) {
         console.warn("[ScrollDoctor] A listener prevented scrolling.", ev.type, ev.target);
       }
+      // Defensive: if listener tries to cancel scroll on body/html, undo it
+      if (ev.target === document || ev.target === document.body || ev.target === document.documentElement) {
+        (ev as any).preventDefault = () => {};
+      }
     };
     document.addEventListener("wheel", report, { capture: true, passive: false });
     document.addEventListener("touchmove", report, { capture: true, passive: false });
