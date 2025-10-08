@@ -58,7 +58,7 @@ const Index = () => {
       {/* <ScrollDoctor /> */}
       <main className="grow">
         <Hero />
-        <HomeContent />
+        {/* <HomeContent /> */}
         <GoogleReviews />
         <CTASection
           variant="emergency"
