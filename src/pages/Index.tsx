@@ -54,7 +54,7 @@ const Index = () => {
         keywords="electrician Long Island, licensed electrician Suffolk County, electrical services Ronkonkoma NY, emergency electrician Nassau County, panel upgrades, lighting installation, EV charger installation, generator installation, electrical repairs"
         canonical="https://bermanelectrical.com/"
       />
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <ScrollDoctor /> */}
       <main className="grow">
         <Hero />
