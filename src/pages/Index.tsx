@@ -55,7 +55,7 @@ const Index = () => {
         canonical="https://bermanelectrical.com/"
       />
       <Navbar />
-      <main className="grow">
+      <main className="grow pt-20">
         <Hero />
         <HomeContent />
         <GoogleReviews />
