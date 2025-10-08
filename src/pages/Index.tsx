@@ -68,7 +68,10 @@ const Index = () => {
         />
       </main>
       <Footer />
-      <AiHelpChat />
+      {/* Test: Comment components one by one to find scroll issue */}
+      {/* <AiHelpChat /> */}
+      {/* <GoogleReviews /> */}
+      {/* <HomeContent /> */}
     </div>
   );
 };

@@ -65,7 +65,10 @@ export const AiHelpChat = () => {
       </Button>
 
       <Dialog modal={false} open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-[500px] h-[600px] flex flex-col p-0">
+        <DialogContent 
+          className="sm:max-w-[500px] h-[600px] flex flex-col p-0"
+          onOpenAutoFocus={(e) => e.preventDefault()}
+        >
           <DialogHeader className="p-6 pb-4">
             <DialogTitle className="flex items-center justify-between">
               <span>How can we help you?</span>
