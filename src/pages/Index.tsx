@@ -14,15 +14,36 @@ const Index = () => {
   // Safety unlock in case a component left the body locked
   useEffect(() => {
     const unlock = () => {
-      document.documentElement.style.overflowY = "auto";
-      document.body.style.overflowY = "auto";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.classList.remove("overflow-hidden", "no-scroll", "fixed", "menu-open");
+      const html = document.documentElement;
+      const body = document.body;
+
+      // clear inline styles
+      html.style.overflow = "";
+      body.style.overflow = "";
+      html.style.overflowY = "";
+      body.style.overflowY = "";
+      body.style.position = "";
+      body.style.width = "";
+
+      // remove common lock classes
+      html.classList.remove("overflow-hidden", "no-scroll", "fixed", "menu-open");
+      body.classList.remove("overflow-hidden", "no-scroll", "fixed", "menu-open");
     };
-    unlock();
-    const t = setTimeout(unlock, 800);
-    return () => clearTimeout(t);
+
+    unlock();                   // on mount
+    const t1 = setTimeout(unlock, 100);   // after first paint
+    const t2 = setTimeout(unlock, 800);   // after lazy mounts
+
+    // safety on visibility + hash/nav changes
+    const onVis = () => { if (!document.hidden) unlock(); };
+    window.addEventListener("hashchange", unlock);
+    document.addEventListener("visibilitychange", onVis);
+
+    return () => {
+      clearTimeout(t1); clearTimeout(t2);
+      window.removeEventListener("hashchange", unlock);
+      document.removeEventListener("visibilitychange", onVis);
+    };
   }, []);
 
   return (
@@ -34,7 +55,7 @@ const Index = () => {
         canonical="https://bermanelectrical.com/"
       />
       <Navbar />
-      <ScrollDoctor />
+      {/* <ScrollDoctor /> */}
       <main className="grow">
         <Hero />
         <HomeContent />
