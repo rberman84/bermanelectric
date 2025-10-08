@@ -1,6 +1,6 @@
 
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/testimonials/Hero";
+import Hero from "@/components/Hero";
 import TestimonialSection from "@/components/testimonials/TestimonialSection";
 import TrustReasons from "@/components/testimonials/TrustReasons";
 import ReviewCTA from "@/components/testimonials/ReviewCTA";

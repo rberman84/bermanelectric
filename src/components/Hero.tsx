@@ -4,8 +4,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 
-const Hero = () => {
+interface HeroProps {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   const [isScrolled] = useState(false);
+
+  // Use default content for home page, custom content for other pages
+  const isHomePage = !title && !subtitle && !description;
 
   return (
     <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
@@ -22,39 +31,48 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative pt-32">
         <div className="max-w-3xl fade-in">
-          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-electric-600 bg-white rounded-full">
-            20+ Years of Excellence
-          </span>
+          {isHomePage && (
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-electric-600 bg-white rounded-full">
+              20+ Years of Excellence
+            </span>
+          )}
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Reliable Electrical Solutions in Ronkonkoma
+            {title || "Reliable Electrical Solutions in Ronkonkoma"}
           </h1>
           <p className="text-lg md:text-xl text-gray-100 mb-8">
-            Experience top-notch electrical services with Berman Electric, your
-            local expert for over 20 years. We provide comprehensive solutions for
-            both residential and commercial needs.
+            {subtitle || description || "Experience top-notch electrical services with Berman Electric, your local expert for over 20 years. We provide comprehensive solutions for both residential and commercial needs."}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              to="/contact"
-              className="button-primary"
-            >
-              Get a Free Quote
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
-            <div className="relative">
-              <ServicesDropdown isScrolled={isScrolled} />
+          {description && subtitle && (
+            <p className="text-lg md:text-xl text-gray-100 mb-8">
+              {description}
+            </p>
+          )}
+          {isHomePage && (
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                to="/contact"
+                className="button-primary"
+              >
+                Get a Free Quote
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Link>
+              <div className="relative">
+                <ServicesDropdown isScrolled={isScrolled} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in">
-        <div className="flex flex-col items-center">
-          <span className="text-white text-sm mb-2">Scroll to explore</span>
-          <div className="w-0.5 h-8 bg-white/50 animate-pulse"></div>
+      {isHomePage && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in">
+          <div className="flex flex-col items-center">
+            <span className="text-white text-sm mb-2">Scroll to explore</span>
+            <div className="w-0.5 h-8 bg-white/50 animate-pulse"></div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
