@@ -17,7 +17,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   const isHomePage = !title && !subtitle && !description;
 
   return (
-    <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
+    <div className="relative min-h-[calc(100svh-5rem)] md:min-h-[80svh] flex items-center">
       {/* Background with overlay */}
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" aria-hidden="true">
         <img

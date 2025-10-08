@@ -57,6 +57,7 @@ const Index = () => {
       <Navbar />
       <main className="grow pt-20">
         <Hero />
+        <div className="h-24 md:h-32" />
         <HomeContent />
         <GoogleReviews />
         <CTASection
