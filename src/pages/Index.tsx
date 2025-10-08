@@ -1,38 +1,53 @@
+
 import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import HomeContent from "@/components/home/HomeContent";
+import GoogleReviews from "@/components/shared/GoogleReviews";
+import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import { AiHelpChat } from "@/components/shared/AiHelpChat";
+import { useEffect } from "react";
+import ScrollDoctor from "@/components/ScrollDoctor";
 
-function StarterHero() {
-  return (
-    <section className="relative min-h-[calc(100svh-5rem)] md:min-h-[80svh] grid place-items-center bg-gradient-to-b from-slate-900 to-slate-800">
-      <div className="container text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Berman Electric</h1>
-        <p className="text-lg md:text-2xl text-white/80">Licensed electricians serving Long Island</p>
-      </div>
-    </section>
-  );
-}
+const Index = () => {
+  // Safety unlock in case a component left the body locked
+  useEffect(() => {
+    const unlock = () => {
+      const html = document.documentElement;
+      const body = document.body;
 
-function TallContent() {
-  return (
-    <section className="py-24 bg-white">
-      <div className="container">
-        <div className="grid gap-6 md:grid-cols-2">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="rounded-xl border border-gray-200 p-6 shadow-sm">
-              <h3 className="text-lg font-semibold mb-2">Section {i + 1}</h3>
-              <p className="text-gray-600">This placeholder content guarantees the page height exceeds the viewport so scrolling works. Replace with your real sections.</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+      // clear inline styles
+      html.style.overflow = "";
+      body.style.overflow = "";
+      html.style.overflowY = "";
+      body.style.overflowY = "";
+      body.style.position = "";
+      body.style.width = "";
 
-export default function Index() {
+      // remove common lock classes
+      html.classList.remove("overflow-hidden", "no-scroll", "fixed", "menu-open");
+      body.classList.remove("overflow-hidden", "no-scroll", "fixed", "menu-open");
+    };
+
+    unlock();                   // on mount
+    const t1 = setTimeout(unlock, 100);   // after first paint
+    const t2 = setTimeout(unlock, 800);   // after lazy mounts
+
+    // safety on visibility + hash/nav changes
+    const onVis = () => { if (!document.hidden) unlock(); };
+    window.addEventListener("hashchange", unlock);
+    document.addEventListener("visibilitychange", onVis);
+
+    return () => {
+      clearTimeout(t1); clearTimeout(t2);
+      window.removeEventListener("hashchange", unlock);
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden">
+    <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
       <SEO 
         title="Berman Electric - Licensed Electrician Long Island NY"
         description="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV charger installation. Call (516) 361-4068"
@@ -40,11 +55,22 @@ export default function Index() {
         canonical="https://bermanelectrical.com/"
       />
       <Navbar />
-      <main className="grow pt-20">
-        <StarterHero />
-        <TallContent />
+      {/* <ScrollDoctor /> */}
+      <main className="grow">
+        <Hero />
+        <HomeContent />
+        <GoogleReviews />
+        <CTASection
+          variant="emergency"
+          title="Need Emergency Electrical Service?"
+          subtitle="Available 24/7 for electrical emergencies across Long Island"
+          showUrgency={true}
+        />
       </main>
       <Footer />
+      <AiHelpChat />
     </div>
   );
-}
+};
+
+export default Index;

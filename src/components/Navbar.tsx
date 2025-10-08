@@ -30,19 +30,13 @@ const Navbar = () => {
       if (rafId) {
         cancelAnimationFrame(rafId);
       }
-      
-      // Safety cleanup: remove any stale scroll locks
-      document.documentElement.classList.remove('overflow-hidden','no-scroll','fixed','menu-open');
-      document.body.classList.remove('overflow-hidden','no-scroll','fixed','menu-open');
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
     };
   }, []);
 
   return (
     <nav
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
           : "bg-white/90 backdrop-blur-sm shadow-sm"
@@ -138,13 +132,11 @@ const Navbar = () => {
           </button>
         </div>
 
-        {isOpen && (
-          <MobileMenu 
-            isOpen={isOpen}
-            isScrolled={isScrolled}
-            onClose={() => setIsOpen(false)}
-          />
-        )}
+        <MobileMenu 
+          isOpen={isOpen}
+          isScrolled={isScrolled}
+          onClose={() => setIsOpen(false)}
+        />
       </div>
     </nav>
   );
