@@ -15,6 +15,9 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   
+  // Early return when closed (belt-and-suspenders)
+  if (!isOpen) return null;
+  
   const servicesDropdown = [
     { name: "Residential", href: "/residential" },
     { name: "Commercial", href: "/commercial" },
@@ -39,10 +42,9 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
 
   return (
     <div
-      className={cn(
-        "md:hidden transition-all duration-300 ease-in-out",
-        isOpen ? "h-auto opacity-100 visible" : "h-0 opacity-0 invisible"
-      )}
+      role="dialog"
+      aria-modal="false"
+      className="md:hidden transition-all duration-300 ease-in-out"
     >
       <div className="flex flex-col space-y-4 pb-6">
         {servicesDropdown.map((item) => (
