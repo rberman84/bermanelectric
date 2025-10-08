@@ -47,7 +47,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
+    <div className="overflow-x-hidden flex flex-col">
       <SEO 
         title="Berman Electric - Licensed Electrician Long Island NY"
         description="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV charger installation. Call (516) 361-4068"
