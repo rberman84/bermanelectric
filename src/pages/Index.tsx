@@ -54,11 +54,10 @@ const Index = () => {
         keywords="electrician Long Island, licensed electrician Suffolk County, electrical services Ronkonkoma NY, emergency electrician Nassau County, panel upgrades, lighting installation, EV charger installation, generator installation, electrical repairs"
         canonical="https://bermanelectrical.com/"
       />
-      {/* <Navbar /> */}
-      {/* <ScrollDoctor /> */}
+      <Navbar />
       <main className="grow">
         <Hero />
-        {/* <HomeContent /> */}
+        <HomeContent />
         <GoogleReviews />
         <CTASection
           variant="emergency"
@@ -68,10 +67,7 @@ const Index = () => {
         />
       </main>
       <Footer />
-      {/* Test: Comment components one by one to find scroll issue */}
-      {/* <AiHelpChat /> */}
-      {/* <GoogleReviews /> */}
-      {/* <HomeContent /> */}
+      <AiHelpChat />
     </div>
   );
 };
