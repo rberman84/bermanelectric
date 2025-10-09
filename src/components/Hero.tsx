@@ -20,15 +20,12 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
     <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
       {/* Background with overlay */}
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src="/lovable-uploads/hero-electrical-background.jpg"
+          alt="Modern electrical installation with dramatic lightning effect"
           className="w-full h-full object-cover"
-        >
-          <source src="/lovable-uploads/hero-background.mp4" type="video/mp4" />
-        </video>
+          loading="eager"
+        />
       </div>
 
       {/* Content */}
