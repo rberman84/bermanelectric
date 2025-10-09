@@ -8,33 +8,33 @@ interface TOCItem {
 }
 
 interface TableOfContentsProps {
-  content: string;
+  rootSelector?: string;
+  dependencyKey?: string;
 }
 
-const TableOfContents = ({ content }: TableOfContentsProps) => {
+const TableOfContents = ({ rootSelector = ".mdx-content", dependencyKey }: TableOfContentsProps) => {
   const [tocItems, setTocItems] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Parse headings from HTML content
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(content, 'text/html');
-    const headings = doc.querySelectorAll('h2, h3, h4');
-    
-    const items: TOCItem[] = Array.from(headings).map((heading, index) => {
+    const container = document.querySelector(rootSelector);
+    if (!container) {
+      setTocItems([]);
+      return;
+    }
+
+    const headings = container.querySelectorAll('h2, h3, h4');
+    const items: TOCItem[] = Array.from(headings).map((heading) => {
       const text = heading.textContent || '';
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-      const level = parseInt(heading.tagName.substring(1));
-      
-      // Add ID to heading for anchor links
-      heading.id = id;
-      
+      heading.setAttribute('id', id);
+      const level = parseInt(heading.tagName.substring(1), 10);
       return { id, text, level };
     });
 
     setTocItems(items);
-  }, [content]);
+  }, [rootSelector, dependencyKey]);
 
   useEffect(() => {
     // Intersection Observer for active heading
