@@ -9,6 +9,5 @@
     "types": ["vitest/globals", "@testing-library/jest-dom", "vite/client"],
     "noEmit": true
   },
-  "include": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/test/**/*"],
-  "references": [{ "path": "./tsconfig.app.json" }]
+  "include": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/test/**/*"]
 }
