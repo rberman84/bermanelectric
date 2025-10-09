@@ -14,8 +14,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 const Emergency = () => {
@@ -133,13 +133,6 @@ const Emergency = () => {
 
         {/* Services Grid */}
         <div className="relative py-24">
-          <div className="absolute inset-0">
-            <ResponsiveImage
-              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
-              alt="Emergency electrical repair being performed"
-              wrapperClassName="absolute inset-0"
-              className="w-full h-full object-cover"
-              sizes="(min-width: 1280px) 60vw, 100vw"
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
@@ -235,6 +228,7 @@ const Emergency = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

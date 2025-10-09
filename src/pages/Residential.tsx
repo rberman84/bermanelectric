@@ -1,8 +1,8 @@
 import { Plug, Lightbulb, Shield, Wrench, Car, Power, CheckCircle2, Phone, Mail, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 const Residential = () => {
@@ -32,8 +32,9 @@ const Residential = () => {
     items: ["Standby generator installation for uninterrupted power", "Transfer switches & whole-home power solutions", "Portable generator hookup & wiring"]
   }];
   const benefits = ["Over 20 Years of Experience – Trusted by homeowners across Long Island", "Licensed & Insured Electricians – Ensuring top-tier quality & safety", "Fast, Reliable Service – We get the job done right the first time", "Upfront Pricing – No hidden fees, just honest, competitive rates", "Customer Satisfaction Guaranteed – 5-star rated service"];
-  return <>
-      <SEO 
+  return (
+    <>
+      <SEO
         title="Residential Electrical Services Long Island - Licensed Home Electrician"
         description="Professional residential electrical services on Long Island. Licensed electrician for home wiring, panel upgrades, lighting installation, EV chargers, smart home automation. Serving Suffolk & Nassau County. Call (516) 361-4068"
         keywords="residential electrician Long Island, home electrical services Suffolk County, electrical panel upgrades, home rewiring, lighting installation, EV charger installation, smart home wiring, GFCI installation"
@@ -75,15 +76,6 @@ const Residential = () => {
 
         {/* Services Grid */}
         <div className="relative py-24">
-          <div className="absolute inset-0">
-            <ResponsiveImage
-              src="/lovable-uploads/75ea0479-7d50-48c5-8033-c17332ea08c3.png"
-              alt="Modern lighting installation with hanging plants and LED bulbs"
-              wrapperClassName="absolute inset-0"
-              className="w-full h-full object-cover"
-              sizes="(min-width: 1280px) 60vw, 100vw"
-            />
-            <div className="absolute inset-0 bg-white/[0.51]" />
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src="/lovable-uploads/75ea0479-7d50-48c5-8033-c17332ea08c3.png"
@@ -169,6 +161,8 @@ const Residential = () => {
         </div>
       </div>
       <Footer />
-    </>;
+    </>
+  );
 };
+
 export default Residential;

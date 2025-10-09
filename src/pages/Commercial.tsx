@@ -1,8 +1,8 @@
 import { Building2, Plug, Lightbulb, Shield, Wrench, Power, CheckCircle2, Phone, Mail, Factory } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 const Commercial = () => {
@@ -33,8 +33,9 @@ const Commercial = () => {
   }];
   const industries = ["Offices & Corporate Buildings", "Retail Stores & Shopping Centers", "Restaurants, Bars, & Cafés", "Warehouses & Industrial Facilities", "Healthcare & Medical Centers", "Schools, Colleges, & Universities", "Hotels & Hospitality", "Multi-Unit Residential Buildings"];
   const benefits = ["Over 20 Years of Commercial Experience – Trusted by top businesses across Long Island", "Licensed, Insured & Certified Electricians – Ensuring quality & safety", "Fast, Reliable, & Scalable Solutions – Minimize downtime & maximize efficiency", "Upfront Pricing & Custom Quotes – Competitive, transparent pricing with no hidden costs", "Emergency Service Available 24/7 – We're always ready when you need us"];
-  return <>
-      <SEO 
+  return (
+    <>
+      <SEO
         title="Commercial Electrical Services Long Island - Licensed Business Electrician"
         description="Professional commercial electrical contractor serving Long Island businesses. Licensed electrician for office buildings, retail spaces, warehouses, restaurants. Emergency repairs, installations, maintenance. Suffolk & Nassau County. Call (516) 361-4068"
         keywords="commercial electrician Long Island, business electrical services Suffolk County, commercial electrical contractor Nassau County, office electrical installation, retail lighting, warehouse electrical, restaurant electrical"
@@ -76,15 +77,6 @@ const Commercial = () => {
 
         {/* Services Grid */}
         <div className="relative py-24">
-          <div className="absolute inset-0">
-            <ResponsiveImage
-              src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
-              alt="Professional electrician installing commercial electrical equipment"
-              wrapperClassName="absolute inset-0"
-              className="w-full h-full object-cover"
-              sizes="(min-width: 1280px) 60vw, 100vw"
-            />
-            <div className="absolute inset-0 bg-white/[0.54]" />
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
@@ -181,6 +173,9 @@ const Commercial = () => {
           </div>
         </div>
       </div>
-    </>;
+      <Footer />
+    </>
+  );
 };
+
 export default Commercial;

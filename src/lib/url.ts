@@ -62,7 +62,8 @@ export const canonicalizeUrl = (input: string) => {
 export const isTrackingQueryPresent = (search: string) => {
   try {
     const params = new URLSearchParams(search);
-    for (const key of params.keys()) {
+    const keys = Array.from(params.keys());
+    for (const key of keys) {
       if (TRACKING_PARAMS.includes(key) || TRACKING_PREFIXES.some((prefix) => key.startsWith(prefix))) {
         return true;
       }
