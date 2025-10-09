@@ -389,7 +389,13 @@ const RonkonkomaServiceUpgradeCaseStudy = () => {
                   }
                 ].map((faq, index) => (
                   <div key={index} className="bg-card rounded-lg p-6 border">
-                    <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
+                    <h3
+                      className="text-lg font-semibold mb-2 cursor-pointer"
+                      data-analytics-faq={faq.question}
+                      data-analytics-faq-id={`ronkonkoma-${index}`}
+                    >
+                      {faq.question}
+                    </h3>
                     <p className="text-muted-foreground">{faq.answer}</p>
                   </div>
                 ))}

@@ -8,13 +8,30 @@ import NAP from "@/components/shared/NAP";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import { useABVariant } from "@/lib/abTesting";
+
+const contactSeoVariants = [
+  {
+    id: "contact_quote",
+    title: "Contact Berman Electric - Get Free Quote | Licensed Electrician Long Island",
+    description:
+      "Contact Berman Electric for your electrical needs in Long Island, Suffolk County & Ronkonkoma NY. Free estimates, 24/7 emergency service. Call (516) 361-4068 or request a quote online. Licensed & insured electrician.",
+  },
+  {
+    id: "contact_schedule",
+    title: "Book Your Long Island Electrician | Berman Electric Contact",
+    description:
+      "Need electrical service on Long Island? Reach Berman Electric for fast scheduling, emergency repairs and expert installations across Suffolk & Nassau counties. Call (516) 361-4068 or send a request in minutes.",
+  },
+];
 
 const Contact = () => {
+  const seoVariant = useABVariant("contact-seo", contactSeoVariants);
   return (
     <>
-      <SEO 
-        title="Contact Berman Electric - Get Free Quote | Licensed Electrician Long Island"
-        description="Contact Berman Electric for your electrical needs in Long Island, Suffolk County & Ronkonkoma NY. Free estimates, 24/7 emergency service. Call (516) 361-4068 or request a quote online. Licensed & insured electrician."
+      <SEO
+        title={seoVariant.title}
+        description={seoVariant.description}
         keywords="contact electrician Long Island, electrical quote Suffolk County, emergency electrician Ronkonkoma NY, electrical estimate Nassau County, 24/7 electrical service"
         canonical="https://bermanelectrical.com/contact"
       />

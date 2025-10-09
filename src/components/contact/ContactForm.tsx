@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { sendAnalyticsEvent } from "@/lib/analytics";
 
 const services = [
   "Residential",
@@ -45,6 +46,10 @@ const ContactForm = () => {
       }
 
       console.log('Email sent successfully!');
+      void sendAnalyticsEvent('form_submit', {
+        form_id: 'contact-request',
+        service: payload.service || 'unspecified',
+      });
       toast.success("Thank you! We'll get back to you within 24 hours.");
       (e.target as HTMLFormElement).reset();
     } catch (error) {

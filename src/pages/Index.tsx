@@ -9,8 +9,25 @@ import SEO from "@/components/SEO";
 import { AiHelpChat } from "@/components/shared/AiHelpChat";
 import { useEffect } from "react";
 import ScrollDoctor from "@/components/ScrollDoctor";
+import { useABVariant } from "@/lib/abTesting";
+
+const homeSeoVariants = [
+  {
+    id: "core_services",
+    title: "Berman Electric - Licensed Electrician Long Island NY",
+    description:
+      "Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV charger installation. Call (516) 361-4068",
+  },
+  {
+    id: "safety_focus",
+    title: "Long Island Electrician for Safe, Same-Day Repairs | Berman Electric",
+    description:
+      "Need a licensed electrician on Long Island? Berman Electric delivers same-day electrical repairs, upgrades, lighting and EV charger installs. Family owned, insured and trusted across Suffolk & Nassau Counties.",
+  },
+];
 
 const Index = () => {
+  const seoVariant = useABVariant("home-seo", homeSeoVariants);
   // Safety unlock in case a component left the body locked
   useEffect(() => {
     const unlock = () => {
@@ -48,9 +65,9 @@ const Index = () => {
 
   return (
     <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
-      <SEO 
-        title="Berman Electric - Licensed Electrician Long Island NY"
-        description="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV charger installation. Call (516) 361-4068"
+      <SEO
+        title={seoVariant.title}
+        description={seoVariant.description}
         keywords="electrician Long Island, licensed electrician Suffolk County, electrical services Ronkonkoma NY, emergency electrician Nassau County, panel upgrades, lighting installation, EV charger installation, generator installation, electrical repairs"
         canonical="https://bermanelectrical.com/"
       />

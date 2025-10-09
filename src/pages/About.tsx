@@ -9,13 +9,30 @@ import ContactCTA from "@/components/about/ContactCTA";
 import ReviewsSection from "@/components/shared/ReviewsSection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import { useABVariant } from "@/lib/abTesting";
+
+const aboutSeoVariants = [
+  {
+    id: "experience",
+    title: "About Berman Electric - 20+ Years Licensed Electrician Long Island",
+    description:
+      "Learn about Berman Electric, your trusted licensed electrician serving Long Island for over 20 years. Family-owned business specializing in residential & commercial electrical services in Suffolk County, Nassau County, and Ronkonkoma NY.",
+  },
+  {
+    id: "family_owned",
+    title: "Meet Berman Electric | Family-Owned Long Island Electricians",
+    description:
+      "Discover the story behind Berman Electric. Family-owned Long Island electricians delivering safe residential and commercial electrical work, emergency service and panel upgrades across Suffolk & Nassau counties for 20+ years.",
+  },
+];
 
 const About = () => {
+  const seoVariant = useABVariant("about-seo", aboutSeoVariants);
   return (
     <>
-      <SEO 
-        title="About Berman Electric - 20+ Years Licensed Electrician Long Island"
-        description="Learn about Berman Electric, your trusted licensed electrician serving Long Island for over 20 years. Family-owned business specializing in residential & commercial electrical services in Suffolk County, Nassau County, and Ronkonkoma NY."
+      <SEO
+        title={seoVariant.title}
+        description={seoVariant.description}
         keywords="about Berman Electric, licensed electrician Long Island, family electrical business Suffolk County, experienced electrician Ronkonkoma NY, electrical contractor Nassau County"
         canonical="https://bermanelectrical.com/about"
       />
