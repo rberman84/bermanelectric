@@ -28,6 +28,8 @@ import ElectricianLongIsland from "./pages/ElectricianLongIsland";
 import RonkonkomaServiceUpgradeCaseStudy from "./pages/RonkonkomaServiceUpgradeCaseStudy";
 import GoogleReviewsSetup from "./pages/GoogleReviewsSetup";
 import NotFound from "./pages/NotFound";
+import TownPage from "./pages/TownPage";
+import towns from "@/lib/towns";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +63,13 @@ const App = () => (
           <Route path="/electrician-long-island" element={<ElectricianLongIsland />} />
           <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<RonkonkomaServiceUpgradeCaseStudy />} />
           <Route path="/google-reviews-setup" element={<GoogleReviewsSetup />} />
+          {towns.map((town) => (
+            <Route
+              key={town.slug}
+              path={`/electrician-${town.slug}`}
+              element={<TownPage town={town} />}
+            />
+          ))}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

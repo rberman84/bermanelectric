@@ -1,0 +1,296 @@
+[
+  {
+    "name": "Hauppauge",
+    "slug": "hauppauge",
+    "headline": "Trusted Hauppauge Electricians for Busy Corporate Centers",
+    "subheadline": "Same-day troubleshooting and tenant improvements for the Hauppauge Industrial Park and surrounding neighborhoods.",
+    "heroImage": "https://images.unsplash.com/photo-1529429617124-aee711fa5e4e?auto=format&fit=crop&w=1600&q=80",
+    "zipCodes": ["11788"],
+    "center": { "lat": 40.8257, "lng": -73.2026 },
+    "landmarks": [
+      {
+        "name": "Hauppauge Industrial Park",
+        "description": "Daily service calls for corporate campuses and light manufacturing suites that need fast electrical maintenance without downtime."
+      },
+      {
+        "name": "Blydenburgh County Park",
+        "description": "Lighting retrofits and EV charger installs keep the north shore recreation areas safe after sunset."
+      },
+      {
+        "name": "County Government Complex",
+        "description": "Emergency backup generator testing for Suffolk County offices on Veterans Memorial Highway."
+      }
+    ],
+    "drivingDirections": {
+      "fromHq": "Head east on Portion Road, continue onto Smithtown Blvd, then take NY-347 E to County Rd 67 to reach Hauppauge's business district.",
+      "distanceMiles": 9.4,
+      "travelTimeMinutes": 18
+    },
+    "localPhotos": [
+      {
+        "src": "https://images.unsplash.com/photo-1529429617124-aee711fa5e4e?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Modern office park building in Hauppauge"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Tree-lined trail in Blydenburgh County Park"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1529429306200-2d8e5e832bc5?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Hauppauge street with government offices"
+      }
+    ],
+    "serviceHighlights": [
+      "Corporate park preventive maintenance programs",
+      "Tenant improvement build-outs with same-week permitting",
+      "Lighting and controls for county facilities"
+    ],
+    "internalLinks": [
+      { "label": "Commercial Electrical Services", "to": "/commercial" },
+      { "label": "Emergency Generator Testing", "to": "/emergency" },
+      { "label": "View Long Island Projects", "to": "/projects" }
+    ],
+    "jobs": [
+      {
+        "id": "hau-job-1",
+        "date": "2024-09-05",
+        "serviceType": "Panel Upgrade",
+        "coordinates": { "lat": 40.8289, "lng": -73.2042 },
+        "photo": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Berman Electric upgraded our warehouse service without interrupting production.",
+          "firstName": "Marissa",
+          "service": "Commercial panel upgrade"
+        }
+      },
+      {
+        "id": "hau-job-2",
+        "date": "2024-08-22",
+        "serviceType": "EV Charger",
+        "coordinates": { "lat": 40.8218, "lng": -73.1999 },
+        "photo": "https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "The dual Level 2 chargers at our county garage were live the same afternoon.",
+          "firstName": "Jared",
+          "service": "Fleet EV charger install"
+        }
+      },
+      {
+        "id": "hau-job-3",
+        "date": "2024-07-18",
+        "serviceType": "Lighting Retrofit",
+        "coordinates": { "lat": 40.8334, "lng": -73.2107 },
+        "photo": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Parking lot LED conversion cut our electric bill in half and brightened security.",
+          "firstName": "Lee",
+          "service": "LED retrofit"
+        }
+      }
+    ],
+    "seo": {
+      "title": "Hauppauge Electricians | Berman Electric",
+      "description": "Licensed Hauppauge electricians keeping Suffolk County businesses online with same-day service calls, EV chargers, and lighting retrofits.",
+      "canonical": "https://www.bermanelectric.com/electrician-hauppauge"
+    }
+  },
+  {
+    "name": "Patchogue",
+    "slug": "patchogue",
+    "headline": "Historic Patchogue Waterfront Electrical Experts",
+    "subheadline": "Specialized crews for south shore restaurants, marinas, and arts venues along Main Street and the riverfront.",
+    "heroImage": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80",
+    "zipCodes": ["11772"],
+    "center": { "lat": 40.7658, "lng": -73.0151 },
+    "landmarks": [
+      {
+        "name": "Patchogue Theatre",
+        "description": "Show-ready lighting checks, dimming systems, and backup power rehearsed with venue staff."
+      },
+      {
+        "name": "Patchogue River Marinas",
+        "description": "Shore power pedestals and dock lighting hardened for salty air conditions."
+      },
+      {
+        "name": "Blue Point Brewery",
+        "description": "Process control wiring and steam boiler circuits maintained on off-production hours."
+      }
+    ],
+    "drivingDirections": {
+      "fromHq": "Take Nicolls Rd south, merge onto NY-27 E, and exit at Route 112 to reach downtown Patchogue's waterfront.",
+      "distanceMiles": 6.8,
+      "travelTimeMinutes": 14
+    },
+    "localPhotos": [
+      {
+        "src": "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Patchogue waterfront boardwalk"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Historic theatre marquee in Patchogue"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1533000971552-6a962ff0b9aa?auto=format&fit=crop&w=1200&q=80",
+        "alt": "South shore marina slips at sunset"
+      }
+    ],
+    "serviceHighlights": [
+      "Waterfront corrosion-resistant installations",
+      "Hospitality-grade lighting and control systems",
+      "Seasonal power distribution for festivals"
+    ],
+    "internalLinks": [
+      { "label": "Restaurant Electrical Upgrades", "to": "/projects" },
+      { "label": "Emergency Service Dispatch", "to": "/emergency" },
+      { "label": "Schedule a Consultation", "to": "/contact" }
+    ],
+    "jobs": [
+      {
+        "id": "pat-job-1",
+        "date": "2024-08-30",
+        "serviceType": "Service Call",
+        "coordinates": { "lat": 40.7639, "lng": -73.0121 },
+        "photo": "https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Our prep kitchen was back online before the dinner rush.",
+          "firstName": "Elena",
+          "service": "Restaurant service call"
+        }
+      },
+      {
+        "id": "pat-job-2",
+        "date": "2024-07-25",
+        "serviceType": "Lighting Retrofit",
+        "coordinates": { "lat": 40.7674, "lng": -73.0187 },
+        "photo": "https://images.unsplash.com/photo-1529429306200-2d8e5e832bc5?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Theatre lighting scenes run flawlessly after their retrofit.",
+          "firstName": "Samantha",
+          "service": "Performance lighting"
+        }
+      },
+      {
+        "id": "pat-job-3",
+        "date": "2024-09-12",
+        "serviceType": "EV Charger",
+        "coordinates": { "lat": 40.7691, "lng": -73.0098 },
+        "photo": "https://images.unsplash.com/photo-1580894897200-6ff3c45f8a14?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Dockside chargers made our marina reservations spike.",
+          "firstName": "Gina",
+          "service": "Marina EV charging"
+        }
+      }
+    ],
+    "seo": {
+      "title": "Patchogue Electricians | Berman Electric",
+      "description": "Local Patchogue electricians for waterfront businesses, marinas, and Main Street venues. Fast emergency response and corrosion-resistant installs.",
+      "canonical": "https://www.bermanelectric.com/electrician-patchogue"
+    }
+  },
+  {
+    "name": "Stony Brook",
+    "slug": "stony-brook",
+    "headline": "Precision Electrical Work for Stony Brook Labs & Residences",
+    "subheadline": "Research-safe installations and smart home upgrades for university facilities and Three Village homeowners.",
+    "heroImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+    "zipCodes": ["11790"],
+    "center": { "lat": 40.9257, "lng": -73.1409 },
+    "landmarks": [
+      {
+        "name": "Stony Brook University Hospital",
+        "description": "Critical power testing and generator paralleling completed before morning rounds."
+      },
+      {
+        "name": "Charles B. Wang Center",
+        "description": "Event lighting rigs and cultural center exhibit power on curated schedules."
+      },
+      {
+        "name": "Avalon Park & Preserve",
+        "description": "Pathway lighting audits to keep evening walkers safe in the village."
+      }
+    ],
+    "drivingDirections": {
+      "fromHq": "Drive north on Nicolls Rd, follow signs to Stony Brook University, then continue onto North Country Rd for village service calls.",
+      "distanceMiles": 5.6,
+      "travelTimeMinutes": 12
+    },
+    "localPhotos": [
+      {
+        "src": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Stony Brook University academic building"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Avalon Park boardwalk"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Three Village colonial home"
+      }
+    ],
+    "serviceHighlights": [
+      "Clean power solutions for research labs",
+      "Smart panel installs for Three Village homes",
+      "Generator maintenance for critical facilities"
+    ],
+    "internalLinks": [
+      { "label": "Residential Service Upgrades", "to": "/residential" },
+      { "label": "Generator Maintenance", "to": "/emergency" },
+      { "label": "Client Testimonials", "to": "/testimonials" }
+    ],
+    "jobs": [
+      {
+        "id": "sb-job-1",
+        "date": "2024-09-08",
+        "serviceType": "Lab Power",
+        "coordinates": { "lat": 40.9089, "lng": -73.1265 },
+        "photo": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "The isolation transformers keep our instruments rock steady.",
+          "firstName": "Dr. Chen",
+          "service": "Research lab power balancing"
+        }
+      },
+      {
+        "id": "sb-job-2",
+        "date": "2024-08-19",
+        "serviceType": "Smart Home",
+        "coordinates": { "lat": 40.9301, "lng": -73.1432 },
+        "photo": "https://images.unsplash.com/photo-1580894897200-6ff3c45f8a14?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Whole-home surge protection integrated seamlessly with our automation.",
+          "firstName": "Liam",
+          "service": "Smart panel install"
+        }
+      },
+      {
+        "id": "sb-job-3",
+        "date": "2024-07-29",
+        "serviceType": "Generator Service",
+        "coordinates": { "lat": 40.9224, "lng": -73.1522 },
+        "photo": "https://images.unsplash.com/photo-1582719478533-cc819d868ddb?auto=format&fit=crop&w=800&q=80",
+        "review": {
+          "rating": 5,
+          "quote": "Quarterly generator maintenance keeps our care center protected.",
+          "firstName": "Nina",
+          "service": "Generator maintenance"
+        }
+      }
+    ],
+    "seo": {
+      "title": "Stony Brook Electricians | Berman Electric",
+      "description": "Detail-oriented Stony Brook electricians serving university labs and village residences with clean power, smart panels, and generator care.",
+      "canonical": "https://www.bermanelectric.com/electrician-stony-brook"
+    }
+  }
+]
