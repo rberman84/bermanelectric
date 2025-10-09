@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
+import { extractZip, scoreLead } from "../_shared/leadScoring.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -72,6 +73,85 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const { name, email, phone, address, serviceType, preferredDate, notes, membership } = parsed.data;
+
+    const zip = extractZip(address);
+    const leadScore = scoreLead({
+      zip,
+      queryIntent: "book",
+      serviceCategory: serviceType,
+      notes,
+    });
+
+    const routingActions: string[] = [];
+
+    const triggerRouting = async () => {
+      if (leadScore.route === "phone_sms") {
+        const phoneWebhook = Deno.env.get("A_LEAD_PHONE_WEBHOOK_URL");
+        if (phoneWebhook) {
+          try {
+            await fetch(phoneWebhook, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name,
+                phone: phone || "",
+                serviceType,
+                score: leadScore.score,
+                tier: leadScore.tier,
+              }),
+            });
+            routingActions.push("phone_webhook");
+          } catch (phoneError) {
+            console.error("Failed to trigger phone webhook", phoneError);
+          }
+        }
+
+        const smsWebhook = Deno.env.get("A_LEAD_SMS_WEBHOOK_URL");
+        if (smsWebhook && phone) {
+          try {
+            await fetch(smsWebhook, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                phone,
+                message: `A-lead: ${name} requested ${serviceType}. Score ${leadScore.score}.`,
+              }),
+            });
+            routingActions.push("sms_webhook");
+          } catch (smsError) {
+            console.error("Failed to trigger SMS webhook", smsError);
+          }
+        }
+      } else {
+        if (email) {
+          try {
+            await resend.emails.send({
+              from: FROM,
+              to: [email],
+              subject: `Thanks for reaching out about ${serviceType}`,
+              html: `
+                <div style="font-family:system-ui,Arial,sans-serif;font-size:16px;line-height:1.6">
+                  <h2>We're on it, ${escapeHtml(name)}.</h2>
+                  <p>Your request for <b>${escapeHtml(serviceType)}</b> is in our queue. A specialist will review the project and follow up shortly.</p>
+                  <p style="margin-top:20px;color:#6b7280;font-size:14px">
+                    While you wait, here are tips to get ready:
+                  </p>
+                  <ul style="margin-top:8px;padding-left:20px;color:#4b5563">
+                    <li>Gather photos of the area we’ll be working on</li>
+                    <li>Make a punch list of any related electrical issues</li>
+                    <li>Let us know if access or parking is tricky</li>
+                  </ul>
+                  <p style="margin-top:20px;font-size:14px;color:#6b7280">— The Berman Electric Team</p>
+                </div>
+              `,
+            });
+            routingActions.push("email_drip");
+          } catch (dripError) {
+            console.error("Failed to send drip email", dripError);
+          }
+        }
+      }
+    };
     
     const dest = (Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com")
       .split(",")
@@ -92,6 +172,10 @@ const handler = async (req: Request): Promise<Response> => {
         ${preferredDate ? `<p><b>Preferred Date:</b> ${escapeHtml(preferredDate)}</p>` : ""}
         ${membership ? `<p><b>Berman Plus Membership:</b> ✅ YES - $19/month (Priority scheduling, annual safety check, 10% off service calls)</p>` : ""}
         ${notes ? `<p><b>Notes:</b><br>${escapeHtml(notes).replace(/\n/g, "<br>")}</p>` : ""}
+        <p style="margin-top:24px;padding:15px;background:#f4f4f5;border-radius:8px">
+          <b>Lead Score:</b> ${leadScore.score} (${leadScore.tier}-lead → ${leadScore.route === "phone_sms" ? "Phone + SMS" : "Email drip"})<br />
+          <span style="font-size:14px;color:#6b7280">Zip: ${zip || "n/a"} • Intent: book • Job size bonus: ${leadScore.breakdown.jobSize}</span>
+        </p>
       </div>
     `;
 
@@ -153,6 +237,9 @@ const handler = async (req: Request): Promise<Response> => {
       // Don't fail the request if customer email fails
     }
 
+    // Trigger routing actions without blocking the customer response
+    await triggerRouting();
+
     // Forward to Google Sheet webhook (fire and forget)
     const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
     if (webhookUrl) {
@@ -170,6 +257,10 @@ const handler = async (req: Request): Promise<Response> => {
             preferredDate: preferredDate || "",
             membership: membership || false,
             notes: notes || "",
+            score: leadScore.score,
+            tier: leadScore.tier,
+            route: leadScore.route,
+            routingActions: routingActions.join("|"),
             timestamp: new Date().toISOString(),
           }),
         });
@@ -181,7 +272,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     return new Response(
-      JSON.stringify({ ok: true, id: (emailResponse as any)?.data?.id }),
+      JSON.stringify({ ok: true, id: (emailResponse as any)?.data?.id, score: leadScore.score, route: leadScore.route, tier: leadScore.tier, routingActions }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
