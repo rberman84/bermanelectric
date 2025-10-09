@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
+import { generateAltText } from "@/lib/utils";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -43,10 +44,16 @@ const Footer = () => {
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
             {/* Company Info & NAP */}
             <div className="lg:col-span-1">
-              <Link to="/" className="inline-block mb-4">
-                <img 
-                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
-                  alt="Berman Electric Logo" 
+              <Link
+                to="/"
+                className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+              >
+                <img
+                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+                  alt={generateAltText(
+                    "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
+                    "Berman Electric logo in the footer"
+                  )}
                   className="h-20 w-auto brightness-0 invert"
                 />
               </Link>
@@ -54,13 +61,13 @@ const Footer = () => {
               
               {/* Social Links */}
               <div className="mt-6">
-                <h4 className="text-sm font-semibold text-gray-400 mb-3">Follow Us</h4>
+                <h4 className="text-sm font-semibold text-slate-300 mb-3">Follow Us</h4>
                 <div className="flex gap-4">
-                  <a 
-                    href="https://www.facebook.com/bermanelectric" 
-                    target="_blank" 
+                  <a
+                    href="https://www.facebook.com/bermanelectric"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-electric-400 transition-colors"
+                    className="text-slate-300 hover:text-electric-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-full p-1"
                     aria-label="Facebook"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -68,10 +75,10 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a 
-                    href="https://www.instagram.com/bermanelectric" 
-                    target="_blank" 
+                    href="https://www.instagram.com/bermanelectric"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-electric-400 transition-colors"
+                    className="text-slate-300 hover:text-electric-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-full p-1"
                     aria-label="Instagram"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -79,10 +86,10 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a 
-                    href="https://www.linkedin.com/company/berman-electric" 
-                    target="_blank" 
+                    href="https://www.linkedin.com/company/berman-electric"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-electric-400 transition-colors"
+                    className="text-slate-300 hover:text-electric-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-full p-1"
                     aria-label="LinkedIn"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -95,13 +102,13 @@ const Footer = () => {
 
             {/* Services */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Our Services</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white">Our Services</h3>
               <ul className="space-y-2">
                 {serviceLinks.map((link) => (
                   <li key={link.href}>
-                    <Link 
-                      to={link.href} 
-                      className="text-gray-400 hover:text-electric-400 transition-colors text-sm"
+                    <Link
+                      to={link.href}
+                      className="text-slate-300 hover:text-electric-300 transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
                     >
                       {link.name}
                     </Link>
@@ -112,20 +119,20 @@ const Footer = () => {
 
             {/* Service Areas */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Service Areas</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white">Service Areas</h3>
               <ul className="space-y-2">
                 {locationLinks.map((link) => (
                   <li key={link.href}>
-                    <Link 
-                      to={link.href} 
-                      className="text-gray-400 hover:text-electric-400 transition-colors text-sm"
+                    <Link
+                      to={link.href}
+                      className="text-slate-300 hover:text-electric-300 transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 text-sm text-gray-400">
+              <div className="mt-4 text-sm text-slate-300">
                 <p>Serving Nassau & Suffolk Counties</p>
                 <p>Licensed & Insured in NY</p>
               </div>
@@ -133,22 +140,22 @@ const Footer = () => {
 
             {/* Company */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white">Company</h3>
               <ul className="space-y-2">
                 {companyLinks.map((link) => (
                   <li key={link.href}>
-                    <Link 
-                      to={link.href} 
-                      className="text-gray-400 hover:text-electric-400 transition-colors text-sm"
+                    <Link
+                      to={link.href}
+                      className="text-slate-300 hover:text-electric-300 transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-              
+
               {/* Business Info */}
-              <div className="mt-6 text-sm text-gray-400">
+              <div className="mt-6 text-sm text-slate-300">
                 <p className="font-medium text-white mb-2">Business Hours:</p>
                 <p>Mon-Fri: 7:00 AM - 7:00 PM</p>
                 <p>Weekends: Emergency Service</p>
@@ -163,15 +170,15 @@ const Footer = () => {
       <div className="border-t border-gray-800 py-6">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-slate-300 text-center md:text-left">
               <p>&copy; {currentYear} Berman Electric. All rights reserved.</p>
               <p className="mt-1">Licensed Electrician serving Long Island, NY since 2003</p>
             </div>
-            <div className="flex items-center gap-6 text-sm text-gray-400">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-sm text-slate-300">
               <span>License #: [NY License Number]</span>
-              <span>•</span>
+              <span aria-hidden="true">•</span>
               <span>Fully Insured</span>
-              <span>•</span>
+              <span aria-hidden="true">•</span>
               <span>BBB Accredited</span>
             </div>
           </div>
