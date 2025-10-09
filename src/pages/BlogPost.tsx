@@ -9,6 +9,7 @@ import RelatedPosts from "@/components/blog/RelatedPosts";
 import SocialShare from "@/components/blog/SocialShare";
 import AuthorBio from "@/components/blog/AuthorBio";
 import ReadingProgress from "@/components/blog/ReadingProgress";
+import { useTrackingNumber } from "@/hooks/useAttribution";
 
 // This would typically come from a CMS or API
 const getBlogPost = (slug: string) => {
@@ -972,12 +973,18 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getBlogPost(slug) : null;
   const currentPost = allBlogPosts.find(p => p.slug === slug);
+  const { display: phoneDisplay, href: phoneHref } = useTrackingNumber();
 
   if (!post) {
     return <div>Post not found</div>;
   }
 
-  const cleanDescription = post.content.substring(0, 160).replace(/<[^>]*>/g, '').trim() + "...";
+  const formattedContent = post.content
+    .replaceAll("tel:+15163614068", phoneHref)
+    .replace(/\(516\) 361-4068/g, phoneDisplay)
+    .replace(/516-361-4068/g, phoneDisplay);
+
+  const cleanDescription = formattedContent.substring(0, 160).replace(/<[^>]*>/g, '').trim() + "...";
   const currentUrl = `https://bermanelectrical.com/blog/${slug}`;
 
   return (
@@ -1095,12 +1102,12 @@ const BlogPost = () => {
           <div className="container">
             <div className="max-w-4xl mx-auto">
               {/* Table of Contents */}
-              <TableOfContents content={post.content} />
+              <TableOfContents content={formattedContent} />
               
               {/* Article Content */}
               <div 
                 className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-headings:scroll-mt-16"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: formattedContent }}
               />
               
               {/* Social Share */}

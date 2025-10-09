@@ -2,6 +2,7 @@ import { MapPin, Phone, Clock, Shield, CheckCircle2, Zap, Home, Building2 } from
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import { useTrackingNumber } from "@/hooks/useAttribution";
 
 const ElectricianRonkonkoma = () => {
   const services = [
@@ -24,11 +25,14 @@ const ElectricianRonkonkoma = () => {
     "Centereach Border"
   ];
 
+  const { display: phoneDisplay, href: phoneHref } = useTrackingNumber();
+  const metaDescription = `Professional electrician serving Ronkonkoma NY and surrounding areas. Licensed electrical contractor with 20+ years experience. Panel upgrades, emergency repairs, EV charger installation. Call ${phoneDisplay}`;
+
   return (
     <>
-      <SEO 
+      <SEO
         title="Electrician Ronkonkoma NY - Local Licensed Electrical Services"
-        description="Professional electrician serving Ronkonkoma NY and surrounding areas. Licensed electrical contractor with 20+ years experience. Panel upgrades, emergency repairs, EV charger installation. Call (516) 361-4068"
+        description={metaDescription}
         keywords="electrician Ronkonkoma NY, licensed electrician Ronkonkoma, electrical services Ronkonkoma, emergency electrician Ronkonkoma, panel upgrades Ronkonkoma, Lake Ronkonkoma electrician"
         canonical="https://bermanelectrical.com/electrician-ronkonkoma"
       />
@@ -46,12 +50,12 @@ const ElectricianRonkonkoma = () => {
                 Your Local Electrical Experts - Serving Ronkonkoma & Lake Ronkonkoma for Over 20 Years
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+15163614068"
+                <a
+                  href={phoneHref}
                   className="inline-flex items-center px-6 py-3 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Call (516) 361-4068
+                  {`Call ${phoneDisplay}`}
                 </a>
                 <Link 
                   to="/contact"
@@ -159,12 +163,12 @@ const ElectricianRonkonkoma = () => {
                 Your local electrical experts are just a phone call away. Licensed, insured, and ready to help.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+15163614068"
+                <a
+                  href={phoneHref}
                   className="inline-flex items-center px-8 py-4 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Call (516) 361-4068 Now
+                  {`Call ${phoneDisplay} Now`}
                 </a>
                 <Link 
                   to="/contact"

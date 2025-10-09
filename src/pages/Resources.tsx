@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import CTASection from "@/components/shared/CTASection";
 import SEO from "@/components/SEO";
+import { useTrackingNumber } from "@/hooks/useAttribution";
 
 const Resources = () => {
   const safetyResources = [
@@ -125,7 +126,7 @@ const Resources = () => {
   const emergencyContacts = [
     {
       service: "Berman Electric Emergency Line",
-      phone: "(516) 361-4068",
+      phone: "",
       hours: "24/7 Emergency Service",
       description: "Licensed electrician for all electrical emergencies on Long Island"
     },
@@ -148,6 +149,13 @@ const Resources = () => {
       description: "Emergency services for electrical fires and emergencies"
     }
   ];
+
+  const { display: phoneDisplay, href: phoneHref } = useTrackingNumber();
+  const emergencyContactsWithDynamic = emergencyContacts.map((contact) =>
+    contact.service === "Berman Electric Emergency Line"
+      ? { ...contact, phone: phoneDisplay, href: phoneHref }
+      : contact
+  );
 
   return (
     <>
@@ -177,12 +185,12 @@ const Resources = () => {
                 >
                   View Blog
                 </Link>
-                <a 
-                  href="tel:+15163614068"
+                <a
+                  href={phoneHref}
                   className="inline-flex items-center px-6 py-3 bg-electric-700 text-white rounded-lg hover:bg-electric-600 transition-colors font-semibold"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  Emergency: (516) 361-4068
+                  {`Emergency: ${phoneDisplay}`}
                 </a>
               </div>
             </div>
@@ -351,14 +359,14 @@ const Resources = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              {emergencyContacts.map((contact, index) => (
+              {emergencyContactsWithDynamic.map((contact, index) => (
                 <div key={index} className="p-4 bg-white rounded-lg border-l-4 border-red-600">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-lg font-semibold">{contact.service}</h3>
                     <span className="text-sm text-gray-500">{contact.hours}</span>
                   </div>
-                  <a 
-                    href={`tel:${contact.phone}`}
+                  <a
+                    href={contact.href ? contact.href : `tel:${contact.phone}`}
                     className="text-2xl font-bold text-red-600 hover:text-red-700 block mb-2"
                   >
                     {contact.phone}
@@ -374,12 +382,12 @@ const Resources = () => {
                 If you smell burning wires, see sparks, or experience electrical shocks, 
                 turn off power at the main breaker and call for help immediately.
               </p>
-              <a 
-                href="tel:+15163614068"
+              <a
+                href={phoneHref}
                 className="inline-flex items-center px-6 py-3 bg-white text-red-600 rounded-lg hover:bg-gray-100 transition-colors font-bold"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Emergency: (516) 361-4068
+                {`Emergency: ${phoneDisplay}`}
               </a>
             </div>
           </div>

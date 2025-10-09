@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useAttribution } from "@/hooks/useAttribution";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface MobileMenuProps {
 const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const { trackingNumber } = useAttribution();
   
   const servicesDropdown = [
     { name: "Residential", href: "/residential" },
@@ -76,7 +78,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
           Contact
         </NavLink>
         <a
-          href="tel:+15163614068"
+          href={`tel:${trackingNumber.value}`}
           className={cn(
             "inline-flex items-center text-sm font-medium transition-colors",
             isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
@@ -84,7 +86,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
           onClick={onClose}
         >
           <Phone className="mr-2 h-4 w-4" />
-          (516) 361-4068
+          {trackingNumber.display}
         </a>
         {user ? (
           <button

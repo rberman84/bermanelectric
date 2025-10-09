@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { Car, Zap, Shield, Clock, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTrackingNumber } from "@/hooks/useAttribution";
 
 const services = [
   {
@@ -55,6 +56,8 @@ const whyChooseUs = [
 ];
 
 const EVCharger = () => {
+  const { display: phoneDisplay, href: phoneHref } = useTrackingNumber();
+
   return (
     <>
       <Navbar />
@@ -159,12 +162,12 @@ const EVCharger = () => {
                 EV solution, Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a 
-                  href="tel:+15163614068"
+                <a
+                  href={phoneHref}
                   className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Call Us: (516) 361-4068
+                  {`Call Us: ${phoneDisplay}`}
                 </a>
                 <Link 
                   to="/contact"

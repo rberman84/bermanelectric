@@ -1,5 +1,5 @@
 
-import { 
+import {
   BellRing,
   Power,
   Zap,
@@ -8,13 +8,14 @@ import {
   Lightbulb,
   FlaskConical,
   CheckCircle2,
-  Phone,  
+  Phone,
   Mail,
   AlertCircle
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import { useTrackingNumber } from "@/hooks/useAttribution";
 
 const Emergency = () => {
   const services = [{
@@ -80,11 +81,14 @@ const Emergency = () => {
     "If your home or business experiences a sudden power failure, do not attempt DIY repairs—our licensed electricians will assess and fix the issue safely."
   ];
 
+  const { display: phoneDisplay, href: phoneHref } = useTrackingNumber();
+  const metaDescription = `24/7 emergency electrician serving Long Island. Fast response for electrical emergencies, power outages, sparking outlets, electrical fires. Licensed emergency electrical repairs Suffolk & Nassau County. Call ${phoneDisplay}`;
+
   return (
     <>
-      <SEO 
-        title="24/7 Emergency Electrician Long Island - Emergency Electrical Repairs" 
-        description="24/7 emergency electrician serving Long Island. Fast response for electrical emergencies, power outages, sparking outlets, electrical fires. Licensed emergency electrical repairs Suffolk & Nassau County. Call (516) 361-4068"
+      <SEO
+        title="24/7 Emergency Electrician Long Island - Emergency Electrical Repairs"
+        description={metaDescription}
         keywords="emergency electrician Long Island, 24/7 electrical repairs Suffolk County, electrical emergency Nassau County, power outage repair, electrical fire safety, emergency electrical service"
         canonical="https://bermanelectrical.com/emergency"
       />
@@ -116,11 +120,11 @@ const Emergency = () => {
                 your safety and restore power quickly.
               </p>
               <a
-                href="tel:+15163614068"
+                href={phoneHref}
                 className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors animate-pulse"
               >
                 <Phone className="w-6 h-6 mr-2" />
-                Call Now: (516) 361-4068
+                {`Call Now: ${phoneDisplay}`}
               </a>
             </div>
           </div>
@@ -200,12 +204,12 @@ const Emergency = () => {
                 Fast, Reliable, and Always Available – Trust Berman Electric to Handle Your Electrical Emergencies!
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a 
-                  href="tel:+15163614068" 
+                <a
+                  href={phoneHref}
                   className="inline-flex items-center px-6 py-3 text-red-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Emergency Hotline: (516) 361-4068
+                  {`Emergency Hotline: ${phoneDisplay}`}
                 </a>
                 <Link 
                   to="/contact" 

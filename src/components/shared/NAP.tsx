@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useAttribution } from "@/hooks/useAttribution";
 
 interface NAPProps {
   variant?: 'default' | 'footer' | 'header' | 'contact';
@@ -7,18 +8,20 @@ interface NAPProps {
 }
 
 const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProps) => {
+  const { trackingNumber } = useAttribution();
   const napData = {
     name: "Berman Electric",
     address: "Ronkonkoma, NY",
     fullAddress: "Long Island, NY - Serving Nassau & Suffolk Counties",
-    phone: "(516) 361-4068",
-    phoneHref: "+15163614068",
     email: "info@bermanelectrical.com",
     hours: {
       weekdays: "Monday – Friday: 7:00 AM – 7:00 PM",
       weekends: "Saturday – Sunday: Emergency Services Available"
     }
   };
+
+  const phoneDisplay = trackingNumber.display;
+  const phoneHref = `tel:${trackingNumber.value}`;
 
   if (variant === 'footer') {
     return (
@@ -34,8 +37,8 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 flex-shrink-0" />
-            <a href={`tel:${napData.phoneHref}`} className="hover:text-electric-400 transition-colors">
-              {napData.phone}
+            <a href={phoneHref} className="hover:text-electric-400 transition-colors">
+              {phoneDisplay}
             </a>
           </div>
           <div className="flex items-center gap-2">
@@ -67,8 +70,8 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Phone className="w-4 h-4" />
-          <a href={`tel:${napData.phoneHref}`} className="hover:text-electric-600 transition-colors font-medium">
-            {napData.phone}
+          <a href={phoneHref} className="hover:text-electric-600 transition-colors font-medium">
+            {phoneDisplay}
           </a>
         </div>
       </div>
@@ -95,9 +98,9 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
         <div>
           <h3 className="text-xl font-semibold mb-4">📞 Get in Touch</h3>
           <div className="space-y-3">
-            <a href={`tel:${napData.phoneHref}`} className="flex items-center text-gray-700 hover:text-electric-600 transition-colors">
+            <a href={phoneHref} className="flex items-center text-gray-700 hover:text-electric-600 transition-colors">
               <Phone className="w-5 h-5 mr-3" />
-              {napData.phone}
+              {phoneDisplay}
             </a>
             <a href={`mailto:${napData.email}`} className="flex items-center text-gray-700 hover:text-electric-600 transition-colors">
               <Mail className="w-5 h-5 mr-3" />
@@ -131,8 +134,8 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
       </div>
       <div className="flex items-center gap-2">
         <Phone className="w-4 h-4 text-electric-600" />
-        <a href={`tel:${napData.phoneHref}`} className="text-gray-700 hover:text-electric-600 transition-colors">
-          {napData.phone}
+        <a href={phoneHref} className="text-gray-700 hover:text-electric-600 transition-colors">
+          {phoneDisplay}
         </a>
       </div>
       <div className="flex items-center gap-2">
