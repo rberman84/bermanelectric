@@ -1,19 +1,23 @@
 import { Helmet } from 'react-helmet-async';
 
+type StructuredData = Record<string, unknown> | Array<unknown>;
+
+interface ArticleMetadata {
+  publishedTime: string;
+  modifiedTime?: string;
+  author: string;
+  section: string;
+  tags: string[];
+}
+
 interface BlogSEOProps {
   title: string;
   description: string;
   keywords?: string;
   canonical?: string;
   ogImage?: string;
-  article?: {
-    publishedTime: string;
-    modifiedTime?: string;
-    author: string;
-    section: string;
-    tags: string[];
-  };
-  structuredData?: object;
+  article?: ArticleMetadata;
+  structuredData?: StructuredData;
 }
 
 const BlogSEO = ({
@@ -29,9 +33,14 @@ const BlogSEO = ({
   const currentUrl = canonical || window.location.href;
 
   // Generate FAQ Schema if content has FAQ structure
-  const generateFAQSchema = () => {
-    if (!structuredData || !title.toLowerCase().includes('tips') && !title.toLowerCase().includes('guide')) return null;
-    
+  const generateFAQSchema = (): StructuredData | null => {
+    if (
+      !structuredData ||
+      (!title.toLowerCase().includes('tips') && !title.toLowerCase().includes('guide'))
+    ) {
+      return null;
+    }
+
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -57,8 +66,8 @@ const BlogSEO = ({
   };
 
   // Generate comprehensive Article Schema
-  const generateArticleSchema = () => {
-    const baseSchema = {
+  const generateArticleSchema = (): StructuredData => {
+    const baseSchema: Record<string, unknown> = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": title,
