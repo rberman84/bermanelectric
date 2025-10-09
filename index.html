@@ -40,20 +40,66 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" as="image" />
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-49S5SE0H5Y');
-    </script>
   </head>
 
   <body>
     <div id="root"></div>
-    
-    <script type="module" src="/src/main.tsx"></script>
+    <script id="security-bootstrap">
+      (() => {
+        const bytes = new Uint8Array(16);
+        crypto.getRandomValues(bytes);
+        const nonce = btoa(String.fromCharCode(...bytes))
+          .replace(/=+$/g, "")
+          .replace(/\+/g, "-")
+          .replace(/\//g, "_");
+
+        window.__CSP_NONCE__ = nonce;
+        document.head.dataset.cspNonce = nonce;
+
+        const csp = [
+          "default-src 'self'",
+          "base-uri 'self'",
+          "frame-ancestors 'self'",
+          "frame-src 'self' https://www.google.com https://maps.google.com",
+          "object-src 'none'",
+          "script-src 'self' https://www.googletagmanager.com 'nonce-" + nonce + "' 'strict-dynamic'",
+          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+          "font-src 'self' https://fonts.gstatic.com",
+          "img-src 'self' data: https://www.googletagmanager.com https://images.unsplash.com https://maps.gstatic.com https://*.supabase.co",
+          "connect-src 'self' https://www.googletagmanager.com https://*.supabase.co",
+          "form-action 'self'",
+          "worker-src 'self'"
+        ].join('; ');
+
+        const meta = document.createElement('meta');
+        meta.httpEquiv = 'Content-Security-Policy';
+        meta.content = csp;
+        document.head.append(meta);
+
+        const gtagScript = document.createElement('script');
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y';
+        gtagScript.async = true;
+        gtagScript.crossOrigin = 'anonymous';
+        gtagScript.integrity = 'sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb';
+        gtagScript.nonce = nonce;
+        document.head.append(gtagScript);
+
+        const inlineGtag = document.createElement('script');
+        inlineGtag.nonce = nonce;
+        inlineGtag.text = [
+          'window.dataLayer = window.dataLayer || [];',
+          'function gtag(){dataLayer.push(arguments);}',
+          "gtag('js', new Date());",
+          "gtag('config', 'G-49S5SE0H5Y');"
+        ].join('\n');
+        document.head.append(inlineGtag);
+
+        const entryScript = document.getElementById('app-entry');
+        if (entryScript) {
+          entryScript.setAttribute('nonce', nonce);
+        }
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx" id="app-entry"></script>
   </body>
 </html>
