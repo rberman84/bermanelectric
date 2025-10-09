@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,10 +45,12 @@ const Footer = () => {
             {/* Company Info & NAP */}
             <div className="lg:col-span-1">
               <Link to="/" className="inline-block mb-4">
-                <img 
-                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" 
-                  alt="Berman Electric Logo" 
+                <ResponsiveImage
+                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+                  alt="Berman Electric Logo"
+                  wrapperClassName="inline-flex h-20 w-auto"
                   className="h-20 w-auto brightness-0 invert"
+                  sizes="160px"
                 />
               </Link>
               <NAP variant="footer" showHours={true} />

@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async';
+import { canonicalizeUrl, toAbsoluteUrl } from '@/lib/url';
+import { SITE_URL } from '@/lib/siteConfig';
 
 interface SEOProps {
   title: string;
@@ -8,19 +10,25 @@ interface SEOProps {
   ogImage?: string;
   ogType?: string;
   structuredData?: object;
+  noindex?: boolean;
 }
 
-const SEO = ({ 
-  title, 
-  description, 
+const SEO = ({
+  title,
+  description,
   keywords = "electrician, electrical services, Long Island, Suffolk County, Ronkonkoma, licensed electrician, emergency electrical",
   canonical,
   ogImage = "/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png",
   ogType = "website",
-  structuredData
+  structuredData,
+  noindex = false
 }: SEOProps) => {
   const fullTitle = title.includes('Berman Electric') ? title : `${title} | Berman Electric - Licensed Electrician Long Island`;
-  const currentUrl = canonical || window.location.href;
+  const browserUrl = typeof window !== 'undefined' ? window.location.href : undefined;
+  const baseUrl = canonical || browserUrl || SITE_URL;
+  const currentUrl = canonicalizeUrl(baseUrl);
+  const absoluteOgImage = ogImage.startsWith('http') ? ogImage : toAbsoluteUrl(ogImage);
+  const robotsValue = noindex ? 'noindex, nofollow' : 'index, follow';
 
   return (
     <Helmet>
@@ -29,12 +37,14 @@ const SEO = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Berman Electric" />
+      <meta name="robots" content={robotsValue} />
       <link rel="canonical" href={currentUrl} />
       <link rel="preload" href="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" as="image" fetchPriority="high" />
-      
+
       {/* DNS prefetch and preconnect for external domains */}
       <link rel="preconnect" href="https://images.unsplash.com" />
       <link rel="preconnect" href="https://www.google.com" />
+      <link rel="preconnect" href="https://wsrv.nl" crossOrigin="anonymous" />
       <link rel="dns-prefetch" href="https://www.facebook.com" />
       <link rel="dns-prefetch" href="https://www.instagram.com" />
       <link rel="dns-prefetch" href="https://www.linkedin.com" />
@@ -45,7 +55,7 @@ const SEO = ({
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={absoluteOgImage} />
       <meta property="og:site_name" content="Berman Electric" />
 
       {/* Twitter */}
@@ -53,18 +63,18 @@ const SEO = ({
       <meta property="twitter:url" content={currentUrl} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={ogImage} />
+      <meta property="twitter:image" content={absoluteOgImage} />
 
       {/* Local Business Schema */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "@id": "https://bermanelectrical.com",
+          "@id": SITE_URL,
           "name": "Berman Electric",
           "alternateName": "Berman Electrical",
           "description": "Licensed electrician serving Long Island, NY with over 20 years of experience. Specializing in residential and commercial electrical services.",
-          "url": "https://bermanelectrical.com",
+          "url": SITE_URL,
           "telephone": "+1-516-361-4068",
           "email": "Rob@bermanelectrical.com",
           "address": {
@@ -104,9 +114,9 @@ const SEO = ({
             "Mo-Fr 07:00-19:00"
           ],
           "image": [
-            "https://bermanelectrical.com/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png"
+            toAbsoluteUrl("/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png")
           ],
-          "logo": "https://bermanelectrical.com/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
+          "logo": toAbsoluteUrl("/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"),
           "sameAs": [
             "https://www.facebook.com/bermanelectric",
             "https://www.instagram.com/bermanelectric",

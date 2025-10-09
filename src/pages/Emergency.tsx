@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const Emergency = () => {
   const services = [{
@@ -92,13 +93,15 @@ const Emergency = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70">
-            <img
+          <div className="absolute inset-0">
+            <ResponsiveImage
               src="/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png"
               alt="Emergency electrical service vehicle ready for rapid response"
-              className="w-full h-full object-cover opacity-70"
-              loading="lazy"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">
@@ -129,12 +132,14 @@ const Emergency = () => {
         {/* Services Grid */}
         <div className="relative py-24">
           <div className="absolute inset-0">
-            <img
+            <ResponsiveImage
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
               alt="Emergency electrical repair being performed"
+              wrapperClassName="absolute inset-0"
               className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
             />
-            <div className="absolute inset-0 bg-white/[0.94]"></div>
+            <div className="absolute inset-0 bg-white/[0.94]" />
           </div>
           <div className="container relative">
             <h2 className="text-3xl font-bold text-center mb-16">Emergency Electrical Issues We Handle</h2>

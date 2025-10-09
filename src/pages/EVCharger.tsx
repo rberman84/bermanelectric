@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { Car, Zap, Shield, Clock, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const services = [
   {
@@ -61,12 +62,15 @@ const EVCharger = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70">
-            <img 
-              src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png" 
-              alt="EV Charging Port" 
-              className="w-full h-full object-cover opacity-70"
+          <div className="absolute inset-0">
+            <ResponsiveImage
+              src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png"
+              alt="EV Charging Port"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">

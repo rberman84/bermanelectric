@@ -1,13 +1,13 @@
 
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/contact/ContactForm";
-import ContactInfo from "@/components/contact/ContactInfo";
 import ServicesList from "@/components/contact/ServicesList";
 import GoogleMap from "@/components/shared/GoogleMap";
 import NAP from "@/components/shared/NAP";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const Contact = () => {
   return (
@@ -22,10 +22,12 @@ const Contact = () => {
       <div className="pt-20">
         <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
           <div className="absolute inset-0 z-0 opacity-30">
-            <img 
+            <ResponsiveImage
               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
               alt="Professional electrical service"
+              wrapperClassName="absolute inset-0"
               className="object-cover w-full h-full"
+              sizes="100vw"
             />
           </div>
           <div className="container relative z-10">

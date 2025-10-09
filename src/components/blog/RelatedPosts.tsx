@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
 
 interface BlogPost {
   id: string;
@@ -59,11 +60,12 @@ const RelatedPosts = ({ currentPost, allPosts }: RelatedPostsProps) => {
             className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border"
           >
             <div className="relative h-40 overflow-hidden">
-              <img 
-                src={post.image} 
+              <ResponsiveImage
+                src={post.image}
                 alt={post.title}
+                wrapperClassName="absolute inset-0"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                loading="lazy"
+                sizes="(min-width: 1024px) 33vw, 100vw"
               />
             </div>
             

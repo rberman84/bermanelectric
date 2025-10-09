@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import BlogSEO from "@/components/blog/BlogSEO";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 interface BlogPost {
   id: string;
@@ -196,10 +197,12 @@ const Blog = () => {
               {featuredPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={post.image} 
+                    <ResponsiveImage
+                      src={post.image}
                       alt={post.title}
+                      wrapperClassName="absolute inset-0"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-electric-600 text-white text-sm font-semibold rounded-full">
@@ -264,10 +267,12 @@ const Blog = () => {
               {regularPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                   <div className="relative h-40 overflow-hidden">
-                    <img 
-                      src={post.image} 
+                    <ResponsiveImage
+                      src={post.image}
                       alt={post.title}
+                      wrapperClassName="absolute inset-0"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(min-width: 1024px) 33vw, 100vw"
                     />
                   </div>
                   

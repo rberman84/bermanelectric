@@ -3,6 +3,7 @@ import { Calendar, User, Clock, ArrowRight, Tag, ArrowLeft } from 'lucide-react'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
 import BlogSEO from '@/components/blog/BlogSEO';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
 
 interface BlogPost {
   id: string;
@@ -204,11 +205,12 @@ const BlogCategory = () => {
                 {categoryPosts.map((post) => (
                   <article key={post.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border">
                     <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={post.image} 
+                      <ResponsiveImage
+                        src={post.image}
                         alt={post.title}
+                        wrapperClassName="absolute inset-0"
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
+                        sizes="(min-width: 1024px) 33vw, 100vw"
                       />
                       {post.featured && (
                         <div className="absolute top-4 left-4">

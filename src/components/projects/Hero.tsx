@@ -1,4 +1,6 @@
 
+import ResponsiveImage from "@/components/media/ResponsiveImage";
+
 interface HeroProps {
   title: string;
   subtitle: string;
@@ -9,10 +11,12 @@ const Hero = ({ title, subtitle, description }: HeroProps) => {
   return (
     <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="absolute inset-0 z-0 opacity-30">
-        <img 
+        <ResponsiveImage
           src="https://images.unsplash.com/photo-1518770660439-4636190af475"
           alt="Electric circuit board representing our technical expertise"
+          wrapperClassName="absolute inset-0 h-full w-full"
           className="object-cover w-full h-full"
+          sizes="100vw"
         />
       </div>
       <div className="container relative z-10">

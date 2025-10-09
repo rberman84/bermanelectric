@@ -2,6 +2,7 @@ import { Plug, Lightbulb, Shield, Wrench, Car, Power, CheckCircle2, Phone, Mail,
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const Residential = () => {
   const services = [{
@@ -41,8 +42,15 @@ const Residential = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70">
-            <img src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png" alt="Vintage light bulb with protective cage representing our commitment to quality electrical work" className="w-full h-full object-cover opacity-70" loading="lazy" />
+          <div className="absolute inset-0">
+            <ResponsiveImage
+              src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
+              alt="Vintage light bulb with protective cage representing our commitment to quality electrical work"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">
@@ -66,8 +74,14 @@ const Residential = () => {
         {/* Services Grid */}
         <div className="relative py-24">
           <div className="absolute inset-0">
-            <img src="/lovable-uploads/75ea0479-7d50-48c5-8033-c17332ea08c3.png" alt="Modern lighting installation with hanging plants and LED bulbs" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-white/[0.51]"></div>
+            <ResponsiveImage
+              src="/lovable-uploads/75ea0479-7d50-48c5-8033-c17332ea08c3.png"
+              alt="Modern lighting installation with hanging plants and LED bulbs"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-white/[0.51]" />
           </div>
           <div className="container relative">
             <h2 className="text-3xl font-bold text-center mb-16">Our Residential Services</h2>

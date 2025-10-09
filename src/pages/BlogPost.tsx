@@ -9,6 +9,7 @@ import RelatedPosts from "@/components/blog/RelatedPosts";
 import SocialShare from "@/components/blog/SocialShare";
 import AuthorBio from "@/components/blog/AuthorBio";
 import ReadingProgress from "@/components/blog/ReadingProgress";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 // This would typically come from a CMS or API
 const getBlogPost = (slug: string) => {
@@ -1083,10 +1084,12 @@ const BlogPost = () => {
 
         {/* Featured Image */}
         <div className="relative h-64 md:h-96 overflow-hidden">
-          <img 
-            src={post.image} 
+          <ResponsiveImage
+            src={post.image}
             alt={post.title}
+            wrapperClassName="absolute inset-0"
             className="w-full h-full object-cover"
+            sizes="(min-width: 1024px) 60vw, 100vw"
           />
         </div>
 
