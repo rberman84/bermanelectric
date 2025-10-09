@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { Car, Zap, Shield, Clock, CheckCircle2, Phone, Mail } from "lucide-react";
+import { Car, Zap, Shield, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { generateAltText } from "@/lib/utils";
 

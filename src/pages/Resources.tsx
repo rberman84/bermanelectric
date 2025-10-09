@@ -1,4 +1,4 @@
-import { ExternalLink, Download, Phone, Shield, Award, Users, Building, Calculator } from "lucide-react";
+import { ExternalLink, Download, Phone, Shield, Users, Building, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";

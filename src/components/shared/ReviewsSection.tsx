@@ -119,7 +119,7 @@ const ReviewsSection = ({
   reviews: propReviews,
   className = ""
 }: ReviewsSectionProps) => {
-  const { data: googleReviews, isLoading, refetch } = useGoogleReviews();
+  const { data: googleReviews, refetch } = useGoogleReviews();
   const { syncReviews } = useSyncGoogleReviews();
   const [isSyncing, setIsSyncing] = useState(false);
 
