@@ -1,17 +1,15 @@
 
 import { Phone, User } from "lucide-react";
-import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
 interface MobileMenuProps {
   isOpen: boolean;
-  isScrolled: boolean;
   onClose: () => void;
 }
 
-const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
+const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   
@@ -37,50 +35,51 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
     onClose();
   };
 
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div
-      className={cn(
-        "md:hidden transition-all duration-300 ease-in-out",
-        isOpen ? "h-auto opacity-100 visible" : "h-0 opacity-0 invisible"
-      )}
+      id="mobile-navigation"
+      className="md:hidden transition-all duration-300 ease-in-out h-auto opacity-100 visible"
+      role="menu"
+      aria-label="Mobile navigation"
     >
-      <div className="flex flex-col space-y-4 pb-6">
+      <div className="flex flex-col space-y-4 pb-6 bg-white shadow-lg rounded-lg px-4 py-6 mt-4">
         {servicesDropdown.map((item) => (
           <NavLink
             key={item.name}
             to={item.href}
-            isScrolled={isScrolled}
+            isScrolled={false}
             onClick={onClose}
           >
             {item.name}
           </NavLink>
         ))}
         {user && (
-          <NavLink to="/dashboard" isScrolled={isScrolled} onClick={onClose}>
+          <NavLink to="/dashboard" isScrolled={false} onClick={onClose}>
             Dashboard
           </NavLink>
         )}
-        <NavLink to="/about" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/about" isScrolled={false} onClick={onClose}>
           About
         </NavLink>
-        <NavLink to="/projects" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/projects" isScrolled={false} onClick={onClose}>
           Projects
         </NavLink>
-        <NavLink to="/blog" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/blog" isScrolled={false} onClick={onClose}>
           Blog
         </NavLink>
-        <NavLink to="/testimonials" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/testimonials" isScrolled={false} onClick={onClose}>
           Testimonials
         </NavLink>
-        <NavLink to="/contact" isScrolled={isScrolled} onClick={onClose}>
+        <NavLink to="/contact" isScrolled={false} onClick={onClose}>
           Contact
         </NavLink>
         <a
           href="tel:+15163614068"
-          className={cn(
-            "inline-flex items-center text-sm font-medium transition-colors",
-            isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-          )}
+          className="inline-flex items-center text-sm font-medium transition-colors text-slate-800 hover:text-electric-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           onClick={onClose}
         >
           <Phone className="mr-2 h-4 w-4" />
@@ -89,10 +88,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         {user ? (
           <button
             onClick={handleSignOut}
-            className={cn(
-              "inline-flex items-center text-sm font-medium transition-colors w-full",
-              isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-            )}
+            className="inline-flex items-center text-sm font-medium transition-colors w-full text-slate-800 hover:text-electric-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <User className="mr-2 h-4 w-4" />
             Sign Out
@@ -100,10 +96,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         ) : (
           <button
             onClick={handleSignIn}
-            className={cn(
-              "inline-flex items-center text-sm font-medium transition-colors w-full",
-              isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
-            )}
+            className="inline-flex items-center text-sm font-medium transition-colors w-full text-slate-800 hover:text-electric-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <User className="mr-2 h-4 w-4" />
             Sign In
@@ -111,7 +104,7 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         )}
         <button
           onClick={handleGetQuote}
-          className="button-primary w-full text-center bg-green-600 hover:bg-green-700"
+          className="button-primary w-full text-center bg-green-600 hover:bg-green-700 focus-visible:ring-offset-white"
         >
           Get a Quote
         </button>

@@ -3,6 +3,7 @@ import { Calendar, User, Clock, ArrowRight, Tag, ArrowLeft } from 'lucide-react'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
 import BlogSEO from '@/components/blog/BlogSEO';
+import { generateAltText } from '@/lib/utils';
 
 interface BlogPost {
   id: string;
@@ -204,9 +205,9 @@ const BlogCategory = () => {
                 {categoryPosts.map((post) => (
                   <article key={post.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border">
                     <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={post.image} 
-                        alt={post.title}
+                      <img
+                        src={post.image}
+                        alt={generateAltText(post.image, `${post.title} category image`)}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />

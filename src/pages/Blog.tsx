@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import BlogSEO from "@/components/blog/BlogSEO";
+import { generateAltText } from "@/lib/utils";
 
 interface BlogPost {
   id: string;
@@ -196,9 +197,9 @@ const Blog = () => {
               {featuredPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
+                    <img
+                      src={post.image}
+                      alt={generateAltText(post.image, `${post.title} feature image`)}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
@@ -264,9 +265,9 @@ const Blog = () => {
               {regularPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                   <div className="relative h-40 overflow-hidden">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
+                    <img
+                      src={post.image}
+                      alt={generateAltText(post.image, `${post.title} article image`)}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>

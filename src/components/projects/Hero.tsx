@@ -1,4 +1,6 @@
 
+import { generateAltText } from "@/lib/utils";
+
 interface HeroProps {
   title: string;
   subtitle: string;
@@ -9,9 +11,12 @@ const Hero = ({ title, subtitle, description }: HeroProps) => {
   return (
     <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="absolute inset-0 z-0 opacity-30">
-        <img 
+        <img
           src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-          alt="Electric circuit board representing our technical expertise"
+          alt={generateAltText(
+            "https://images.unsplash.com/photo-1518770660439-4636190af475",
+            "Background image highlighting electric circuit board expertise"
+          )}
           className="object-cover w-full h-full"
         />
       </div>
