@@ -25,9 +25,10 @@ import Resources from "./pages/Resources";
 import ElectricianRonkonkoma from "./pages/ElectricianRonkonkoma";
 import ElectricianSuffolkCounty from "./pages/ElectricianSuffolkCounty";
 import ElectricianLongIsland from "./pages/ElectricianLongIsland";
-import RonkonkomaServiceUpgradeCaseStudy from "./pages/RonkonkomaServiceUpgradeCaseStudy";
 import GoogleReviewsSetup from "./pages/GoogleReviewsSetup";
 import NotFound from "./pages/NotFound";
+import CaseStudyPage from "./pages/CaseStudy";
+import CaseStudies from "./pages/CaseStudies";
 
 const queryClient = new QueryClient();
 
@@ -59,7 +60,12 @@ const App = () => (
           <Route path="/electrician-ronkonkoma" element={<ElectricianRonkonkoma />} />
           <Route path="/electrician-suffolk-county" element={<ElectricianSuffolkCounty />} />
           <Route path="/electrician-long-island" element={<ElectricianLongIsland />} />
-          <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<RonkonkomaServiceUpgradeCaseStudy />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+          <Route
+            path="/case-study-ronkonkoma-200-amp-service-upgrade"
+            element={<CaseStudyPage presetSlug="case-study-ronkonkoma-200-amp-service-upgrade" />}
+          />
           <Route path="/google-reviews-setup" element={<GoogleReviewsSetup />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

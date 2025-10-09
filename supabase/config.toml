@@ -41,3 +41,12 @@ verify_jwt = false
 
 [functions.get-google-reviews]
 verify_jwt = false
+
+[functions.gsc-faq-harvest]
+verify_jwt = false
+
+[[cron.jobs]]
+name = "gsc-faq-nightly"
+schedule = "0 5 * * *"
+endpoint = "gsc-faq-harvest"
+method = "POST"

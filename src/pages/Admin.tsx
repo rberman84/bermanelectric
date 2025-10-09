@@ -5,6 +5,7 @@ import { Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import GooglePlaceConfig from "@/components/admin/GooglePlaceConfig";
+import FaqSuggestionsPanel from "@/components/admin/FaqSuggestionsPanel";
 
 type Row = { [key: string]: string };
 
@@ -123,6 +124,10 @@ const Admin = () => {
           {/* Google Place Configuration */}
           <section className="mb-8">
             <GooglePlaceConfig />
+          </section>
+
+          <section className="mb-8">
+            <FaqSuggestionsPanel />
           </section>
 
           {/* Filters */}
