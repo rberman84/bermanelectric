@@ -22,7 +22,7 @@ const TableOfContents = ({ content }: TableOfContentsProps) => {
     const doc = parser.parseFromString(content, 'text/html');
     const headings = doc.querySelectorAll('h2, h3, h4');
     
-    const items: TOCItem[] = Array.from(headings).map((heading, index) => {
+    const items: TOCItem[] = Array.from(headings).map((heading) => {
       const text = heading.textContent || '';
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
       const level = parseInt(heading.tagName.substring(1));

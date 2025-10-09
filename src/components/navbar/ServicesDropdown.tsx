@@ -37,8 +37,9 @@ const ServicesDropdown = ({ isScrolled }: ServicesDropdownProps) => {
       return;
     }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+    const handleKeyDown = (event: Event) => {
+      const keyEvent = event as globalThis.KeyboardEvent;
+      if (keyEvent.key === "Escape") {
         setIsOpen(false);
         (containerRef.current?.querySelector("button") as HTMLButtonElement | null)?.focus();
       }
