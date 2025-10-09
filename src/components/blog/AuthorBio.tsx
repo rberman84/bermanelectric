@@ -19,7 +19,6 @@ const AuthorBio = ({ author }: AuthorBioProps) => {
         "Fully insured and bonded"
       ],
       image: "/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png",
-      phone: "(516) 361-4068",
       email: "Rob@bermanelectrical.com"
     }
   };

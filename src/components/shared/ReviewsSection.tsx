@@ -1,5 +1,6 @@
 import { Star, Quote, CheckCircle, ExternalLink, RefreshCw } from "lucide-react";
 import { useGoogleReviews, useSyncGoogleReviews } from "@/hooks/useGoogleReviews";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
@@ -265,12 +266,10 @@ const ReviewsSection = ({
             Experience the same quality service that earned us these 5-star reviews
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+15163614068"
+            <DynamicPhone
+              eventName="reviews_section_phone_click"
               className="inline-flex items-center px-6 py-3 bg-electric-600 text-white rounded-lg hover:bg-electric-700 transition-colors font-semibold"
-            >
-              Call (516) 361-4068
-            </a>
+            />
             <a
               href="/contact"
               className="inline-flex items-center px-6 py-3 bg-white text-electric-600 border-2 border-electric-600 rounded-lg hover:bg-electric-50 transition-colors font-semibold"

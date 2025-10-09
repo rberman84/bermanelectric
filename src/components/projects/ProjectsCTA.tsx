@@ -1,6 +1,7 @@
 
 import { Phone, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 const ProjectsCTA = () => {
   const navigate = useNavigate();
@@ -21,13 +22,17 @@ const ProjectsCTA = () => {
             Berman Electric is ready to deliver expert solutions tailored to your needs.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="tel:+15163614068"
+            <DynamicPhone
+              eventName="projects_cta_phone_click"
               className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Us: (516) 361-4068
-            </a>
+              {({ displayNumber }) => (
+                <>
+                  <Phone className="w-5 h-5 mr-2" />
+                  <span className="whitespace-nowrap">Call Us: {displayNumber}</span>
+                </>
+              )}
+            </DynamicPhone>
             <button 
               onClick={handleGetQuote}
               className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors"

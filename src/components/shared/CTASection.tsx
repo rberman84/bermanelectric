@@ -1,5 +1,6 @@
 import { Phone, Mail, Calendar, MessageCircle, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 interface CTASectionProps {
   variant?: 'default' | 'emergency' | 'service' | 'footer';
@@ -17,7 +18,7 @@ const CTASection = ({
   variant = 'default',
   title,
   subtitle,
-  primaryText = "Call (516) 361-4068",
+  primaryText = "Call now",
   secondaryText = "Get Free Quote",
   showTrustSignals = true,
   showUrgency = false,
@@ -30,6 +31,12 @@ const CTASection = ({
     { icon: <Clock className="w-4 h-4" />, text: "24/7 Emergency Service" },
     { icon: <CheckCircle className="w-4 h-4" />, text: "20+ Years Experience" }
   ];
+
+  const composeLabel = (label: string, number: string) => {
+    if (!label) return number;
+    if (label.includes(number)) return label;
+    return `${label} ${number}`;
+  };
 
   if (variant === 'emergency') {
     return (
@@ -54,13 +61,17 @@ const CTASection = ({
               </div>
             )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+15163614068"
+              <DynamicPhone
+                eventName="cta_emergency_phone_click"
                 className="inline-flex items-center px-8 py-4 bg-white text-red-600 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg animate-pulse"
               >
-                <Phone className="w-5 h-5 mr-2" />
-                Emergency: (516) 361-4068
-              </a>
+                {({ displayNumber }) => (
+                  <>
+                    <Phone className="w-5 h-5 mr-2" />
+                    <span className="whitespace-nowrap">{composeLabel("Emergency:", displayNumber)}</span>
+                  </>
+                )}
+              </DynamicPhone>
               <Link
                 to="/emergency"
                 className="inline-flex items-center px-6 py-3 bg-red-700 text-white rounded-lg hover:bg-red-800 transition-colors font-semibold"
@@ -100,13 +111,17 @@ const CTASection = ({
                 )}
               </div>
               <div className="space-y-4">
-                <a
-                  href="tel:+15163614068"
+                <DynamicPhone
+                  eventName="cta_service_phone_click"
                   className="flex items-center justify-center w-full px-6 py-4 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg"
                 >
-                  <Phone className="w-5 h-5 mr-2" />
-                  {primaryText}
-                </a>
+                  {({ displayNumber }) => (
+                    <>
+                      <Phone className="w-5 h-5 mr-2" />
+                      <span className="whitespace-nowrap">{composeLabel(primaryText, displayNumber)}</span>
+                    </>
+                  )}
+                </DynamicPhone>
                 <Link
                   to="/contact"
                   className="flex items-center justify-center w-full px-6 py-3 bg-electric-700 text-white rounded-lg hover:bg-electric-800 transition-colors font-semibold"
@@ -139,13 +154,17 @@ const CTASection = ({
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="tel:+15163614068"
+              <DynamicPhone
+                eventName="cta_footer_phone_click"
                 className="inline-flex items-center px-6 py-3 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
               >
-                <Phone className="w-4 h-4 mr-2" />
-                {primaryText}
-              </a>
+                {({ displayNumber }) => (
+                  <>
+                    <Phone className="w-4 h-4 mr-2" />
+                    <span className="whitespace-nowrap">{composeLabel(primaryText, displayNumber)}</span>
+                  </>
+                )}
+              </DynamicPhone>
               <Link
                 to="/contact"
                 className="inline-flex items-center px-6 py-3 bg-electric-600 text-white rounded-lg hover:bg-electric-500 transition-colors font-semibold"
@@ -184,13 +203,17 @@ const CTASection = ({
           )}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+15163614068"
+            <DynamicPhone
+              eventName="cta_default_phone_click"
               className="inline-flex items-center px-8 py-4 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              {primaryText}
-            </a>
+              {({ displayNumber }) => (
+                <>
+                  <Phone className="w-5 h-5 mr-2" />
+                  <span className="whitespace-nowrap">{composeLabel(primaryText, displayNumber)}</span>
+                </>
+              )}
+            </DynamicPhone>
             <Link
               to="/contact"
               className="inline-flex items-center px-6 py-3 bg-electric-700 text-white rounded-lg hover:bg-electric-800 transition-colors font-semibold"

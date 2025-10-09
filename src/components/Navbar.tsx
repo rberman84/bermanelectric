@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,16 +79,20 @@ const Navbar = () => {
 
             {/* CTAs */}
             <div className="flex items-center space-x-4">
-              <a
-                href="tel:+15163614068"
+              <DynamicPhone
+                eventName="navbar_phone_click"
                 className={cn(
                   "inline-flex items-center text-sm font-medium transition-colors",
                   isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
                 )}
               >
-                <Phone className="mr-2 h-4 w-4" />
-                (516) 361-4068
-              </a>
+                {({ displayNumber }) => (
+                  <>
+                    <Phone className="mr-2 h-4 w-4" />
+                    <span className="whitespace-nowrap">{displayNumber}</span>
+                  </>
+                )}
+              </DynamicPhone>
               {user ? (
                 <button
                   onClick={signOut}

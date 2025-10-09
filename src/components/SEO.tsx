@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useTrackingNumber } from "@/hooks/useTrackingNumber";
 
 interface SEOProps {
   title: string;
@@ -10,24 +11,28 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const SEO = ({ 
-  title, 
-  description, 
+const SEO = ({
+  title,
+  description,
   keywords = "electrician, electrical services, Long Island, Suffolk County, Ronkonkoma, licensed electrician, emergency electrical",
   canonical,
   ogImage = "/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png",
   ogType = "website",
   structuredData
 }: SEOProps) => {
+  const { displayNumber, tel } = useTrackingNumber();
   const fullTitle = title.includes('Berman Electric') ? title : `${title} | Berman Electric - Licensed Electrician Long Island`;
   const currentUrl = canonical || window.location.href;
+  const hydrateText = (text?: string) => text?.replace(/\{\{PHONE\}\}/g, displayNumber) ?? undefined;
+  const metaDescription = hydrateText(description) ?? description.replace(/516-361-4068|\(516\) 361-4068/g, displayNumber);
+  const metaKeywords = hydrateText(keywords);
 
   return (
     <Helmet>
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      <meta name="description" content={metaDescription} />
+      <meta name="keywords" content={metaKeywords} />
       <meta name="author" content="Berman Electric" />
       <link rel="canonical" href={currentUrl} />
       <link rel="preload" href="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" as="image" fetchPriority="high" />
@@ -44,7 +49,7 @@ const SEO = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content="Berman Electric" />
 
@@ -52,7 +57,7 @@ const SEO = ({
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={currentUrl} />
       <meta property="twitter:title" content={fullTitle} />
-      <meta property="twitter:description" content={description} />
+      <meta property="twitter:description" content={metaDescription} />
       <meta property="twitter:image" content={ogImage} />
 
       {/* Local Business Schema */}
@@ -65,7 +70,7 @@ const SEO = ({
           "alternateName": "Berman Electrical",
           "description": "Licensed electrician serving Long Island, NY with over 20 years of experience. Specializing in residential and commercial electrical services.",
           "url": "https://bermanelectrical.com",
-          "telephone": "+1-516-361-4068",
+          "telephone": tel,
           "email": "Rob@bermanelectrical.com",
           "address": {
             "@type": "PostalAddress",

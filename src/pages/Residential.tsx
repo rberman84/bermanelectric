@@ -2,8 +2,11 @@ import { Plug, Lightbulb, Shield, Wrench, Car, Power, CheckCircle2, Phone, Mail,
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import { useTrackingNumber } from "@/hooks/useTrackingNumber";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 const Residential = () => {
+  const { displayNumber } = useTrackingNumber();
   const services = [{
     title: "Electrical Installations & Upgrades",
     icon: <Plug className="w-6 h-6 text-electric-600" />,
@@ -31,9 +34,9 @@ const Residential = () => {
   }];
   const benefits = ["Over 20 Years of Experience – Trusted by homeowners across Long Island", "Licensed & Insured Electricians – Ensuring top-tier quality & safety", "Fast, Reliable Service – We get the job done right the first time", "Upfront Pricing – No hidden fees, just honest, competitive rates", "Customer Satisfaction Guaranteed – 5-star rated service"];
   return <>
-      <SEO 
+      <SEO
         title="Residential Electrical Services Long Island - Licensed Home Electrician"
-        description="Professional residential electrical services on Long Island. Licensed electrician for home wiring, panel upgrades, lighting installation, EV chargers, smart home automation. Serving Suffolk & Nassau County. Call (516) 361-4068"
+        description={`Professional residential electrical services on Long Island. Licensed electrician for home wiring, panel upgrades, lighting installation, EV chargers, smart home automation. Serving Suffolk & Nassau County. Call ${displayNumber}`}
         keywords="residential electrician Long Island, home electrical services Suffolk County, electrical panel upgrades, home rewiring, lighting installation, EV charger installation, smart home wiring, GFCI installation"
         canonical="https://bermanelectrical.com/residential"
       />
@@ -113,10 +116,17 @@ const Residential = () => {
                 or need emergency repairs, Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="tel:+15163614068" className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors">
-                  <Phone className="w-5 h-5 mr-2" />
-                  (516) 361-4068
-                </a>
+                <DynamicPhone
+                  eventName="residential_phone_click"
+                  className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  {({ displayNumber: number }) => (
+                    <>
+                      <Phone className="w-5 h-5 mr-2" />
+                      <span className="whitespace-nowrap">{number}</span>
+                    </>
+                  )}
+                </DynamicPhone>
                 <Link to="/contact" className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors">
                   <Mail className="w-5 h-5 mr-2" />
                   Request a Quote Online

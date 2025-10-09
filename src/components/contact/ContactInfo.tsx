@@ -1,5 +1,6 @@
 
 import { Clock, Phone, Mail, MapPin } from "lucide-react";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 const ContactInfo = () => {
   return (
@@ -7,10 +8,17 @@ const ContactInfo = () => {
       <div>
         <h3 className="text-xl font-semibold mb-4">📞 Get in Touch</h3>
         <div className="space-y-3">
-          <a href="tel:+15163614068" className="flex items-center text-gray-700 hover:text-electric-600">
-            <Phone className="w-5 h-5 mr-2" />
-            516-361-4068
-          </a>
+          <DynamicPhone
+            eventName="contact_info_phone_click"
+            className="flex items-center text-gray-700 hover:text-electric-600"
+          >
+            {({ displayNumber }) => (
+              <>
+                <Phone className="w-5 h-5 mr-2" />
+                <span className="whitespace-nowrap">{displayNumber}</span>
+              </>
+            )}
+          </DynamicPhone>
           <a href="mailto:Rob@bermanelectrical.com" className="flex items-center text-gray-700 hover:text-electric-600">
             <Mail className="w-5 h-5 mr-2" />
             Rob@bermanelectrical.com

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -75,17 +76,20 @@ const MobileMenu = ({ isOpen, isScrolled, onClose }: MobileMenuProps) => {
         <NavLink to="/contact" isScrolled={isScrolled} onClick={onClose}>
           Contact
         </NavLink>
-        <a
-          href="tel:+15163614068"
+        <DynamicPhone
+          eventName="mobile_menu_phone_click"
           className={cn(
             "inline-flex items-center text-sm font-medium transition-colors",
             isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
           )}
-          onClick={onClose}
         >
-          <Phone className="mr-2 h-4 w-4" />
-          (516) 361-4068
-        </a>
+          {({ displayNumber }) => (
+            <>
+              <Phone className="mr-2 h-4 w-4" />
+              <span className="whitespace-nowrap">{displayNumber}</span>
+            </>
+          )}
+        </DynamicPhone>
         {user ? (
           <button
             onClick={handleSignOut}

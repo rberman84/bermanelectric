@@ -2,8 +2,11 @@ import { MapPin, Phone, Clock, Shield, CheckCircle2, Users, Building, Home } fro
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import { useTrackingNumber } from "@/hooks/useTrackingNumber";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 const ElectricianSuffolkCounty = () => {
+  const { displayNumber } = useTrackingNumber();
   const services = [
     "Residential Electrical Services",
     "Commercial Electrical Installations", 
@@ -41,9 +44,9 @@ const ElectricianSuffolkCounty = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Electrician Suffolk County NY - Licensed Electrical Contractor"
-        description="Professional licensed electrician serving all of Suffolk County NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV chargers. Call (516) 361-4068"
+        description={`Professional licensed electrician serving all of Suffolk County NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV chargers. Call ${displayNumber}`}
         keywords="electrician Suffolk County NY, licensed electrician Suffolk County, electrical contractor Suffolk County, emergency electrician Suffolk County, electrical services Long Island"
         canonical="https://bermanelectrical.com/electrician-suffolk-county"
       />
@@ -61,14 +64,18 @@ const ElectricianSuffolkCounty = () => {
                 Professional Electrical Services Across All Suffolk County Communities - 20+ Years Trusted Experience
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+15163614068"
+                <DynamicPhone
+                  eventName="suffolk_hero_phone_click"
                   className="inline-flex items-center px-6 py-3 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
                 >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call (516) 361-4068
-                </a>
-                <Link 
+                  {({ displayNumber: number }) => (
+                    <>
+                      <Phone className="w-5 h-5 mr-2" />
+                      <span className="whitespace-nowrap">Call {number}</span>
+                    </>
+                  )}
+                </DynamicPhone>
+                <Link
                   to="/contact"
                   className="inline-flex items-center px-6 py-3 bg-electric-700 text-white rounded-lg hover:bg-electric-600 transition-colors font-semibold"
                 >
@@ -163,10 +170,12 @@ const ElectricianSuffolkCounty = () => {
                 </div>
                 <div className="text-center mt-6">
                   <p className="text-gray-600">
-                    Serving all Suffolk County communities. 
-                    <a href="tel:+15163614068" className="text-electric-600 hover:text-electric-700 font-semibold ml-1">
-                      Call (516) 361-4068
-                    </a> to confirm service in your area.
+                    Serving all Suffolk County communities.
+                    <DynamicPhone
+                      className="text-electric-600 hover:text-electric-700 font-semibold ml-1"
+                      prefix={<span>Call </span>}
+                      suffix={<span> to confirm service in your area.</span>}
+                    />
                   </p>
                 </div>
               </div>
@@ -202,14 +211,18 @@ const ElectricianSuffolkCounty = () => {
                 Professional electrical contractor serving all Suffolk County communities. Licensed, insured, and ready to serve.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+15163614068"
+                <DynamicPhone
+                  eventName="suffolk_footer_phone_click"
                   className="inline-flex items-center px-8 py-4 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
                 >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call (516) 361-4068
-                </a>
-                <Link 
+                  {({ displayNumber: number }) => (
+                    <>
+                      <Phone className="w-5 h-5 mr-2" />
+                      <span className="whitespace-nowrap">Call {number}</span>
+                    </>
+                  )}
+                </DynamicPhone>
+                <Link
                   to="/contact"
                   className="inline-flex items-center px-8 py-4 bg-electric-700 text-white rounded-lg hover:bg-electric-800 transition-colors font-semibold text-lg"
                 >

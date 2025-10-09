@@ -2,8 +2,11 @@ import { Building2, Plug, Lightbulb, Shield, Wrench, Power, CheckCircle2, Phone,
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import { useTrackingNumber } from "@/hooks/useTrackingNumber";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 const Commercial = () => {
+  const { displayNumber } = useTrackingNumber();
   const services = [{
     title: "Electrical Installations & Upgrades",
     icon: <Plug className="w-6 h-6 text-electric-600" />,
@@ -32,9 +35,9 @@ const Commercial = () => {
   const industries = ["Offices & Corporate Buildings", "Retail Stores & Shopping Centers", "Restaurants, Bars, & Cafés", "Warehouses & Industrial Facilities", "Healthcare & Medical Centers", "Schools, Colleges, & Universities", "Hotels & Hospitality", "Multi-Unit Residential Buildings"];
   const benefits = ["Over 20 Years of Commercial Experience – Trusted by top businesses across Long Island", "Licensed, Insured & Certified Electricians – Ensuring quality & safety", "Fast, Reliable, & Scalable Solutions – Minimize downtime & maximize efficiency", "Upfront Pricing & Custom Quotes – Competitive, transparent pricing with no hidden costs", "Emergency Service Available 24/7 – We're always ready when you need us"];
   return <>
-      <SEO 
+      <SEO
         title="Commercial Electrical Services Long Island - Licensed Business Electrician"
-        description="Professional commercial electrical contractor serving Long Island businesses. Licensed electrician for office buildings, retail spaces, warehouses, restaurants. Emergency repairs, installations, maintenance. Suffolk & Nassau County. Call (516) 361-4068"
+        description={`Professional commercial electrical contractor serving Long Island businesses. Licensed electrician for office buildings, retail spaces, warehouses, restaurants. Emergency repairs, installations, maintenance. Suffolk & Nassau County. Call ${displayNumber}`}
         keywords="commercial electrician Long Island, business electrical services Suffolk County, commercial electrical contractor Nassau County, office electrical installation, retail lighting, warehouse electrical, restaurant electrical"
         canonical="https://bermanelectrical.com/commercial"
       />
@@ -126,10 +129,17 @@ const Commercial = () => {
                 Need a reliable and efficient commercial electrical contractor? Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="tel:+15163614068" className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors">
-                  <Phone className="w-5 h-5 mr-2" />
-                  (516) 361-4068
-                </a>
+                <DynamicPhone
+                  eventName="commercial_phone_click"
+                  className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  {({ displayNumber: number }) => (
+                    <>
+                      <Phone className="w-5 h-5 mr-2" />
+                      <span className="whitespace-nowrap">{number}</span>
+                    </>
+                  )}
+                </DynamicPhone>
                 <Link to="/contact" className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors">
                   <Mail className="w-5 h-5 mr-2" />
                   Request a Quote Online

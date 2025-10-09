@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { DynamicPhone } from "@/components/shared/DynamicPhone";
 
 interface NAPProps {
   variant?: 'default' | 'footer' | 'header' | 'contact';
@@ -11,8 +12,6 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
     name: "Berman Electric",
     address: "Ronkonkoma, NY",
     fullAddress: "Long Island, NY - Serving Nassau & Suffolk Counties",
-    phone: "(516) 361-4068",
-    phoneHref: "+15163614068",
     email: "info@bermanelectrical.com",
     hours: {
       weekdays: "Monday – Friday: 7:00 AM – 7:00 PM",
@@ -34,9 +33,7 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 flex-shrink-0" />
-            <a href={`tel:${napData.phoneHref}`} className="hover:text-electric-400 transition-colors">
-              {napData.phone}
-            </a>
+            <DynamicPhone eventName="nap_footer_phone_click" className="hover:text-electric-400 transition-colors" />
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 flex-shrink-0" />
@@ -67,9 +64,7 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Phone className="w-4 h-4" />
-          <a href={`tel:${napData.phoneHref}`} className="hover:text-electric-600 transition-colors font-medium">
-            {napData.phone}
-          </a>
+          <DynamicPhone eventName="nap_header_phone_click" className="hover:text-electric-600 transition-colors font-medium" />
         </div>
       </div>
     );
@@ -95,10 +90,17 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
         <div>
           <h3 className="text-xl font-semibold mb-4">📞 Get in Touch</h3>
           <div className="space-y-3">
-            <a href={`tel:${napData.phoneHref}`} className="flex items-center text-gray-700 hover:text-electric-600 transition-colors">
-              <Phone className="w-5 h-5 mr-3" />
-              {napData.phone}
-            </a>
+            <DynamicPhone
+              eventName="nap_contact_phone_click"
+              className="flex items-center text-gray-700 hover:text-electric-600 transition-colors"
+            >
+              {({ displayNumber }) => (
+                <>
+                  <Phone className="w-5 h-5 mr-3" />
+                  <span className="whitespace-nowrap">{displayNumber}</span>
+                </>
+              )}
+            </DynamicPhone>
             <a href={`mailto:${napData.email}`} className="flex items-center text-gray-700 hover:text-electric-600 transition-colors">
               <Mail className="w-5 h-5 mr-3" />
               {napData.email}
@@ -131,9 +133,7 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
       </div>
       <div className="flex items-center gap-2">
         <Phone className="w-4 h-4 text-electric-600" />
-        <a href={`tel:${napData.phoneHref}`} className="text-gray-700 hover:text-electric-600 transition-colors">
-          {napData.phone}
-        </a>
+        <DynamicPhone eventName="nap_default_phone_click" className="text-gray-700 hover:text-electric-600 transition-colors" />
       </div>
       <div className="flex items-center gap-2">
         <Mail className="w-4 h-4 text-electric-600" />

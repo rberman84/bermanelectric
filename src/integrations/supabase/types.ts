@@ -101,6 +101,117 @@ export type Database = {
         }
         Relationships: []
       }
+      quote_requests: {
+        Row: {
+          add_ons: Json
+          amps: number
+          created_at: string
+          crm_response: Json | null
+          email: string | null
+          email_status: Json | null
+          id: string
+          name: string | null
+          panel_capacity: number
+          phone: string | null
+          price_bands: Json
+          price_high: number
+          price_low: number
+          recommended_cta: string
+          run_length: number
+          session_id: string | null
+          sms_status: Json | null
+          source_page: string | null
+          tracking_number: string | null
+          tracking_id: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          add_ons?: Json
+          amps: number
+          created_at?: string
+          crm_response?: Json | null
+          email?: string | null
+          email_status?: Json | null
+          id?: string
+          name?: string | null
+          panel_capacity: number
+          phone?: string | null
+          price_bands: Json
+          price_high: number
+          price_low: number
+          recommended_cta: string
+          run_length: number
+          session_id?: string | null
+          sms_status?: Json | null
+          source_page?: string | null
+          tracking_number?: string | null
+          tracking_id?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          add_ons?: Json
+          amps?: number
+          created_at?: string
+          crm_response?: Json | null
+          email?: string | null
+          email_status?: Json | null
+          id?: string
+          name?: string | null
+          panel_capacity?: number
+          phone?: string | null
+          price_bands?: Json
+          price_high?: number
+          price_low?: number
+          recommended_cta?: string
+          run_length?: number
+          session_id?: string | null
+          sms_status?: Json | null
+          source_page?: string | null
+          tracking_number?: string | null
+          tracking_id?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
+      quote_tracking_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          session_id: string
+          source_page: string | null
+          tracking_number: string
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          session_id: string
+          source_page?: string | null
+          tracking_number: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          session_id?: string
+          source_page?: string | null
+          tracking_number?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
       service_requests: {
         Row: {
           address: string
@@ -137,6 +248,60 @@ export type Database = {
           status?: string
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      call_events: {
+        Row: {
+          auto_sms_sent: boolean | null
+          call_sid: string
+          created_at: string
+          duration: number | null
+          from_number: string
+          id: string
+          metadata: Json | null
+          session_id: string | null
+          source_page: string | null
+          status: string
+          to_number: string
+          tracking_number: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          auto_sms_sent?: boolean | null
+          call_sid: string
+          created_at?: string
+          duration?: number | null
+          from_number: string
+          id?: string
+          metadata?: Json | null
+          session_id?: string | null
+          source_page?: string | null
+          status: string
+          to_number: string
+          tracking_number?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          auto_sms_sent?: boolean | null
+          call_sid?: string
+          created_at?: string
+          duration?: number | null
+          from_number?: string
+          id?: string
+          metadata?: Json | null
+          session_id?: string | null
+          source_page?: string | null
+          status?: string
+          to_number?: string
+          tracking_number?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
         }
         Relationships: []
       }
