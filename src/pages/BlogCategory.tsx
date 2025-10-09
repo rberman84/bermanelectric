@@ -206,10 +206,6 @@ const BlogCategory = () => {
                 {categoryPosts.map((post) => (
                   <article key={post.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border">
                     <div className="relative h-48 overflow-hidden">
-                      <ResponsiveImage
-                        src={post.image}
-                        alt={post.title}
-                        wrapperClassName="absolute inset-0"
                       <img
                         src={post.image}
                         alt={generateAltText(post.image, `${post.title} category image`)}

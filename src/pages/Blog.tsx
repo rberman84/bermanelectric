@@ -198,10 +198,6 @@ const Blog = () => {
               {featuredPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="relative h-48 overflow-hidden">
-                    <ResponsiveImage
-                      src={post.image}
-                      alt={post.title}
-                      wrapperClassName="absolute inset-0"
                     <img
                       src={post.image}
                       alt={generateAltText(post.image, `${post.title} feature image`)}
@@ -271,10 +267,6 @@ const Blog = () => {
               {regularPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                   <div className="relative h-40 overflow-hidden">
-                    <ResponsiveImage
-                      src={post.image}
-                      alt={post.title}
-                      wrapperClassName="absolute inset-0"
                     <img
                       src={post.image}
                       alt={generateAltText(post.image, `${post.title} article image`)}

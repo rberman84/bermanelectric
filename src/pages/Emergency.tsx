@@ -94,13 +94,6 @@ const Emergency = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0">
-            <ResponsiveImage
-              src="/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png"
-              alt="Emergency electrical service vehicle ready for rapid response"
-              wrapperClassName="absolute inset-0"
-              className="w-full h-full object-cover"
-              sizes="(min-width: 1280px) 60vw, 100vw"
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
             <img
               src="/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png"
@@ -111,7 +104,6 @@ const Emergency = () => {
               className="w-full h-full object-cover opacity-70"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">

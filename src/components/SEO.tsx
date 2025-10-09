@@ -11,7 +11,6 @@ interface SEOProps {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
-  structuredData?: object;
   noindex?: boolean;
   structuredData?: StructuredData;
 }

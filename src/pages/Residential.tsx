@@ -43,15 +43,6 @@ const Residential = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0">
-            <ResponsiveImage
-              src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
-              alt="Vintage light bulb with protective cage representing our commitment to quality electrical work"
-              wrapperClassName="absolute inset-0"
-              className="w-full h-full object-cover"
-              sizes="(min-width: 1280px) 60vw, 100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
             <img
               src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
@@ -177,6 +168,7 @@ const Residential = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>;
 };
 export default Residential;

@@ -37,11 +37,6 @@ const Contact = () => {
       <Navbar />
       <div className="pt-20">
         <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
-          <div className="absolute inset-0 z-0 opacity-30">
-            <ResponsiveImage
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-              alt="Professional electrical service"
-              wrapperClassName="absolute inset-0"
           <div className="absolute inset-0 z-0 opacity-30" aria-hidden="true">
             <img
               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
