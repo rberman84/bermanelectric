@@ -1,24 +1,14 @@
 User-agent: *
 Allow: /
 
-# Preferred host
-Host: bermanelectrical.com
+# Sitemaps
+Sitemap: https://bermanelectrical.com/sitemap.xml
 
-# Block duplicate/tracking parameters
-Disallow: /*?*utm_*
-Disallow: /*?*gclid=*
-Disallow: /*?*fbclid=*
-Disallow: /*?*msclkid=*
-Disallow: /*?*_ga=*
-Disallow: /*?*_gl=*
-
-# Restrict private areas
-Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /auth/
-Disallow: /api/
-Disallow: /_next/
-
+# Crawl-delay
 Crawl-delay: 1
 
-Sitemap: https://bermanelectrical.com/sitemap.xml
+# Block unnecessary crawling
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: *.pdf$

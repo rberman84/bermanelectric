@@ -10,7 +10,6 @@ import NAP from "@/components/shared/NAP";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 type TriageSummary = {
@@ -45,7 +44,6 @@ const Contact = () => {
                 "Background image showing professional electrical service"
               )}
               className="object-cover w-full h-full"
-              sizes="100vw"
             />
           </div>
           <div className="container relative z-10">

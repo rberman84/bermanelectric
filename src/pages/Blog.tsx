@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import BlogSEO from "@/components/blog/BlogSEO";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 interface BlogPost {
@@ -202,7 +201,6 @@ const Blog = () => {
                       src={post.image}
                       alt={generateAltText(post.image, `${post.title} feature image`)}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-electric-600 text-white text-sm font-semibold rounded-full">
@@ -271,7 +269,6 @@ const Blog = () => {
                       src={post.image}
                       alt={generateAltText(post.image, `${post.title} article image`)}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      sizes="(min-width: 1024px) 33vw, 100vw"
                     />
                   </div>
                   

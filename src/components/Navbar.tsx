@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,6 +75,12 @@ const Navbar = () => {
                 isScrolled ? "brightness-0 invert" : "brightness-100",
                 "animate-[wiggle_3s_ease-in-out_infinite]"
               )}
+              style={{
+                animation: `
+                  scale 4s ease-in-out infinite,
+                  colorize 4s ease-in-out infinite
+              `
+            }}
             />
           </Link>
 

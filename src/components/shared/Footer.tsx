@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 const Footer = () => {

@@ -1,5 +1,4 @@
 
-import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 interface HeroProps {
@@ -19,7 +18,6 @@ const Hero = ({ title, subtitle, description }: HeroProps) => {
             "Background image highlighting electric circuit board expertise"
           )}
           className="object-cover w-full h-full"
-          sizes="100vw"
         />
       </div>
       <div className="container relative z-10">

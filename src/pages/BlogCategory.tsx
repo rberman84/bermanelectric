@@ -3,7 +3,6 @@ import { Calendar, User, Clock, ArrowRight, Tag, ArrowLeft } from 'lucide-react'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
 import BlogSEO from '@/components/blog/BlogSEO';
-import ResponsiveImage from '@/components/media/ResponsiveImage';
 import { generateAltText } from '@/lib/utils';
 
 interface BlogPost {
@@ -210,7 +209,7 @@ const BlogCategory = () => {
                         src={post.image}
                         alt={generateAltText(post.image, `${post.title} category image`)}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        sizes="(min-width: 1024px) 33vw, 100vw"
+                        loading="lazy"
                       />
                       {post.featured && (
                         <div className="absolute top-4 left-4">

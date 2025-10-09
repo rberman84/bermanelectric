@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
 
@@ -143,7 +142,7 @@ const Emergency = () => {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-white/[0.94]" />
+            <div className="absolute inset-0 bg-white/[0.94]"></div>
           </div>
           <div className="container relative">
             <h2 className="text-3xl font-bold text-center mb-16">Emergency Electrical Issues We Handle</h2>
@@ -228,7 +227,6 @@ const Emergency = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
