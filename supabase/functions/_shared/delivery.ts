@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { Resend } from "npm:resend@4.0.0";
 import { EmailReliabilityManager, type EmailProvider } from "./reliability.ts";
 
 let cachedProviders: EmailProvider[] | null = null;
