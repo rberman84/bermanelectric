@@ -3,7 +3,6 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesDropdown from "./navbar/ServicesDropdown";
-import { generateAltText } from "@/lib/utils";
 
 interface HeroProps {
   title?: string;
@@ -21,15 +20,15 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
     <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
       {/* Background with overlay */}
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" aria-hidden="true">
-        <img
-          src="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png"
-          alt={generateAltText(
-            "/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png",
-            "Background photo of a professional electrician inspecting an electrical panel"
-          )}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
-          loading="lazy"
-        />
+        >
+          <source src="/lovable-uploads/hero-background.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Content */}
