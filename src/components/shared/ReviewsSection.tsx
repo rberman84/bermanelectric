@@ -1,9 +1,9 @@
 import { Star, Quote, CheckCircle, ExternalLink, RefreshCw } from "lucide-react";
-import { useGoogleReviews, useSyncGoogleReviews } from "@/hooks/useGoogleReviews";
+import { useGoogleReviews, useSyncGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
-interface Review {
+export interface Review {
   id: string;
   author: string;
   location: string;
@@ -22,7 +22,7 @@ interface ReviewsSectionProps {
   className?: string;
 }
 
-const defaultReviews: Review[] = [
+export const defaultReviews: Review[] = [
   {
     id: "1",
     author: "Emily R.",
@@ -85,6 +85,33 @@ const defaultReviews: Review[] = [
   }
 ];
 
+export const transformGoogleReviews = (googleReviews: GoogleReview[]): Review[] =>
+  googleReviews.map((review) => ({
+    id: review.id,
+    author: review.author_name,
+    location: "Long Island, NY",
+    rating: review.rating,
+    text: review.text,
+    service: "Google Review",
+    date: new Date(review.time * 1000).toISOString().split("T")[0],
+    verified: true,
+  }));
+
+export const getReviewStats = (reviews: Review[]) => {
+  if (!reviews.length) {
+    return {
+      averageRating: 0,
+      totalReviews: 0,
+    };
+  }
+
+  const totalReviews = reviews.length;
+  const averageRating =
+    reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+
+  return { averageRating, totalReviews };
+};
+
 const ReviewsSection = ({ 
   title = "What Our Customers Say",
   subtitle = "Real reviews from satisfied customers across Long Island",
@@ -98,20 +125,10 @@ const ReviewsSection = ({
 
   // Convert Google reviews to Review format or use provided reviews
   const reviews = googleReviews && googleReviews.length > 0
-    ? googleReviews.map(review => ({
-        id: review.id,
-        author: review.author_name,
-        location: "Long Island, NY", // Default location since Google doesn't always provide it
-        rating: review.rating,
-        text: review.text,
-        service: "Google Review",
-        date: new Date(review.time * 1000).toISOString().split('T')[0],
-        verified: true
-      }))
+    ? transformGoogleReviews(googleReviews)
     : propReviews || defaultReviews;
 
-  const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
-  const totalReviews = reviews.length;
+  const { averageRating, totalReviews } = getReviewStats(reviews);
 
   const handleSync = async () => {
     setIsSyncing(true);
