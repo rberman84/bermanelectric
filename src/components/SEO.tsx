@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
+type StructuredData = Record<string, unknown> | Array<unknown>;
+
 interface SEOProps {
   title: string;
   description: string;
@@ -7,7 +9,7 @@ interface SEOProps {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
-  structuredData?: object;
+  structuredData?: StructuredData;
 }
 
 const SEO = ({ 

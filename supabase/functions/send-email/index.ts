@@ -1,7 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@2.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { getProviders, getReliabilityManager } from "../_shared/delivery.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -31,28 +29,42 @@ interface ServiceRequestEmail {
 
 type EmailRequest = ContactFormEmail | ServiceRequestEmail;
 
+const providers = getProviders();
+const reliabilityManager = getReliabilityManager();
+
+function buildResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (req.method !== "POST") {
+    return buildResponse({ error: "Method not allowed" }, 405);
+  }
+
+  if (providers.length === 0) {
+    return buildResponse({ error: "Email service not configured" }, 503);
+  }
+
   try {
     const emailData: EmailRequest = await req.json();
-    
-    console.log("Processing email request:", emailData.type);
-
+    const requestId = crypto.randomUUID();
     const businessEmail = "contact@bermanelectrical.com";
     const fromEmail = Deno.env.get("RESEND_FROM") || "Berman Electric <onboarding@resend.dev>";
 
     if (emailData.type === "contact") {
-      // Handle contact form submission
       const { name, email, phone, service, message } = emailData;
 
-      // Send notification to business
-      const { data: businessData, error: businessError } = await resend.emails.send({
+      const businessPayload = {
         from: fromEmail,
         to: businessEmail,
-        replyTo: email,
+        reply_to: email,
         subject: `New Contact: ${name} - ${service}`,
         html: `
           <h2>New Contact Form Submission</h2>
@@ -63,17 +75,25 @@ const handler = async (req: Request): Promise<Response> => {
           <p><strong>Message:</strong></p>
           <p>${message}</p>
         `,
+      } as Record<string, unknown>;
+
+      const businessDelivery = await reliabilityManager.deliver({
+        jobType: "contact-business",
+        resendPayload: businessPayload,
+        metadata: {
+          requestId,
+          leadType: "contact",
+          customerEmail: email,
+          customerName: name,
+          phone,
+        },
+        description: `Contact lead from ${name}`,
+        priority: 10,
+        alertMessage: `Contact lead from ${name} could not be emailed. Check queue immediately.`,
+        notifyOwner: true,
       });
 
-      if (businessError) {
-        console.error("Business notification error:", businessError);
-        throw businessError;
-      }
-
-      console.log("Business notification sent. ID:", businessData?.id);
-
-      // Send confirmation to customer
-      const { data: confirmData, error: confirmError } = await resend.emails.send({
+      const customerPayload = {
         from: fromEmail,
         to: email,
         subject: "We received your request",
@@ -87,28 +107,41 @@ const handler = async (req: Request): Promise<Response> => {
           <br>
           <p>Best regards,<br>Berman Electric Team</p>
         `,
+      } as Record<string, unknown>;
+
+      const confirmationDelivery = await reliabilityManager.deliver({
+        jobType: "contact-customer",
+        resendPayload: customerPayload,
+        metadata: {
+          requestId,
+          leadType: "contact",
+          customerEmail: email,
+          customerName: name,
+        },
+        description: `Contact confirmation for ${email}`,
+        notifyOwner: false,
       });
 
-      if (confirmError) {
-        console.error("Customer confirmation error:", confirmError);
-      } else {
-        console.log("Customer confirmation sent. ID:", confirmData?.id);
-      }
-
-      return new Response(
-        JSON.stringify({ success: true, businessEmailId: businessData?.id, confirmEmailId: confirmData?.id }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 200 }
+      const status = businessDelivery.status === "sent" ? 200 : 202;
+      return buildResponse(
+        {
+          success: businessDelivery.status === "sent",
+          business: businessDelivery,
+          confirmation: confirmationDelivery,
+          requestId,
+        },
+        status,
       );
+    }
 
-    } else if (emailData.type === "service-request") {
-      // Handle service request from dashboard
-      const { customerName, customerEmail, phone, serviceType, description, address, preferredDate, membership } = emailData;
+    if (emailData.type === "service-request") {
+      const { customerName, customerEmail, phone, serviceType, description, address, preferredDate, membership } =
+        emailData;
 
-      // Send notification to business
-      const { data: businessData, error: businessError } = await resend.emails.send({
+      const businessPayload = {
         from: fromEmail,
         to: businessEmail,
-        replyTo: customerEmail,
+        reply_to: customerEmail,
         subject: `New Service Request: ${serviceType} - ${customerName}`,
         html: `
           <h2>New Service Request</h2>
@@ -122,17 +155,26 @@ const handler = async (req: Request): Promise<Response> => {
           <p><strong>Description:</strong></p>
           <p>${description}</p>
         `,
+      } as Record<string, unknown>;
+
+      const businessDelivery = await reliabilityManager.deliver({
+        jobType: "service-request-business",
+        resendPayload: businessPayload,
+        metadata: {
+          requestId,
+          leadType: "service-request",
+          customerEmail,
+          customerName,
+          phone,
+          membership: Boolean(membership),
+        },
+        description: `Service request from ${customerName}`,
+        priority: 10,
+        alertMessage: `Service request from ${customerName} could not be emailed. Check queue immediately.`,
+        notifyOwner: true,
       });
 
-      if (businessError) {
-        console.error("Business notification error:", businessError);
-        throw businessError;
-      }
-
-      console.log("Service request notification sent. ID:", businessData?.id);
-
-      // Send confirmation to customer
-      const { data: confirmData, error: confirmError } = await resend.emails.send({
+      const customerPayload = {
         from: fromEmail,
         to: customerEmail,
         subject: "Service Request Received",
@@ -148,28 +190,39 @@ const handler = async (req: Request): Promise<Response> => {
           <br>
           <p>Best regards,<br>Berman Electric Team</p>
         `,
+      } as Record<string, unknown>;
+
+      const confirmationDelivery = await reliabilityManager.deliver({
+        jobType: "service-request-customer",
+        resendPayload: customerPayload,
+        metadata: {
+          requestId,
+          leadType: "service-request",
+          customerEmail,
+          customerName,
+          membership: Boolean(membership),
+        },
+        description: `Service request confirmation for ${customerEmail}`,
+        notifyOwner: false,
       });
 
-      if (confirmError) {
-        console.error("Customer confirmation error:", confirmError);
-      } else {
-        console.log("Customer confirmation sent. ID:", confirmData?.id);
-      }
-
-      return new Response(
-        JSON.stringify({ success: true, businessEmailId: businessData?.id, confirmEmailId: confirmData?.id }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 200 }
+      const status = businessDelivery.status === "sent" ? 200 : 202;
+      return buildResponse(
+        {
+          success: businessDelivery.status === "sent",
+          business: businessDelivery,
+          confirmation: confirmationDelivery,
+          requestId,
+        },
+        status,
       );
-    } else {
-      throw new Error("Invalid email type");
     }
 
-  } catch (error: any) {
-    console.error("Error:", error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 500 }
-    );
+    return buildResponse({ error: "Invalid email type" }, 400);
+  } catch (error: unknown) {
+    console.error("Error handling lead email", error);
+    const message = error instanceof Error ? error.message : String(error);
+    return buildResponse({ error: message }, 500);
   }
 };
 

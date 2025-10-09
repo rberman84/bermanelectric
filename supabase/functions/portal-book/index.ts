@@ -1,14 +1,15 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { getProviders, getReliabilityManager } from "../_shared/delivery.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
 };
+
+const providers = getProviders();
+const reliabilityManager = getReliabilityManager();
 
 const bookServiceSchema = z.object({
   name: z.string().trim().min(1).max(100),
@@ -46,10 +47,10 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    if (!Deno.env.get("RESEND_API_KEY")) {
+    if (providers.length === 0) {
       return new Response(
         JSON.stringify({ error: "Email service not configured" }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        { status: 503, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
@@ -97,61 +98,70 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending service booking email:", { name, email, serviceType });
 
-    const emailResponse = await resend.emails.send({
-      from: FROM,
-      to: dest,
-      subject,
-      html,
-      reply_to: email,
+    const businessDelivery = await reliabilityManager.deliver({
+      jobType: "booking-business",
+      resendPayload: {
+        from: FROM,
+        to: dest,
+        subject,
+        html,
+        reply_to: email,
+      },
+      metadata: {
+        leadType: "booking",
+        customerEmail: email,
+        customerName: name,
+        phone: phone || "",
+        serviceType,
+        preferredDate: preferredDate || null,
+        membership: Boolean(membership),
+      },
+      description: `Service booking from ${name}`,
+      priority: 10,
+      alertMessage: `Service booking from ${name} could not be emailed. Check queue immediately.`,
+      notifyOwner: true,
     });
 
-    const emailError = (emailResponse as any)?.error;
-    if (emailError) {
-      console.error("Email send error:", emailError);
-      return new Response(
-        JSON.stringify({ error: "Failed to send email", details: emailError }),
-        { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
-
-    console.log("Service booking email sent successfully:", emailResponse);
-
-    // Send confirmation email to customer
     const customerHtml = `
       <div style="font-family:system-ui,Arial,sans-serif;font-size:16px;line-height:1.6">
         <h2>Thanks, ${escapeHtml(name)} — we've got it.</h2>
         <p>We received your request for <b>${escapeHtml(serviceType)}</b>${preferredDate ? ` on ${escapeHtml(preferredDate)}` : ''}.</p>
-        
+
         <h3 style="margin-top:24px;color:#16a34a">What to do before we arrive:</h3>
         <ol style="margin-top:10px;padding-left:20px">
           <li style="margin-bottom:8px">Clear access to electrical panel and work area</li>
           <li style="margin-bottom:8px">Secure pets in a separate room</li>
           <li style="margin-bottom:8px">Have photos or notes about the issue ready</li>
         </ol>
-        
+
         <p style="margin-top:24px;padding:15px;background:#f3f4f6;border-left:4px solid #16a34a">
           <b>Questions?</b> Call us at <a href="tel:5163614068">516-361-4068</a> or reply to this email.
         </p>
-        
+
         <p style="margin-top:20px;color:#6b7280;font-size:14px">
           — The Berman Electric Team
         </p>
       </div>
     `;
 
-    try {
-      await resend.emails.send({
+    const confirmationDelivery = await reliabilityManager.deliver({
+      jobType: "booking-customer",
+      resendPayload: {
         from: FROM,
         to: [email],
         subject: `We got your request: ${serviceType}`,
         html: customerHtml,
         reply_to: Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com",
-      });
-      console.log("Customer confirmation email sent");
-    } catch (confirmError) {
-      console.error("Failed to send customer confirmation:", confirmError);
-      // Don't fail the request if customer email fails
-    }
+      },
+      metadata: {
+        leadType: "booking",
+        customerEmail: email,
+        customerName: name,
+        serviceType,
+      },
+      description: `Booking confirmation for ${email}`,
+      notifyOwner: false,
+    });
 
     // Forward to Google Sheet webhook (fire and forget)
     const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
@@ -180,14 +190,20 @@ const handler = async (req: Request): Promise<Response> => {
       }
     }
 
+    const responseStatus = businessDelivery.status === "sent" ? 200 : 202;
     return new Response(
-      JSON.stringify({ ok: true, id: (emailResponse as any)?.data?.id }),
-      { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      JSON.stringify({
+        ok: businessDelivery.status === "sent",
+        business: businessDelivery,
+        confirmation: confirmationDelivery,
+      }),
+      { status: responseStatus, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in portal-book function:", error);
+    const message = error instanceof Error ? error.message : String(error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: message }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }

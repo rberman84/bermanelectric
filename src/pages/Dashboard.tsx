@@ -140,8 +140,10 @@ const Dashboard = () => {
       const validated = serviceRequestSchema.parse(data);
 
       // Insert service request into database
+      if (!user?.id) throw new Error("User not authenticated");
+      
       const { error } = await supabase.from("service_requests").insert({
-        user_id: user?.id,
+        user_id: user.id,
         service_type: validated.serviceType,
         description: validated.description,
         address: validated.address,
@@ -155,7 +157,7 @@ const Dashboard = () => {
       const { data: profile } = await supabase
         .from("profiles")
         .select("display_name")
-        .eq("id", user?.id)
+        .eq("id", user.id)
         .single();
 
       // Send email notification with membership info

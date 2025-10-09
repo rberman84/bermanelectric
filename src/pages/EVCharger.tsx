@@ -1,6 +1,16 @@
 import { useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
-import { Car, Zap, Shield, CheckCircle2, Phone, Mail, Calculator, ClipboardList, Calendar } from "lucide-react";
+import {
+  Car,
+  Zap,
+  Shield,
+  CheckCircle2,
+  Phone,
+  Mail,
+  Calculator,
+  ClipboardList,
+  Calendar,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -8,7 +18,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -18,53 +28,44 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
+// If you have this util, keep the import; otherwise delete the function call below and use a plain alt string.
+// import { generateAltText } from "@/lib/utils";
+
 const services = [
-  {
-    title: "Residential EV Charger Installation",
-    items: [
+  { title: "Residential EV Charger Installation", items: [
       "Level 1 & Level 2 home charging station installations",
       "Electrical panel upgrades for increased power capacity",
       "Dedicated circuits & wiring for safe charging",
-      "Smart home integration for automated EV charging"
-    ]
-  },
-  {
-    title: "Commercial EV Charging Solutions",
-    items: [
+      "Smart home integration for automated EV charging",
+    ]},
+  { title: "Commercial EV Charging Solutions", items: [
       "Multi-unit residential EV charger installations",
       "Workplace & fleet charging station setup",
       "Public EV charger installation for retail, offices & parking lots",
-      "Load management & energy-efficient charging solutions"
-    ]
-  },
-  {
-    title: "Panel Upgrades & Dedicated Circuits",
-    items: [
+      "Load management & energy-efficient charging solutions",
+    ]},
+  { title: "Panel Upgrades & Dedicated Circuits", items: [
       "Ensure your home's electrical panel can handle EV charging loads",
       "Upgrade older electrical panels to prevent overloads & power failures",
-      "Install dedicated circuits for faster, safer charging"
-    ]
-  },
-  {
-    title: "Smart & Fast-Charging Solutions",
-    items: [
+      "Install dedicated circuits for faster, safer charging",
+    ]},
+  { title: "Smart & Fast-Charging Solutions", items: [
       "Wi-Fi-enabled EV chargers with mobile app control",
       "Fast-charging Level 2 stations for quicker charge times",
-      "Integration with solar power & energy-efficient systems"
-    ]
-  }
+      "Integration with solar power & energy-efficient systems",
+    ]},
 ];
 
 const benefits = [
   "Charge Your Car Overnight – No more waiting at public stations",
   "Save Money – Home charging is more cost-effective than commercial charging stations",
   "Increase Home Value – An EV charger adds resale value to your property",
-  "Convenience & Safety – No need to rely on crowded public chargers"
+  "Convenience & Safety – No need to rely on crowded public chargers",
 ];
 
 const whyChooseUs = [
@@ -72,19 +73,19 @@ const whyChooseUs = [
   "Over 20 Years of Experience – Trusted electrical contractors serving homes & businesses across Long Island",
   "Custom Charging Solutions – We tailor EV charger setups to match your needs, power capacity & budget",
   "Fast & Hassle-Free Installation – We handle everything from permits to installation & testing",
-  "Guaranteed Workmanship & Support – We stand behind our work & offer ongoing support"
+  "Guaranteed Workmanship & Support – We stand behind our work & offer ongoing support",
 ];
 
 const ampOptions = [
   { value: "40", label: "40A Level 2 (up to 9.6 kW)" },
   { value: "50", label: "50A Level 2 (up to 12 kW)" },
-  { value: "60", label: "60A High Power (up to 14.4 kW)" }
+  { value: "60", label: "60A High Power (up to 14.4 kW)" },
 ];
 
 const panelOptions = [
   { value: "100", label: "100A or less" },
   { value: "150", label: "150A main" },
-  { value: "200", label: "200A or greater" }
+  { value: "200", label: "200A or greater" },
 ];
 
 const loadOptions = [
@@ -93,13 +94,13 @@ const loadOptions = [
   { value: "dryer", label: "Electric dryer", demand: 5000 },
   { value: "ac", label: "Central air conditioning", demand: 6000 },
   { value: "heatpump", label: "Heat pump or electric heat", demand: 9000 },
-  { value: "pool", label: "Pool heater / hot tub", demand: 10000 }
+  { value: "pool", label: "Pool heater / hot tub", demand: 10000 },
 ];
 
 const timelineOptions = [
   { value: "asap", label: "Ready to install in the next 30 days" },
   { value: "soon", label: "Planning for the next 2-3 months" },
-  { value: "exploring", label: "Just researching options" }
+  { value: "exploring", label: "Just researching options" },
 ];
 
 const EVCharger = () => {
@@ -122,22 +123,13 @@ const EVCharger = () => {
     homeowner: "yes",
     panelSpace: "unsure",
     timeline: timelineOptions[0].value,
-    preferredContact: "phone"
+    preferredContact: "phone",
   });
   const [preQualSubmitted, setPreQualSubmitted] = useState(false);
 
   const estimatedCost = useMemo(() => {
-    const baseCostMap: Record<string, number> = {
-      "40": 1200,
-      "50": 1550,
-      "60": 1850
-    };
-
-    const panelAdderMap: Record<string, number> = {
-      "100": 1800,
-      "150": 900,
-      "200": 0
-    };
+    const baseCostMap: Record<string, number> = { "40": 1200, "50": 1550, "60": 1850 };
+    const panelAdderMap: Record<string, number> = { "100": 1800, "150": 900, "200": 0 };
 
     const run = Math.max(0, Number.isFinite(Number(runLength)) ? Number(runLength) : 0);
     const additionalRunCost = Math.max(0, run - 20) * 18;
@@ -187,17 +179,17 @@ const EVCharger = () => {
     return { totalDemand, calculatedAmps, recommendedService, advisory };
   }, [selectedAmp, selectedLoadDemand, squareFootage]);
 
-  const handleEstimatorSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleEstimatorSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setEstimate({ low: estimatedCost.low, high: estimatedCost.high });
   };
 
-  const handleLoadSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleLoadSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setLoadResult({
       totalDemand: estimatedService.totalDemand,
       recommendedService: estimatedService.recommendedService,
-      advisory: estimatedService.advisory
+      advisory: estimatedService.advisory,
     });
   };
 
@@ -207,13 +199,13 @@ const EVCharger = () => {
     );
   };
 
-  const handleLeadCapture = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleLeadCapture = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setLeadSubmitted(true);
   };
 
-  const handlePreQualSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handlePreQualSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setPreQualSubmitted(true);
   };
 
@@ -223,11 +215,13 @@ const EVCharger = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70">
-            <img 
-              src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png" 
-              alt="EV Charging Port" 
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
+            <img
+              src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png"
+              // alt={generateAltText("/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png","Background photo of an EV charging port")}
+              alt="Background photo of an EV charging port"
               className="w-full h-full object-cover opacity-70"
+              loading="lazy"
             />
           </div>
           <div className="container relative">
@@ -240,9 +234,9 @@ const EVCharger = () => {
                 Power Your Electric Vehicle with Confidence
               </p>
               <p className="text-lg text-white mb-8 leading-relaxed bg-black/30 p-6 rounded-lg backdrop-blur-sm">
-                As electric vehicles (EVs) become the future of transportation, having a reliable, 
-                at-home or commercial charging solution is essential. At Berman Electric, we 
-                specialize in EV charger installations for homes, businesses, and commercial 
+                As electric vehicles (EVs) become the future of transportation, having a reliable,
+                at-home or commercial charging solution is essential. At Berman Electric, we
+                specialize in EV charger installations for homes, businesses, and commercial
                 properties across Long Island.
               </p>
             </div>
@@ -309,7 +303,7 @@ const EVCharger = () => {
                         type="number"
                         min={0}
                         value={runLength}
-                        onChange={(event) => setRunLength(event.target.value)}
+                        onChange={(e) => setRunLength(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -365,7 +359,7 @@ const EVCharger = () => {
                       <Input
                         id="lead-name"
                         value={leadForm.name}
-                        onChange={(event) => setLeadForm((prev) => ({ ...prev, name: event.target.value }))}
+                        onChange={(e) => setLeadForm((prev) => ({ ...prev, name: e.target.value }))}
                         required
                       />
                     </div>
@@ -375,7 +369,7 @@ const EVCharger = () => {
                         id="lead-email"
                         type="email"
                         value={leadForm.email}
-                        onChange={(event) => setLeadForm((prev) => ({ ...prev, email: event.target.value }))}
+                        onChange={(e) => setLeadForm((prev) => ({ ...prev, email: e.target.value }))}
                         required
                       />
                     </div>
@@ -385,7 +379,7 @@ const EVCharger = () => {
                         id="lead-phone"
                         type="tel"
                         value={leadForm.phone}
-                        onChange={(event) => setLeadForm((prev) => ({ ...prev, phone: event.target.value }))}
+                        onChange={(e) => setLeadForm((prev) => ({ ...prev, phone: e.target.value }))}
                       />
                     </div>
                     <div className="space-y-2">
@@ -394,7 +388,7 @@ const EVCharger = () => {
                         id="lead-notes"
                         placeholder="Example: Detached garage ~60 ft away, need installation by May."
                         value={leadForm.notes}
-                        onChange={(event) => setLeadForm((prev) => ({ ...prev, notes: event.target.value }))}
+                        onChange={(e) => setLeadForm((prev) => ({ ...prev, notes: e.target.value }))}
                         rows={4}
                       />
                     </div>
@@ -440,7 +434,7 @@ const EVCharger = () => {
                           type="number"
                           min={0}
                           value={squareFootage}
-                          onChange={(event) => setSquareFootage(event.target.value)}
+                          onChange={(e) => setSquareFootage(e.target.value)}
                           required
                         />
                       </div>
@@ -476,7 +470,7 @@ const EVCharger = () => {
                           {(estimatedService.totalDemand / 1000).toFixed(1)} kVA
                         </p>
                         <p className="text-sm text-gray-600 mt-2">
-                          Includes general lighting load, major appliances and your new {ampOptions.find((item) => item.value === selectedAmp)?.label.toLowerCase()}.
+                          Includes general lighting load, major appliances and your new {ampOptions.find((i) => i.value === selectedAmp)?.label.toLowerCase()}.
                         </p>
                         <div className="mt-4 space-y-2 text-sm text-gray-600">
                           <div className="flex items-center justify-between">
@@ -634,9 +628,7 @@ const EVCharger = () => {
         <div className="py-24 bg-white">
           <div className="container">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-16">
-                Why Install an EV Charger at Home?
-              </h2>
+              <h2 className="text-3xl font-bold text-center mb-16">Why Install an EV Charger at Home?</h2>
               <div className="bg-gray-50 rounded-xl shadow-lg p-8">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start gap-4 mb-6 last:mb-0">
@@ -652,9 +644,7 @@ const EVCharger = () => {
         {/* Why Choose Us */}
         <div className="py-24 bg-gray-50">
           <div className="container">
-            <h2 className="text-3xl font-bold text-center mb-16">
-              Why Choose Berman Electric?
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-16">Why Choose Berman Electric?</h2>
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-xl shadow-lg p-8">
                 {whyChooseUs.map((reason, index) => (
@@ -672,24 +662,22 @@ const EVCharger = () => {
         <div className="py-24 bg-electric-600">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Get Your EV Charger Installed Today!
-              </h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Get Your EV Charger Installed Today!</h2>
               <p className="text-lg text-white/90 mb-8">
-                Whether you need a home charging station, commercial fleet setup, or multi-unit 
+                Whether you need a home charging station, commercial fleet setup, or multi-unit
                 EV solution, Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a 
+                <a
                   href="tel:+15163614068"
-                  className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center px-6 py-3 text-electric-700 bg-white rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-300 focus-visible:ring-offset-2 focus-visible:ring-offset-electric-600"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Us: (516) 361-4068
                 </a>
-                <Link 
+                <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors"
+                  className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-electric-700"
                 >
                   <Mail className="w-5 h-5 mr-2" />
                   Request a Free Quote
