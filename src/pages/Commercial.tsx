@@ -2,6 +2,7 @@ import { Building2, Plug, Lightbulb, Shield, Wrench, Power, CheckCircle2, Phone,
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 const Commercial = () => {
@@ -43,6 +44,15 @@ const Commercial = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <div className="relative py-24">
+          <div className="absolute inset-0">
+            <ResponsiveImage
+              src="/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png"
+              alt="Modern commercial building representing our commitment to business electrical solutions"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
             <img
               src="/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png"
@@ -75,6 +85,15 @@ const Commercial = () => {
 
         {/* Services Grid */}
         <div className="relative py-24">
+          <div className="absolute inset-0">
+            <ResponsiveImage
+              src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
+              alt="Professional electrician installing commercial electrical equipment"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1280px) 60vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-white/[0.54]" />
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"

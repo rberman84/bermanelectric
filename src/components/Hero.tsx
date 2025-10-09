@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesDropdown from "./navbar/ServicesDropdown";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 interface HeroProps {
   title?: string;
@@ -19,6 +20,13 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   return (
     <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
       {/* Background with overlay */}
+      <div className="pointer-events-none select-none absolute inset-0" aria-hidden="true">
+        <ResponsiveImage
+          src="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png"
+          alt="Professional electrician wearing safety gear inspecting electrical panel"
+          wrapperClassName="absolute inset-0"
+          className="w-full h-full object-cover"
+          sizes="100vw"
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
         <img
           src="/lovable-uploads/hero-electrical-background.jpg"
@@ -26,6 +34,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           className="w-full h-full object-cover"
           loading="eager"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
       </div>
 
       {/* Content */}

@@ -9,6 +9,7 @@ import RelatedPosts from "@/components/blog/RelatedPosts";
 import SocialShare from "@/components/blog/SocialShare";
 import AuthorBio from "@/components/blog/AuthorBio";
 import ReadingProgress from "@/components/blog/ReadingProgress";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 // This would typically come from a CMS or API
@@ -1084,6 +1085,12 @@ const BlogPost = () => {
 
         {/* Featured Image */}
         <div className="relative h-64 md:h-96 overflow-hidden">
+          <ResponsiveImage
+            src={post.image}
+            alt={post.title}
+            wrapperClassName="absolute inset-0"
+            className="w-full h-full object-cover"
+            sizes="(min-width: 1024px) 60vw, 100vw"
           <img
             src={post.image}
             alt={generateAltText(post.image, `${post.title} hero image`)}

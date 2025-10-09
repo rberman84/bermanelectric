@@ -10,10 +10,49 @@
     <meta name="author" content="Berman Electric" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://bermanelectrical.com/" />
-    
+
+    <style>
+      :root {
+        color-scheme: light;
+        --page-background: #f8fafc;
+        --page-foreground: #0f172a;
+        --accent-primary: #2563eb;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background-color: var(--page-background);
+        color: var(--page-foreground);
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .button-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
+        color: #fff;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .button-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 30px rgba(29, 78, 216, 0.25);
+      }
+    </style>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Berman Electric - Licensed Electrician Long Island NY" />
     <meta property="og:description" content="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience." />
@@ -31,23 +70,35 @@
     <!-- Performance & Core Web Vitals -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://wsrv.nl" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    
+
     <!-- DNS Prefetch for external resources -->
     <link rel="dns-prefetch" href="//images.unsplash.com" />
     
     <!-- Preload critical resources -->
     <link rel="preload" href="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" as="image" />
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y"></script>
+    <!-- Google Analytics (deferred) -->
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-49S5SE0H5Y');
+      function gtag(){window.dataLayer.push(arguments);}
+      function loadAnalytics(){
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y';
+        script.async = true;
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-49S5SE0H5Y', { anonymize_ip: true });
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalytics);
+      } else {
+        window.addEventListener('load', () => setTimeout(loadAnalytics, 1200));
+      }
     </script>
   </head>
 

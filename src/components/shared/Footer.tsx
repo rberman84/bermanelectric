@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 import { generateAltText } from "@/lib/utils";
 
 const Footer = () => {
@@ -44,6 +45,11 @@ const Footer = () => {
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
             {/* Company Info & NAP */}
             <div className="lg:col-span-1">
+              <Link to="/" className="inline-block mb-4">
+                <ResponsiveImage
+                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+                  alt="Berman Electric Logo"
+                  wrapperClassName="inline-flex h-20 w-auto"
               <Link
                 to="/"
                 className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
@@ -55,6 +61,7 @@ const Footer = () => {
                     "Berman Electric logo in the footer"
                   )}
                   className="h-20 w-auto brightness-0 invert"
+                  sizes="160px"
                 />
               </Link>
               <NAP variant="footer" showHours={true} />

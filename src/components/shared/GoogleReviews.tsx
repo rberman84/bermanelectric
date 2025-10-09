@@ -3,6 +3,7 @@ import { Star, RefreshCw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 interface GoogleReview {
   id: string;
@@ -112,10 +113,12 @@ const GoogleReviews = () => {
                 >
                   <div className="flex items-start gap-4 mb-4">
                     {review.author_photo_url && (
-                      <img
+                      <ResponsiveImage
                         src={review.author_photo_url}
                         alt={review.author_name}
+                        wrapperClassName="w-12 h-12"
                         className="w-12 h-12 rounded-full object-cover"
+                        sizes="48px"
                       />
                     )}
                     <div className="flex-1">

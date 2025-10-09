@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
+import ResponsiveImage from "@/components/media/ResponsiveImage";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,6 +65,12 @@ const Navbar = () => {
             to="/"
             className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
+            <ResponsiveImage
+              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+              alt="Berman Electric Logo"
+              priority
+              sizes="(min-width: 1024px) 192px, 144px"
+              wrapperClassName="inline-flex h-32 w-auto"
             <img
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
               alt={generateAltText(
@@ -75,12 +82,12 @@ const Navbar = () => {
                 isScrolled ? "brightness-0 invert" : "brightness-100",
                 "animate-[wiggle_3s_ease-in-out_infinite]"
               )}
-              style={{
+              imgStyle={{
                 animation: `
                   scale 4s ease-in-out infinite,
                   colorize 4s ease-in-out infinite
-              `
-            }}
+                `,
+              }}
             />
           </Link>
 
