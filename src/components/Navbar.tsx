@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
+import { useAttribution } from "@/hooks/useAttribution";
 import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
@@ -11,6 +12,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { user, signOut } = useAuth();
+  const { trackingNumber } = useAttribution();
 
   useEffect(() => {
     let rafId: number;
@@ -79,14 +81,14 @@ const Navbar = () => {
             {/* CTAs */}
             <div className="flex items-center space-x-4">
               <a
-                href="tel:+15163614068"
+                href={`tel:${trackingNumber.value}`}
                 className={cn(
                   "inline-flex items-center text-sm font-medium transition-colors",
                   isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
                 )}
               >
                 <Phone className="mr-2 h-4 w-4" />
-                (516) 361-4068
+                {trackingNumber.display}
               </a>
               {user ? (
                 <button

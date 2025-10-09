@@ -1,5 +1,6 @@
 import { CheckCircle2, Star, MapPin, Clock, Shield, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import { DynamicPhoneLink } from "@/components/shared/DynamicPhone";
 
 const HomeContent = () => {
   const services = [
@@ -181,9 +182,9 @@ const HomeContent = () => {
             
             <div className="text-center pt-6 border-t border-gray-100">
               <p className="text-gray-600">
-                Don't see your area? <a href="tel:+15163614068" className="text-electric-600 hover:text-electric-700 font-bold transition-colors">
-                  Call (516) 361-4068
-                </a> to check if we service your location!
+                Don't see your area? <DynamicPhoneLink className="text-electric-600 hover:text-electric-700 font-bold transition-colors">
+                  {(display) => `Call ${display}`}
+                </DynamicPhoneLink> to check if we service your location!
               </p>
             </div>
           </div>
@@ -197,13 +198,12 @@ const HomeContent = () => {
               Get a free estimate on your electrical project today. Licensed, insured, and ready to serve Long Island.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="tel:+15163614068"
+              <DynamicPhoneLink
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-electric-600 rounded-xl hover:bg-gray-50 transition-all font-bold text-lg hover:scale-105"
               >
-                Call (516) 361-4068
-              </a>
-              <Link 
+                {(display) => `Call ${display}`}
+              </DynamicPhoneLink>
+              <Link
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-electric-800 text-white rounded-xl hover:bg-electric-900 transition-all font-bold text-lg hover:scale-105 border-2 border-white/20"
               >

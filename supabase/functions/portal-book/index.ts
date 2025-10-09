@@ -3,6 +3,8 @@ import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const BUSINESS_PHONE_DISPLAY = Deno.env.get("BUSINESS_PHONE_DISPLAY") || "(516) 361-4068";
+const BUSINESS_PHONE_E164 = Deno.env.get("BUSINESS_PHONE_E164") || "+15163614068";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -130,7 +132,7 @@ const handler = async (req: Request): Promise<Response> => {
         </ol>
         
         <p style="margin-top:24px;padding:15px;background:#f3f4f6;border-left:4px solid #16a34a">
-          <b>Questions?</b> Call us at <a href="tel:5163614068">516-361-4068</a> or reply to this email.
+          <b>Questions?</b> Call us at <a href="tel:${BUSINESS_PHONE_E164}">${BUSINESS_PHONE_DISPLAY}</a> or reply to this email.
         </p>
         
         <p style="margin-top:20px;color:#6b7280;font-size:14px">

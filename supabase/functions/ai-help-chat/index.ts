@@ -18,6 +18,7 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
+    const businessPhoneDisplay = Deno.env.get('BUSINESS_PHONE_DISPLAY') || '(516) 361-4068';
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -27,20 +28,20 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
         messages: [
-          { 
-            role: "system", 
-            content: `You are a helpful customer service assistant for Berman Electric, a licensed electrician serving Long Island, Nassau County, Suffolk County, and Ronkonkoma NY. 
+          {
+            role: "system",
+            content: `You are a helpful customer service assistant for Berman Electric, a licensed electrician serving Long Island, Nassau County, Suffolk County, and Ronkonkoma NY.
 
 Key information about Berman Electric:
 - 20+ years of experience in electrical services
 - Licensed and insured electrician
 - Services: Residential electrical work, commercial electrical services, emergency repairs, panel upgrades, lighting installation, EV charger installation, generator installation
 - Service areas: Long Island, Nassau County, Suffolk County, Ronkonkoma NY
-- Phone: (516) 361-4068
+- Phone: ${businessPhoneDisplay}
 - Email: info@bermanelectrical.com
 - Hours: Monday-Friday 7:00 AM - 7:00 PM, Emergency services available on weekends
 
-Be helpful, professional, and concise. If someone needs immediate assistance, direct them to call (516) 361-4068. For quotes, suggest using the contact form or calling directly.` 
+Be helpful, professional, and concise. If someone needs immediate assistance, direct them to call ${businessPhoneDisplay}. For quotes, suggest using the contact form or calling directly.`
           },
           { role: "user", content: message }
         ],

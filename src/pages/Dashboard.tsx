@@ -13,6 +13,7 @@ import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import { BookNowStrip } from "@/components/shared/BookNowStrip";
+import { useTrackingNumber } from "@/hooks/useAttribution";
 
 const serviceRequestSchema = z.object({
   serviceType: z.string().min(1, { message: "Please select a service type" }),
@@ -55,6 +56,7 @@ const Dashboard = () => {
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [userName, setUserName] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const { display: phoneDisplay, href: phoneHref } = useTrackingNumber();
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -260,7 +262,7 @@ const Dashboard = () => {
               <div className="text-sm md:text-right">
                 <div>
                   Need help now?{" "}
-                  <span className="font-semibold">(516) 361-4068</span>
+                  <span className="font-semibold">{phoneDisplay}</span>
                 </div>
                 <div className="text-white/70">
                   Berman Electric • White‑glove local service
@@ -412,10 +414,10 @@ const Dashboard = () => {
                   <div>
                     <div className="text-sm text-neutral-500">Call us</div>
                     <a
-                      href="tel:5163614068"
+                      href={phoneHref}
                       className="font-semibold hover:underline"
                     >
-                      (516) 361-4068
+                      {phoneDisplay}
                     </a>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 
 import { Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { DynamicPhoneLink } from "@/components/shared/DynamicPhone";
 
 const ContactCTA = () => {
   return (
@@ -14,14 +15,15 @@ const ContactCTA = () => {
             Looking for a reliable, experienced electrician? Berman Electric is here to help.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="tel:+15163614068"
-              className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Us: (516) 361-4068
-            </a>
-            <Link 
+            <DynamicPhoneLink className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+              {(display) => (
+                <>
+                  <Phone className="w-5 h-5 mr-2" />
+                  {`Call Us: ${display}`}
+                </>
+              )}
+            </DynamicPhoneLink>
+            <Link
               to="/contact"
               className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors"
             >

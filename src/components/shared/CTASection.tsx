@@ -1,5 +1,6 @@
 import { Phone, Mail, Calendar, MessageCircle, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAttribution } from "@/hooks/useAttribution";
 
 interface CTASectionProps {
   variant?: 'default' | 'emergency' | 'service' | 'footer';
@@ -17,13 +18,28 @@ const CTASection = ({
   variant = 'default',
   title,
   subtitle,
-  primaryText = "Call (516) 361-4068",
+  primaryText = "Call Now",
   secondaryText = "Get Free Quote",
   showTrustSignals = true,
   showUrgency = false,
   backgroundColor = 'bg-electric-600',
   className = ''
 }: CTASectionProps) => {
+  const { trackingNumber } = useAttribution();
+  const phoneHref = `tel:${trackingNumber.value}`;
+
+  const formatWithPhone = (text: string) => {
+    const phonePattern = /(?:\+?1[-.\s]?)?(?:\(?\d{3}\)?[-.\s]?)\d{3}[-.\s]?\d{4}/;
+    if (!text) {
+      return trackingNumber.display;
+    }
+
+    if (phonePattern.test(text)) {
+      return text.replace(phonePattern, trackingNumber.display);
+    }
+
+    return `${text} ${trackingNumber.display}`.trim();
+  };
   
   const trustSignals = [
     { icon: <Shield className="w-4 h-4" />, text: "Licensed & Insured" },
@@ -55,11 +71,11 @@ const CTASection = ({
             )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+15163614068"
+                href={phoneHref}
                 className="inline-flex items-center px-8 py-4 bg-white text-red-600 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg animate-pulse"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Emergency: (516) 361-4068
+                {formatWithPhone("Emergency: (516) 361-4068")}
               </a>
               <Link
                 to="/emergency"
@@ -101,11 +117,11 @@ const CTASection = ({
               </div>
               <div className="space-y-4">
                 <a
-                  href="tel:+15163614068"
+                  href={phoneHref}
                   className="flex items-center justify-center w-full px-6 py-4 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  {primaryText}
+                  {formatWithPhone(primaryText)}
                 </a>
                 <Link
                   to="/contact"
@@ -140,11 +156,11 @@ const CTASection = ({
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="tel:+15163614068"
+                href={phoneHref}
                 className="inline-flex items-center px-6 py-3 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                {primaryText}
+                {formatWithPhone(primaryText)}
               </a>
               <Link
                 to="/contact"
@@ -185,11 +201,11 @@ const CTASection = ({
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+15163614068"
+              href={phoneHref}
               className="inline-flex items-center px-8 py-4 bg-white text-electric-600 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg"
             >
               <Phone className="w-5 h-5 mr-2" />
-              {primaryText}
+              {formatWithPhone(primaryText)}
             </a>
             <Link
               to="/contact"

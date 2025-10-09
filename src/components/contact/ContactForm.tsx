@@ -1,8 +1,9 @@
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { useAttribution } from "@/hooks/useAttribution";
 
 const services = [
   "Residential",
@@ -13,6 +14,8 @@ const services = [
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { attribution, trackingNumber } = useAttribution();
+  const bookingLink = useMemo(() => import.meta.env.VITE_BOOKING_LINK || "https://cal.com/berman-electric/consultation", []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,6 +30,15 @@ const ContactForm = () => {
         phone: formData.get('phone') as string,
         service: formData.get('service') as string,
         message: formData.get('message') as string,
+        smsOptIn: formData.get('sms-opt-in') === 'on',
+        bookingLink,
+        tracking: {
+          id: trackingNumber.id,
+          display: trackingNumber.display,
+          value: trackingNumber.value,
+        },
+        attribution,
+        pageUrl: window.location.href,
       };
 
       console.log('Submitting contact form with payload:', payload);
@@ -134,6 +146,19 @@ const ContactForm = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-600 focus:border-transparent"
             placeholder="Enter details about your request"
           />
+        </div>
+
+        <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <input
+            type="checkbox"
+            id="sms-opt-in"
+            name="sms-opt-in"
+            defaultChecked
+            className="mt-1 h-4 w-4 rounded border-gray-300 text-electric-600 focus:ring-electric-500"
+          />
+          <label htmlFor="sms-opt-in" className="text-sm text-gray-600">
+            Send me a confirmation text with a booking link. Message and data rates may apply. Reply STOP to opt out.
+          </label>
         </div>
 
         <button
