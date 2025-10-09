@@ -1,4 +1,4 @@
-import { MapPin, Phone, Clock, Shield, CheckCircle2, Zap, Home, Building2 } from "lucide-react";
+import { MapPin, Phone, Clock, Shield, CheckCircle2, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";

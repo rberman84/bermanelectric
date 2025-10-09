@@ -1,0 +1,353 @@
+[
+  {
+    "name": "Huntington",
+    "slug": "huntington",
+    "seo": {
+      "title": "Licensed Huntington Electricians | Berman Electric",
+      "description": "Berman Electric delivers rapid-response electrical service for Huntington homes, waterfront properties, and downtown storefronts. Panel upgrades, lighting design, EV chargers, and emergency repairs backed by master electricians."
+    },
+    "hero": {
+      "heading": "Huntington Electricians for Waterfront Homes & Downtown Shops",
+      "subheading": "Master electricians on-call for Cold Spring Harbor colonials, Huntington Bay estates, and bustling New York Avenue storefronts.",
+      "ctaLabel": "Schedule Huntington Service"
+    },
+    "intro": "Historic waterfront neighborhoods in Huntington demand electrical systems that can handle salt air, steep elevations, and expanded living spaces. Berman Electric designs and maintains resilient solutions for residences near Huntington Harbor, thriving restaurants along Main Street, and medical offices off Park Avenue.",
+    "serviceArea": "Serving Huntington village, Lloyd Harbor, Cold Spring Harbor, and surrounding North Shore neighborhoods.",
+    "map": {
+      "query": "Huntington NY Town Hall",
+      "description": "Our Huntington electricians stage from Ronkonkoma for fast access to NY-454 and Northern State Parkway, arriving in downtown Huntington in under 35 minutes.",
+      "note": "We coordinate directly with the Town of Huntington Building Department for permits and inspections."
+    },
+    "coordinates": {
+      "latitude": 40.8708,
+      "longitude": -73.4253
+    },
+    "zipCodes": ["11743"],
+    "neighborhoods": ["Cold Spring Harbor", "Halesite", "Lloyd Harbor", "Huntington Bay"],
+    "landmarks": ["Heckscher Park", "The Paramount", "Huntington Hospital"],
+    "serviceCatalog": [
+      "Panel and service upgrades for historic homes",
+      "Marina and waterfront electrical maintenance",
+      "Restaurant and retail fit-outs",
+      "Backup generator installation"
+    ],
+    "services": [
+      {
+        "title": "Waterfront Electrical Hardening",
+        "description": "Salt air, elevated decks, and dock lighting require corrosion-resistant wiring methods. We refit service entrances, GFCI protection, and marina power pedestals designed for Huntington Bay conditions.",
+        "highlights": [
+          "Marine-grade wiring and weatherproof conduit",
+          "Whole-home surge protection tied to PSEG Long Island specifications",
+          "Seasonal inspection plans for docks and boat lifts"
+        ]
+      },
+      {
+        "title": "Downtown Lighting & Power",
+        "description": "Restaurants and retailers along New York Avenue rely on clean power for kitchen equipment, accent lighting, and point-of-sale systems. Our crews perform overnight retrofits and code updates without disrupting business hours.",
+        "highlights": [
+          "Lighting design for dining rooms and storefronts",
+          "Dedicated circuits for commercial refrigeration and cooking equipment",
+          "Rapid emergency response agreements for service interruptions"
+        ]
+      },
+      {
+        "title": "North Shore Residential Projects",
+        "description": "From modern smart homes overlooking the harbor to 1920s colonials, we handle panel upgrades, EV charging, and whole-home rewiring with meticulous attention to Huntington's architectural details.",
+        "highlights": [
+          "Load calculations and permit packages submitted to the Town of Huntington",
+          "EV charging stations with driveway-friendly mounting options",
+          "Low-voltage integration for landscape and security lighting"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do Huntington electrical projects require permits?",
+        "answer": "Most panel upgrades, service changes, and major remodels in Huntington require permits through the Department of Engineering Services. Berman Electric prepares drawings, submits paperwork, and schedules inspections so projects stay on track."
+      },
+      {
+        "question": "Can you work on homes near Huntington Harbor?",
+        "answer": "Yes. Waterfront properties face salt exposure and flood zones that demand special materials and bonding. Our team installs marina-grade equipment and coordinates with homeowners' insurance providers for compliance documentation."
+      },
+      {
+        "question": "How fast can you respond to Huntington emergency calls?",
+        "answer": "Our dispatch center monitors Huntington service requests around the clock. Crews route via Northern State Parkway or Jericho Turnpike to arrive in approximately 30-40 minutes for no-power calls, storm damage, or tripped main breakers."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule an Electrician in Huntington",
+      "description": "Follow these steps to secure a same-week visit from a licensed Huntington electrician.",
+      "steps": [
+        {
+          "title": "Document the issue",
+          "detail": "Take photos or short videos of the panel, affected rooms, or waterfront equipment. Note breaker labels and any error codes."
+        },
+        {
+          "title": "Contact Berman Electric",
+          "detail": "Call (516) 361-4068 or submit the online form. Mention Huntington so we can reserve a crew familiar with local inspections."
+        },
+        {
+          "title": "Confirm access & permits",
+          "detail": "Our coordinator will review parking, dock access, and permit requirements with you. We handle the filing with the Town of Huntington when needed."
+        },
+        {
+          "title": "Day-of service walkthrough",
+          "detail": "The crew lead will perform a safety walkthrough, verify scope, and review maintenance tips specific to Huntington's coastal climate."
+        }
+      ],
+      "successNarrative": "Once complete, you'll receive a digital closeout package with inspection sign-offs and recommended maintenance intervals tailored to Huntington properties."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 35 minutes in normal traffic.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head northwest on Ronkonkoma Ave",
+          "detail": "Continue onto Portion Rd/NY-16 and merge onto I-495 W toward New York City."
+        },
+        {
+          "title": "Take exit 53 toward Sagtikos State Pkwy",
+          "detail": "Follow signs for Northern State Pkwy W toward New York."
+        },
+        {
+          "title": "Exit at Deer Park Ave toward Huntington",
+          "detail": "Continue north; Deer Park Ave becomes Park Ave. Turn left onto Main St to reach downtown Huntington."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Smithtown",
+    "slug": "smithtown",
+    "seo": {
+      "title": "Smithtown NY Electricians | Berman Electric",
+      "description": "Berman Electric supports Smithtown homeowners, healthcare facilities, and industrial parks with upgrades, maintenance, and 24/7 emergency electrical service."
+    },
+    "hero": {
+      "heading": "Smithtown Electrical Experts for Suburban Homes & Medical Campuses",
+      "subheading": "Code-compliant installations for St. Catherine medical offices, Nesconset retail plazas, and Village of the Branch residences.",
+      "ctaLabel": "Book Smithtown Electrician"
+    },
+    "intro": "Smithtown's mix of split-level homes, expanding medical facilities, and industrial campuses demands precise electrical planning. Berman Electric modernizes panels, installs life-safety systems, and maintains reliable power for businesses along Jericho Turnpike and Main Street.",
+    "serviceArea": "Serving Smithtown, Nesconset, Kings Park, Hauppauge, and Village of the Branch.",
+    "map": {
+      "query": "Smithtown NY Main Street",
+      "description": "We dispatch dedicated crews familiar with the Route 347 corridor and St. Catherine of Siena Hospital campus.",
+      "note": "All hospital and medical fit-outs include infection-control documentation and coordination with facilities teams."
+    },
+    "coordinates": {
+      "latitude": 40.8559,
+      "longitude": -73.2007
+    },
+    "zipCodes": ["11787", "11767", "11754"],
+    "neighborhoods": ["Nesconset", "Village of the Branch", "Kings Park", "Hauppauge"],
+    "landmarks": ["Smithtown Performing Arts Center", "Sunken Meadow State Park", "St. Catherine of Siena Hospital"],
+    "serviceCatalog": [
+      "Service upgrades for high-demand appliances",
+      "Medical office electrical maintenance",
+      "Generator installations for critical facilities",
+      "Lighting retrofits for Route 347 retail"
+    ],
+    "services": [
+      {
+        "title": "Panel & Service Upgrades",
+        "description": "Smithtown's 1960s and 1970s homes often need larger service to support EV chargers, spas, and home offices. We calculate load requirements, coordinate with PSEG Long Island, and install new meter pans and grounding systems.",
+        "highlights": [
+          "200A and 400A service changes with same-day inspection scheduling",
+          "EV charging circuits and load management",
+          "Arc-fault and surge protection tailored to split-level layouts"
+        ]
+      },
+      {
+        "title": "Medical Facility Support",
+        "description": "Outpatient centers around St. Catherine require redundant power, isolated ground circuits, and lighting controls. Our technicians follow NFPA 99 and NFPA 101 standards for patient-care spaces.",
+        "highlights": [
+          "Emergency generator tie-ins and automatic transfer switches",
+          "Lighting controls and exam room task lighting",
+          "Weekly testing plans documented for compliance audits"
+        ]
+      },
+      {
+        "title": "Industrial Park Maintenance",
+        "description": "We maintain electrical distribution for Hauppauge Industrial Park warehouses, including motor controls, high-bay LED lighting, and preventive maintenance programs.",
+        "highlights": [
+          "Thermal imaging and torque checks on switchgear",
+          "Programmable logic controller troubleshooting",
+          "On-call response agreements for production downtime"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can you coordinate with PSEG for Smithtown service upgrades?",
+        "answer": "Yes. We submit work requests through PSEG Long Island, schedule disconnect/reconnect appointments, and remain onsite to confirm restoration once inspections pass."
+      },
+      {
+        "question": "Do you work with Smithtown industrial park tenants?",
+        "answer": "Absolutely. We maintain distribution panels, lighting, and machine feeds across Hauppauge Industrial Park and provide preventive maintenance plans to reduce downtime."
+      },
+      {
+        "question": "Are evening appointments available?",
+        "answer": "We offer evening and weekend scheduling for Main Street retailers and Route 347 restaurants to minimize disruption to customers."
+      }
+    ],
+    "howTo": {
+      "title": "How to Prepare for a Smithtown Electrical Upgrade",
+      "description": "Use this checklist before our electricians arrive for a panel or generator upgrade in Smithtown.",
+      "steps": [
+        {
+          "title": "Confirm equipment placement",
+          "detail": "Identify exterior wall space for new panels or generators and clear vegetation within three feet."
+        },
+        {
+          "title": "Gather documentation",
+          "detail": "Locate prior inspection cards, recent electrical bills, and any warranty paperwork for existing equipment."
+        },
+        {
+          "title": "Notify building occupants",
+          "detail": "Let family members, tenants, or staff know when power will be temporarily interrupted so they can plan accordingly."
+        },
+        {
+          "title": "Walk through safety items",
+          "detail": "Our foreman will review bonding, grounding, and surge protection upgrades with you before we energize the system."
+        }
+      ],
+      "successNarrative": "After completion, we'll email inspection approvals, utility confirmations, and recommended maintenance intervals tailored to Smithtown properties."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 20 minutes via NY-347.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head north on Lakeland Ave",
+          "detail": "Turn left onto Veterans Memorial Hwy/NY-454 W and follow signs for Smithtown."
+        },
+        {
+          "title": "Merge onto NY-347",
+          "detail": "Continue west toward Smithtown, passing through Nesconset."
+        },
+        {
+          "title": "Arrive in downtown Smithtown",
+          "detail": "Turn right onto NY-111/Main St. Our team services homes and businesses throughout the village."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Brookhaven",
+    "slug": "brookhaven",
+    "seo": {
+      "title": "Brookhaven Electricians | Berman Electric",
+      "description": "From Patchogue storefronts to Manorville estates, Berman Electric provides Brookhaven with design-build electrical, emergency repairs, and code compliance support."
+    },
+    "hero": {
+      "heading": "Brookhaven Electricians for Waterfront, Farms & Innovation Parks",
+      "subheading": "Experienced crews covering Patchogue Village, Bellport waterfronts, and Brookhaven National Lab support facilities.",
+      "ctaLabel": "Request Brookhaven Service"
+    },
+    "intro": "Brookhaven spans dynamic communities from North Shore research campuses to South Shore arts districts. Our electricians handle utility coordination, marina power, agricultural infrastructure, and smart home projects throughout the town's 531 square miles.",
+    "serviceArea": "Serving Patchogue, Bellport, Mastic Beach, Manorville, and Brookhaven National Lab support housing.",
+    "map": {
+      "query": "Patchogue NY",
+      "description": "We deploy crews to Brookhaven daily via Sunrise Highway and Nicolls Road, keeping response times under 30 minutes for most neighborhoods.",
+      "note": "Permit coordination is available with Brookhaven Town Hall and the Village of Patchogue building departments."
+    },
+    "coordinates": {
+      "latitude": 40.7793,
+      "longitude": -72.9153
+    },
+    "zipCodes": ["11772", "11713", "11949", "11967"],
+    "neighborhoods": ["Patchogue", "Bellport", "Mastic Beach", "Manorville", "North Bellport"],
+    "landmarks": ["Patchogue Theatre", "Fire Island Ferry", "Brookhaven National Laboratory"],
+    "serviceCatalog": [
+      "Marina and waterfront power systems",
+      "Agricultural and equestrian facility wiring",
+      "Restaurant and hospitality electrical",
+      "Solar and battery storage integration"
+    ],
+    "services": [
+      {
+        "title": "Village & Main Street Projects",
+        "description": "Patchogue and Bellport storefronts rely on precise lighting, signage, and kitchen power. We coordinate shut-offs with local utilities and deliver overnight fit-outs to keep merchants open.",
+        "highlights": [
+          "Commercial kitchen wiring and load balancing",
+          "Architectural lighting for galleries and restaurants",
+          "Fire alarm and low-voltage coordination"
+        ]
+      },
+      {
+        "title": "Waterfront & Marina Electrical",
+        "description": "South Shore boatyards and ferry terminals require resilient power distribution. We install shore power pedestals, lighting, and pump-out station controls built to withstand salt spray and tidal shifts.",
+        "highlights": [
+          "30A/50A shore power circuits with GFPE protection",
+          "Dock lighting and emergency egress systems",
+          "Annual testing programs ahead of summer boating season"
+        ]
+      },
+      {
+        "title": "Rural Estate & Agricultural Systems",
+        "description": "East Brookhaven farms and equestrian estates need dependable power for irrigation, barn lighting, and automated gates. Our crews design underground feeders, backup generators, and smart monitoring tailored to expansive properties.",
+        "highlights": [
+          "Underground trenching and secondary service upgrades",
+          "Generator sizing with automatic transfer switches",
+          "Smart controls for lighting, pumps, and security"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you handle Brookhaven Town permits?",
+        "answer": "Yes. Our project managers submit electrical permit applications with the Town of Brookhaven or incorporated villages such as Patchogue and Bellport. We also schedule inspections and provide as-built documentation."
+      },
+      {
+        "question": "Can you support Brookhaven National Lab contractors?",
+        "answer": "We regularly support BNL contractors with temporary power, panel installations, and safety upgrades for support housing and research facilities. Our staff is familiar with site security protocols."
+      },
+      {
+        "question": "Do you offer seasonal marina maintenance?",
+        "answer": "We perform preseason inspections, megger testing, and code updates for marinas in Patchogue, Davis Park ferry docks, and Bellport Bay."
+      }
+    ],
+    "howTo": {
+      "title": "How Brookhaven Property Managers Book Service",
+      "description": "Coordinate multi-site electrical service across Brookhaven using this workflow.",
+      "steps": [
+        {
+          "title": "Prioritize locations",
+          "detail": "List each property, noting marina docks, storefront kitchens, or agricultural buildings needing service."
+        },
+        {
+          "title": "Share access logistics",
+          "detail": "Provide gate codes, ferry schedules, or barn access instructions so crews arrive prepared."
+        },
+        {
+          "title": "Approve the phased plan",
+          "detail": "We deliver a phased schedule covering inspections, repairs, and upgrades. Approve timelines so we can coordinate utility shut-offs or village permits."
+        },
+        {
+          "title": "Review completion package",
+          "detail": "Receive digital reports with before/after photos, inspection notes, and maintenance reminders for each Brookhaven location."
+        }
+      ],
+      "successNarrative": "Property managers gain a single electrical partner for Brookhaven sites with documented compliance for marina, commercial, and agricultural operations."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 18 minutes to Patchogue Village.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head south on Lakeland Ave",
+          "detail": "Turn left onto Veterans Memorial Hwy/NY-454 E then right onto Nicolls Rd/CR-97 S."
+        },
+        {
+          "title": "Continue to Patchogue",
+          "detail": "Take the exit toward Sunrise Hwy/NY-27 E, then exit 52A for Waverly Ave toward Patchogue."
+        },
+        {
+          "title": "Arrive in Patchogue Village",
+          "detail": "Follow Waverly Ave south to Main St. We serve properties along the waterfront and throughout Brookhaven Town."
+        }
+      ]
+    }
+  }
+]

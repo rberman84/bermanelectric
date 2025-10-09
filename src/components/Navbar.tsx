@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, User } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, generateAltText } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
@@ -34,6 +34,21 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   return (
     <nav
       className={cn(
@@ -46,9 +61,9 @@ const Navbar = () => {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center group"
+          <Link
+            to="/"
+            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
             <ResponsiveImage
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
@@ -56,6 +71,12 @@ const Navbar = () => {
               priority
               sizes="(min-width: 1024px) 192px, 144px"
               wrapperClassName="inline-flex h-32 w-auto"
+            <img
+              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+              alt={generateAltText(
+                "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
+                "Berman Electric company logo"
+              )}
               className={cn(
                 "h-32 w-auto transition-all duration-300",
                 isScrolled ? "brightness-0 invert" : "brightness-100",
@@ -85,8 +106,10 @@ const Navbar = () => {
               <a
                 href="tel:+15163614068"
                 className={cn(
-                  "inline-flex items-center text-sm font-medium transition-colors",
-                  isScrolled ? "text-gray-200 hover:text-electric-400" : "text-gray-700 hover:text-electric-600"
+                  "inline-flex items-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+                  isScrolled
+                    ? "text-slate-50 hover:text-electric-200 focus-visible:ring-offset-slate-900"
+                    : "text-slate-800 hover:text-electric-700 focus-visible:ring-offset-white"
                 )}
               >
                 <Phone className="mr-2 h-4 w-4" />
@@ -96,8 +119,10 @@ const Navbar = () => {
                 <button
                   onClick={signOut}
                   className={cn(
-                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md",
-                    isScrolled ? "text-gray-200 hover:text-electric-400 hover:bg-white/10" : "text-gray-700 hover:text-electric-600 hover:bg-gray-100"
+                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+                    isScrolled
+                      ? "text-slate-50 hover:text-electric-200 hover:bg-white/10 focus-visible:ring-offset-slate-900"
+                      : "text-slate-800 hover:text-electric-700 hover:bg-gray-100 focus-visible:ring-offset-white"
                   )}
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -107,8 +132,10 @@ const Navbar = () => {
                 <Link
                   to="/auth"
                   className={cn(
-                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md",
-                    isScrolled ? "text-gray-200 hover:text-electric-400 hover:bg-white/10" : "text-gray-700 hover:text-electric-600 hover:bg-gray-100"
+                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+                    isScrolled
+                      ? "text-slate-50 hover:text-electric-200 hover:bg-white/10 focus-visible:ring-offset-slate-900"
+                      : "text-slate-800 hover:text-electric-700 hover:bg-gray-100 focus-visible:ring-offset-white"
                   )}
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -117,7 +144,10 @@ const Navbar = () => {
               )}
               <Link
                 to="/contact"
-                className="button-primary bg-green-600 hover:bg-green-700"
+                className={cn(
+                  "button-primary bg-green-600 hover:bg-green-700",
+                  isScrolled ? "focus-visible:ring-offset-slate-900" : "focus-visible:ring-offset-white"
+                )}
               >
                 Get a Quote
               </Link>
@@ -127,18 +157,23 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             className={cn(
-              "md:hidden p-2 transition-colors",
-              isScrolled ? "text-white" : "text-gray-700"
+              "md:hidden p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+              isScrolled
+                ? "text-slate-50 focus-visible:ring-offset-slate-900"
+                : "text-slate-800 focus-visible:ring-offset-white"
             )}
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            type="button"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        <MobileMenu 
+        <MobileMenu
           isOpen={isOpen}
-          isScrolled={isScrolled}
           onClose={() => setIsOpen(false)}
         />
       </div>

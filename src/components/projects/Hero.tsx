@@ -1,5 +1,6 @@
 
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
 
 interface HeroProps {
   title: string;
@@ -15,6 +16,12 @@ const Hero = ({ title, subtitle, description }: HeroProps) => {
           src="https://images.unsplash.com/photo-1518770660439-4636190af475"
           alt="Electric circuit board representing our technical expertise"
           wrapperClassName="absolute inset-0 h-full w-full"
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+          alt={generateAltText(
+            "https://images.unsplash.com/photo-1518770660439-4636190af475",
+            "Background image highlighting electric circuit board expertise"
+          )}
           className="object-cover w-full h-full"
           sizes="100vw"
         />

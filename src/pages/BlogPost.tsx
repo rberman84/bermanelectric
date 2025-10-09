@@ -10,6 +10,7 @@ import SocialShare from "@/components/blog/SocialShare";
 import AuthorBio from "@/components/blog/AuthorBio";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
 
 // This would typically come from a CMS or API
 const getBlogPost = (slug: string) => {
@@ -1090,6 +1091,11 @@ const BlogPost = () => {
             wrapperClassName="absolute inset-0"
             className="w-full h-full object-cover"
             sizes="(min-width: 1024px) 60vw, 100vw"
+          <img
+            src={post.image}
+            alt={generateAltText(post.image, `${post.title} hero image`)}
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 

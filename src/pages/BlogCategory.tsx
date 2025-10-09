@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
 import BlogSEO from '@/components/blog/BlogSEO';
 import ResponsiveImage from '@/components/media/ResponsiveImage';
+import { generateAltText } from '@/lib/utils';
 
 interface BlogPost {
   id: string;
@@ -209,6 +210,9 @@ const BlogCategory = () => {
                         src={post.image}
                         alt={post.title}
                         wrapperClassName="absolute inset-0"
+                      <img
+                        src={post.image}
+                        alt={generateAltText(post.image, `${post.title} category image`)}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         sizes="(min-width: 1024px) 33vw, 100vw"
                       />

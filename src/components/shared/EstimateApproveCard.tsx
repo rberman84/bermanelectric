@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -43,7 +43,7 @@ export function EstimateApproveCard({ estimateId, name, email }: EstimateApprove
         .filter(u => selected.includes(u.id))
         .map(u => `${u.label} (${u.price})`);
 
-      const { data, error } = await supabase.functions.invoke('portal-estimate-approve', {
+      const { error } = await supabase.functions.invoke('portal-estimate-approve', {
         body: {
           estimateId,
           name,

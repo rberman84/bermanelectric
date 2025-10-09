@@ -1,18 +1,34 @@
 
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/contact/ContactForm";
 import ServicesList from "@/components/contact/ServicesList";
+import { AiOnsiteTriage } from "@/components/contact/AiOnsiteTriage";
+import { SmartBookingEstimator } from "@/components/contact/SmartBookingEstimator";
 import GoogleMap from "@/components/shared/GoogleMap";
 import NAP from "@/components/shared/NAP";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
+
+type TriageSummary = {
+  triageId?: string | null;
+  hazardLevel: string;
+  urgencyLevel: string;
+  summary: string;
+  jobLengthMinutes?: number;
+  serviceType?: string;
+  zipCode: string;
+};
 
 const Contact = () => {
+  const [triageSummary, setTriageSummary] = useState<TriageSummary | null>(null);
+
   return (
     <>
-      <SEO 
+      <SEO
         title="Contact Berman Electric - Get Free Quote | Licensed Electrician Long Island"
         description="Contact Berman Electric for your electrical needs in Long Island, Suffolk County & Ronkonkoma NY. Free estimates, 24/7 emergency service. Call (516) 361-4068 or request a quote online. Licensed & insured electrician."
         keywords="contact electrician Long Island, electrical quote Suffolk County, emergency electrician Ronkonkoma NY, electrical estimate Nassau County, 24/7 electrical service"
@@ -26,6 +42,13 @@ const Contact = () => {
               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
               alt="Professional electrical service"
               wrapperClassName="absolute inset-0"
+          <div className="absolute inset-0 z-0 opacity-30" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              alt={generateAltText(
+                "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+                "Background image showing professional electrical service"
+              )}
               className="object-cover w-full h-full"
               sizes="100vw"
             />
@@ -43,6 +66,21 @@ const Contact = () => {
                 Berman Electric is here to help. Our licensed and experienced electricians serve 
                 homes and businesses across Long Island, ensuring top-quality service and customer satisfaction.
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white py-16">
+          <div className="container space-y-10">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-bold text-slate-900">AI triage + Smart booking</h2>
+              <p className="mt-3 text-lg text-slate-600">
+                Upload a photo, get an electrician-grade safety readout, then lock the earliest crew slot with buffers and calendar invites.
+              </p>
+            </div>
+            <div className="grid gap-10 xl:grid-cols-2">
+              <AiOnsiteTriage onRecommendation={(payload) => setTriageSummary(payload)} />
+              <SmartBookingEstimator triageContext={triageSummary} />
             </div>
           </div>
         </div>

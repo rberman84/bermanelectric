@@ -27,6 +27,12 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           wrapperClassName="absolute inset-0"
           className="w-full h-full object-cover"
           sizes="100vw"
+      <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
+        <img
+          src="/lovable-uploads/hero-electrical-background.jpg"
+          alt="Professional electrical services with dramatic lightning power effect"
+          className="w-full h-full object-cover"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
       </div>
@@ -39,14 +45,14 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
               20+ Years of Excellence
             </span>
           )}
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             {title || "Reliable Electrical Solutions in Ronkonkoma"}
           </h1>
-          <p className="text-lg md:text-xl text-gray-100 mb-8">
+          <p className="text-lg md:text-xl text-white mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             {subtitle || description || "Experience top-notch electrical services with Berman Electric, your local expert for over 20 years. We provide comprehensive solutions for both residential and commercial needs."}
           </p>
           {description && subtitle && (
-            <p className="text-lg md:text-xl text-gray-100 mb-8">
+            <p className="text-lg md:text-xl text-white mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               {description}
             </p>
           )}

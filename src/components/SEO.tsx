@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet-async';
 import { canonicalizeUrl, toAbsoluteUrl } from '@/lib/url';
 import { SITE_URL } from '@/lib/siteConfig';
 
+type StructuredData = Record<string, unknown> | Array<unknown>;
+
 interface SEOProps {
   title: string;
   description: string;
@@ -11,6 +13,7 @@ interface SEOProps {
   ogType?: string;
   structuredData?: object;
   noindex?: boolean;
+  structuredData?: StructuredData;
 }
 
 const SEO = ({

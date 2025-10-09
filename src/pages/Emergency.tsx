@@ -1,5 +1,5 @@
 
-import { 
+import {
   BellRing,
   Power,
   Zap,
@@ -8,7 +8,7 @@ import {
   Lightbulb,
   FlaskConical,
   CheckCircle2,
-  Phone,  
+  Phone,
   Mail,
   AlertCircle
 } from "lucide-react";
@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
 
 const Emergency = () => {
   const services = [{
@@ -100,6 +101,15 @@ const Emergency = () => {
               wrapperClassName="absolute inset-0"
               className="w-full h-full object-cover"
               sizes="(min-width: 1280px) 60vw, 100vw"
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
+            <img
+              src="/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png"
+              alt={generateAltText(
+                "/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png",
+                "Background image of an emergency electrical response vehicle"
+              )}
+              className="w-full h-full object-cover opacity-70"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           </div>
@@ -120,7 +130,7 @@ const Emergency = () => {
               </p>
               <a
                 href="tel:+15163614068"
-                className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors animate-pulse"
+                className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors animate-pulse focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-700"
               >
                 <Phone className="w-6 h-6 mr-2" />
                 Call Now: (516) 361-4068
@@ -138,6 +148,15 @@ const Emergency = () => {
               wrapperClassName="absolute inset-0"
               className="w-full h-full object-cover"
               sizes="(min-width: 1280px) 60vw, 100vw"
+          <div className="absolute inset-0" aria-hidden="true">
+            <img
+              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+              alt={generateAltText(
+                "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
+                "Background illustration of emergency electrical repair"
+              )}
+              className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-white/[0.94]" />
           </div>
@@ -205,16 +224,16 @@ const Emergency = () => {
                 Fast, Reliable, and Always Available – Trust Berman Electric to Handle Your Electrical Emergencies!
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a 
-                  href="tel:+15163614068" 
-                  className="inline-flex items-center px-6 py-3 text-red-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+                <a
+                  href="tel:+15163614068"
+                  className="inline-flex items-center px-6 py-3 text-red-700 bg-white rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 focus-visible:ring-offset-2 focus-visible:ring-offset-red-700"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Emergency Hotline: (516) 361-4068
                 </a>
-                <Link 
-                  to="/contact" 
-                  className="inline-flex items-center px-6 py-3 text-white bg-red-700 rounded-lg hover:bg-red-800 transition-colors"
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-6 py-3 text-white bg-red-700 rounded-lg hover:bg-red-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-700"
                 >
                   <Mail className="w-5 h-5 mr-2" />
                   Request Emergency Service Online

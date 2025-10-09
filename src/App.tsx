@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,6 +31,8 @@ import ElectricianLongIsland from "./pages/ElectricianLongIsland";
 import RonkonkomaServiceUpgradeCaseStudy from "./pages/RonkonkomaServiceUpgradeCaseStudy";
 import GoogleReviewsSetup from "./pages/GoogleReviewsSetup";
 import NotFound from "./pages/NotFound";
+import TownIndex from "./pages/TownIndex";
+import TownPage from "./pages/TownPage";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +73,33 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/residential" element={<Residential />} />
+          <Route path="/commercial" element={<Commercial />} />
+          <Route path="/emergency" element={<Emergency />} />
+          <Route path="/ev-charger" element={<EVCharger />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/category/:category" element={<BlogCategory />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/electrician-ronkonkoma" element={<ElectricianRonkonkoma />} />
+          <Route path="/electrician-suffolk-county" element={<ElectricianSuffolkCounty />} />
+          <Route path="/electrician-long-island" element={<ElectricianLongIsland />} />
+          <Route path="/locations" element={<TownIndex />} />
+          <Route path="/locations/:townSlug" element={<TownPage />} />
+          <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<RonkonkomaServiceUpgradeCaseStudy />} />
+          <Route path="/google-reviews-setup" element={<GoogleReviewsSetup />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

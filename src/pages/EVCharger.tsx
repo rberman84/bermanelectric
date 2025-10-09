@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
-import { Car, Zap, Shield, Clock, CheckCircle2, Phone, Mail } from "lucide-react";
+import { Car, Zap, Shield, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
 
 const services = [
   {
@@ -69,6 +70,15 @@ const EVCharger = () => {
               wrapperClassName="absolute inset-0"
               className="w-full h-full object-cover"
               sizes="(min-width: 1280px) 60vw, 100vw"
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
+            <img
+              src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png"
+              alt={generateAltText(
+                "/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png",
+                "Background photo of an EV charging port"
+              )}
+              className="w-full h-full object-cover opacity-70"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
           </div>
@@ -163,16 +173,16 @@ const EVCharger = () => {
                 EV solution, Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a 
+                <a
                   href="tel:+15163614068"
-                  className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center px-6 py-3 text-electric-700 bg-white rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-300 focus-visible:ring-offset-2 focus-visible:ring-offset-electric-600"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Us: (516) 361-4068
                 </a>
-                <Link 
+                <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors"
+                  className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-electric-700"
                 >
                   <Mail className="w-5 h-5 mr-2" />
                   Request a Free Quote

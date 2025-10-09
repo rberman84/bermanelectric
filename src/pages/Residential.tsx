@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
 
 const Residential = () => {
   const services = [{
@@ -51,6 +52,16 @@ const Residential = () => {
               sizes="(min-width: 1280px) 60vw, 100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
+            <img
+              src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
+              alt={generateAltText(
+                "/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png",
+                "Background image of a vintage light bulb symbolizing quality electrical workmanship"
+              )}
+              className="w-full h-full object-cover opacity-70"
+              loading="lazy"
+            />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">
@@ -82,6 +93,17 @@ const Residential = () => {
               sizes="(min-width: 1280px) 60vw, 100vw"
             />
             <div className="absolute inset-0 bg-white/[0.51]" />
+          <div className="absolute inset-0" aria-hidden="true">
+            <img
+              src="/lovable-uploads/75ea0479-7d50-48c5-8033-c17332ea08c3.png"
+              alt={generateAltText(
+                "/lovable-uploads/75ea0479-7d50-48c5-8033-c17332ea08c3.png",
+                "Background photo showcasing modern residential lighting"
+              )}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-white/[0.51]"></div>
           </div>
           <div className="container relative">
             <h2 className="text-3xl font-bold text-center mb-16">Our Residential Services</h2>
@@ -127,11 +149,17 @@ const Residential = () => {
                 or need emergency repairs, Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="tel:+15163614068" className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+                <a
+                  href="tel:+15163614068"
+                  className="inline-flex items-center px-6 py-3 text-electric-700 bg-white rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-300 focus-visible:ring-offset-2 focus-visible:ring-offset-electric-600"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   (516) 361-4068
                 </a>
-                <Link to="/contact" className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-electric-700"
+                >
                   <Mail className="w-5 h-5 mr-2" />
                   Request a Quote Online
                 </Link>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import ResponsiveImage from "@/components/media/ResponsiveImage";
+import { generateAltText } from "@/lib/utils";
 
 const Commercial = () => {
   const services = [{
@@ -52,6 +53,16 @@ const Commercial = () => {
               sizes="(min-width: 1280px) 60vw, 100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70 opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
+            <img
+              src="/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png"
+              alt={generateAltText(
+                "/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png",
+                "Background image of a modern commercial building"
+              )}
+              className="w-full h-full object-cover opacity-70"
+              loading="lazy"
+            />
           </div>
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">
@@ -83,6 +94,17 @@ const Commercial = () => {
               sizes="(min-width: 1280px) 60vw, 100vw"
             />
             <div className="absolute inset-0 bg-white/[0.54]" />
+          <div className="absolute inset-0" aria-hidden="true">
+            <img
+              src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
+              alt={generateAltText(
+                "/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png",
+                "Background photo of a professional installing commercial electrical equipment"
+              )}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-white/[0.54]"></div>
           </div>
           <div className="container relative">
             <h2 className="text-3xl font-bold text-center mb-16">Our Commercial Services</h2>
@@ -140,11 +162,17 @@ const Commercial = () => {
                 Need a reliable and efficient commercial electrical contractor? Berman Electric is here to help.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="tel:+15163614068" className="inline-flex items-center px-6 py-3 text-electric-600 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+                <a
+                  href="tel:+15163614068"
+                  className="inline-flex items-center px-6 py-3 text-electric-700 bg-white rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-300 focus-visible:ring-offset-2 focus-visible:ring-offset-electric-600"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   (516) 361-4068
                 </a>
-                <Link to="/contact" className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-6 py-3 text-white bg-electric-700 rounded-lg hover:bg-electric-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-electric-700"
+                >
                   <Mail className="w-5 h-5 mr-2" />
                   Request a Quote Online
                 </Link>

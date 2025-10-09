@@ -22,6 +22,7 @@ const serviceAreas = [
 const NotFound = () => {
   const location = useLocation();
   const canonical = toAbsoluteUrl(location.pathname);
+const NotFound = () => {
 
   return (
     <>
