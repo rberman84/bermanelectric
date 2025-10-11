@@ -1,10 +1,14 @@
 import { Plug, Lightbulb, Shield, Wrench, Car, Power, CheckCircle2, Phone, Mail, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import RelatedServices from "@/components/service/RelatedServices";
+import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
@@ -85,7 +89,8 @@ const Residential = () => {
         }))}
       />
       <Navbar />
-      <div className="pt-20">
+      <BreadcrumbSchema items={[{ name: "Residential Electrical Services" }]} />
+      <div className="pt-4">
         {/* Hero Section */}
         <div className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
@@ -201,6 +206,25 @@ const Residential = () => {
           faqs={faqs}
         />
 
+        {/* Topic Cluster */}
+        <ServiceCluster
+          title="Complete Home Electrical Solutions"
+          description="Everything you need to know about residential electrical services on Long Island"
+          links={[
+            { title: "Panel Upgrades & Service Upgrades", url: "/blog/when-to-upgrade-electrical-panel", description: "Signs you need an electrical panel upgrade" },
+            { title: "Smart Home Electrical", url: "/blog/smart-home-electrical-upgrades", description: "Modern electrical upgrades for smart homes" },
+            { title: "EV Charger Installation", url: "/ev-charger", description: "Install a Level 2 home EV charging station" }
+          ]}
+          blogPosts={[
+            { title: "Top 5 Electrical Safety Tips for Homeowners", url: "/blog/electrical-safety-tips-long-island-homeowners" },
+            { title: "5 Electrical Mistakes That Cost Thousands", url: "/blog/5-electrical-mistakes-homeowners-make-cost-thousands" },
+            { title: "Why Licensed Electricians Save Money", url: "/blog/licensed-electricians-save-money" }
+          ]}
+        />
+
+        {/* Related Services */}
+        <RelatedServices currentService="residential" />
+
         {/* Final Tagline */}
         <div className="py-12 bg-gray-50">
           <div className="container text-center">
@@ -210,6 +234,7 @@ const Residential = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>;
 };
 export default Residential;

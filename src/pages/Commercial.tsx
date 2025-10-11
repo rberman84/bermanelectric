@@ -1,10 +1,14 @@
 import { Building2, Plug, Lightbulb, Shield, Wrench, Power, CheckCircle2, Phone, Mail, Factory } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import RelatedServices from "@/components/service/RelatedServices";
+import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
@@ -86,7 +90,8 @@ const Commercial = () => {
         }))}
       />
       <Navbar />
-      <div className="pt-20">
+      <BreadcrumbSchema items={[{ name: "Commercial Electrical Services" }]} />
+      <div className="pt-4">
         {/* Hero Section */}
         <div className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
@@ -214,6 +219,24 @@ const Commercial = () => {
           faqs={faqs}
         />
 
+        {/* Topic Cluster */}
+        <ServiceCluster
+          title="Business Electrical Solutions"
+          description="Comprehensive commercial electrical services for Long Island businesses"
+          links={[
+            { title: "Office Electrical Installation", url: "/commercial", description: "Complete electrical solutions for office buildings" },
+            { title: "Retail Store Electrical", url: "/commercial", description: "Lighting and power for retail spaces" },
+            { title: "Commercial EV Charging", url: "/ev-charger", description: "Multi-unit and workplace charging stations" }
+          ]}
+          blogPosts={[
+            { title: "Licensed Electricians Save Money", url: "/blog/licensed-electricians-save-money" },
+            { title: "Hurricane Electrical Preparedness", url: "/blog/hurricane-electrical-preparedness-long-island" }
+          ]}
+        />
+
+        {/* Related Services */}
+        <RelatedServices currentService="commercial" />
+
         {/* Final Tagline */}
         <div className="py-12 bg-gray-50">
           <div className="container text-center">
@@ -223,6 +246,7 @@ const Commercial = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>;
 };
 export default Commercial;

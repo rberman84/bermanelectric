@@ -1,10 +1,14 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import { Car, Zap, Shield, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { generateAltText } from "@/lib/utils";
 import SEO from "@/components/SEO";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import RelatedServices from "@/components/service/RelatedServices";
+import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
@@ -115,7 +119,8 @@ const EVCharger = () => {
         }))}
       />
       <Navbar />
-      <div className="pt-20">
+      <BreadcrumbSchema items={[{ name: "EV Charger Installation" }]} />
+      <div className="pt-4">
         {/* Hero Section */}
         <div className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
@@ -247,7 +252,26 @@ const EVCharger = () => {
           title="EV Charger Installation FAQ"
           faqs={faqs}
         />
+
+        {/* Topic Cluster */}
+        <ServiceCluster
+          title="Electric Vehicle Charging Solutions"
+          description="Complete EV charging installation guide for Long Island homes and businesses"
+          links={[
+            { title: "Residential Panel Upgrades", url: "/residential", description: "Upgrade your panel to support EV charging" },
+            { title: "Commercial EV Solutions", url: "/commercial", description: "Multi-unit and workplace charging stations" },
+            { title: "Smart Home Integration", url: "/blog/smart-home-electrical-upgrades", description: "Connect your EV charger to smart home systems" }
+          ]}
+          blogPosts={[
+            { title: "EV Charger Installation Guide", url: "/blog/ev-charger-installation-guide-long-island" },
+            { title: "Panel Upgrade Guide", url: "/blog/when-to-upgrade-electrical-panel" }
+          ]}
+        />
+
+        {/* Related Services */}
+        <RelatedServices currentService="evcharger" />
       </div>
+      <Footer />
     </>
   );
 };

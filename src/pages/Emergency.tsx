@@ -14,10 +14,14 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import RelatedServices from "@/components/service/RelatedServices";
+import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
@@ -135,7 +139,8 @@ const Emergency = () => {
         }))}
       />
       <Navbar />
-      <div className="pt-20">
+      <BreadcrumbSchema items={[{ name: "Emergency Electrical Services" }]} />
+      <div className="pt-4">
         {/* Hero Section */}
         <div className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
@@ -277,7 +282,27 @@ const Emergency = () => {
           title="Emergency Electrical Services FAQ"
           faqs={faqs}
         />
+
+        {/* Topic Cluster */}
+        <ServiceCluster
+          title="Emergency Electrical Resources"
+          description="Essential information for electrical emergencies across Long Island"
+          links={[
+            { title: "Residential Emergency Service", url: "/residential", description: "Home electrical emergency repairs" },
+            { title: "Commercial Emergency Service", url: "/commercial", description: "24/7 business electrical emergencies" },
+            { title: "Storm Damage Repair", url: "/emergency", description: "Post-storm electrical assessments" }
+          ]}
+          blogPosts={[
+            { title: "Hurricane Electrical Preparedness", url: "/blog/hurricane-electrical-preparedness-long-island" },
+            { title: "Electrical Safety Tips", url: "/blog/electrical-safety-tips-long-island-homeowners" },
+            { title: "5 Electrical Mistakes to Avoid", url: "/blog/5-electrical-mistakes-homeowners-make-cost-thousands" }
+          ]}
+        />
+
+        {/* Related Services */}
+        <RelatedServices currentService="emergency" />
       </div>
+      <Footer />
     </>
   );
 };
