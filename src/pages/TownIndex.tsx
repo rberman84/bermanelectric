@@ -1,8 +1,36 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { towns, buildTownPath } from "@/lib/townContent";
+import StructuredData from "@/components/town/StructuredData";
 
 const TownIndex = () => {
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Suffolk County Electrical Service Areas",
+    description: "Explore Berman Electric's localized electrical service pages for towns across Suffolk County, each with structured data, FAQs, and driving directions.",
+    url: "https://www.bermanelectric.com/locations",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Berman Electric",
+      telephone: "+1-516-361-4068",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "26 Railroad Avenue",
+        addressLocality: "Ronkonkoma",
+        addressRegion: "NY",
+        postalCode: "11779",
+        addressCountry: "US",
+      },
+    },
+    hasPart: towns.map((town) => ({
+      "@type": "WebPage",
+      name: `${town.name}, NY Electrical Services`,
+      url: `https://www.bermanelectric.com${buildTownPath(town.slug)}`,
+      description: town.seo.description,
+    })),
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen py-16">
       <Helmet>
@@ -12,7 +40,13 @@ const TownIndex = () => {
           content="Browse Berman Electric's Suffolk County town pages featuring local electricians, services, FAQs, and directions for Huntington, Smithtown, Brookhaven, and more."
         />
         <link rel="canonical" href="https://www.bermanelectric.com/locations" />
+        <meta property="og:title" content="Suffolk County Town Pages | Berman Electric" />
+        <meta property="og:description" content="Browse Berman Electric's Suffolk County town pages featuring local electricians, services, FAQs, and directions for Huntington, Smithtown, Brookhaven, and more." />
+        <meta property="og:url" content="https://www.bermanelectric.com/locations" />
+        <meta property="og:type" content="website" />
       </Helmet>
+
+      <StructuredData data={collectionPageSchema} id="town-collection-schema" />
 
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">

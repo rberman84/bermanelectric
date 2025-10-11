@@ -7,6 +7,8 @@ import DrivingDirections from "@/components/town/DrivingDirections";
 import FaqSection from "@/components/town/FaqSection";
 import HowToSection from "@/components/town/HowToSection";
 import TownSchema from "@/components/town/TownSchema";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import NearbyTowns from "@/components/town/NearbyTowns";
 import ReviewsSection, {
   defaultReviews,
   getReviewStats,
@@ -40,6 +42,12 @@ const TownPage = () => {
       </Helmet>
 
       <TownSchema town={town} averageRating={averageRating} totalReviews={totalReviews} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Service Areas", url: "/locations" },
+          { name: `${town.name}, NY` },
+        ]}
+      />
 
       <TownHero town={town} />
       <TownServices town={town} />
@@ -51,6 +59,7 @@ const TownPage = () => {
         title={`Berman Electric Reviews Serving ${town.name}`}
         subtitle={`Verified electrical reviews from homeowners and facility managers in and around ${town.name}.`}
       />
+      <NearbyTowns currentTown={town} />
     </div>
   );
 };
