@@ -9,6 +9,9 @@ import HowToSection from "@/components/town/HowToSection";
 import TownSchema from "@/components/town/TownSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import NearbyTowns from "@/components/town/NearbyTowns";
+import TownCTA from "@/components/town/TownCTA";
+import TownTestimonials from "@/components/town/TownTestimonials";
+import TownKeywords from "@/components/town/TownKeywords";
 import ReviewsSection, {
   defaultReviews,
   getReviewStats,
@@ -33,12 +36,42 @@ const TownPage = () => {
 
   const { averageRating, totalReviews } = getReviewStats(reviews);
 
+  const townKeywords = [
+    `${town.name} electrician`,
+    `electrician ${town.name} NY`,
+    `electrical contractor ${town.name}`,
+    ...town.neighborhoods.map(n => `electrician ${n}`),
+    ...town.serviceCatalog,
+    "licensed electrician",
+    "emergency electrical service"
+  ].join(", ");
+
   return (
     <div className="flex flex-col">
       <Helmet>
         <title>{town.seo.title}</title>
         <meta name="description" content={town.seo.description} />
+        <meta name="keywords" content={townKeywords} />
         <link rel="canonical" href={getTownCanonicalUrl(town.slug)} />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={town.seo.title} />
+        <meta property="og:description" content={town.seo.description} />
+        <meta property="og:url" content={getTownCanonicalUrl(town.slug)} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Berman Electric" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={town.seo.title} />
+        <meta name="twitter:description" content={town.seo.description} />
+        
+        {/* Geographic Tags */}
+        <meta name="geo.region" content="US-NY" />
+        <meta name="geo.placename" content={`${town.name}, NY`} />
+        <meta name="geo.position" content={`${town.coordinates.latitude};${town.coordinates.longitude}`} />
+        <meta name="ICBM" content={`${town.coordinates.latitude}, ${town.coordinates.longitude}`} />
       </Helmet>
 
       <TownSchema town={town} averageRating={averageRating} totalReviews={totalReviews} />
@@ -51,6 +84,8 @@ const TownPage = () => {
 
       <TownHero town={town} />
       <TownServices town={town} />
+      <TownCTA town={town} />
+      <TownTestimonials town={town} />
       <TownMap town={town} />
       <DrivingDirections town={town} />
       <FaqSection town={town} />
@@ -59,6 +94,7 @@ const TownPage = () => {
         title={`Berman Electric Reviews Serving ${town.name}`}
         subtitle={`Verified electrical reviews from homeowners and facility managers in and around ${town.name}.`}
       />
+      <TownKeywords town={town} />
       <NearbyTowns currentTown={town} />
     </div>
   );
