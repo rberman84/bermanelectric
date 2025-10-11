@@ -44,6 +44,11 @@ const TownSchema = ({ town, averageRating, totalReviews }: TownSchemaProps) => {
       name: `${town.name}, NY`,
     },
     serviceArea: `${town.name}, NY ${town.zipCodes.join(", ")}`,
+    additionalProperty: {
+      "@type": "PropertyValue",
+      name: "License Number",
+      value: "ME-44927",
+    },
     sameAs: [
       "https://www.facebook.com/bermanelectric",
       "https://www.instagram.com/bermanelectric",

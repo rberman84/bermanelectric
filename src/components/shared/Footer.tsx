@@ -134,7 +134,8 @@ const Footer = () => {
               </ul>
               <div className="mt-4 text-sm text-slate-300">
                 <p>Serving Nassau & Suffolk Counties</p>
-                <p>Licensed & Insured in NY</p>
+                <p>NY License #ME-44927</p>
+                <p>Fully Licensed & Insured</p>
               </div>
             </div>
 
@@ -175,7 +176,7 @@ const Footer = () => {
               <p className="mt-1">Licensed Electrician serving Long Island, NY since 2003</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-sm text-slate-300">
-              <span>License #: [NY License Number]</span>
+              <span>License #ME-44927</span>
               <span aria-hidden="true">•</span>
               <span>Fully Insured</span>
               <span aria-hidden="true">•</span>

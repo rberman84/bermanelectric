@@ -116,7 +116,17 @@ const SEO = ({
           ],
           "hasCredential": {
             "@type": "EducationalOccupationalCredential",
-            "name": "Licensed Electrician"
+            "name": "Licensed Electrician",
+            "credentialCategory": "Professional License",
+            "recognizedBy": {
+              "@type": "GovernmentOrganization",
+              "name": "New York State"
+            }
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "name": "License Number",
+            "value": "ME-44927"
           }
         })}
       </script>

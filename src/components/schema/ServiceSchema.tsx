@@ -67,6 +67,11 @@ const ServiceSchema = ({
       },
       priceRange: priceRange,
       aggregateRating: aggregateRating,
+      additionalProperty: {
+        "@type": "PropertyValue",
+        name: "License Number",
+        value: "ME-44927"
+      },
       sameAs: [
         "https://www.facebook.com/bermanelectric",
         "https://www.instagram.com/bermanelectric",

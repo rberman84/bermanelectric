@@ -46,6 +46,11 @@ const AggregateRatingSchema = ({
       "@type": "State",
       name: "New York",
     },
+    additionalProperty: {
+      "@type": "PropertyValue",
+      name: "License Number",
+      value: "ME-44927",
+    },
   };
 
   return (

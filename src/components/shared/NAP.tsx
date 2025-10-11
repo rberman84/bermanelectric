@@ -14,6 +14,7 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
     phone: "(516) 361-4068",
     phoneHref: "+15163614068",
     email: "info@bermanelectrical.com",
+    license: "ME-44927",
     hours: {
       weekdays: "Monday – Friday: 7:00 AM – 7:00 PM",
       weekends: "Saturday – Sunday: Emergency Services Available"
@@ -43,6 +44,9 @@ const NAP = ({ variant = 'default', showHours = false, className = '' }: NAPProp
             <a href={`mailto:${napData.email}`} className="hover:text-electric-400 transition-colors">
               {napData.email}
             </a>
+          </div>
+          <div className="pt-2 border-t border-gray-700">
+            <p className="text-sm text-electric-400">NY License #{napData.license}</p>
           </div>
           {showHours && (
             <div className="flex items-start gap-2">
