@@ -90,6 +90,7 @@ const Navbar = () => {
             {user && <NavLink to="/dashboard" isScrolled={isScrolled}>Dashboard</NavLink>}
             <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
             <NavLink to="/projects" isScrolled={isScrolled}>Projects</NavLink>
+            <NavLink to="/locations" isScrolled={isScrolled}>Service Areas</NavLink>
             <NavLink to="/blog" isScrolled={isScrolled}>Blog</NavLink>
             <NavLink to="/testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
             <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
