@@ -34,11 +34,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     
-    <!-- DNS Prefetch for external resources -->
-    <link rel="dns-prefetch" href="//images.unsplash.com" />
+    <!-- Preload critical LCP image -->
+    <link rel="preload" href="/lovable-uploads/hero-electrical-background-new.png" as="image" fetchpriority="high" />
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" as="image" />
+    <!-- DNS Prefetch & Preconnect for external resources -->
+    <link rel="dns-prefetch" href="//images.unsplash.com" />
+    <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="//ivmnpukucidiclxcbugp.functions.supabase.co" />
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y"></script>

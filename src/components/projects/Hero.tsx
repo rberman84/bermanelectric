@@ -18,6 +18,7 @@ const Hero = ({ title, subtitle, description }: HeroProps) => {
             "Background image highlighting electric circuit board expertise"
           )}
           className="object-cover w-full h-full"
+          loading="lazy"
         />
       </div>
       <div className="container relative z-10">

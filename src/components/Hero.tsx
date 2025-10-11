@@ -24,6 +24,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           src="/lovable-uploads/hero-electrical-background-new.png"
           alt="Professional electrical services with dramatic lightning power effect"
           className="w-full h-full object-cover"
+          fetchPriority="high"
           loading="eager"
         />
       </div>

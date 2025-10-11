@@ -5,31 +5,35 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
-// Pages
+import { lazy, Suspense } from "react";
+
+// Keep Index eager loaded (it's the homepage)
 import Index from "./pages/Index";
-import Auth from "./pages/Auth";
-import Dashboard from "./pages/Dashboard";
-import Admin from "./pages/Admin";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Testimonials from "./pages/Testimonials";  
-import Contact from "./pages/Contact";
-import Residential from "./pages/Residential";
-import Commercial from "./pages/Commercial";
-import Emergency from "./pages/Emergency";
-import EVCharger from "./pages/EVCharger";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import BlogCategory from "./pages/BlogCategory";
-import Resources from "./pages/Resources";
-import ElectricianRonkonkoma from "./pages/ElectricianRonkonkoma";
-import ElectricianSuffolkCounty from "./pages/ElectricianSuffolkCounty";
-import ElectricianLongIsland from "./pages/ElectricianLongIsland";
-import RonkonkomaServiceUpgradeCaseStudy from "./pages/RonkonkomaServiceUpgradeCaseStudy";
-import GoogleReviewsSetup from "./pages/GoogleReviewsSetup";
-import NotFound from "./pages/NotFound";
-import TownIndex from "./pages/TownIndex";
-import TownPage from "./pages/TownPage";
+
+// Lazy load all other pages for code splitting
+const Auth = lazy(() => import("./pages/Auth"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Admin = lazy(() => import("./pages/Admin"));
+const About = lazy(() => import("./pages/About"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Testimonials = lazy(() => import("./pages/Testimonials"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Residential = lazy(() => import("./pages/Residential"));
+const Commercial = lazy(() => import("./pages/Commercial"));
+const Emergency = lazy(() => import("./pages/Emergency"));
+const EVCharger = lazy(() => import("./pages/EVCharger"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const BlogCategory = lazy(() => import("./pages/BlogCategory"));
+const Resources = lazy(() => import("./pages/Resources"));
+const ElectricianRonkonkoma = lazy(() => import("./pages/ElectricianRonkonkoma"));
+const ElectricianSuffolkCounty = lazy(() => import("./pages/ElectricianSuffolkCounty"));
+const ElectricianLongIsland = lazy(() => import("./pages/ElectricianLongIsland"));
+const RonkonkomaServiceUpgradeCaseStudy = lazy(() => import("./pages/RonkonkomaServiceUpgradeCaseStudy"));
+const GoogleReviewsSetup = lazy(() => import("./pages/GoogleReviewsSetup"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const TownIndex = lazy(() => import("./pages/TownIndex"));
+const TownPage = lazy(() => import("./pages/TownPage"));
 
 const queryClient = new QueryClient();
 
@@ -41,6 +45,11 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <Suspense fallback={
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="animate-pulse">Loading...</div>
+          </div>
+        }>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
@@ -68,6 +77,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
