@@ -5,6 +5,9 @@ interface Testimonial {
   text: string;
   author: string;
   location: string;
+  rating?: number;
+  date?: string;
+  verified?: boolean;
 }
 
 interface TestimonialSectionProps {
