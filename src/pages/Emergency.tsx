@@ -16,6 +16,10 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
+import ServiceSchema from "@/components/schema/ServiceSchema";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
 const Emergency = () => {
   const services = [{
@@ -81,13 +85,54 @@ const Emergency = () => {
     "If your home or business experiences a sudden power failure, do not attempt DIY repairs—our licensed electricians will assess and fix the issue safely."
   ];
 
+  const faqs = [
+    {
+      question: "What qualifies as an electrical emergency?",
+      answer: "Electrical emergencies include sparking outlets, burning smells from electrical sources, complete power loss, exposed wiring, electrical shocks from appliances, smoke from outlets or panels, frequent circuit breaker trips, and any situation that poses immediate fire or safety risks."
+    },
+    {
+      question: "How fast can you respond to an emergency electrical call?",
+      answer: "We provide 24/7 emergency response with technicians on call around the clock. Response times vary by location and time, but we prioritize emergency calls and typically arrive within 1-2 hours for urgent situations across Long Island."
+    },
+    {
+      question: "Do you charge more for emergency electrical services?",
+      answer: "Emergency service rates may be higher than standard rates due to after-hours response, but we provide upfront pricing before starting work. We never surprise you with hidden fees—you'll know the cost before we begin repairs."
+    },
+    {
+      question: "Should I turn off my main breaker before you arrive?",
+      answer: "If you smell burning, see smoke, or suspect an electrical fire, yes—turn off the main breaker if it's safe to access. For other emergencies, you can wait for our guidance. Our emergency dispatcher will provide safety instructions when you call."
+    },
+    {
+      question: "Can you help with storm damage electrical repairs?",
+      answer: "Yes! We handle all types of storm-related electrical damage including downed power lines (coordinating with utility companies), flooded electrical systems, damaged panels, and full electrical safety inspections after severe weather events."
+    }
+  ];
+
+  const { data: googleReviews } = useGoogleReviews();
+  const reviews = googleReviews && googleReviews.length > 0
+    ? transformGoogleReviews(googleReviews)
+    : defaultReviews;
+  const { averageRating, totalReviews } = getReviewStats(reviews);
+
   return (
     <>
-      <SEO 
+      <SEO
         title="24/7 Emergency Electrician Long Island - Emergency Electrical Repairs" 
         description="24/7 emergency electrician serving Long Island. Fast response for electrical emergencies, power outages, sparking outlets, electrical fires. Licensed emergency electrical repairs Suffolk & Nassau County. Call (516) 361-4068"
         keywords="emergency electrician Long Island, 24/7 electrical repairs Suffolk County, electrical emergency Nassau County, power outage repair, electrical fire safety, emergency electrical service"
         canonical="https://bermanelectrical.com/emergency"
+      />
+      <ServiceSchema
+        serviceName="24/7 Emergency Electrical Services"
+        serviceType="EmergencyService"
+        description="24/7 emergency electrical services for homes and businesses across Long Island. Rapid response for power outages, electrical fires, sparking outlets, storm damage, and all urgent electrical repairs. Licensed emergency electricians available around the clock."
+        url="https://bermanelectrical.com/emergency"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+        additionalOffers={services.map(service => ({
+          name: service.title,
+          description: service.items.join(". ")
+        }))}
       />
       <Navbar />
       <div className="pt-20">
@@ -226,6 +271,12 @@ const Emergency = () => {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <ServiceFAQ 
+          title="Emergency Electrical Services FAQ"
+          faqs={faqs}
+        />
       </div>
     </>
   );

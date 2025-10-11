@@ -2,6 +2,11 @@ import Navbar from "@/components/Navbar";
 import { Car, Zap, Shield, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { generateAltText } from "@/lib/utils";
+import SEO from "@/components/SEO";
+import ServiceSchema from "@/components/schema/ServiceSchema";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
 const services = [
   {
@@ -56,8 +61,59 @@ const whyChooseUs = [
 ];
 
 const EVCharger = () => {
+  const faqs = [
+    {
+      question: "How much does it cost to install an EV charger at home?",
+      answer: "Home EV charger installation typically costs between $500 to $2,500 depending on your electrical panel capacity, distance to installation location, and charger type. Level 2 chargers are most common for homes. We provide free estimates with transparent, upfront pricing."
+    },
+    {
+      question: "Do I need to upgrade my electrical panel for an EV charger?",
+      answer: "Many homes need a panel upgrade to support Level 2 EV chargers, which require 240V circuits. We'll assess your current electrical capacity during our consultation and recommend upgrades if needed to safely power your EV charger."
+    },
+    {
+      question: "How long does EV charger installation take?",
+      answer: "Most residential EV charger installations are completed in 4-8 hours. If a panel upgrade is needed, the project may take 1-2 days. We handle all permits and inspections to ensure code compliance."
+    },
+    {
+      question: "What's the difference between Level 1 and Level 2 EV chargers?",
+      answer: "Level 1 chargers use standard 120V outlets and add 3-5 miles of range per hour. Level 2 chargers use 240V circuits and add 25-30 miles per hour—much faster! We recommend Level 2 for most homeowners and all commercial applications."
+    },
+    {
+      question: "Can you install EV chargers for commercial properties?",
+      answer: "Yes! We specialize in commercial EV charging station installations for businesses, multi-unit residential buildings, retail locations, and fleet operations. We handle everything from load management to networked charging solutions."
+    },
+    {
+      question: "Are there rebates or tax credits for EV charger installation?",
+      answer: "Yes! Federal tax credits and local utility rebates are often available for EV charger installations. We'll help you understand available incentives in your area and provide documentation needed for your applications."
+    }
+  ];
+
+  const { data: googleReviews } = useGoogleReviews();
+  const reviews = googleReviews && googleReviews.length > 0
+    ? transformGoogleReviews(googleReviews)
+    : defaultReviews;
+  const { averageRating, totalReviews } = getReviewStats(reviews);
+
   return (
     <>
+      <SEO 
+        title="EV Charger Installation Long Island - Electric Vehicle Charging Stations"
+        description="Professional EV charger installation for homes and businesses on Long Island. Level 2 charging stations, panel upgrades, dedicated circuits. Tesla, ChargePoint, JuiceBox installations. Licensed electrician serving Suffolk & Nassau County. Call (516) 361-4068"
+        keywords="EV charger installation Long Island, electric vehicle charging station Suffolk County, Tesla charger installation, Level 2 EV charger, home EV charging, commercial EV charging, electric car charger electrician"
+        canonical="https://bermanelectrical.com/ev-charger"
+      />
+      <ServiceSchema
+        serviceName="EV Charger Installation Services"
+        serviceType="ElectricalService"
+        description="Professional electric vehicle (EV) charger installation for residential and commercial properties on Long Island. Expert installation of Level 1, Level 2, and fast-charging stations including Tesla, ChargePoint, and JuiceBox. Panel upgrades, dedicated circuits, and smart charging solutions."
+        url="https://bermanelectrical.com/ev-charger"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+        additionalOffers={services.map(service => ({
+          name: service.title,
+          description: service.items.join(". ")
+        }))}
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}
@@ -185,6 +241,12 @@ const EVCharger = () => {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <ServiceFAQ 
+          title="EV Charger Installation FAQ"
+          faqs={faqs}
+        />
       </div>
     </>
   );

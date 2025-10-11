@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
+import ServiceSchema from "@/components/schema/ServiceSchema";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
 const Commercial = () => {
   const services = [{
@@ -32,12 +36,54 @@ const Commercial = () => {
   }];
   const industries = ["Offices & Corporate Buildings", "Retail Stores & Shopping Centers", "Restaurants, Bars, & Cafés", "Warehouses & Industrial Facilities", "Healthcare & Medical Centers", "Schools, Colleges, & Universities", "Hotels & Hospitality", "Multi-Unit Residential Buildings"];
   const benefits = ["Over 20 Years of Commercial Experience – Trusted by top businesses across Long Island", "Licensed, Insured & Certified Electricians – Ensuring quality & safety", "Fast, Reliable, & Scalable Solutions – Minimize downtime & maximize efficiency", "Upfront Pricing & Custom Quotes – Competitive, transparent pricing with no hidden costs", "Emergency Service Available 24/7 – We're always ready when you need us"];
+  
+  const faqs = [
+    {
+      question: "What types of commercial properties do you service?",
+      answer: "We service all types of commercial properties including offices, retail stores, restaurants, warehouses, medical facilities, schools, hotels, and multi-unit residential buildings. Our team has over 20 years of experience with commercial electrical systems of all sizes."
+    },
+    {
+      question: "Do you offer preventative maintenance contracts for businesses?",
+      answer: "Yes! We offer comprehensive preventative maintenance contracts to keep your commercial electrical systems running smoothly and minimize unexpected downtime. Regular maintenance helps identify potential issues before they become costly emergencies."
+    },
+    {
+      question: "How quickly can you respond to commercial electrical emergencies?",
+      answer: "We provide 24/7 emergency service with rapid response times for commercial clients. We understand that electrical downtime can cost your business thousands of dollars, so we prioritize getting your operations back online as quickly as possible."
+    },
+    {
+      question: "Are your commercial electrical services code compliant?",
+      answer: "Absolutely. All our work meets or exceeds NEC (National Electrical Code) standards and local building codes. We handle all necessary permits and inspections to ensure your commercial property is fully compliant and safe."
+    },
+    {
+      question: "Can you work during off-hours to avoid disrupting business operations?",
+      answer: "Yes! We understand that many electrical upgrades and installations need to happen outside of business hours. We're flexible with scheduling and can work nights, weekends, or during your slowest business periods to minimize disruption."
+    }
+  ];
+
+  const { data: googleReviews } = useGoogleReviews();
+  const reviews = googleReviews && googleReviews.length > 0
+    ? transformGoogleReviews(googleReviews)
+    : defaultReviews;
+  const { averageRating, totalReviews } = getReviewStats(reviews);
+
   return <>
       <SEO 
         title="Commercial Electrical Services Long Island - Licensed Business Electrician"
         description="Professional commercial electrical contractor serving Long Island businesses. Licensed electrician for office buildings, retail spaces, warehouses, restaurants. Emergency repairs, installations, maintenance. Suffolk & Nassau County. Call (516) 361-4068"
         keywords="commercial electrician Long Island, business electrical services Suffolk County, commercial electrical contractor Nassau County, office electrical installation, retail lighting, warehouse electrical, restaurant electrical"
         canonical="https://bermanelectrical.com/commercial"
+      />
+      <ServiceSchema
+        serviceName="Commercial Electrical Services"
+        serviceType="ElectricalService"
+        description="Professional commercial electrical contractor services for businesses across Long Island. Specializing in office buildings, retail spaces, warehouses, restaurants, healthcare facilities, and more. 24/7 emergency service, preventative maintenance, and code-compliant installations."
+        url="https://bermanelectrical.com/commercial"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+        additionalOffers={services.map(service => ({
+          name: service.title,
+          description: service.items.join(". ")
+        }))}
       />
       <Navbar />
       <div className="pt-20">
@@ -161,6 +207,12 @@ const Commercial = () => {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <ServiceFAQ 
+          title="Commercial Electrical Services FAQ"
+          faqs={faqs}
+        />
 
         {/* Final Tagline */}
         <div className="py-12 bg-gray-50">

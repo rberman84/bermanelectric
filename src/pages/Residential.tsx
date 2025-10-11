@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
+import ServiceSchema from "@/components/schema/ServiceSchema";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 
 const Residential = () => {
   const services = [{
@@ -31,12 +35,54 @@ const Residential = () => {
     items: ["Standby generator installation for uninterrupted power", "Transfer switches & whole-home power solutions", "Portable generator hookup & wiring"]
   }];
   const benefits = ["Over 20 Years of Experience – Trusted by homeowners across Long Island", "Licensed & Insured Electricians – Ensuring top-tier quality & safety", "Fast, Reliable Service – We get the job done right the first time", "Upfront Pricing – No hidden fees, just honest, competitive rates", "Customer Satisfaction Guaranteed – 5-star rated service"];
+  
+  const faqs = [
+    {
+      question: "How much does it cost to upgrade my electrical panel?",
+      answer: "Panel upgrade costs vary based on your home's needs and current electrical capacity. Most residential panel upgrades range from $1,500 to $3,500. We provide free estimates and upfront pricing before any work begins."
+    },
+    {
+      question: "How long does a typical residential electrical installation take?",
+      answer: "Most residential electrical work is completed in 1-3 days depending on the scope. Simple installations like outlets or switches can be done in hours, while full home rewiring or panel upgrades may take several days. We provide detailed timelines during your consultation."
+    },
+    {
+      question: "Do you offer emergency residential electrical services?",
+      answer: "Yes! We provide 24/7 emergency electrical services for urgent issues like power outages, electrical fires, sparking outlets, or any situation that poses a safety risk to your home and family."
+    },
+    {
+      question: "Are your electricians licensed and insured?",
+      answer: "Absolutely. All our electricians are fully licensed, insured, and have over 20 years of experience serving Long Island homeowners. We maintain all necessary certifications and stay current with electrical codes."
+    },
+    {
+      question: "Can you help with smart home electrical installations?",
+      answer: "Yes! We specialize in smart home wiring and automation, including smart lighting systems, automated switches, smart thermostats, and integration with home automation platforms. We ensure your electrical system can support modern smart home technology."
+    }
+  ];
+
+  const { data: googleReviews } = useGoogleReviews();
+  const reviews = googleReviews && googleReviews.length > 0
+    ? transformGoogleReviews(googleReviews)
+    : defaultReviews;
+  const { averageRating, totalReviews } = getReviewStats(reviews);
+
   return <>
       <SEO 
         title="Residential Electrical Services Long Island - Licensed Home Electrician"
         description="Professional residential electrical services on Long Island. Licensed electrician for home wiring, panel upgrades, lighting installation, EV chargers, smart home automation. Serving Suffolk & Nassau County. Call (516) 361-4068"
         keywords="residential electrician Long Island, home electrical services Suffolk County, electrical panel upgrades, home rewiring, lighting installation, EV charger installation, smart home wiring, GFCI installation"
         canonical="https://bermanelectrical.com/residential"
+      />
+      <ServiceSchema
+        serviceName="Residential Electrical Services"
+        serviceType="ElectricalService"
+        description="Professional residential electrical services including home wiring, panel upgrades, lighting installation, EV charger installation, smart home automation, and emergency repairs. Licensed and insured electricians serving Long Island homeowners."
+        url="https://bermanelectrical.com/residential"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+        additionalOffers={services.map(service => ({
+          name: service.title,
+          description: service.items.join(". ")
+        }))}
       />
       <Navbar />
       <div className="pt-20">
@@ -148,6 +194,12 @@ const Residential = () => {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <ServiceFAQ 
+          title="Residential Electrical Services FAQ"
+          faqs={faqs}
+        />
 
         {/* Final Tagline */}
         <div className="py-12 bg-gray-50">
