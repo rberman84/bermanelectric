@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
-import logoOptimized from "@/assets/logo-optimized.webp";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,17 +66,14 @@ const Navbar = () => {
             className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
             <img
-              src={logoOptimized}
+              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
               alt={generateAltText(
-                logoOptimized,
+                "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
                 "Berman Electric company logo"
               )}
               width="500"
               height="500"
-              className={cn(
-                "h-32 w-auto object-contain",
-                isScrolled ? "brightness-0 invert" : ""
-              )}
+              className={cn("h-12 md:h-14 w-auto object-contain", isScrolled ? "brightness-0 invert" : "")}
             />
           </Link>
 
