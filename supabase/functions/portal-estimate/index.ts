@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
+import { checkRateLimit, getClientIP, rateLimitErrorResponse, RATE_LIMITS } from "../_shared/rateLimit.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -36,6 +37,15 @@ function escapeHtml(text: string): string {
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Rate limiting check
+  const clientIP = getClientIP(req);
+  const rateLimitResult = await checkRateLimit(clientIP, RATE_LIMITS.ESTIMATE);
+  
+  if (!rateLimitResult.allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return rateLimitErrorResponse(rateLimitResult, corsHeaders);
   }
 
   if (req.method !== "POST") {
