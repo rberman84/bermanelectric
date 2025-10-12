@@ -3,7 +3,6 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesDropdown from "./navbar/ServicesDropdown";
-import heroImage from "@/assets/hero-electrical-optimized.webp";
 
 interface HeroProps {
   title?: string;
@@ -22,7 +21,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
       {/* Background with overlay */}
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
         <img
-          src={heroImage}
+          src="/lovable-uploads/hero-electrical-background-new.png"
           alt="Professional electrical services with dramatic lightning power effect"
           width="1536"
           height="919"
