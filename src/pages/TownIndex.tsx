@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { towns, buildTownPath } from "@/lib/townContent";
 import StructuredData from "@/components/town/StructuredData";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 
 const TownIndex = () => {
   const collectionPageSchema = {
@@ -32,7 +34,9 @@ const TownIndex = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-16">
+    <>
+      <Navbar />
+      <div className="bg-gray-50 min-h-screen py-16">
       <Helmet>
         <title>Licensed Electricians Serving All Suffolk County Towns | Berman Electric</title>
         <meta
@@ -138,6 +142,8 @@ const TownIndex = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
