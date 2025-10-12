@@ -34,14 +34,14 @@ const TownIndex = () => {
   return (
     <div className="bg-gray-50 min-h-screen py-16">
       <Helmet>
-        <title>Suffolk County Town Pages | Berman Electric</title>
+        <title>Licensed Electricians Serving All Suffolk County Towns | Berman Electric</title>
         <meta
           name="description"
-          content="Browse Berman Electric's Suffolk County town pages featuring local electricians, services, FAQs, and directions for Huntington, Smithtown, Brookhaven, and more."
+          content="Professional electrical services across Suffolk County, NY. Licensed electricians serving Huntington, Smithtown, Brookhaven, Islip, Babylon, and 8 more towns. Emergency service, panel upgrades, EV chargers. Call (516) 361-4068."
         />
         <link rel="canonical" href="https://www.bermanelectric.com/locations" />
-        <meta property="og:title" content="Suffolk County Town Pages | Berman Electric" />
-        <meta property="og:description" content="Browse Berman Electric's Suffolk County town pages featuring local electricians, services, FAQs, and directions for Huntington, Smithtown, Brookhaven, and more." />
+        <meta property="og:title" content="Licensed Electricians Serving All Suffolk County Towns | Berman Electric" />
+        <meta property="og:description" content="Professional electrical services across Suffolk County, NY. Licensed electricians serving Huntington, Smithtown, Brookhaven, Islip, Babylon, and 8 more towns. Emergency service, panel upgrades, EV chargers." />
         <meta property="og:url" content="https://www.bermanelectric.com/locations" />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -49,11 +49,42 @@ const TownIndex = () => {
       <StructuredData data={collectionPageSchema} id="town-collection-schema" />
 
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-4xl font-bold text-gray-900">Suffolk County Electrical Service Areas</h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Explore our localized electrical service kits for towns across Suffolk County, each with structured data, FAQs, and driving directions.
+        <div className="mx-auto max-w-3xl text-center mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Licensed Electricians Serving All Suffolk County Towns
+          </h1>
+          <p className="text-xl text-gray-700 mb-6">
+            Professional electrical services in 13 Suffolk County communities. From <Link to="/locations/huntington" className="text-electric-600 hover:text-electric-700 font-semibold underline">Huntington</Link> to <Link to="/locations/shelter-island" className="text-electric-600 hover:text-electric-700 font-semibold underline">Shelter Island</Link>, we're your trusted local electrical contractor.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
+            <Link to="/residential" className="hover:text-electric-600 font-medium underline">Residential Services</Link>
+            <span>•</span>
+            <Link to="/commercial" className="hover:text-electric-600 font-medium underline">Commercial Services</Link>
+            <span>•</span>
+            <Link to="/ev-charger" className="hover:text-electric-600 font-medium underline">EV Charger Installation</Link>
+            <span>•</span>
+            <Link to="/emergency" className="hover:text-electric-600 font-medium underline">24/7 Emergency Service</Link>
+          </div>
+        </div>
+
+        <div className="mb-12 bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+            Why Choose Berman Electric for Your Town?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Local Expertise</h3>
+              <p className="text-sm text-gray-600">We know Suffolk County's unique electrical codes, permit requirements, and building regulations for each town.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Licensed & Insured</h3>
+              <p className="text-sm text-gray-600">Fully licensed Master Electrician with comprehensive insurance coverage for your protection.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Fast Response</h3>
+              <p className="text-sm text-gray-600">Same-day service available. Emergency electrician on call 24/7 throughout Suffolk County.</p>
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
