@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
-import { generateAltText } from "@/lib/utils";
-import logoOptimized from "@/assets/logo-optimized.webp";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -50,13 +48,11 @@ const Footer = () => {
                 className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
                 <img
-                  src={logoOptimized}
-                  alt={generateAltText(
-                    logoOptimized,
-                    "Berman Electric logo in the footer"
-                  )}
+                  src="/logo-optimized.webp"
+                  alt="Berman Electric logo in the footer"
                   width="80"
                   height="80"
+                  loading="lazy"
                   className="h-20 w-auto brightness-0 invert"
                 />
               </Link>

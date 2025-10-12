@@ -20,7 +20,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
       {/* Background with overlay */}
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
         <img
-          src="/hero-optimized-compressed.webp"
+          src="/hero-mobile-optimized.webp"
           alt="Professional electrical services with dramatic lightning power effect"
           width="1920"
           height="1080"
