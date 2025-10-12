@@ -74,7 +74,7 @@ const Navbar = () => {
               width="500"
               height="500"
               className={cn(
-                "h-32 w-auto transition-all duration-300",
+                "h-32 w-auto object-contain",
                 isScrolled ? "brightness-0 invert" : ""
               )}
             />
