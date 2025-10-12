@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
 import { generateAltText } from "@/lib/utils";
-import logoOptimized from "@/assets/logo-optimized.webp";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -50,13 +49,13 @@ const Footer = () => {
                 className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
                 <img
-                  src={logoOptimized}
+                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
                   alt={generateAltText(
-                    logoOptimized,
+                    "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
                     "Berman Electric logo in the footer"
                   )}
-                  width="512"
-                  height="512"
+                  width="500"
+                  height="500"
                   className="h-20 w-auto brightness-0 invert"
                 />
               </Link>
