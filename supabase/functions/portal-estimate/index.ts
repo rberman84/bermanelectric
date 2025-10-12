@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
 import { checkRateLimit, getClientIP, rateLimitErrorResponse, RATE_LIMITS } from "../_shared/rateLimit.ts";
+import { handleError, handleValidationError, ErrorCode } from "../_shared/errorHandler.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -75,10 +76,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const parsed = estimateRequestSchema.safeParse(body);
     if (!parsed.success) {
-      return new Response(
-        JSON.stringify({ error: "Invalid input", details: parsed.error.flatten() }),
-        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      return handleValidationError(parsed.error, "portal-estimate", corsHeaders);
     }
 
     const { name, email, phone, address, projectType, budgetRange, timeline, notes } = parsed.data;
@@ -158,11 +156,7 @@ const handler = async (req: Request): Promise<Response> => {
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Error in portal-estimate function:", error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
+    return handleError(error, "portal-estimate", corsHeaders);
   }
 };
 

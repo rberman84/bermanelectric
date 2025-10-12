@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { z } from "https://esm.sh/zod@3.23.8";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.58.0";
 import { checkRateLimit, getClientIP, rateLimitErrorResponse, RATE_LIMITS } from "../_shared/rateLimit.ts";
+import { handleError, handleApiError, handleValidationError, ErrorCode } from "../_shared/errorHandler.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -149,10 +150,7 @@ const handler = async (req: Request): Promise<Response> => {
     const parsed = requestSchema.safeParse(json);
 
     if (!parsed.success) {
-      return new Response(
-        JSON.stringify({ error: "Invalid payload", details: parsed.error.flatten() }),
-        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      return handleValidationError(parsed.error, "ai-onsite-triage", corsHeaders);
     }
 
     const {
@@ -220,12 +218,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("OpenAI response error", errorText);
-      return new Response(
-        JSON.stringify({ error: "Vision analysis failed", details: errorText }),
-        { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      return await handleApiError(response, "ai-onsite-triage", corsHeaders);
     }
 
     const completion = await response.json();
@@ -312,11 +305,7 @@ const handler = async (req: Request): Promise<Response> => {
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Unhandled triage error", error);
-    return new Response(
-      JSON.stringify({ error: error.message || "Unexpected error" }),
-      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
+    return handleError(error, "ai-onsite-triage", corsHeaders);
   }
 };
 

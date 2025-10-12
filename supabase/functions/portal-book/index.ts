@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { z } from "https://esm.sh/zod@3.23.8";
 import { getProviders, getReliabilityManager } from "../_shared/delivery.ts";
 import { checkRateLimit, getClientIP, rateLimitErrorResponse, RATE_LIMITS } from "../_shared/rateLimit.ts";
+import { handleError, handleValidationError, ErrorCode } from "../_shared/errorHandler.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -76,10 +77,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const parsed = bookServiceSchema.safeParse(body);
     if (!parsed.success) {
-      return new Response(
-        JSON.stringify({ error: "Invalid input", details: parsed.error.flatten() }),
-        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      return handleValidationError(parsed.error, "portal-book", corsHeaders);
     }
 
     const { name, email, phone, address, serviceType, preferredDate, notes, membership } = parsed.data;
@@ -210,12 +208,7 @@ const handler = async (req: Request): Promise<Response> => {
       { status: responseStatus, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: unknown) {
-    console.error("Error in portal-book function:", error);
-    const message = error instanceof Error ? error.message : String(error);
-    return new Response(
-      JSON.stringify({ error: message }),
-      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
+    return handleError(error, "portal-book", corsHeaders);
   }
 };
 

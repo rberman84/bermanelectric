@@ -3,6 +3,7 @@ import { z } from "https://esm.sh/zod@3.23.8";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.58.0";
 import { Resend } from "npm:resend@4.0.0";
 import { checkRateLimit, getClientIP, rateLimitErrorResponse, RATE_LIMITS } from "../_shared/rateLimit.ts";
+import { handleError, handleValidationError, ErrorCode } from "../_shared/errorHandler.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -285,10 +286,7 @@ const handler = async (req: Request): Promise<Response> => {
     const parsed = requestSchema.safeParse(body);
 
     if (!parsed.success) {
-      return new Response(
-        JSON.stringify({ error: "Invalid payload", details: parsed.error.flatten() }),
-        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      return handleValidationError(parsed.error, "smart-booking", corsHeaders);
     }
 
     const {
@@ -488,11 +486,7 @@ const handler = async (req: Request): Promise<Response> => {
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Smart booking error", error);
-    return new Response(
-      JSON.stringify({ error: error.message || "Unexpected error" }),
-      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
+    return handleError(error, "smart-booking", corsHeaders);
   }
 };
 
