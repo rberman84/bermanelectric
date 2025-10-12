@@ -55,8 +55,8 @@ const Footer = () => {
                     logoOptimized,
                     "Berman Electric logo in the footer"
                   )}
-                  width="500"
-                  height="500"
+                  width="80"
+                  height="80"
                   className="h-20 w-auto brightness-0 invert"
                 />
               </Link>
