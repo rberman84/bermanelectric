@@ -75,15 +75,8 @@ const Navbar = () => {
               height="512"
               className={cn(
                 "h-32 w-auto transition-all duration-300",
-                isScrolled ? "brightness-0 invert" : "brightness-100",
-                "animate-[wiggle_3s_ease-in-out_infinite]"
+                isScrolled ? "brightness-0 invert" : ""
               )}
-              style={{
-                animation: `
-                  scale 4s ease-in-out infinite,
-                  colorize 4s ease-in-out infinite
-              `
-            }}
             />
           </Link>
 
