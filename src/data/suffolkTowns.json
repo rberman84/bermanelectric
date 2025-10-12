@@ -349,5 +349,1175 @@
         }
       ]
     }
+  },
+  {
+    "name": "Islip",
+    "slug": "islip",
+    "seo": {
+      "title": "Islip NY Electricians | Berman Electric",
+      "description": "Berman Electric serves Islip with residential upgrades, commercial electrical, and emergency service for beach communities, downtown, and Fire Island properties."
+    },
+    "hero": {
+      "heading": "Islip Electricians for Beach Homes & Main Street Businesses",
+      "subheading": "Licensed electricians for Bay Shore storefronts, Fire Island ferry terminals, and coastal residential projects.",
+      "ctaLabel": "Schedule Islip Service"
+    },
+    "intro": "Islip's diverse communities from Bay Shore to Fire Island demand electrical systems built for salt air, seasonal use, and commercial reliability. Berman Electric designs resilient solutions for waterfront homes, downtown retailers, and ferry infrastructure.",
+    "serviceArea": "Serving Islip, Bay Shore, Central Islip, East Islip, and Fire Island communities.",
+    "map": {
+      "query": "Islip Town Hall",
+      "description": "Our crews route via Sunrise Highway and Montauk Highway, providing rapid response to Islip properties within 25 minutes.",
+      "note": "We coordinate permits with the Town of Islip Building Department and handle all inspection scheduling."
+    },
+    "coordinates": {
+      "latitude": 40.7300,
+      "longitude": -73.2107
+    },
+    "zipCodes": ["11751", "11730", "11722", "11795"],
+    "neighborhoods": ["Bay Shore", "Central Islip", "East Islip", "Great River", "Fire Island"],
+    "landmarks": ["Islip Town Hall", "Bayard Cutting Arboretum", "Fire Island National Seashore"],
+    "serviceCatalog": [
+      "Waterfront electrical hardening",
+      "Commercial retail fit-outs",
+      "Panel upgrades for beach properties",
+      "Emergency generator installation"
+    ],
+    "services": [
+      {
+        "title": "Fire Island & Beach Community Electrical",
+        "description": "Seasonal properties on Fire Island require marine-grade wiring, surge protection, and systems that withstand salt spray. We install and maintain electrical infrastructure for ferry-accessible homes.",
+        "highlights": [
+          "Corrosion-resistant materials and weatherproof installations",
+          "Seasonal inspection and startup services",
+          "Coordination with ferry schedules for equipment transport"
+        ]
+      },
+      {
+        "title": "Bay Shore Commercial Projects",
+        "description": "Main Street retailers and restaurants depend on reliable power and architectural lighting. Our teams perform code-compliant installations with minimal business disruption.",
+        "highlights": [
+          "Commercial kitchen and HVAC circuits",
+          "LED retrofits and accent lighting design",
+          "Emergency response agreements for power outages"
+        ]
+      },
+      {
+        "title": "Residential Service Upgrades",
+        "description": "From Great River estates to Central Islip family homes, we modernize electrical panels, install EV chargers, and add whole-home surge protection.",
+        "highlights": [
+          "200A service upgrades with PSEG coordination",
+          "Smart home and automation wiring",
+          "Outdoor lighting and landscape electrical"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can you service Fire Island properties?",
+        "answer": "Yes. We coordinate ferry transport for equipment and materials, scheduling work around seasonal schedules. Our installations use marine-grade components rated for salt air and humidity."
+      },
+      {
+        "question": "Do Islip projects require permits?",
+        "answer": "Most electrical work in Islip requires permits through the Town Building Department. We prepare all documentation, submit applications, and schedule inspections on your behalf."
+      },
+      {
+        "question": "How quickly can you respond to Islip emergencies?",
+        "answer": "Our dispatch center monitors Islip service requests 24/7. Emergency crews typically arrive within 25-35 minutes for power outages, storm damage, or critical failures."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Service in Islip",
+      "description": "Follow these steps to book a licensed Islip electrician from Berman Electric.",
+      "steps": [
+        {
+          "title": "Document the electrical issue",
+          "detail": "Take photos of panels, affected areas, or equipment. Note any error messages or tripped breakers."
+        },
+        {
+          "title": "Contact our dispatch center",
+          "detail": "Call (516) 361-4068 or submit the online form. Mention Islip so we can assign a crew familiar with local codes."
+        },
+        {
+          "title": "Confirm access and permits",
+          "detail": "Our coordinator will verify parking, ferry access for Fire Island properties, and permit requirements."
+        },
+        {
+          "title": "Day-of walkthrough",
+          "detail": "The crew lead will review the scope, perform safety checks, and provide maintenance recommendations specific to coastal conditions."
+        }
+      ],
+      "successNarrative": "Upon completion, you'll receive inspection approvals, warranty documentation, and maintenance schedules tailored to Islip's coastal environment."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 25 minutes via Sunrise Highway.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head south on Ronkonkoma Ave",
+          "detail": "Continue onto Lakeland Ave and merge onto Sunrise Hwy/NY-27 E."
+        },
+        {
+          "title": "Take exit toward Islip Ave",
+          "detail": "Follow Islip Ave south toward downtown Islip and Main Street."
+        },
+        {
+          "title": "Navigate to service location",
+          "detail": "Our crews service Bay Shore, East Islip, and Fire Island ferry terminals throughout the town."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Babylon",
+    "slug": "babylon",
+    "seo": {
+      "title": "Babylon NY Electricians | Berman Electric",
+      "description": "Expert electrical service for Babylon homes, waterfront properties, and Main Street businesses. Panel upgrades, emergency repairs, and commercial electrical by licensed electricians."
+    },
+    "hero": {
+      "heading": "Babylon Electricians for Waterfront Living & Village Commerce",
+      "subheading": "Master electricians serving Babylon Village, Lindenhurst, and South Shore beach communities.",
+      "ctaLabel": "Book Babylon Electrician"
+    },
+    "intro": "Babylon's charming village, bustling marinas, and South Shore neighborhoods require electrical systems designed for coastal conditions and commercial reliability. Berman Electric delivers expert service from Main Street to the Great South Bay.",
+    "serviceArea": "Serving Babylon Village, West Babylon, North Babylon, Lindenhurst, and Amityville.",
+    "map": {
+      "query": "Babylon Village NY",
+      "description": "We dispatch crews via Southern State Parkway and Sunrise Highway, reaching Babylon properties in 20-30 minutes.",
+      "note": "All permits are coordinated with the Town of Babylon Building Department and incorporated villages."
+    },
+    "coordinates": {
+      "latitude": 40.6959,
+      "longitude": -73.3251
+    },
+    "zipCodes": ["11702", "11704", "11707", "11757"],
+    "neighborhoods": ["Babylon Village", "West Babylon", "North Babylon", "Lindenhurst", "Amityville"],
+    "landmarks": ["Babylon Village Hall", "Argyle Park", "Babylon Long Island Rail Road Station"],
+    "serviceCatalog": [
+      "Marina and dock electrical systems",
+      "Village retail and restaurant electrical",
+      "Residential panel upgrades",
+      "Backup generator installation"
+    ],
+    "services": [
+      {
+        "title": "Marina & Waterfront Electrical",
+        "description": "Great South Bay marinas and waterfront homes need corrosion-resistant wiring and surge protection. We install shore power pedestals, dock lighting, and automated boat lift systems.",
+        "highlights": [
+          "30A and 50A shore power with GFCI protection",
+          "Marine-grade materials and weatherproof enclosures",
+          "Annual inspections before boating season"
+        ]
+      },
+      {
+        "title": "Babylon Village Commercial",
+        "description": "Main Street businesses depend on reliable power for restaurants, boutiques, and professional offices. Our teams deliver code-compliant installations with evening and weekend availability.",
+        "highlights": [
+          "Commercial kitchen electrical and refrigeration circuits",
+          "Architectural lighting and storefront displays",
+          "Rapid emergency response for business-critical failures"
+        ]
+      },
+      {
+        "title": "South Shore Residential",
+        "description": "From canal-front homes to suburban neighborhoods, we handle service upgrades, EV charging installation, and whole-home automation for Babylon families.",
+        "highlights": [
+          "200A and 400A service changes",
+          "Smart home wiring and automation",
+          "Outdoor lighting and landscape electrical"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you work on Babylon marina properties?",
+        "answer": "Yes. We specialize in marina electrical systems, including shore power pedestals, dock lighting, and pump-out stations. All installations use marine-grade materials rated for salt water exposure."
+      },
+      {
+        "question": "Can you handle Babylon Village permits?",
+        "answer": "Absolutely. We prepare and submit permit applications to the Village of Babylon Building Department, schedule inspections, and provide all required documentation."
+      },
+      {
+        "question": "Do you offer emergency service in Babylon?",
+        "answer": "Yes. Our 24/7 dispatch center monitors Babylon service requests, with emergency crews typically arriving within 20-30 minutes for power outages and critical failures."
+      }
+    ],
+    "howTo": {
+      "title": "How to Hire an Electrician in Babylon",
+      "description": "Use this guide to schedule expert electrical service in Babylon and surrounding areas.",
+      "steps": [
+        {
+          "title": "Assess your electrical needs",
+          "detail": "Identify whether you need upgrades, repairs, or new installations. Take photos of existing equipment and panels."
+        },
+        {
+          "title": "Contact Berman Electric",
+          "detail": "Call (516) 361-4068 or use our online booking. Specify Babylon so we can assign crews familiar with local marinas and village codes."
+        },
+        {
+          "title": "Review scope and permits",
+          "detail": "Our project coordinator will discuss timeline, access requirements, and handle all permit paperwork with the town."
+        },
+        {
+          "title": "Service day walkthrough",
+          "detail": "Our electricians will review the work plan, answer questions, and provide maintenance tips for coastal properties."
+        }
+      ],
+      "successNarrative": "After completion, receive inspection approvals, warranty information, and recommended maintenance schedules for your Babylon property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 25 minutes via Southern State Parkway.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head west on Ronkonkoma Ave",
+          "detail": "Merge onto Southern State Pkwy W toward Babylon."
+        },
+        {
+          "title": "Take exit toward Babylon",
+          "detail": "Follow signs for Deer Park Ave/NY-231 S toward Babylon Village."
+        },
+        {
+          "title": "Arrive in Babylon",
+          "detail": "Continue south to Main Street and waterfront areas throughout the town."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Riverhead",
+    "slug": "riverhead",
+    "seo": {
+      "title": "Riverhead NY Electricians | Berman Electric",
+      "description": "Berman Electric provides Riverhead with agricultural electrical, winery infrastructure, commercial projects, and residential service throughout the North Fork gateway."
+    },
+    "hero": {
+      "heading": "Riverhead Electricians for Wineries, Farms & Commercial Centers",
+      "subheading": "Licensed electrical service for Tanger Outlets, North Fork vineyards, and downtown Riverhead businesses.",
+      "ctaLabel": "Request Riverhead Service"
+    },
+    "intro": "Riverhead serves as the gateway to the North Fork wine country and a major commercial hub for eastern Long Island. Berman Electric supports agricultural operations, retail centers, hospitality venues, and residential communities across the town.",
+    "serviceArea": "Serving Riverhead, Aquebogue, Jamesport, Calverton, and North Fork wine trail.",
+    "map": {
+      "query": "Riverhead Town Hall",
+      "description": "Our crews travel via LIE and Route 58, reaching Riverhead properties in 30-40 minutes from our Ronkonkoma headquarters.",
+      "note": "We coordinate with Riverhead Building Department for permits and work with agricultural clients on seasonal scheduling."
+    },
+    "coordinates": {
+      "latitude": 40.9173,
+      "longitude": -72.6620
+    },
+    "zipCodes": ["11901", "11931", "11792"],
+    "neighborhoods": ["Downtown Riverhead", "Aquebogue", "Jamesport", "Calverton", "Wading River"],
+    "landmarks": ["Tanger Outlets", "Suffolk County Center", "Long Island Aquarium"],
+    "serviceCatalog": [
+      "Winery and tasting room electrical",
+      "Agricultural and irrigation systems",
+      "Commercial retail fit-outs",
+      "Three-phase power for industrial facilities"
+    ],
+    "services": [
+      {
+        "title": "Winery & Hospitality Electrical",
+        "description": "North Fork wineries need reliable power for production equipment, climate-controlled cellars, and tasting rooms. We design electrical systems that support operations from crush to bottling.",
+        "highlights": [
+          "Three-phase power for processing equipment",
+          "Climate control and refrigeration circuits",
+          "Architectural lighting for tasting rooms and event spaces"
+        ]
+      },
+      {
+        "title": "Agricultural Infrastructure",
+        "description": "Farms across Riverhead require irrigation controls, barn lighting, and backup power. Our electricians install underground feeders, pump controls, and automated systems for large properties.",
+        "highlights": [
+          "Irrigation pump electrical and controls",
+          "Barn and greenhouse lighting and power",
+          "Generator installations with automatic transfer switches"
+        ]
+      },
+      {
+        "title": "Retail & Commercial Projects",
+        "description": "From Tanger Outlets to downtown Riverhead businesses, we deliver commercial electrical installations with strict adherence to schedules and budgets.",
+        "highlights": [
+          "Store fit-outs and tenant improvements",
+          "Parking lot and security lighting",
+          "Emergency power systems for critical operations"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can you support winery electrical projects?",
+        "answer": "Yes. We regularly work with North Fork wineries on production equipment, climate control, and tasting room fit-outs. Our team understands the unique electrical demands of wine production."
+      },
+      {
+        "question": "Do you handle agricultural electrical work?",
+        "answer": "Absolutely. We install and maintain irrigation pump systems, barn electrical, greenhouse lighting, and backup generators for farms throughout Riverhead and the North Fork."
+      },
+      {
+        "question": "Can you work at Tanger Outlets?",
+        "answer": "Yes. We've completed tenant fit-outs and electrical upgrades at retail centers throughout Riverhead, working within mall schedules and landlord requirements."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Service in Riverhead",
+      "description": "Follow this process to book commercial or agricultural electrical service in Riverhead.",
+      "steps": [
+        {
+          "title": "Define your project scope",
+          "detail": "Whether winery equipment, farm infrastructure, or retail fit-out, document your electrical needs and timeline."
+        },
+        {
+          "title": "Contact our commercial team",
+          "detail": "Call (516) 361-4068 and ask for commercial/agricultural services. We'll assign a project manager familiar with Riverhead operations."
+        },
+        {
+          "title": "Site assessment and design",
+          "detail": "Our team will visit your property, review electrical capacity, and design a solution that meets your operational needs."
+        },
+        {
+          "title": "Installation and inspection",
+          "detail": "We'll coordinate with the Riverhead Building Department for permits and schedule work around your business hours or harvest schedules."
+        }
+      ],
+      "successNarrative": "Upon completion, receive as-built drawings, inspection approvals, and ongoing maintenance recommendations for your Riverhead property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 35 minutes via LIE.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head east on Ronkonkoma Ave",
+          "detail": "Merge onto I-495 E (Long Island Expressway) toward Riverhead."
+        },
+        {
+          "title": "Take exit 71 for NY-24",
+          "detail": "Follow NY-24 E and merge onto NY-58 toward Riverhead."
+        },
+        {
+          "title": "Arrive in Riverhead",
+          "detail": "Continue to downtown Riverhead, Tanger Outlets, or North Fork wine country as needed."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Southampton",
+    "slug": "southampton",
+    "seo": {
+      "title": "Southampton NY Electricians | Berman Electric",
+      "description": "Luxury electrical service for Southampton estates, oceanfront properties, and village businesses. Expert panel upgrades, smart home integration, and emergency service."
+    },
+    "hero": {
+      "heading": "Southampton Electricians for Luxury Estates & Village Properties",
+      "subheading": "Master electricians serving Southampton Village, Water Mill, Bridgehampton, and oceanfront compounds.",
+      "ctaLabel": "Schedule Southampton Service"
+    },
+    "intro": "Southampton's prestigious estates and historic village demand electrical craftsmanship of the highest caliber. Berman Electric delivers discreet, code-compliant service for oceanfront properties, equestrian facilities, and Main Street businesses.",
+    "serviceArea": "Serving Southampton Village, Water Mill, Bridgehampton, Sagaponack, and Westhampton Beach.",
+    "map": {
+      "query": "Southampton Village NY",
+      "description": "We coordinate with property managers and estates throughout Southampton, routing via Sunrise Highway and Montauk Highway.",
+      "note": "All work complies with Southampton Building Department requirements and historic district guidelines."
+    },
+    "coordinates": {
+      "latitude": 40.8843,
+      "longitude": -72.3895
+    },
+    "zipCodes": ["11968", "11976", "11932", "11963"],
+    "neighborhoods": ["Southampton Village", "Water Mill", "Bridgehampton", "Sagaponack", "Westhampton Beach"],
+    "landmarks": ["Southampton Village Hall", "Cooper's Beach", "Parrish Art Museum"],
+    "serviceCatalog": [
+      "Estate electrical systems and automation",
+      "Oceanfront property hardening",
+      "Pool and spa electrical",
+      "Smart home and security integration"
+    ],
+    "services": [
+      {
+        "title": "Estate Electrical Systems",
+        "description": "Multi-structure compounds require coordinated power distribution, backup systems, and automation. We design and maintain electrical infrastructure for Southampton's most prestigious properties.",
+        "highlights": [
+          "Multiple panel systems with load management",
+          "Whole-estate backup generators with automatic transfer",
+          "Smart home integration and lighting control"
+        ]
+      },
+      {
+        "title": "Oceanfront Hardening",
+        "description": "Atlantic-facing properties demand surge protection, corrosion-resistant materials, and flood-zone compliance. Our installations withstand salt spray and coastal weather.",
+        "highlights": [
+          "Marine-grade wiring and weatherproof installations",
+          "Surge protection and grounding systems",
+          "Pool, spa, and outdoor kitchen electrical"
+        ]
+      },
+      {
+        "title": "Village Commercial",
+        "description": "Southampton Village retailers, restaurants, and galleries require architectural lighting and reliable power. We perform installations that respect historic character while meeting modern codes.",
+        "highlights": [
+          "Historic building electrical upgrades",
+          "Accent lighting and display systems",
+          "After-hours service to minimize business disruption"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you work on Southampton estate properties?",
+        "answer": "Yes. We regularly service multi-acre estates, coordinating with property managers and designers to deliver discreet, code-compliant electrical installations."
+      },
+      {
+        "question": "Can you handle historic district requirements?",
+        "answer": "Absolutely. Our team is familiar with Southampton Village historic district guidelines and works within those parameters for all electrical upgrades."
+      },
+      {
+        "question": "Do you offer seasonal property service?",
+        "answer": "Yes. We provide spring opening and fall closing electrical inspections, plus emergency response throughout the year for Southampton properties."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Estate Electrical Service in Southampton",
+      "description": "Follow this process for coordinating electrical service at Southampton properties.",
+      "steps": [
+        {
+          "title": "Contact our estate services team",
+          "detail": "Call (516) 361-4068 and request estate electrical service. We'll assign a project manager experienced with Southampton properties."
+        },
+        {
+          "title": "Coordinate with property management",
+          "detail": "Provide access information, gate codes, and any special requirements. We'll work within your scheduling preferences."
+        },
+        {
+          "title": "Site assessment and proposal",
+          "detail": "Our team will visit the property, assess electrical systems, and provide detailed proposals with timeline and budget."
+        },
+        {
+          "title": "Installation and documentation",
+          "detail": "We'll complete work discreetly, coordinate inspections, and provide comprehensive documentation for property records."
+        }
+      ],
+      "successNarrative": "Upon completion, receive as-built drawings, inspection certificates, and ongoing maintenance recommendations for your Southampton estate."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 60 minutes via Sunrise Highway.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head south to Sunrise Highway",
+          "detail": "Merge onto Sunrise Hwy/NY-27 E toward Southampton."
+        },
+        {
+          "title": "Continue east through the Hamptons",
+          "detail": "Pass through Westhampton Beach and continue toward Southampton Village."
+        },
+        {
+          "title": "Arrive in Southampton",
+          "detail": "Follow Montauk Highway or local roads to reach village properties and oceanfront estates."
+        }
+      ]
+    }
+  },
+  {
+    "name": "East Hampton",
+    "slug": "east-hampton",
+    "seo": {
+      "title": "East Hampton NY Electricians | Berman Electric",
+      "description": "Premium electrical service for East Hampton estates, Amagansett properties, and Montauk beachfront. Expert installations, smart home integration, and emergency response."
+    },
+    "hero": {
+      "heading": "East Hampton Electricians for Coastal Estates & Historic Properties",
+      "subheading": "Licensed electrical service for East Hampton Village, Amagansett, and Montauk oceanfront compounds.",
+      "ctaLabel": "Book East Hampton Service"
+    },
+    "intro": "East Hampton's distinguished estates and pristine beaches require electrical systems engineered for reliability and elegance. Berman Electric provides expert service from village properties to oceanfront compounds throughout the South Fork.",
+    "serviceArea": "Serving East Hampton Village, Amagansett, Montauk, Wainscott, and Springs.",
+    "map": {
+      "query": "East Hampton Village NY",
+      "description": "We dispatch experienced crews via Sunrise Highway and Montauk Highway, coordinating closely with property managers and estate staff.",
+      "note": "All installations comply with East Hampton Town and Village building codes and coastal zone regulations."
+    },
+    "coordinates": {
+      "latitude": 40.9634,
+      "longitude": -72.1851
+    },
+    "zipCodes": ["11937", "11930", "11954"],
+    "neighborhoods": ["East Hampton Village", "Amagansett", "Montauk", "Wainscott", "Springs"],
+    "landmarks": ["Guild Hall", "Main Beach", "Montauk Lighthouse"],
+    "serviceCatalog": [
+      "Estate and compound electrical systems",
+      "Oceanfront property electrical",
+      "Pool, spa, and outdoor living electrical",
+      "Smart home and automation"
+    ],
+    "services": [
+      {
+        "title": "Oceanfront Estate Electrical",
+        "description": "Atlantic-facing compounds require surge protection, generator systems, and corrosion-resistant materials. We engineer electrical systems that perform flawlessly in coastal conditions.",
+        "highlights": [
+          "Whole-property backup generator systems",
+          "Salt-air resistant materials and enclosures",
+          "Multi-structure power distribution and management"
+        ]
+      },
+      {
+        "title": "Smart Estate Integration",
+        "description": "Modern East Hampton estates demand seamless integration of lighting, climate, security, and entertainment systems. Our team delivers sophisticated automation with intuitive control.",
+        "highlights": [
+          "Centralized lighting and climate control",
+          "Security system integration and monitoring",
+          "Outdoor audio/visual and landscape lighting"
+        ]
+      },
+      {
+        "title": "Pool & Outdoor Living",
+        "description": "Infinity pools, outdoor kitchens, and cabanas require precise electrical design. We install code-compliant systems for pools, spas, and entertainment areas.",
+        "highlights": [
+          "Pool and spa electrical with GFCI protection",
+          "Outdoor kitchen and bar electrical",
+          "Landscape and architectural lighting design"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you service Montauk properties?",
+        "answer": "Yes. We regularly work in Montauk on oceanfront estates, commercial properties, and seasonal residences. Our team is experienced with the unique challenges of beachfront electrical systems."
+      },
+      {
+        "question": "Can you handle multi-structure estates?",
+        "answer": "Absolutely. We design and install coordinated electrical systems for compounds with main houses, guest cottages, pool houses, and accessory structures."
+      },
+      {
+        "question": "Do you offer emergency service in East Hampton?",
+        "answer": "Yes. Our dispatch center provides 24/7 emergency response for East Hampton properties, with crews available for storm damage, power outages, and critical failures."
+      }
+    ],
+    "howTo": {
+      "title": "How to Hire an Electrician in East Hampton",
+      "description": "Follow this guide to schedule premium electrical service for East Hampton properties.",
+      "steps": [
+        {
+          "title": "Initial consultation",
+          "detail": "Contact (516) 361-4068 to discuss your project. We'll assign a project manager experienced with East Hampton estates."
+        },
+        {
+          "title": "Property assessment",
+          "detail": "Our team will visit your property to assess electrical systems, discuss requirements, and review architectural plans if available."
+        },
+        {
+          "title": "Detailed proposal",
+          "detail": "Receive a comprehensive proposal with timeline, budget, and specifications for your East Hampton project."
+        },
+        {
+          "title": "Installation and completion",
+          "detail": "We'll complete work to the highest standards, coordinate inspections, and provide ongoing support for your electrical systems."
+        }
+      ],
+      "successNarrative": "Upon completion, receive complete documentation, inspection certificates, and maintenance schedules for your East Hampton estate."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 75 minutes via Sunrise Highway.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head south to Sunrise Highway",
+          "detail": "Merge onto Sunrise Hwy/NY-27 E toward East Hampton."
+        },
+        {
+          "title": "Continue through Southampton",
+          "detail": "Stay on NY-27 E through Water Mill and Bridgehampton."
+        },
+        {
+          "title": "Arrive in East Hampton",
+          "detail": "Continue to East Hampton Village, Amagansett, or Montauk as needed."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Shelter Island",
+    "slug": "shelter-island",
+    "seo": {
+      "title": "Shelter Island NY Electricians | Berman Electric",
+      "description": "Ferry-accessible electrical service for Shelter Island estates, historic properties, and seasonal homes. Expert installations, generator systems, and emergency response."
+    },
+    "hero": {
+      "heading": "Shelter Island Electricians for Island Estates & Historic Properties",
+      "subheading": "Licensed electrical service accessible via North or South Ferry, serving waterfront estates and village properties.",
+      "ctaLabel": "Request Shelter Island Service"
+    },
+    "intro": "Shelter Island's pristine setting between the North and South Forks demands electrical expertise and logistics coordination. Berman Electric delivers reliable service for waterfront estates, historic properties, and seasonal residences across the island.",
+    "serviceArea": "Serving Shelter Island Heights, Dering Harbor, West Neck, and Ram Island.",
+    "map": {
+      "query": "Shelter Island NY",
+      "description": "We coordinate ferry transport for equipment and crews, scheduling around ferry times to ensure timely service delivery.",
+      "note": "All work complies with Shelter Island Building Department requirements and environmental regulations."
+    },
+    "coordinates": {
+      "latitude": 41.0645,
+      "longitude": -72.3392
+    },
+    "zipCodes": ["11964"],
+    "neighborhoods": ["Shelter Island Heights", "Dering Harbor", "West Neck", "Ram Island"],
+    "landmarks": ["Mashomack Preserve", "Shelter Island Ferry", "Shelter Island Town Hall"],
+    "serviceCatalog": [
+      "Ferry-accessible electrical service",
+      "Waterfront property electrical",
+      "Generator installation and maintenance",
+      "Historic property electrical upgrades"
+    ],
+    "services": [
+      {
+        "title": "Waterfront Estate Electrical",
+        "description": "Island properties require systems built for salt air, limited utility access, and environmental sensitivity. We install resilient electrical infrastructure for Shelter Island estates.",
+        "highlights": [
+          "Marine-grade materials and corrosion-resistant installations",
+          "Backup generator systems for power reliability",
+          "Dock and boathouse electrical systems"
+        ]
+      },
+      {
+        "title": "Historic Property Upgrades",
+        "description": "Shelter Island's historic homes need careful electrical modernization that preserves character while meeting safety codes. Our team specializes in sensitive retrofits.",
+        "highlights": [
+          "Panel upgrades with minimal structural impact",
+          "Code-compliant wiring in historic structures",
+          "Smart home integration that respects original architecture"
+        ]
+      },
+      {
+        "title": "Seasonal Property Service",
+        "description": "Summer residences require spring opening and fall closing services. We provide comprehensive electrical inspections and maintenance for seasonal Shelter Island properties.",
+        "highlights": [
+          "Pre-season electrical inspections",
+          "Winterization and system protection",
+          "Emergency response during summer season"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How do you handle ferry access to Shelter Island?",
+        "answer": "We coordinate our schedule around North or South Ferry times, transporting equipment and materials as needed. Our team factors ferry schedules into all project timelines."
+      },
+      {
+        "question": "Can you service historic Shelter Island properties?",
+        "answer": "Yes. Our electricians are experienced with historic property electrical upgrades, working carefully to preserve architectural character while modernizing systems."
+      },
+      {
+        "question": "Do you offer seasonal property services?",
+        "answer": "Absolutely. We provide spring opening inspections, summer emergency response, and fall closing services for Shelter Island seasonal residences."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Service on Shelter Island",
+      "description": "Follow this process to coordinate ferry-accessible electrical service for Shelter Island properties.",
+      "steps": [
+        {
+          "title": "Contact our dispatch center",
+          "detail": "Call (516) 361-4068 and specify Shelter Island. We'll coordinate ferry schedules and equipment transport."
+        },
+        {
+          "title": "Provide access information",
+          "detail": "Share property location, ferry preference (North or South), and any special access requirements."
+        },
+        {
+          "title": "Schedule around ferry times",
+          "detail": "We'll plan our arrival and work schedule to align with ferry operations and your availability."
+        },
+        {
+          "title": "Installation and inspection",
+          "detail": "Our crew will complete work efficiently, coordinate inspections with the Building Department, and provide documentation."
+        }
+      ],
+      "successNarrative": "Upon completion, receive inspection approvals, warranty information, and maintenance schedules for your Shelter Island property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 90 minutes including ferry.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Travel to ferry terminal",
+          "detail": "Head east via LIE to North Ferry at Greenport or South Ferry at North Haven, depending on project location."
+        },
+        {
+          "title": "Board ferry to Shelter Island",
+          "detail": "Transport crew and equipment via North or South Ferry. Ferry crossing takes approximately 5-8 minutes."
+        },
+        {
+          "title": "Navigate to property",
+          "detail": "Follow local roads to property location. Our team is familiar with island geography and property locations."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Southold",
+    "slug": "southold",
+    "seo": {
+      "title": "Southold NY Electricians | Berman Electric",
+      "description": "North Fork electrical service for Southold wineries, farms, and waterfront properties. Expert agricultural electrical, residential upgrades, and commercial installations."
+    },
+    "hero": {
+      "heading": "Southold Electricians for North Fork Wineries & Waterfront Estates",
+      "subheading": "Licensed electrical service for Greenport, Mattituck, Cutchogue, and North Fork agricultural properties.",
+      "ctaLabel": "Schedule Southold Service"
+    },
+    "intro": "Southold Town spans the North Fork from Mattituck to Orient Point, encompassing wineries, farms, marinas, and waterfront communities. Berman Electric delivers agricultural, commercial, and residential electrical expertise throughout the region.",
+    "serviceArea": "Serving Greenport, Mattituck, Cutchogue, Peconic, Laurel, and Orient.",
+    "map": {
+      "query": "Southold Town Hall",
+      "description": "Our crews travel via LIE and Route 25, reaching North Fork properties in 45-60 minutes from Ronkonkoma.",
+      "note": "We coordinate with Southold Building Department and understand agricultural electrical requirements unique to the North Fork."
+    },
+    "coordinates": {
+      "latitude": 41.0651,
+      "longitude": -72.4262
+    },
+    "zipCodes": ["11971", "11952", "11935", "11958"],
+    "neighborhoods": ["Greenport", "Mattituck", "Cutchogue", "Peconic", "Laurel", "Orient"],
+    "landmarks": ["Greenport Village", "North Fork Wine Trail", "Orient Point"],
+    "serviceCatalog": [
+      "Winery electrical and production systems",
+      "Agricultural and farm electrical",
+      "Marina and waterfront electrical",
+      "Residential service upgrades"
+    ],
+    "services": [
+      {
+        "title": "Winery & Production Facilities",
+        "description": "North Fork wineries require reliable three-phase power, climate control, and production equipment circuits. We design electrical systems that support every stage of wine production.",
+        "highlights": [
+          "Three-phase power for crushers, presses, and bottling lines",
+          "Climate-controlled cellar electrical systems",
+          "Tasting room lighting and hospitality electrical"
+        ]
+      },
+      {
+        "title": "Agricultural Electrical",
+        "description": "Farms throughout Southold need irrigation controls, barn power, greenhouse systems, and backup generators. Our team delivers reliable agricultural electrical infrastructure.",
+        "highlights": [
+          "Irrigation pump electrical and automation",
+          "Barn lighting, power outlets, and equipment circuits",
+          "Solar integration and farm generator systems"
+        ]
+      },
+      {
+        "title": "Waterfront & Marina Electrical",
+        "description": "Greenport and Mattituck marinas require shore power, dock lighting, and marine-grade installations. We deliver electrical systems built for salt water exposure.",
+        "highlights": [
+          "Shore power pedestals with metering",
+          "Dock lighting and security systems",
+          "Annual inspections and preventive maintenance"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you work with North Fork wineries?",
+        "answer": "Yes. We regularly install and maintain electrical systems for wineries throughout Southold, including production equipment, climate control, and tasting room fit-outs."
+      },
+      {
+        "question": "Can you handle agricultural electrical projects?",
+        "answer": "Absolutely. Our team is experienced with farm electrical needs, including irrigation systems, barn power, greenhouse electrical, and backup generators for agricultural operations."
+      },
+      {
+        "question": "Do you service Greenport properties?",
+        "answer": "Yes. We regularly work in Greenport Village on marina projects, residential properties, and commercial fit-outs. Our team is familiar with village building codes and waterfront requirements."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Service in Southold",
+      "description": "Follow this guide to book winery, agricultural, or residential electrical service in Southold.",
+      "steps": [
+        {
+          "title": "Define your project type",
+          "detail": "Specify whether you need winery, agricultural, marina, or residential electrical service. Document your requirements and timeline."
+        },
+        {
+          "title": "Contact our North Fork team",
+          "detail": "Call (516) 361-4068 and mention Southold. We'll assign a project manager experienced with North Fork properties."
+        },
+        {
+          "title": "Site assessment",
+          "detail": "Our team will visit your property to assess electrical needs, review capacity, and develop a tailored solution."
+        },
+        {
+          "title": "Installation and ongoing support",
+          "detail": "We'll complete work according to schedule, coordinate inspections, and provide maintenance recommendations for your Southold property."
+        }
+      ],
+      "successNarrative": "Upon completion, receive inspection approvals, as-built documentation, and ongoing electrical maintenance support for your Southold property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 50 minutes via LIE and Route 25.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head east on LIE",
+          "detail": "Merge onto I-495 E toward Riverhead."
+        },
+        {
+          "title": "Continue on Route 25 East",
+          "detail": "Take exit 71 and follow NY-25 E (Main Road) through the North Fork."
+        },
+        {
+          "title": "Navigate to North Fork location",
+          "detail": "Continue through Mattituck, Cutchogue, and Greenport to reach your service location."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Bay Shore",
+    "slug": "bay-shore",
+    "seo": {
+      "title": "Bay Shore NY Electricians | Berman Electric",
+      "description": "Expert electrical service for Bay Shore homes, Main Street businesses, and waterfront properties. Licensed electricians for residential, commercial, and emergency electrical."
+    },
+    "hero": {
+      "heading": "Bay Shore Electricians for Main Street & Marina Communities",
+      "subheading": "Licensed electrical service for Bay Shore Village, waterfront properties, and Great South Bay communities.",
+      "ctaLabel": "Book Bay Shore Electrician"
+    },
+    "intro": "Bay Shore's vibrant downtown, thriving marina, and residential neighborhoods demand reliable electrical service. Berman Electric delivers expert installations, upgrades, and emergency response throughout this dynamic South Shore community.",
+    "serviceArea": "Serving Bay Shore, Brightwaters, West Bay Shore, and surrounding Great South Bay neighborhoods.",
+    "map": {
+      "query": "Bay Shore NY Main Street",
+      "description": "We dispatch crews via Sunrise Highway and Southern State Parkway, reaching Bay Shore properties in 20-25 minutes.",
+      "note": "All work complies with Village of Bay Shore and Town of Islip building codes and inspection requirements."
+    },
+    "coordinates": {
+      "latitude": 40.7251,
+      "longitude": -73.2454
+    },
+    "zipCodes": ["11706"],
+    "neighborhoods": ["Bay Shore Village", "Brightwaters", "West Bay Shore", "South Bay Shore"],
+    "landmarks": ["Bay Shore Marina", "Boulton Center for the Performing Arts", "Fire Island Ferry Terminal"],
+    "serviceCatalog": [
+      "Main Street commercial electrical",
+      "Marina and waterfront electrical",
+      "Residential panel upgrades",
+      "Emergency electrical service"
+    ],
+    "services": [
+      {
+        "title": "Main Street Commercial",
+        "description": "Bay Shore's bustling Main Street retailers, restaurants, and professional offices need reliable power and sophisticated lighting. Our teams deliver code-compliant installations with minimal business disruption.",
+        "highlights": [
+          "Restaurant kitchen electrical and dedicated circuits",
+          "Retail lighting and display systems",
+          "After-hours installations to maintain business operations"
+        ]
+      },
+      {
+        "title": "Marina & Waterfront Electrical",
+        "description": "Bay Shore Marina and waterfront properties require corrosion-resistant electrical systems. We install shore power, dock lighting, and boat lift controls built for marine environments.",
+        "highlights": [
+          "Shore power pedestals with GFCI protection",
+          "Marine-grade materials and weatherproof enclosures",
+          "Dock lighting and security systems"
+        ]
+      },
+      {
+        "title": "Residential Electrical",
+        "description": "From historic village homes to canal-front properties, we handle service upgrades, EV charging, smart home wiring, and whole-house renovations.",
+        "highlights": [
+          "200A panel upgrades and service changes",
+          "EV charger installation with load management",
+          "Smart home and landscape lighting"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you service Bay Shore Marina properties?",
+        "answer": "Yes. We install and maintain electrical systems for marina facilities, waterfront homes, and boat-accessible properties throughout Bay Shore."
+      },
+      {
+        "question": "Can you work on Main Street businesses?",
+        "answer": "Absolutely. We regularly complete commercial electrical projects on Main Street, coordinating schedules to minimize disruption to retail and restaurant operations."
+      },
+      {
+        "question": "Do you offer emergency electrical service?",
+        "answer": "Yes. Our 24/7 dispatch center monitors Bay Shore service requests, with emergency crews typically arriving within 20-30 minutes for critical electrical failures."
+      }
+    ],
+    "howTo": {
+      "title": "How to Hire an Electrician in Bay Shore",
+      "description": "Follow this guide to schedule residential or commercial electrical service in Bay Shore.",
+      "steps": [
+        {
+          "title": "Identify your electrical needs",
+          "detail": "Document whether you need repairs, upgrades, new installations, or emergency service. Take photos of panels and affected areas."
+        },
+        {
+          "title": "Contact Berman Electric",
+          "detail": "Call (516) 361-4068 or submit an online request. Specify Bay Shore so we can assign local crews familiar with village codes."
+        },
+        {
+          "title": "Schedule and coordination",
+          "detail": "Our dispatcher will confirm timing, access requirements, and coordinate any necessary permits with the Village of Bay Shore."
+        },
+        {
+          "title": "Installation and inspection",
+          "detail": "Our electricians will complete work to code, arrange inspections, and provide documentation and maintenance recommendations."
+        }
+      ],
+      "successNarrative": "Upon completion, receive inspection approvals, warranty information, and recommended maintenance schedules for your Bay Shore property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 22 minutes via Sunrise Highway.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head south to Sunrise Highway",
+          "detail": "From Ronkonkoma, take Lakeland Ave south and merge onto Sunrise Hwy/NY-27 W."
+        },
+        {
+          "title": "Take Bay Shore exit",
+          "detail": "Exit at Fifth Avenue and head south toward downtown Bay Shore."
+        },
+        {
+          "title": "Arrive in Bay Shore",
+          "detail": "Continue to Main Street, marina district, or residential neighborhoods throughout the village."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Commack",
+    "slug": "commack",
+    "seo": {
+      "title": "Commack NY Electricians | Berman Electric",
+      "description": "Residential and commercial electrical service for Commack homes and businesses. Panel upgrades, EV charging, smart home installation, and emergency electrical repairs."
+    },
+    "hero": {
+      "heading": "Commack Electricians for Suburban Homes & Local Businesses",
+      "subheading": "Licensed electrical service for Commack neighborhoods, commercial centers, and Long Island Motor Parkway corridor.",
+      "ctaLabel": "Schedule Commack Service"
+    },
+    "intro": "Commack's established neighborhoods and busy commercial corridors demand reliable electrical service. Berman Electric delivers residential upgrades, commercial installations, and emergency repairs throughout this central Suffolk community.",
+    "serviceArea": "Serving Commack, East Northport, Kings Park, and Veteran's Highway commercial corridor.",
+    "map": {
+      "query": "Commack NY Town Center",
+      "description": "We dispatch crews via Northern State Parkway and Jericho Turnpike, reaching Commack properties in 15-20 minutes.",
+      "note": "All electrical work complies with Town of Huntington and Town of Smithtown building codes, depending on property location."
+    },
+    "coordinates": {
+      "latitude": 40.8429,
+      "longitude": -73.2929
+    },
+    "zipCodes": ["11725"],
+    "neighborhoods": ["Commack", "East Northport", "Kings Park", "Veteran's Highway corridor"],
+    "landmarks": ["Commack High School", "Hoyt Farm Nature Preserve", "Veteran's Memorial Highway"],
+    "serviceCatalog": [
+      "Residential panel upgrades",
+      "EV charging installation",
+      "Smart home electrical",
+      "Commercial electrical service"
+    ],
+    "services": [
+      {
+        "title": "Residential Panel Upgrades",
+        "description": "Commack's split-level and ranch homes often need electrical service upgrades for modern appliances, EV charging, and home additions. We coordinate with PSEG for seamless installations.",
+        "highlights": [
+          "200A and 400A service upgrades",
+          "Panel replacement with arc-fault protection",
+          "Load calculations and PSEG coordination"
+        ]
+      },
+      {
+        "title": "EV Charging Installation",
+        "description": "As electric vehicle adoption grows, Commack homeowners need dedicated EV charging circuits. We install Level 2 chargers with proper load management and code compliance.",
+        "highlights": [
+          "Level 2 charger installation in garages and driveways",
+          "Load management for existing electrical systems",
+          "Smart charger integration and app control"
+        ]
+      },
+      {
+        "title": "Commercial Electrical",
+        "description": "Veteran's Highway businesses and Commack shopping centers require electrical maintenance, tenant fit-outs, and parking lot lighting. Our commercial team delivers on time and on budget.",
+        "highlights": [
+          "Store fit-outs and tenant improvements",
+          "Parking lot and security lighting",
+          "Electrical maintenance programs"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you install EV chargers in Commack?",
+        "answer": "Yes. We install Level 2 EV charging stations for Commack homeowners, including necessary panel upgrades and load management systems to support electric vehicle charging."
+      },
+      {
+        "question": "Can you upgrade my electrical panel?",
+        "answer": "Absolutely. We regularly upgrade 100A and 150A panels to 200A or 400A service in Commack, coordinating with PSEG Long Island for disconnect and reconnect."
+      },
+      {
+        "question": "Do you service Veteran's Highway businesses?",
+        "answer": "Yes. We provide commercial electrical service for businesses along Veteran's Highway, including tenant fit-outs, electrical repairs, and preventive maintenance."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Service in Commack",
+      "description": "Follow these steps to book residential or commercial electrical service in Commack.",
+      "steps": [
+        {
+          "title": "Assess your electrical needs",
+          "detail": "Determine whether you need panel upgrades, EV charging, repairs, or new installations. Take photos of your current electrical panel."
+        },
+        {
+          "title": "Call Berman Electric",
+          "detail": "Contact (516) 361-4068 or submit an online request. Mention Commack so we can schedule a crew familiar with local building codes."
+        },
+        {
+          "title": "Pre-service coordination",
+          "detail": "Our dispatcher will confirm scheduling, discuss access requirements, and coordinate any necessary utility work with PSEG."
+        },
+        {
+          "title": "Installation and inspection",
+          "detail": "Our electricians will complete work to code, schedule inspections with the town, and provide documentation for your records."
+        }
+      ],
+      "successNarrative": "After completion, receive inspection certificates, warranty information, and maintenance recommendations for your Commack property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 18 minutes via Northern State Parkway.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head northwest on Ronkonkoma Ave",
+          "detail": "Merge onto Northern State Pkwy W toward Commack."
+        },
+        {
+          "title": "Take exit 44E toward Commack",
+          "detail": "Follow Jericho Turnpike/NY-25 toward downtown Commack."
+        },
+        {
+          "title": "Navigate to service location",
+          "detail": "Continue to residential neighborhoods or commercial areas along Veteran's Highway throughout Commack."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Coram",
+    "slug": "coram",
+    "seo": {
+      "title": "Coram NY Electricians | Berman Electric",
+      "description": "Local electrical service for Coram homes and businesses. Panel upgrades, lighting installation, electrical repairs, and emergency service by licensed electricians."
+    },
+    "hero": {
+      "heading": "Coram Electricians for Residential & Commercial Properties",
+      "subheading": "Licensed electrical service for Coram neighborhoods, Middle Country Road businesses, and surrounding communities.",
+      "ctaLabel": "Book Coram Electrician"
+    },
+    "intro": "Coram's residential neighborhoods and Middle Country Road commercial corridor need dependable electrical service. Berman Electric delivers expert installations, upgrades, and repairs throughout this growing central Suffolk community.",
+    "serviceArea": "Serving Coram, Selden, Farmingville, and Middle Country Road corridor.",
+    "map": {
+      "query": "Coram NY",
+      "description": "Located just north of Ronkonkoma, our crews reach Coram properties in 10-15 minutes for rapid response to service calls.",
+      "note": "All electrical work complies with Town of Brookhaven building codes and inspection requirements."
+    },
+    "coordinates": {
+      "latitude": 40.8687,
+      "longitude": -73.0010
+    },
+    "zipCodes": ["11727"],
+    "neighborhoods": ["Coram", "Selden", "Farmingville", "Middle Country"],
+    "landmarks": ["Cathedral Pines County Park", "Middle Country Public Library", "Coram Plaza"],
+    "serviceCatalog": [
+      "Residential electrical upgrades",
+      "Home lighting installation",
+      "Electrical troubleshooting and repair",
+      "Commercial electrical service"
+    ],
+    "services": [
+      {
+        "title": "Residential Electrical Upgrades",
+        "description": "Coram homes built in the 1970s and 1980s often need electrical modernization. We upgrade panels, add circuits, and install modern safety devices for growing families.",
+        "highlights": [
+          "Panel upgrades from 100A to 200A service",
+          "Additional circuit installation for home offices and appliances",
+          "GFCI and AFCI protection installation"
+        ]
+      },
+      {
+        "title": "Lighting Installation",
+        "description": "From recessed lighting to landscape illumination, we design and install indoor and outdoor lighting systems that enhance your Coram home's functionality and curb appeal.",
+        "highlights": [
+          "Recessed and track lighting installation",
+          "Landscape and security lighting",
+          "Smart lighting controls and automation"
+        ]
+      },
+      {
+        "title": "Electrical Repair & Troubleshooting",
+        "description": "When electrical problems arise, our diagnostic expertise quickly identifies and resolves issues. We repair outlets, switches, circuits, and troubleshoot mysterious electrical problems.",
+        "highlights": [
+          "Circuit breaker and panel troubleshooting",
+          "Outlet and switch repair/replacement",
+          "Electrical safety inspections"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How quickly can you respond to Coram service calls?",
+        "answer": "Located in nearby Ronkonkoma, our crews typically reach Coram properties within 10-15 minutes for emergency calls and can schedule routine service within days."
+      },
+      {
+        "question": "Do you handle electrical permits in Coram?",
+        "answer": "Yes. We prepare and submit electrical permit applications to the Town of Brookhaven Building Department and coordinate all required inspections."
+      },
+      {
+        "question": "Can you add circuits to my existing panel?",
+        "answer": "In most cases, yes. We'll assess your current panel capacity and either add circuits to the existing panel or recommend a panel upgrade if needed to safely accommodate additional load."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule an Electrician in Coram",
+      "description": "Follow this simple process to book electrical service for your Coram property.",
+      "steps": [
+        {
+          "title": "Identify the electrical issue",
+          "detail": "Note symptoms like flickering lights, tripped breakers, non-working outlets, or document your upgrade needs. Take photos if helpful."
+        },
+        {
+          "title": "Contact us for service",
+          "detail": "Call (516) 361-4068 or submit an online request. As your local Coram electrician, we can typically schedule service quickly."
+        },
+        {
+          "title": "Service appointment",
+          "detail": "Our electrician will arrive on time, diagnose the issue, explain options, and provide upfront pricing before beginning work."
+        },
+        {
+          "title": "Completion and follow-up",
+          "detail": "We'll complete repairs or installations, test all work, and provide recommendations for maintaining your Coram property's electrical system."
+        }
+      ],
+      "successNarrative": "After service completion, you'll receive documentation of all work performed and warranty information for your Coram property."
+    },
+    "drivingDirections": {
+      "summary": "Approximate travel time: 12 minutes via Middle Country Road.",
+      "startingPoint": "Berman Electric HQ – Ronkonkoma, NY",
+      "steps": [
+        {
+          "title": "Head north on Lakeland Ave",
+          "detail": "Continue north from Ronkonkoma toward Middle Country Road."
+        },
+        {
+          "title": "Turn onto Middle Country Road",
+          "detail": "Head east on NY-25 (Middle Country Road) toward Coram."
+        },
+        {
+          "title": "Arrive in Coram",
+          "detail": "Continue to residential neighborhoods or commercial properties throughout the Coram area."
+        }
+      ]
+    }
   }
 ]
