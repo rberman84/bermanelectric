@@ -71,8 +71,9 @@ const Navbar = () => {
                 "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
                 "Berman Electric company logo"
               )}
-              width="500"
-              height="500"
+              width="80"
+              height="80"
+              fetchPriority="high"
               className={cn("h-12 md:h-14 w-auto object-contain", isScrolled ? "brightness-0 invert" : "")}
             />
           </Link>
