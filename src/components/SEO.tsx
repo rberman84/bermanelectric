@@ -32,7 +32,6 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Berman Electric" />
       <link rel="canonical" href={currentUrl} />
-      <link rel="preload" href="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" as="image" fetchPriority="high" />
       
       {/* DNS prefetch and preconnect for external domains */}
       <link rel="preconnect" href="https://images.unsplash.com" />

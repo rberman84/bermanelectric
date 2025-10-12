@@ -18,6 +18,7 @@ import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
 import ServiceSchema from "@/components/schema/ServiceSchema";
+import logoOptimized from "@/assets/logo-optimized.webp";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import RelatedServices from "@/components/service/RelatedServices";
@@ -184,11 +185,13 @@ const Emergency = () => {
         <div className="relative py-24">
           <div className="absolute inset-0" aria-hidden="true">
             <img
-              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+              src={logoOptimized}
               alt={generateAltText(
-                "/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
+                logoOptimized,
                 "Background illustration of emergency electrical repair"
               )}
+              width="512"
+              height="512"
               className="w-full h-full object-cover"
               loading="lazy"
             />
