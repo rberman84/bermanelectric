@@ -28,7 +28,7 @@ const RonkonkomaServiceUpgradeCaseStudy = () => {
       "name": "Berman Electric",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bermanelectrical.com/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+        "url": "https://bermanelectrical.com/logo-optimized.webp"
       }
     },
     "mainEntityOfPage": {

@@ -107,7 +107,7 @@ const SEO = ({
           "image": [
             "https://bermanelectrical.com/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png"
           ],
-          "logo": "https://bermanelectrical.com/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png",
+          "logo": "https://bermanelectrical.com/logo-optimized.webp",
           "sameAs": [
             "https://www.facebook.com/bermanelectric",
             "https://www.instagram.com/bermanelectric",
