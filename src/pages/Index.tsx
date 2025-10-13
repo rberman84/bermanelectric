@@ -2,12 +2,14 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HomeContent from "@/components/home/HomeContent";
-import GoogleReviews from "@/components/shared/GoogleReviews";
+
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { AiHelpChat } from "@/components/shared/AiHelpChat";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+
+const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
 
 
 const Index = () => {
@@ -46,6 +48,21 @@ const Index = () => {
     };
   }, []);
 
+  const [showReviews, setShowReviews] = useState(false);
+  const reviewsRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const el = reviewsRef.current;
+    if (!el || showReviews) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setShowReviews(true);
+        io.disconnect();
+      }
+    }, { rootMargin: '200px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [showReviews]);
+
   return (
     <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
       <SEO 
@@ -59,7 +76,12 @@ const Index = () => {
       <main className="grow">
         <Hero />
         <HomeContent />
-        <GoogleReviews />
+        <div ref={reviewsRef} />
+        {showReviews ? (
+          <Suspense fallback={<div className="py-16 text-center"><div className="animate-pulse">Loading...</div></div>}>
+            <GoogleReviews />
+          </Suspense>
+        ) : null}
         <CTASection
           variant="emergency"
           title="Need Emergency Electrical Service?"
