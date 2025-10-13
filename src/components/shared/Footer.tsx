@@ -47,14 +47,18 @@ const Footer = () => {
                 to="/"
                 className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                <img
-                  src="/logo-optimized.webp"
-                  alt="Berman Electric logo in the footer"
-                  width="80"
-                  height="80"
-                  loading="lazy"
-                  className="h-20 w-auto brightness-0 invert"
-                />
+                <picture>
+                  <source srcSet="/logo-optimized.webp" type="image/webp" />
+                  <img
+                    src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+                    alt="Berman Electric logo in the footer"
+                    width="80"
+                    height="80"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-20 w-auto brightness-0 invert"
+                  />
+                </picture>
               </Link>
               <NAP variant="footer" showHours={true} />
               
