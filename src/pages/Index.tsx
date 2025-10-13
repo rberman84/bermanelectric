@@ -6,10 +6,10 @@ import HomeContent from "@/components/home/HomeContent";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import { AiHelpChat } from "@/components/shared/AiHelpChat";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
+const AiHelpChat = lazy(() => import("@/components/shared/AiHelpChat").then(m => ({ default: m.AiHelpChat })));
 
 
 const Index = () => {
@@ -62,6 +62,18 @@ const Index = () => {
     io.observe(el);
     return () => io.disconnect();
   }, [showReviews]);
+  const [showChat, setShowChat] = useState(false);
+  useEffect(() => {
+    const run = () => setShowChat(true);
+    // Load after idle or a short delay to keep it off the critical path
+    // @ts-ignore
+    if (window.requestIdleCallback) {
+      // @ts-ignore
+      window.requestIdleCallback(run, { timeout: 3000 });
+    } else {
+      setTimeout(run, 3000);
+    }
+  }, []);
 
   return (
     <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
@@ -90,7 +102,11 @@ const Index = () => {
         />
       </main>
       <Footer />
-      <AiHelpChat />
+      {showChat ? (
+        <Suspense fallback={null}>
+          <AiHelpChat />
+        </Suspense>
+      ) : null}
     </div>
   );
 };
