@@ -28,11 +28,10 @@
     <meta name="twitter:description" content="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience." />
     <meta name="twitter:image" content="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" />
     
-    <!-- Performance & Core Web Vitals -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <!-- Preload local fonts -->
+    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- Preload critical LCP image (logo) -->
     
@@ -46,8 +45,8 @@
       .hero{display:flex;align-items:center;justify-content:center;min-height:100vh;position:relative}
     </style>
     
-    <!-- Preload hero image -->
-    <link rel="preload" href="/hero-mobile-optimized.webp" as="image" type="image/webp" />
+    <!-- Preload critical hero image -->
+    <link rel="preload" as="image" href="/hero-mobile-optimized.webp" type="image/webp" fetchpriority="high" />
     
     <!-- DNS Prefetch & Preconnect for external resources -->
     <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
