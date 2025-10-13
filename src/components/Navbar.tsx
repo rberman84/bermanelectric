@@ -70,7 +70,7 @@ const Navbar = () => {
               alt="Berman Electric company logo"
               width="80"
               height="80"
-              fetchPriority="high"
+              fetchPriority="low"
               decoding="async"
               className={cn("h-12 md:h-14 w-auto object-contain")}
             />
