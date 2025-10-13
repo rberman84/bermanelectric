@@ -45,11 +45,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-        <Suspense fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="animate-pulse">Loading...</div>
-          </div>
-        }>
+        <Suspense fallback={<div style={{minHeight:'100vh'}} />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />

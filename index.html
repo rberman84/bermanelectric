@@ -31,8 +31,8 @@
     <!-- Performance & Core Web Vitals -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     
     <!-- Preload critical LCP image (logo) -->
     <link rel="preload" href="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png" as="image" type="image/png" fetchpriority="high" />
@@ -41,20 +41,24 @@
     <link rel="preload" href="/hero-mobile-optimized.webp" as="image" type="image/webp" />
     
     <!-- DNS Prefetch & Preconnect for external resources -->
-    <link rel="dns-prefetch" href="//images.unsplash.com" />
     <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.supabase.co" crossorigin />
     <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.functions.supabase.co" crossorigin />
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y"></script>
+    <!-- Google tag (gtag.js) - Deferred for performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-49S5SE0H5Y');
+      
+      // Load GA after page load to avoid blocking render
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-49S5SE0H5Y';
+        document.head.appendChild(script);
+      });
     </script>
   </head>
 
