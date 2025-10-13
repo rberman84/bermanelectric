@@ -43,25 +43,13 @@
       #root{min-height:100vh}
       header{position:fixed;top:0;width:100%;background:#fff;z-index:50;border-bottom:1px solid #e5e5e5}
       .hero{display:flex;align-items:center;justify-content:center;min-height:100vh;position:relative}
+      /* Additional critical styles for above-fold */
+      .container{max-width:1280px;margin:0 auto;padding:0 1rem}
+      .button-primary{display:inline-flex;align-items:center;padding:0.75rem 1.5rem;background:#0066cc;color:#fff;border-radius:0.5rem;font-weight:600;transition:all 0.2s}
+      .fade-in{animation:fadeIn 0.6s ease-in}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     </style>
     
-    <!-- Make CSS non-render-blocking -->
-    <script>
-      (function() {
-        var observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            mutation.addedNodes.forEach(function(node) {
-              if (node.tagName === 'LINK' && node.rel === 'stylesheet') {
-                node.media = 'print';
-                node.onload = function() { this.media = 'all'; };
-                observer.disconnect();
-              }
-            });
-          });
-        });
-        observer.observe(document.head, { childList: true, subtree: true });
-      })();
-    </script>
     
     <!-- Preload critical hero image -->
     <link rel="preload" as="image" href="/hero-mobile-optimized.webp" type="image/webp" fetchpriority="high" />
