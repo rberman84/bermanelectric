@@ -87,19 +87,21 @@ const Index = () => {
       {/* <ScrollDoctor /> */}
       <main className="grow">
         <Hero />
-        <HomeContent />
+        <section className="cv-auto"><HomeContent /></section>
         <div ref={reviewsRef} />
         {showReviews ? (
           <Suspense fallback={<div className="py-16 text-center"><div className="animate-pulse">Loading...</div></div>}>
             <GoogleReviews />
           </Suspense>
         ) : null}
-        <CTASection
-          variant="emergency"
-          title="Need Emergency Electrical Service?"
-          subtitle="Available 24/7 for electrical emergencies across Long Island"
-          showUrgency={true}
-        />
+        <section className="cv-auto">
+          <CTASection
+            variant="emergency"
+            title="Need Emergency Electrical Service?"
+            subtitle="Available 24/7 for electrical emergencies across Long Island"
+            showUrgency={true}
+          />
+        </section>
       </main>
       <Footer />
       {showChat ? (

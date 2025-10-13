@@ -116,4 +116,10 @@
     @apply relative overflow-hidden bg-white rounded-2xl shadow-lg 
            hover:shadow-xl transition-all duration-300 border border-gray-100;
   }
+
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
 }
+
