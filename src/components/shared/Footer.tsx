@@ -56,7 +56,7 @@ const Footer = () => {
                     height="80"
                     loading="lazy"
                     decoding="async"
-                    className="h-20 w-auto brightness-0 invert"
+                    className="h-20 w-auto"
                   />
                 </picture>
               </Link>

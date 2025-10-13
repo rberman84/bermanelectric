@@ -74,7 +74,7 @@ const Navbar = () => {
                 height="80"
                 fetchPriority="high"
                 decoding="async"
-                className={cn("h-12 md:h-14 w-auto object-contain", isScrolled ? "brightness-0 invert" : "")}
+                className={cn("h-12 md:h-14 w-auto object-contain", !isScrolled ? "brightness-0 invert" : "")}
               />
             </picture>
           </Link>
