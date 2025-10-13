@@ -48,7 +48,7 @@ const Footer = () => {
                 className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
                 <img
-                  src="/logo-80.webp"
+                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
                   alt="Berman Electric logo in the footer"
                   width="80"
                   height="80"
