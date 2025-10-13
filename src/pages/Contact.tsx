@@ -43,6 +43,7 @@ const Contact = () => {
                 "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
                 "Background image showing professional electrical service"
               )}
+              loading="lazy"
               className="object-cover w-full h-full"
             />
           </div>

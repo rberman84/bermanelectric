@@ -200,6 +200,7 @@ const Blog = () => {
                     <img
                       src={post.image}
                       alt={generateAltText(post.image, `${post.title} feature image`)}
+                      loading="lazy"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
@@ -268,6 +269,7 @@ const Blog = () => {
                     <img
                       src={post.image}
                       alt={generateAltText(post.image, `${post.title} article image`)}
+                      loading="lazy"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>

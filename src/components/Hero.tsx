@@ -21,6 +21,8 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
       <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
         <img
           src="/hero-mobile-optimized.webp"
+          srcSet="/hero-mobile-optimized.webp 600w, /hero-optimized-compressed.webp 1200w, /hero-electrical-optimized.webp 2000w"
+          sizes="100vw"
           alt="Professional electrical services with dramatic lightning power effect"
           width="1920"
           height="1080"
