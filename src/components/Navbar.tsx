@@ -66,7 +66,7 @@ const Navbar = () => {
             className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
             <img
-              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
+              src="/lovable-uploads/logo-optimized-160.png"
               alt="Berman Electric company logo"
               width="80"
               height="80"
