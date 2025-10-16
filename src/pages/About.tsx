@@ -16,7 +16,7 @@ const About = () => {
     <>
       <SEO 
         title="About Berman Electric - 20+ Years Licensed Electrician Long Island"
-        description="Learn about Berman Electric, your trusted licensed electrician serving Long Island for over 20 years. Family-owned business specializing in residential & commercial electrical services in Suffolk County, Nassau County, and Ronkonkoma NY."
+        description="Trusted licensed electrician serving Long Island 20+ years. Family-owned specializing in residential & commercial services. Suffolk, Nassau & Ronkonkoma NY."
         keywords="about Berman Electric, licensed electrician Long Island, family electrical business Suffolk County, experienced electrician Ronkonkoma NY, electrical contractor Nassau County"
         canonical="https://bermanelectrical.com/about"
       />

@@ -23,7 +23,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           src="/hero-mobile-optimized.webp"
           srcSet="/hero-mobile-optimized.webp 600w, /hero-optimized-compressed.webp 1200w, /hero-electrical-optimized.webp 2000w"
           sizes="100vw"
-          alt="Professional electrical services with dramatic lightning power effect"
+          alt="Licensed Long Island electrician Berman Electric providing residential and commercial electrical services with lightning electrical power background"
           width="1920"
           height="1080"
           className="w-full h-full object-cover"

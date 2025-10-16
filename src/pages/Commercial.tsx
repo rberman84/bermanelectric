@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import { generateAltText } from "@/lib/utils";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
@@ -13,6 +12,7 @@ import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import CommercialFAQSchema from "@/components/schema/CommercialFAQSchema";
+import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 
 const Commercial = () => {
   const services = [{
@@ -75,7 +75,7 @@ const Commercial = () => {
   return <>
       <SEO 
         title="Commercial Electrical Services Long Island - Licensed Business Electrician"
-        description="Professional commercial electrical contractor serving Long Island businesses. Licensed electrician for office buildings, retail spaces, warehouses, restaurants. Emergency repairs, installations, maintenance. Suffolk & Nassau County. Call (516) 361-4068"
+        description="Licensed commercial electrician for Long Island businesses. Offices, retail, warehouses & restaurants. Emergency repairs & maintenance. Call (516) 361-4068"
         keywords="commercial electrician Long Island, business electrical services Suffolk County, commercial electrical contractor Nassau County, office electrical installation, retail lighting, warehouse electrical, restaurant electrical"
         canonical="https://bermanelectrical.com/commercial"
       />
@@ -91,6 +91,13 @@ const Commercial = () => {
           description: service.items.join(". ")
         }))}
       />
+      <LocalBusinessSchema
+        serviceName="Commercial Electrical Services"
+        serviceDescription="Professional commercial electrical contractor serving Long Island businesses including offices, retail, warehouses, and restaurants. 24/7 emergency service, preventative maintenance, and code-compliant installations."
+        pageUrl="/commercial"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
       <Navbar />
       <Breadcrumb items={[{ label: "Services", href: "/commercial" }, { label: "Commercial Electrical Services" }]} />
       <CommercialFAQSchema />
@@ -101,10 +108,7 @@ const Commercial = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
             <img
               src="/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png"
-              alt={generateAltText(
-                "/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png",
-                "Background image of a modern commercial building"
-              )}
+              alt="Modern commercial building exterior professional electrical contractor services Long Island business electrician"
               className="w-full h-full object-cover opacity-70"
               loading="lazy"
             />
@@ -133,10 +137,7 @@ const Commercial = () => {
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src="/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png"
-              alt={generateAltText(
-                "/lovable-uploads/07eb5a46-0431-494e-b24d-0535e767c757.png",
-                "Background photo of a professional installing commercial electrical equipment"
-              )}
+              alt="Licensed electrician installing commercial electrical equipment panel upgrade Long Island business electrical services"
               className="w-full h-full object-cover"
               loading="lazy"
             />

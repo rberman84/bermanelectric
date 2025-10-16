@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import { generateAltText } from "@/lib/utils";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
@@ -27,6 +26,7 @@ import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/compon
 import logoOptimized from "@/assets/logo-optimized.webp";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import EmergencyFAQSchema from "@/components/schema/EmergencyFAQSchema";
+import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 
 const Emergency = () => {
   const services = [{
@@ -125,7 +125,7 @@ const Emergency = () => {
     <>
       <SEO
         title="24/7 Emergency Electrician Long Island - Emergency Electrical Repairs" 
-        description="24/7 emergency electrician serving Long Island. Fast response for electrical emergencies, power outages, sparking outlets, electrical fires. Licensed emergency electrical repairs Suffolk & Nassau County. Call (516) 361-4068"
+        description="24/7 emergency electrician on Long Island. Fast response for power outages, sparking outlets & electrical fires. Licensed repairs. Call (516) 361-4068"
         keywords="emergency electrician Long Island, 24/7 electrical repairs Suffolk County, electrical emergency Nassau County, power outage repair, electrical fire safety, emergency electrical service"
         canonical="https://bermanelectrical.com/emergency"
       />
@@ -141,6 +141,13 @@ const Emergency = () => {
           description: service.items.join(". ")
         }))}
       />
+      <LocalBusinessSchema
+        serviceName="24/7 Emergency Electrical Services"
+        serviceDescription="24/7 emergency electrician on Long Island providing rapid response for power outages, electrical fires, sparking outlets, and storm damage. Licensed emergency electricians available around the clock."
+        pageUrl="/emergency"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
       <Navbar />
       <Breadcrumb items={[{ label: "Services", href: "/emergency" }, { label: "Emergency Electrical Services" }]} />
       <EmergencyFAQSchema />
@@ -151,10 +158,7 @@ const Emergency = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
             <img
               src="/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png"
-              alt={generateAltText(
-                "/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png",
-                "Background image of an emergency electrical response vehicle"
-              )}
+              alt="24/7 emergency electrician service vehicle rapid response electrical repairs Long Island Suffolk County"
               className="w-full h-full object-cover opacity-70"
               loading="lazy"
             />
@@ -190,10 +194,7 @@ const Emergency = () => {
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src={logoOptimized}
-              alt={generateAltText(
-                logoOptimized,
-                "Background illustration of emergency electrical repair"
-              )}
+              alt="Berman Electric emergency electrical repair services available 24/7 Long Island licensed electrician"
               width="500"
               height="500"
               className="w-full h-full object-cover"

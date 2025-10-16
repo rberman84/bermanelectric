@@ -77,7 +77,7 @@ const Projects = () => {
     <>
       <SEO 
         title="Our Electrical Projects - Berman Electric Long Island Portfolio"
-        description="View our completed electrical projects across Long Island, Suffolk County & Nassau County. Residential upgrades, commercial installations, emergency repairs, EV charger installations, and generator systems. Licensed electrician Ronkonkoma NY."
+        description="View completed electrical projects on Long Island. Residential upgrades, commercial work, emergency repairs & EV installations. Licensed electrician Ronkonkoma."
         keywords="electrical projects Long Island, electrician portfolio Suffolk County, electrical installations Nassau County, electrical upgrades Ronkonkoma NY, commercial electrical projects"
         canonical="https://bermanelectrical.com/projects"
       />

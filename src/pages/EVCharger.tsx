@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import { Car, Zap, Shield, CheckCircle2, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { generateAltText } from "@/lib/utils";
 import SEO from "@/components/SEO";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
@@ -13,6 +12,7 @@ import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import EVChargerFAQSchema from "@/components/schema/EVChargerFAQSchema";
+import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 
 const services = [
   {
@@ -104,7 +104,7 @@ const EVCharger = () => {
     <>
       <SEO 
         title="EV Charger Installation Long Island - Electric Vehicle Charging Stations"
-        description="Professional EV charger installation for homes and businesses on Long Island. Level 2 charging stations, panel upgrades, dedicated circuits. Tesla, ChargePoint, JuiceBox installations. Licensed electrician serving Suffolk & Nassau County. Call (516) 361-4068"
+        description="Professional EV charger installation on Long Island. Tesla, ChargePoint & JuiceBox Level 2 stations. Panel upgrades included. Call (516) 361-4068"
         keywords="EV charger installation Long Island, electric vehicle charging station Suffolk County, Tesla charger installation, Level 2 EV charger, home EV charging, commercial EV charging, electric car charger electrician"
         canonical="https://bermanelectrical.com/ev-charger"
       />
@@ -120,6 +120,13 @@ const EVCharger = () => {
           description: service.items.join(". ")
         }))}
       />
+      <LocalBusinessSchema
+        serviceName="EV Charger Installation"
+        serviceDescription="Professional EV charger installation on Long Island for residential and commercial properties. Expert Tesla, ChargePoint, and JuiceBox installation with panel upgrades and dedicated circuits."
+        pageUrl="/ev-charger"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
       <Navbar />
       <Breadcrumb items={[{ label: "Services", href: "/ev-charger" }, { label: "EV Charger Installation" }]} />
       <EVChargerFAQSchema />
@@ -130,10 +137,7 @@ const EVCharger = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
             <img
               src="/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png"
-              alt={generateAltText(
-                "/lovable-uploads/130c4fb5-1384-416b-a335-4fc8b7562611.png",
-                "Background photo of an EV charging port"
-              )}
+              alt="Electric vehicle EV charging port Tesla ChargePoint installation Long Island Level 2 home charging station"
               className="w-full h-full object-cover opacity-70"
               loading="lazy"
             />

@@ -102,7 +102,7 @@ const Index = () => {
     <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
       <SEO 
         title="Berman Electric - Licensed Electrician Long Island NY"
-        description="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience in residential & commercial electrical services. Emergency repairs, panel upgrades, EV charger installation. Call (516) 361-4068"
+        description="Licensed electrician serving Long Island 20+ years. Residential & commercial electrical services, emergency repairs, panel upgrades. Call (516) 361-4068"
         keywords="electrician Long Island, licensed electrician Suffolk County, electrical services Ronkonkoma NY, emergency electrician Nassau County, panel upgrades, lighting installation, EV charger installation, generator installation, electrical repairs"
         canonical="https://bermanelectrical.com/"
       />

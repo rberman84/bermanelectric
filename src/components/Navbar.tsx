@@ -67,7 +67,7 @@ const Navbar = () => {
           >
             <img
               src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
-              alt="Berman Electric company logo"
+              alt="Berman Electric licensed electrician Long Island logo - 20 years electrical services Suffolk County"
               width="80"
               height="80"
               fetchPriority="low"

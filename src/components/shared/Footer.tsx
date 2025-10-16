@@ -49,7 +49,7 @@ const Footer = () => {
               >
                 <img
                   src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
-                  alt="Berman Electric logo in the footer"
+                  alt="Berman Electric licensed electrician Long Island footer logo trusted local electrical contractor"
                   width="80"
                   height="80"
                   loading="lazy"
