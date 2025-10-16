@@ -8,6 +8,7 @@ import Footer from "@/components/shared/Footer";
 import ReviewSchema from "@/components/schema/ReviewSchema";
 import AggregateRatingSchema from "@/components/schema/AggregateRatingSchema";
 import type { ReviewData } from "@/components/schema/ReviewSchema";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 const residentialTestimonials = [
   {
@@ -95,6 +96,7 @@ const Testimonials = () => {
       <ReviewSchema reviews={reviewData} />
 
       <Navbar />
+      <Breadcrumb items={[{ label: "Client Reviews" }]} />
       <div className="pt-20">
         <Hero 
           title="Customer Testimonials"

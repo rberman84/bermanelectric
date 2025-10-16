@@ -10,6 +10,8 @@ import SocialShare from "@/components/blog/SocialShare";
 import AuthorBio from "@/components/blog/AuthorBio";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import { generateAltText } from "@/lib/utils";
+import Breadcrumb from "@/components/shared/Breadcrumb";
+import ArticleSchema from "@/components/schema/ArticleSchema";
 
 // This would typically come from a CMS or API
 const getBlogPost = (slug: string) => {
@@ -1031,6 +1033,17 @@ const BlogPost = () => {
         }}
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
+      <ArticleSchema
+        title={post.title}
+        description={cleanDescription}
+        author={post.author}
+        datePublished={new Date(post.date).toISOString()}
+        image={post.image}
+        url={`/blog/${slug}`}
+        category={post.category}
+        keywords={post.tags}
+      />
       <div className="pt-20">
         {/* Header */}
         <div className="py-8 bg-gray-50">

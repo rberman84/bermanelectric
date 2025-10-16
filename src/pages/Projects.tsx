@@ -7,6 +7,7 @@ import ProjectsCTA from "@/components/projects/ProjectsCTA";
 import ReviewsSection from "@/components/shared/ReviewsSection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 const residentialProjects = [
   {
@@ -81,6 +82,7 @@ const Projects = () => {
         canonical="https://bermanelectrical.com/projects"
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Our Work" }]} />
       <div className="pt-20">
         <Hero 
           title="Our Projects"

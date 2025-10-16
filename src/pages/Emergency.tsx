@@ -25,6 +25,8 @@ import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 import logoOptimized from "@/assets/logo-optimized.webp";
+import Breadcrumb from "@/components/shared/Breadcrumb";
+import EmergencyFAQSchema from "@/components/schema/EmergencyFAQSchema";
 
 const Emergency = () => {
   const services = [{
@@ -140,6 +142,8 @@ const Emergency = () => {
         }))}
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Services", href: "/emergency" }, { label: "Emergency Electrical Services" }]} />
+      <EmergencyFAQSchema />
       <BreadcrumbSchema items={[{ name: "Emergency Electrical Services" }]} />
       <div className="pt-4">
         {/* Hero Section */}

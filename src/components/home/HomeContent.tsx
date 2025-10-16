@@ -79,15 +79,15 @@ const HomeContent = () => {
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-gray-900">Berman Electric</strong> has been Long Island's premier electrical contractor since 2003, providing reliable, safe, and professional electrical services to homeowners and businesses throughout Suffolk County and Nassau County.
+                  <strong className="text-gray-900">Berman Electric</strong> has been Long Island's premier electrical contractor since 2003, providing reliable, safe, and professional electrical services to homeowners and businesses throughout <Link to="/electrician-suffolk-county" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">Suffolk County</Link> and Nassau County.
                 </p>
                 
                 <p>
-                  Based in Ronkonkoma, our licensed electricians bring decades of experience to every project, from simple outlet repairs to complex commercial electrical installations.
+                  Based in <Link to="/electrician-ronkonkoma" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">Ronkonkoma</Link>, our <strong className="text-gray-900">licensed electricians</strong> bring decades of experience to every project, from simple outlet repairs to complex <Link to="/commercial" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">commercial electrical installations</Link>.
                 </p>
                 
                 <p>
-                  Whether you need emergency electrical repairs, panel upgrades, lighting installation, or cutting-edge EV charger installation, we deliver quality workmanship with a commitment to safety and customer satisfaction.
+                  Whether you need <Link to="/emergency" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">emergency electrical repairs</Link>, panel upgrades, lighting installation, or cutting-edge <Link to="/ev-charger" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">EV charger installation</Link>, we deliver quality workmanship with a commitment to safety and customer satisfaction.
                 </p>
               </div>
             </div>
@@ -103,15 +103,15 @@ const HomeContent = () => {
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  We understand that electrical issues can be stressful and potentially dangerous. That's why we offer <strong className="text-gray-900">24/7 emergency services</strong> and guarantee transparent, upfront pricing with no hidden fees.
+                  We understand that electrical issues can be stressful and potentially dangerous. That's why we offer <Link to="/emergency" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors"><strong className="text-gray-900">24/7 emergency services</strong></Link> and guarantee transparent, upfront pricing with no hidden fees.
                 </p>
                 
                 <p>
-                  Our licensed electricians are fully insured and committed to completing every job safely and to code. Our team stays current with the latest electrical codes and technologies to ensure your electrical systems are safe, efficient, and compliant.
+                  Our <strong className="text-gray-900">licensed electricians</strong> are fully insured and committed to completing every job safely and to code. Our team stays current with the latest electrical codes and technologies to ensure your electrical systems are safe, efficient, and compliant.
                 </p>
                 
                 <p>
-                  From smart home automation and energy-efficient LED lighting to backup generator installations and electrical safety inspections, we handle all your electrical needs with professionalism and expertise.
+                  From smart home automation and energy-efficient LED lighting to <Link to="/projects" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">backup generator installations</Link> and electrical safety inspections, we handle all your electrical needs with professionalism and expertise. Read our <Link to="/testimonials" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">customer testimonials</Link> to see why Long Island trusts Berman Electric.
                 </p>
               </div>
             </div>
@@ -183,7 +183,7 @@ const HomeContent = () => {
               <p className="text-gray-600">
                 Don't see your area? <a href="tel:+15163614068" className="text-electric-600 hover:text-electric-700 font-bold transition-colors">
                   Call (516) 361-4068
-                </a> to check if we service your location!
+                </a> to check if we service your location! Learn more <Link to="/about" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">about our company</Link> or <Link to="/contact" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">request a free quote</Link>.
               </p>
             </div>
           </div>

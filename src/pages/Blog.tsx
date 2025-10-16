@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import BlogSEO from "@/components/blog/BlogSEO";
 import { generateAltText } from "@/lib/utils";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 interface BlogPost {
   id: string;
@@ -147,6 +148,7 @@ const Blog = () => {
         }}
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Blog" }]} />
       <div className="pt-20">
         {/* Hero Section */}
         <div className="py-16 bg-gradient-to-b from-electric-900 to-electric-800 text-white">

@@ -11,6 +11,8 @@ import RelatedServices from "@/components/service/RelatedServices";
 import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
+import Breadcrumb from "@/components/shared/Breadcrumb";
+import EVChargerFAQSchema from "@/components/schema/EVChargerFAQSchema";
 
 const services = [
   {
@@ -119,6 +121,8 @@ const EVCharger = () => {
         }))}
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Services", href: "/ev-charger" }, { label: "EV Charger Installation" }]} />
+      <EVChargerFAQSchema />
       <BreadcrumbSchema items={[{ name: "EV Charger Installation" }]} />
       <div className="pt-4">
         {/* Hero Section */}
