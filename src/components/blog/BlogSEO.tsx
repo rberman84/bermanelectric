@@ -18,6 +18,7 @@ interface BlogSEOProps {
   ogImage?: string;
   article?: ArticleMetadata;
   structuredData?: StructuredData;
+  socialHashtags?: string[];
 }
 
 const BlogSEO = ({
@@ -27,7 +28,8 @@ const BlogSEO = ({
   canonical,
   ogImage = "/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png",
   article,
-  structuredData
+  structuredData,
+  socialHashtags = []
 }: BlogSEOProps) => {
   const fullTitle = title.includes('Berman Electric') ? title : `${title} | Berman Electric Blog`;
   const currentUrl = canonical || window.location.href;
@@ -154,6 +156,15 @@ const BlogSEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`https://bermanelectrical.com${ogImage}`} />
       <meta name="twitter:creator" content="@bermanelectric" />
+      
+      {/* Social Media Hashtags */}
+      {socialHashtags.length > 0 && (
+        <>
+          {socialHashtags.map((tag) => (
+            <meta key={tag} name="twitter:hashtags" content={tag} />
+          ))}
+        </>
+      )}
 
       {/* Additional SEO Meta */}
       <meta name="robots" content="index, follow, max-image-preview:large" />

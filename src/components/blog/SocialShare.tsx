@@ -5,18 +5,20 @@ interface SocialShareProps {
   title: string;
   url: string;
   description?: string;
+  hashtags?: string[];
 }
 
-const SocialShare = ({ title, url, description = '' }: SocialShareProps) => {
+const SocialShare = ({ title, url, description = '', hashtags = [] }: SocialShareProps) => {
   const [copied, setCopied] = useState(false);
 
   const encodedTitle = encodeURIComponent(title);
   const encodedUrl = encodeURIComponent(url);
   const encodedDescription = encodeURIComponent(description);
+  const hashtagString = hashtags.length > 0 ? `&hashtags=${hashtags.join(',')}` : '';
 
   const shareUrls = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-    twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+    twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}${hashtagString}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     email: `mailto:?subject=${encodedTitle}&body=${encodedDescription}%0A%0A${encodedUrl}`
   };

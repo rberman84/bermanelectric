@@ -982,6 +982,21 @@ const BlogPost = () => {
 
   const cleanDescription = post.content.substring(0, 160).replace(/<[^>]*>/g, '').trim() + "...";
   const currentUrl = `https://bermanelectrical.com/blog/${slug}`;
+  
+  // Social media hashtags for sharing
+  const socialHashtags = [
+    'ElectricalSafety',
+    'HomeDIY',
+    'CommercialElectric',
+    'SmartBuildings',
+    'DIYProjects',
+    'PowerUpSafely',
+    'BermanElectric',
+    'SafeWiring',
+    'ElectricalTips',
+    'HomeOwners',
+    'BusinessOwners'
+  ];
 
   return (
     <>
@@ -991,6 +1006,7 @@ const BlogPost = () => {
         description={cleanDescription}
         keywords={post.tags.join(", ")}
         canonical={currentUrl}
+        socialHashtags={socialHashtags}
         article={{
           publishedTime: new Date(post.date).toISOString(),
           author: post.author,
@@ -1124,6 +1140,7 @@ const BlogPost = () => {
                   title={post.title}
                   url={currentUrl}
                   description={cleanDescription}
+                  hashtags={socialHashtags}
                 />
               </div>
               
