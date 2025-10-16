@@ -8,6 +8,7 @@ import ReviewsSection from "@/components/shared/ReviewsSection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/shared/Breadcrumb";
+import ProjectsFAQSchema from "@/components/schema/ProjectsFAQSchema";
 
 const residentialProjects = [
   {
@@ -75,7 +76,8 @@ const emergencyProjects = [
 const Projects = () => {
   return (
     <>
-      <SEO 
+      <ProjectsFAQSchema />
+      <SEO
         title="Our Electrical Projects - Berman Electric Long Island Portfolio"
         description="View completed electrical projects on Long Island. Residential upgrades, commercial work, emergency repairs & EV installations. Licensed electrician Ronkonkoma."
         keywords="electrical projects Long Island, electrician portfolio Suffolk County, electrical installations Nassau County, electrical upgrades Ronkonkoma NY, commercial electrical projects"

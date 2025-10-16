@@ -9,6 +9,7 @@ import ReviewSchema from "@/components/schema/ReviewSchema";
 import AggregateRatingSchema from "@/components/schema/AggregateRatingSchema";
 import type { ReviewData } from "@/components/schema/ReviewSchema";
 import Breadcrumb from "@/components/shared/Breadcrumb";
+import TestimonialsFAQSchema from "@/components/schema/TestimonialsFAQSchema";
 
 const residentialTestimonials = [
   {
@@ -79,6 +80,7 @@ const Testimonials = () => {
 
   return (
     <>
+      <TestimonialsFAQSchema />
       <Helmet>
         <title>Customer Reviews & Testimonials | Berman Electric</title>
         <meta 

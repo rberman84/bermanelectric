@@ -5,6 +5,7 @@ import Footer from "@/components/shared/Footer";
 import BlogSEO from "@/components/blog/BlogSEO";
 import { generateAltText } from "@/lib/utils";
 import Breadcrumb from "@/components/shared/Breadcrumb";
+import BlogFAQSchema from "@/components/schema/BlogFAQSchema";
 
 interface BlogPost {
   id: string;
@@ -130,7 +131,8 @@ const Blog = () => {
 
   return (
     <>
-      <BlogSEO 
+      <BlogFAQSchema />
+      <BlogSEO
         title="Electrical Tips & Guides Blog - Berman Electric Long Island"
         description="Expert electrical tips, safety guides, and home improvement advice from Long Island's trusted electrician. Learn about electrical safety, panel upgrades, EV chargers, and more from licensed professionals."
         keywords="electrical blog Long Island, electrical safety tips, panel upgrade guide, EV charger installation, licensed electrician advice, electrical maintenance tips"
