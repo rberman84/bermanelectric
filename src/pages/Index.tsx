@@ -6,13 +6,36 @@ import HomeContent from "@/components/home/HomeContent";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import WebsiteSchema from "@/components/schema/WebsiteSchema";
+import OrganizationSchema from "@/components/schema/OrganizationSchema";
+import HomeFAQSchema from "@/components/schema/HomeFAQSchema";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+import StructuredData from "@/components/town/StructuredData";
 
 const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
 const AiHelpChat = lazy(() => import("@/components/shared/AiHelpChat").then(m => ({ default: m.AiHelpChat })));
 
 
 const Index = () => {
+  // Fetch Google reviews for aggregate rating
+  const { data: reviews } = useGoogleReviews();
+  
+  // Calculate aggregate rating
+  const aggregateRating = reviews && reviews.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "@id": "https://bermanelectrical.com/#organization",
+      "name": "Berman Electric"
+    },
+    "ratingValue": (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1),
+    "reviewCount": reviews.length,
+    "bestRating": "5",
+    "worstRating": "1"
+  } : null;
+
   // Safety unlock in case a component left the body locked
   useEffect(() => {
     const unlock = () => {
@@ -83,6 +106,10 @@ const Index = () => {
         keywords="electrician Long Island, licensed electrician Suffolk County, electrical services Ronkonkoma NY, emergency electrician Nassau County, panel upgrades, lighting installation, EV charger installation, generator installation, electrical repairs"
         canonical="https://bermanelectrical.com/"
       />
+      <WebsiteSchema />
+      <OrganizationSchema />
+      <HomeFAQSchema />
+      {aggregateRating && <StructuredData data={aggregateRating} id="aggregate-rating-schema" />}
       <Navbar />
       {/* <ScrollDoctor /> */}
       <main className="grow">

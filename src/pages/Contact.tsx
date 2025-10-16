@@ -11,6 +11,7 @@ import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import { generateAltText } from "@/lib/utils";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 type TriageSummary = {
   triageId?: string | null;
@@ -34,6 +35,7 @@ const Contact = () => {
         canonical="https://bermanelectrical.com/contact"
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Contact Us" }]} />
       <div className="pt-20">
         <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
           <div className="absolute inset-0 z-0 opacity-30" aria-hidden="true">

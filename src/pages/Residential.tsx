@@ -11,6 +11,7 @@ import RelatedServices from "@/components/service/RelatedServices";
 import ServiceCluster from "@/components/service/ServiceCluster";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 const Residential = () => {
   const services = [{
@@ -89,6 +90,7 @@ const Residential = () => {
         }))}
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "Services", href: "/residential" }, { label: "Residential Electrical Services" }]} />
       <BreadcrumbSchema items={[{ name: "Residential Electrical Services" }]} />
       <div className="pt-4">
         {/* Hero Section */}

@@ -9,6 +9,7 @@ import ContactCTA from "@/components/about/ContactCTA";
 import ReviewsSection from "@/components/shared/ReviewsSection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 const About = () => {
   return (
@@ -20,6 +21,7 @@ const About = () => {
         canonical="https://bermanelectrical.com/about"
       />
       <Navbar />
+      <Breadcrumb items={[{ label: "About Us" }]} />
       <div className="pt-20">
         <Hero 
           title="About Berman Electric"
