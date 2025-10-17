@@ -80,7 +80,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-8 md:ml-auto">
             <ServicesDropdown isScrolled={isScrolled} />
             {user && <NavLink to="/dashboard" isScrolled={isScrolled}>Dashboard</NavLink>}
             <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
