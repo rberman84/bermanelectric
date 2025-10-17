@@ -1,7 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import ServicesDropdown from "./navbar/ServicesDropdown";
 
 interface HeroProps {
   title?: string;
@@ -10,73 +8,43 @@ interface HeroProps {
 }
 
 const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
-  const [isScrolled] = useState(false);
-
   // Use default content for home page, custom content for other pages
   const isHomePage = !title && !subtitle && !description;
 
   return (
-    <div className="relative min-h-[100svh] md:min-h-[85svh] flex items-center">
-      {/* Background with overlay */}
-      <div className="pointer-events-none select-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" aria-hidden="true">
-        <img
-          src="/hero-mobile-optimized.webp"
-          srcSet="/hero-mobile-optimized.webp 600w, /hero-optimized-compressed.webp 1200w, /hero-electrical-optimized.webp 2000w"
-          sizes="100vw"
-          alt="Licensed Long Island electrician Berman Electric providing residential and commercial electrical services with lightning electrical power background"
-          width="1920"
-          height="1080"
-          className="w-full h-full object-cover"
-          fetchPriority="high"
-          loading="eager"
-        />
-      </div>
-
+    <div className="relative min-h-[90svh] flex items-center bg-cream-100">
       {/* Content */}
-      <div className="container relative pt-32">
-        <div className="max-w-3xl fade-in">
-          {isHomePage && (
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-electric-600 bg-white rounded-full">
-              20+ Years of Excellence
-            </span>
-          )}
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-            {title || "Reliable Electrical Solutions in Ronkonkoma"}
+      <div className="container relative py-32">
+        <div className="max-w-5xl mx-auto text-center fade-in">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-[1.1]">
+            {title || (
+              <>
+                Reliable <span className="text-electric-600">Electrical</span><br />Solutions in Ronkonkoma
+              </>
+            )}
           </h1>
-          <p className="text-lg md:text-xl text-white mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            {subtitle || description || "Experience top-notch electrical services with Berman Electric, your local expert for over 20 years. We provide comprehensive solutions for both residential and commercial needs."}
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+            {subtitle || description || "Experience top-notch electrical services with Berman Electric, your local expert for over 20 years."}
           </p>
-          {description && subtitle && (
-            <p className="text-lg md:text-xl text-white mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {description}
-            </p>
-          )}
           {isHomePage && (
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="button-primary"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105"
               >
-                Get a Free Quote
+                Get Started
                 <ChevronRight className="ml-2 h-5 w-5" />
               </Link>
-              <div className="relative">
-                <ServicesDropdown isScrolled={isScrolled} />
-              </div>
+              <a
+                href="tel:+15163614068"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-foreground bg-white rounded-full hover:bg-cream-200 transition-all border border-border"
+              >
+                Call (516) 361-4068
+              </a>
             </div>
           )}
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      {isHomePage && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in">
-          <div className="flex flex-col items-center">
-            <span className="text-white text-sm mb-2">Scroll to explore</span>
-            <div className="w-0.5 h-8 bg-white/50 animate-pulse"></div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
