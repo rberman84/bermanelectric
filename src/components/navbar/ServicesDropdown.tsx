@@ -87,8 +87,8 @@ const ServicesDropdown = ({ isScrolled }: ServicesDropdownProps) => {
     >
       <button
         className={cn(
-          "button-primary inline-flex items-center",
-          isScrolled ? "focus-visible:ring-offset-slate-900" : "focus-visible:ring-offset-white"
+          "inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105",
+          isScrolled ? "focus-visible:ring-offset-foreground" : "focus-visible:ring-offset-cream-50"
         )}
         aria-haspopup="menu"
         aria-expanded={isOpen}
@@ -109,13 +109,13 @@ const ServicesDropdown = ({ isScrolled }: ServicesDropdownProps) => {
           isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1"
         )}
       >
-        <div className="py-2 bg-white rounded-lg shadow-xl border border-gray-100">
+        <div className="py-2 bg-card rounded-2xl shadow-xl border border-border">
           {servicesDropdown.map((item) => (
             <Link
               key={item.name}
               to={item.href}
               role="menuitem"
-              className="block px-4 py-2 text-sm text-slate-800 hover:bg-gray-100 hover:text-electric-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="block px-4 py-2.5 text-sm text-foreground hover:bg-cream-200 hover:text-electric-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-card transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {item.name}

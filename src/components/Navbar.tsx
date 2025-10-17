@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, User } from "lucide-react";
+import { Menu, X, Phone, User, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
@@ -54,8 +54,8 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-          : "bg-white/90 backdrop-blur-sm shadow-sm"
+          ? "bg-foreground/95 backdrop-blur-md shadow-lg"
+          : "bg-cream-50/90 backdrop-blur-sm border-b border-border"
       )}
     >
       <div className="container">
@@ -63,17 +63,20 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
-            <img
-              src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
-              alt="Berman Electric licensed electrician Long Island logo - 20 years electrical services Suffolk County"
-              width="80"
-              height="80"
-              fetchPriority="low"
-              decoding="async"
-              className={cn("h-12 md:h-14 w-auto object-contain")}
-            />
+            <div className={cn(
+              "p-1.5 rounded-lg transition-colors",
+              isScrolled ? "bg-electric-600" : "bg-electric-600"
+            )}>
+              <Zap className="w-4 h-4 text-white" fill="currentColor" />
+            </div>
+            <span className={cn(
+              "text-lg font-semibold tracking-tight transition-colors",
+              isScrolled ? "text-white" : "text-foreground"
+            )}>
+              Berman<span className={cn(isScrolled ? "text-electric-400" : "text-electric-600")}>Electric</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -94,8 +97,8 @@ const Navbar = () => {
                 className={cn(
                   "inline-flex items-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
                   isScrolled
-                    ? "text-slate-50 hover:text-electric-200 focus-visible:ring-offset-slate-900"
-                    : "text-slate-800 hover:text-electric-700 focus-visible:ring-offset-white"
+                    ? "text-white hover:text-electric-400 focus-visible:ring-offset-foreground"
+                    : "text-muted-foreground hover:text-electric-600 focus-visible:ring-offset-cream-50"
                 )}
               >
                 <Phone className="mr-2 h-4 w-4" />
@@ -105,10 +108,10 @@ const Navbar = () => {
                 <button
                   onClick={signOut}
                   className={cn(
-                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
                     isScrolled
-                      ? "text-slate-50 hover:text-electric-200 hover:bg-white/10 focus-visible:ring-offset-slate-900"
-                      : "text-slate-800 hover:text-electric-700 hover:bg-gray-100 focus-visible:ring-offset-white"
+                      ? "text-white hover:text-electric-400 hover:bg-white/10 focus-visible:ring-offset-foreground"
+                      : "text-muted-foreground hover:text-electric-600 hover:bg-cream-200 focus-visible:ring-offset-cream-50"
                   )}
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -118,10 +121,10 @@ const Navbar = () => {
                 <Link
                   to="/auth"
                   className={cn(
-                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+                    "inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
                     isScrolled
-                      ? "text-slate-50 hover:text-electric-200 hover:bg-white/10 focus-visible:ring-offset-slate-900"
-                      : "text-slate-800 hover:text-electric-700 hover:bg-gray-100 focus-visible:ring-offset-white"
+                      ? "text-white hover:text-electric-400 hover:bg-white/10 focus-visible:ring-offset-foreground"
+                      : "text-muted-foreground hover:text-electric-600 hover:bg-cream-200 focus-visible:ring-offset-cream-50"
                   )}
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -131,8 +134,8 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 className={cn(
-                  "button-primary bg-green-600 hover:bg-green-700",
-                  isScrolled ? "focus-visible:ring-offset-slate-900" : "focus-visible:ring-offset-white"
+                  "inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105",
+                  isScrolled ? "focus-visible:ring-offset-foreground" : "focus-visible:ring-offset-cream-50"
                 )}
               >
                 Get a Quote
@@ -145,8 +148,8 @@ const Navbar = () => {
             className={cn(
               "md:hidden p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
               isScrolled
-                ? "text-slate-50 focus-visible:ring-offset-slate-900"
-                : "text-slate-800 focus-visible:ring-offset-white"
+                ? "text-white focus-visible:ring-offset-foreground"
+                : "text-foreground focus-visible:ring-offset-cream-50"
             )}
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}

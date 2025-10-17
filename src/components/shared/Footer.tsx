@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
+import { Zap } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -45,17 +46,14 @@ const Footer = () => {
             <div className="lg:col-span-1">
               <Link
                 to="/"
-                className="inline-block mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+                className="inline-flex items-center gap-2 mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                <img
-                  src="/lovable-uploads/1d26535a-cfea-4674-b170-5bdf526c88a6.png"
-                  alt="Berman Electric licensed electrician Long Island footer logo trusted local electrical contractor"
-                  width="80"
-                  height="80"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-20 w-auto"
-                />
+                <div className="p-1.5 rounded-lg bg-electric-600">
+                  <Zap className="w-4 h-4 text-white" fill="currentColor" />
+                </div>
+                <span className="text-lg font-semibold tracking-tight">
+                  Berman<span className="text-electric-400">Electric</span>
+                </span>
               </Link>
               <NAP variant="footer" showHours={true} />
               

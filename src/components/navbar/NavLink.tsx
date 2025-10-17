@@ -19,8 +19,8 @@ const NavLink = ({ to, children, isScrolled, onClick }: NavLinkProps) => {
         className={cn(
           "nav-link",
           isScrolled
-            ? "text-slate-50 hover:text-electric-200 focus-visible:ring-offset-slate-900"
-            : "text-slate-800 hover:text-electric-700 focus-visible:ring-offset-white"
+            ? "text-white hover:text-electric-400 focus-visible:ring-offset-foreground"
+            : "text-muted-foreground hover:text-electric-600 focus-visible:ring-offset-cream-50"
         )}
         onClick={onClick}
       >
@@ -35,8 +35,8 @@ const NavLink = ({ to, children, isScrolled, onClick }: NavLinkProps) => {
       className={cn(
         "nav-link",
         isScrolled
-          ? "text-slate-50 hover:text-electric-200 focus-visible:ring-offset-slate-900"
-          : "text-slate-800 hover:text-electric-700 focus-visible:ring-offset-white"
+          ? "text-white hover:text-electric-400 focus-visible:ring-offset-foreground"
+          : "text-muted-foreground hover:text-electric-600 focus-visible:ring-offset-cream-50"
       )}
       onClick={onClick}
     >
