@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, User, Zap } from "lucide-react";
+import { Menu, X, Phone, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import MobileMenu from "./navbar/MobileMenu";
+import logoIcon from "@/assets/berman-logo-icon.png";
 
 
 const Navbar = () => {
@@ -66,10 +67,10 @@ const Navbar = () => {
             className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
             <div className={cn(
-              "p-1.5 rounded-lg transition-colors",
-              isScrolled ? "bg-electric-600" : "bg-electric-600"
+              "w-8 h-8 rounded-lg overflow-hidden transition-colors flex items-center justify-center",
+              isScrolled ? "bg-white" : "bg-white"
             )}>
-              <Zap className="w-4 h-4 text-white" fill="currentColor" />
+              <img src={logoIcon} alt="Berman Electric" className="w-6 h-6 object-contain" />
             </div>
             <span className={cn(
               "text-lg font-semibold tracking-tight transition-colors",

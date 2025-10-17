@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
-import { Zap } from "lucide-react";
+import logoIcon from "@/assets/berman-logo-icon.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,8 +48,8 @@ const Footer = () => {
                 to="/"
                 className="inline-flex items-center gap-2 mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                <div className="p-1.5 rounded-lg bg-electric-600">
-                  <Zap className="w-4 h-4 text-white" fill="currentColor" />
+                <div className="w-8 h-8 rounded-lg bg-white overflow-hidden flex items-center justify-center">
+                  <img src={logoIcon} alt="Berman Electric" className="w-6 h-6 object-contain" />
                 </div>
                 <span className="text-lg font-semibold tracking-tight">
                   Berman<span className="text-electric-400">Electric</span>
