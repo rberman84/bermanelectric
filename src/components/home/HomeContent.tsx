@@ -161,25 +161,25 @@ const HomeContent = () => {
 
         {/* Service Areas */}
         <div className="mb-32 max-w-5xl mx-auto">
-          <div className="bg-card rounded-3xl p-12 border border-border">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Serving <span className="text-electric-600">Long Island</span></h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
+          <div className="bg-card rounded-3xl p-6 md:p-12 border border-border">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-foreground">Serving <span className="text-electric-600">Long Island</span></h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
                 Proudly serving Suffolk County and Nassau County with professional electrical services
               </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-8 md:mb-10">
               {serviceAreas.map((area, index) => (
-                <div key={index} className="flex items-center gap-2 px-4 py-3 bg-cream-100 rounded-2xl border border-border">
-                  <CheckCircle2 className="w-4 h-4 text-electric-600 flex-shrink-0" />
-                  <span className="text-foreground text-sm font-medium">{area}</span>
+                <div key={index} className="flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 bg-cream-100 rounded-2xl border border-border">
+                  <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-electric-600 flex-shrink-0" />
+                  <span className="text-foreground text-xs md:text-sm font-medium break-words leading-tight">{area}</span>
                 </div>
               ))}
             </div>
             
-            <div className="text-center pt-8 border-t border-border">
-              <p className="text-lg text-muted-foreground font-light">
+            <div className="text-center pt-6 md:pt-8 border-t border-border">
+              <p className="text-base md:text-lg text-muted-foreground font-light">
                 Don't see your area? <a href="tel:+15163614068" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">
                   Call (516) 361-4068
                 </a> to check if we service your location!
