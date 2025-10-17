@@ -64,7 +64,8 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background: linear-gradient(to bottom, hsl(15, 80%, 90%), hsl(0, 0%, 100%));
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
     overflow-x: hidden !important;
     overflow-y: auto !important;
