@@ -39,19 +39,19 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           
           {isHomePage && (
             <>
-              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 md:mb-12 leading-relaxed font-light">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 leading-relaxed font-normal max-w-4xl mx-auto">
                 All your{" "}
-                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(15,100%,95%)] text-[hsl(15,80%,40%)] font-medium">
+                <span className="inline-block px-3 py-1 rounded-full bg-[hsl(15,100%,95%)] text-[hsl(15,80%,40%)] font-medium text-sm sm:text-base">
                   electrical needs
                 </span>{" "}
-                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(25,100%,95%)] text-[hsl(25,80%,40%)] font-medium">
+                <span className="inline-block px-3 py-1 rounded-full bg-[hsl(25,100%,95%)] text-[hsl(25,80%,40%)] font-medium text-sm sm:text-base">
                   installations
                 </span>{" "}
-                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(200,100%,95%)] text-[hsl(200,80%,40%)] font-medium">
+                <span className="inline-block px-3 py-1 rounded-full bg-[hsl(200,100%,95%)] text-[hsl(200,80%,40%)] font-medium text-sm sm:text-base">
                   repairs
                 </span>{" "}
                 and{" "}
-                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(280,100%,95%)] text-[hsl(280,60%,50%)] font-medium">
+                <span className="inline-block px-3 py-1 rounded-full bg-[hsl(280,100%,95%)] text-[hsl(280,60%,50%)] font-medium text-sm sm:text-base">
                   upgrades
                 </span>{" "}
                 in one place.
