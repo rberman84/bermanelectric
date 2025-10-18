@@ -1,4 +1,4 @@
-import { CheckCircle2, Star, Clock, Shield, Award } from "lucide-react";
+import { CheckCircle2, Star, Clock, Shield, Award, Zap, Home, Building2, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HomeContent = () => {
@@ -6,45 +6,65 @@ const HomeContent = () => {
     {
       title: "Residential Electrical Services",
       description: "Complete home electrical solutions from panel upgrades to smart home installations",
-      link: "/residential"
+      link: "/residential",
+      icon: <Home className="w-12 h-12" />,
+      bgColor: "bg-[hsl(15,85%,92%)]",
+      iconColor: "text-[hsl(15,70%,45%)]"
     },
     {
       title: "Commercial Electrical Services", 
       description: "Professional electrical services for businesses, offices, and industrial facilities",
-      link: "/commercial"
+      link: "/commercial",
+      icon: <Building2 className="w-12 h-12" />,
+      bgColor: "bg-[hsl(200,75%,92%)]",
+      iconColor: "text-[hsl(200,70%,45%)]"
     },
     {
       title: "Emergency Electrical Repairs",
       description: "24/7 emergency electrical services across Long Island for urgent electrical issues",
-      link: "/emergency"
+      link: "/emergency",
+      icon: <AlertCircle className="w-12 h-12" />,
+      bgColor: "bg-[hsl(0,75%,92%)]",
+      iconColor: "text-[hsl(0,70%,50%)]"
     },
     {
       title: "EV Charger Installation",
       description: "Professional electric vehicle charging station installation with permits and upgrades",
-      link: "/ev-charger"
+      link: "/ev-charger",
+      icon: <Zap className="w-12 h-12" />,
+      bgColor: "bg-[hsl(280,75%,92%)]",
+      iconColor: "text-[hsl(280,65%,50%)]"
     }
   ];
 
   const trustSignals = [
     {
-      icon: <Award className="w-8 h-8 text-electric-600" />,
+      icon: <Award className="w-10 h-10" />,
       title: "20+ Years Experience",
-      description: "Over two decades serving Long Island with reliable electrical solutions"
+      description: "Over two decades serving Long Island with reliable electrical solutions",
+      bgColor: "bg-[hsl(45,85%,92%)]",
+      iconColor: "text-[hsl(45,70%,45%)]"
     },
     {
-      icon: <Shield className="w-8 h-8 text-electric-600" />,
+      icon: <Shield className="w-10 h-10" />,
       title: "Licensed & Insured",
-      description: "Fully licensed electricians with comprehensive insurance coverage"
+      description: "Fully licensed electricians with comprehensive insurance coverage",
+      bgColor: "bg-[hsl(140,75%,92%)]",
+      iconColor: "text-[hsl(140,60%,40%)]"
     },
     {
-      icon: <Star className="w-8 h-8 text-electric-600" />,
+      icon: <Star className="w-10 h-10" />,
       title: "5-Star Rated Service",
-      description: "Consistently rated 5 stars by satisfied customers across Suffolk County"
+      description: "Consistently rated 5 stars by satisfied customers across Suffolk County",
+      bgColor: "bg-[hsl(280,75%,92%)]",
+      iconColor: "text-[hsl(280,65%,50%)]"
     },
     {
-      icon: <Clock className="w-8 h-8 text-electric-600" />,
+      icon: <Clock className="w-10 h-10" />,
       title: "24/7 Emergency Service",
-      description: "Available around the clock for electrical emergencies and urgent repairs"
+      description: "Available around the clock for electrical emergencies and urgent repairs",
+      bgColor: "bg-[hsl(200,75%,92%)]",
+      iconColor: "text-[hsl(200,70%,45%)]"
     }
   ];
 
@@ -69,43 +89,43 @@ const HomeContent = () => {
           </div>
           
           {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
             {/* Left Column - About */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-electric-600 rounded-lg flex items-center justify-center">
-                  <Award className="w-6 h-6 text-white" />
+            <div className="bg-[hsl(200,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all">
+              <div className="mb-8">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-[hsl(200,70%,88%)] mb-6">
+                  <Award className="w-10 h-10 text-[hsl(200,70%,40%)]" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">About Berman Electric</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">About Berman Electric</h3>
               </div>
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-gray-900">Berman Electric</strong> has been Long Island's premier electrical contractor since 2003, providing reliable, safe, and professional electrical services to homeowners and businesses throughout <Link to="/electrician-suffolk-county" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">Suffolk County</Link> and Nassau County.
+                  <strong className="text-gray-900">Berman Electric</strong> has been Long Island's premier electrical contractor since 2003, providing reliable, safe, and professional electrical services to homeowners and businesses throughout <Link to="/electrician-suffolk-county" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">Suffolk County</Link> and Nassau County.
                 </p>
                 
                 <p>
-                  Based in <Link to="/electrician-ronkonkoma" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">Ronkonkoma</Link>, our <strong className="text-gray-900">licensed electricians</strong> bring decades of experience to every project, from simple outlet repairs to complex <Link to="/commercial" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">commercial electrical installations</Link>.
+                  Based in <Link to="/electrician-ronkonkoma" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">Ronkonkoma</Link>, our <strong className="text-gray-900">licensed electricians</strong> bring decades of experience to every project, from simple outlet repairs to complex <Link to="/commercial" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">commercial electrical installations</Link>.
                 </p>
                 
                 <p>
-                  Whether you need <Link to="/emergency" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">emergency electrical repairs</Link>, panel upgrades, lighting installation, or cutting-edge <Link to="/ev-charger" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">EV charger installation</Link>, we deliver quality workmanship with a commitment to safety and customer satisfaction.
+                  Whether you need <Link to="/emergency" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">emergency electrical repairs</Link>, panel upgrades, lighting installation, or cutting-edge <Link to="/ev-charger" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">EV charger installation</Link>, we deliver quality workmanship with a commitment to safety and customer satisfaction.
                 </p>
               </div>
             </div>
             
             {/* Right Column - Why Choose */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-electric-600 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-white" />
+            <div className="bg-[hsl(140,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all">
+              <div className="mb-8">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-[hsl(140,70%,88%)] mb-6">
+                  <Shield className="w-10 h-10 text-[hsl(140,60%,35%)]" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Why Choose Us</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h3>
               </div>
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  We understand that electrical issues can be stressful and potentially dangerous. That's why we offer <Link to="/emergency" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors"><strong className="text-gray-900">24/7 emergency services</strong></Link> and guarantee transparent, upfront pricing with no hidden fees.
+                  We understand that electrical issues can be stressful and potentially dangerous. That's why we offer <Link to="/emergency" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2"><strong className="text-gray-900">24/7 emergency services</strong></Link> and guarantee transparent, upfront pricing with no hidden fees.
                 </p>
                 
                 <p>
@@ -113,7 +133,7 @@ const HomeContent = () => {
                 </p>
                 
                 <p>
-                  From smart home automation and energy-efficient LED lighting to <Link to="/projects" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">backup generator installations</Link> and electrical safety inspections, we handle all your electrical needs with professionalism and expertise. Read our <Link to="/testimonials" className="text-electric-600 hover:text-electric-700 font-semibold transition-colors">customer testimonials</Link> to see why Long Island trusts Berman Electric.
+                  From smart home automation and energy-efficient LED lighting to <Link to="/projects" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2">backup generator installations</Link> and electrical safety inspections, we handle all your electrical needs with professionalism and expertise. Read our <Link to="/testimonials" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2">customer testimonials</Link> to see why Long Island trusts Berman Electric.
                 </p>
               </div>
             </div>
@@ -126,15 +146,20 @@ const HomeContent = () => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">Our <span className="text-electric-600">Services</span></h2>
             <p className="text-xl text-muted-foreground font-light">Professional solutions for all your electrical needs</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <Link 
                 key={index}
                 to={service.link}
-                className="group p-10 bg-card rounded-3xl hover:shadow-lg transition-all border border-border hover:border-electric-600"
+                className={`group p-10 ${service.bgColor} rounded-[32px] hover:shadow-lg transition-all`}
               >
-                <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-electric-600 transition-colors">{service.title}</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed font-light">{service.description}</p>
+                <div className="mb-6">
+                  <div className={`inline-flex ${service.iconColor} mb-4`}>
+                    {service.icon}
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.title}</h3>
+                <p className="text-lg text-gray-700 leading-relaxed">{service.description}</p>
               </Link>
             ))}
           </div>
@@ -148,12 +173,14 @@ const HomeContent = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustSignals.map((signal, index) => (
-              <div key={index} className="bg-card rounded-3xl p-8 text-center border border-border hover:border-electric-600 transition-all">
-                <div className="flex justify-center mb-6">
-                  {signal.icon}
+              <div key={index} className={`${signal.bgColor} rounded-[32px] p-8 hover:shadow-lg transition-all`}>
+                <div className="mb-6">
+                  <div className={`inline-flex ${signal.iconColor}`}>
+                    {signal.icon}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-foreground">{signal.title}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed font-light">{signal.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{signal.title}</h3>
+                <p className="text-base text-gray-700 leading-relaxed">{signal.description}</p>
               </div>
             ))}
           </div>
