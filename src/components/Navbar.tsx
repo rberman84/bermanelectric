@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, User } from "lucide-react";
+import { Menu, X, Phone, User, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
@@ -7,7 +7,6 @@ import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import AboutDropdown from "./navbar/AboutDropdown";
 import MobileMenu from "./navbar/MobileMenu";
-import bermanLogo from "@/assets/berman-electric-logo.png";
 
 
 const Navbar = () => {
@@ -65,13 +64,20 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
-            <img 
-              src={bermanLogo} 
-              alt="Berman Electric Logo" 
-              className="h-12 w-auto"
-            />
+            <div className={cn(
+              "p-1.5 rounded-lg transition-colors",
+              isScrolled ? "bg-electric-600" : "bg-electric-600"
+            )}>
+              <Zap className="w-4 h-4 text-white" fill="currentColor" />
+            </div>
+            <span className={cn(
+              "text-lg font-semibold tracking-tight transition-colors",
+              isScrolled ? "text-white" : "text-foreground"
+            )}>
+              Berman<span className={cn(isScrolled ? "text-electric-400" : "text-electric-600")}>Electric</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
