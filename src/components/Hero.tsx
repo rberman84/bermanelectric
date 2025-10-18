@@ -13,6 +13,17 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
 
   return (
     <div className="relative min-h-[90svh] flex items-center overflow-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
+      >
+        <source src="/lovable-uploads/hero-background.mp4" type="video/mp4" />
+      </video>
+
       {/* Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Top left coral blob */}
