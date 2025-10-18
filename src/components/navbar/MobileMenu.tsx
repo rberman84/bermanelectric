@@ -20,6 +20,13 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     { name: "EV Charger Installation", href: "/ev-charger" },
   ];
 
+  const aboutDropdown = [
+    { name: "About Us", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Blog", href: "/blog" },
+    { name: "Testimonials", href: "/testimonials" },
+  ];
+
   const handleGetQuote = () => {
     navigate('/contact');
     onClose();
@@ -47,6 +54,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       aria-label="Mobile navigation"
     >
       <div className="flex flex-col space-y-4 pb-6 bg-white shadow-lg rounded-lg px-4 py-6 mt-4">
+        <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Services</div>
         {servicesDropdown.map((item) => (
           <NavLink
             key={item.name}
@@ -57,25 +65,26 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             {item.name}
           </NavLink>
         ))}
+        
+        <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mt-4 mb-2">About</div>
+        {aboutDropdown.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.href}
+            isScrolled={false}
+            onClick={onClose}
+          >
+            {item.name}
+          </NavLink>
+        ))}
+        
         {user && (
           <NavLink to="/dashboard" isScrolled={false} onClick={onClose}>
             Dashboard
           </NavLink>
         )}
-        <NavLink to="/about" isScrolled={false} onClick={onClose}>
-          About
-        </NavLink>
-        <NavLink to="/projects" isScrolled={false} onClick={onClose}>
-          Projects
-        </NavLink>
         <NavLink to="/locations" isScrolled={false} onClick={onClose}>
           Service Areas
-        </NavLink>
-        <NavLink to="/blog" isScrolled={false} onClick={onClose}>
-          Blog
-        </NavLink>
-        <NavLink to="/testimonials" isScrolled={false} onClick={onClose}>
-          Testimonials
         </NavLink>
         <NavLink to="/contact" isScrolled={false} onClick={onClose}>
           Contact

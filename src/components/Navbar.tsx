@@ -5,6 +5,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
+import AboutDropdown from "./navbar/AboutDropdown";
 import MobileMenu from "./navbar/MobileMenu";
 
 
@@ -82,12 +83,9 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8 md:ml-auto">
             <ServicesDropdown isScrolled={isScrolled} />
+            <AboutDropdown isScrolled={isScrolled} />
             {user && <NavLink to="/dashboard" isScrolled={isScrolled}>Dashboard</NavLink>}
-            <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
-            <NavLink to="/projects" isScrolled={isScrolled}>Projects</NavLink>
             <NavLink to="/locations" isScrolled={isScrolled}>Service Areas</NavLink>
-            <NavLink to="/blog" isScrolled={isScrolled}>Blog</NavLink>
-            <NavLink to="/testimonials" isScrolled={isScrolled}>Testimonials</NavLink>
             <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
 
             {/* CTAs */}
