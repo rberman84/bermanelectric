@@ -2,6 +2,7 @@ import { Star, Quote, CheckCircle, ExternalLink, RefreshCw } from "lucide-react"
 import { useGoogleReviews, useSyncGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 export interface Review {
   id: string;
@@ -122,6 +123,7 @@ const ReviewsSection = ({
   const { data: googleReviews, refetch } = useGoogleReviews();
   const { syncReviews } = useSyncGoogleReviews();
   const [isSyncing, setIsSyncing] = useState(false);
+  const { isAdmin } = useIsAdmin();
 
   // Convert Google reviews to Review format or use provided reviews
   const reviews = googleReviews && googleReviews.length > 0
@@ -216,14 +218,16 @@ const ReviewsSection = ({
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-4">
             <h2 className="text-3xl font-bold">{title}</h2>
-            <button
-              onClick={handleSync}
-              disabled={isSyncing}
-              className="p-2 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50"
-              title="Sync Google Reviews"
-            >
-              <RefreshCw className={`w-5 h-5 ${isSyncing ? 'animate-spin' : ''}`} />
-            </button>
+            {isAdmin && (
+              <button
+                onClick={handleSync}
+                disabled={isSyncing}
+                className="p-2 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50"
+                title="Sync Google Reviews"
+              >
+                <RefreshCw className={`w-5 h-5 ${isSyncing ? 'animate-spin' : ''}`} />
+              </button>
+            )}
           </div>
           <p className="text-lg text-gray-600 mb-6">{subtitle}</p>
           

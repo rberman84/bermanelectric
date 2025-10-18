@@ -3,6 +3,7 @@ import { Star, RefreshCw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 interface GoogleReview {
   id: string;
@@ -18,6 +19,7 @@ const GoogleReviews = () => {
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [lastSynced, setLastSynced] = useState<string | null>(null);
+  const { isAdmin } = useIsAdmin();
 
   const fetchReviews = async () => {
     try {
@@ -81,22 +83,24 @@ const GoogleReviews = () => {
             </h2>
             <p className="text-lg text-gray-600 mb-6">Real reviews from Google</p>
             
-            <div className="flex items-center justify-center gap-4">
-              <Button
-                onClick={syncReviews}
-                disabled={syncing}
-                variant="outline"
-                size="sm"
-              >
-                <RefreshCw className={`w-4 h-4 mr-2 ${syncing ? 'animate-spin' : ''}`} />
-                {syncing ? 'Syncing...' : 'Sync Reviews'}
-              </Button>
-              {lastSynced && (
-                <span className="text-sm text-gray-500">
-                  Last synced: {new Date(lastSynced).toLocaleString()}
-                </span>
-              )}
-            </div>
+            {isAdmin && (
+              <div className="flex items-center justify-center gap-4">
+                <Button
+                  onClick={syncReviews}
+                  disabled={syncing}
+                  variant="outline"
+                  size="sm"
+                >
+                  <RefreshCw className={`w-4 h-4 mr-2 ${syncing ? 'animate-spin' : ''}`} />
+                  {syncing ? 'Syncing...' : 'Sync Reviews'}
+                </Button>
+                {lastSynced && (
+                  <span className="text-sm text-gray-500">
+                    Last synced: {new Date(lastSynced).toLocaleString()}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           {reviews.length === 0 ? (
