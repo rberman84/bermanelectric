@@ -1,6 +1,7 @@
 import { CheckCircle2, Star, Clock, Shield, Award, Zap, Home, Building2, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import bermanElectrician from "@/assets/berman-electrician.jpeg";
+import bermanVan from "@/assets/berman-van.jpeg";
 
 const HomeContent = () => {
   const services = [
@@ -143,8 +144,12 @@ const HomeContent = () => {
             {/* Right Column - Why Choose */}
             <div className="bg-[hsl(140,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all">
               <div className="mb-8">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-[hsl(140,70%,88%)] mb-6">
-                  <Shield className="w-10 h-10 text-[hsl(140,60%,35%)]" />
+                <div className="w-full h-48 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden mb-6">
+                  <img 
+                    src={bermanVan} 
+                    alt="Berman Electric service van and electrician"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h3>
               </div>
