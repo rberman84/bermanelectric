@@ -28,33 +28,27 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
       <div className="container relative py-20 md:py-32">
         <div className="max-w-6xl mx-auto text-center fade-in">
           <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-normal text-foreground mb-6 md:mb-8 leading-[0.95] tracking-tight">
-            {title || (
-              <>
-                Power your home.
-                <br />
-                Light your life.
-              </>
-            )}
+            {title || "Professional Electrical Services in Suffolk County, NY"}
           </h1>
           
           {isHomePage && (
             <>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 leading-relaxed font-normal max-w-4xl mx-auto">
-                All your{" "}
+                Licensed electrician providing{" "}
                 <span className="inline-block px-3 py-1 rounded-full bg-[hsl(15,100%,95%)] text-[hsl(15,80%,40%)] font-medium text-sm sm:text-base">
-                  electrical needs
+                  panel upgrades
                 </span>{" "}
                 <span className="inline-block px-3 py-1 rounded-full bg-[hsl(25,100%,95%)] text-[hsl(25,80%,40%)] font-medium text-sm sm:text-base">
-                  installations
+                  EV charger installation
                 </span>{" "}
                 <span className="inline-block px-3 py-1 rounded-full bg-[hsl(200,100%,95%)] text-[hsl(200,80%,40%)] font-medium text-sm sm:text-base">
-                  repairs
+                  emergency repairs
                 </span>{" "}
-                and{" "}
+                and complete{" "}
                 <span className="inline-block px-3 py-1 rounded-full bg-[hsl(280,100%,95%)] text-[hsl(280,60%,50%)] font-medium text-sm sm:text-base">
-                  upgrades
+                  electrical solutions
                 </span>{" "}
-                in one place.
+                across Long Island.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 md:mb-16">
