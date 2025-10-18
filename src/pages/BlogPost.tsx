@@ -1062,19 +1062,26 @@ const BlogPost = () => {
       />
       <div className="pt-20">
         {/* Header */}
-        <div className="py-8 bg-gray-50">
-          <div className="container">
+        <div className="relative py-16 overflow-hidden">
+          {/* Gradient Blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-30 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-30 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
+          </div>
+
+          <div className="container relative">
             <Link 
               to="/blog"
-              className="inline-flex items-center gap-2 text-electric-600 hover:text-electric-700 mb-6"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-foreground mb-8 font-medium"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </Link>
             
             <div className="max-w-4xl mx-auto">
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                <span className="bg-electric-100 text-electric-700 px-3 py-1 rounded-full font-medium">
+              <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
+                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-medium">
                   {post.category}
                 </span>
                 <div className="flex items-center gap-1">
@@ -1087,14 +1094,14 @@ const BlogPost = () => {
                 </div>
               </div>
               
-              <h1 className="text-3xl md:text-4xl font-bold mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-normal text-foreground mb-8 leading-[0.95] tracking-tight">
                 {post.title}
               </h1>
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-electric-600 rounded-full flex items-center justify-center">
-                    <User className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 bg-foreground rounded-full flex items-center justify-center">
+                    <User className="w-5 h-5 text-background" />
                   </div>
                   <div>
                     <p className="font-medium">By {post.author}</p>
@@ -1102,7 +1109,7 @@ const BlogPost = () => {
                   </div>
                 </div>
                 
-                <button className="flex items-center gap-2 px-4 py-2 bg-electric-600 text-white rounded-lg hover:bg-electric-700 transition-colors">
+                <button className="flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-full hover:opacity-90 transition-opacity font-medium">
                   <Share2 className="w-4 h-4" />
                   Share
                 </button>

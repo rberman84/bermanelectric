@@ -153,22 +153,28 @@ const Blog = () => {
       <Breadcrumb items={[{ label: "Blog" }]} />
       <div className="pt-20">
         {/* Hero Section */}
-        <div className="py-16 bg-gradient-to-b from-electric-900 to-electric-800 text-white">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <div className="relative min-h-[70vh] flex items-center overflow-hidden">
+          {/* Gradient Blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
+          </div>
+
+          <div className="container relative py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
                 Electrical Tips & Expert Guidance
               </h1>
-              <p className="text-xl text-electric-100 mb-8">
-                Professional electrical advice from Long Island's trusted licensed electrician. 
-                Learn how to keep your home safe, efficient, and up to code.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                Professional electrical advice from Long Island's trusted licensed electrician. Learn how to keep your home safe, efficient, and up to code.
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 {categories.map((category) => (
                   category === "All" ? (
                     <span 
                       key={category}
-                      className="px-4 py-2 bg-electric-700 text-electric-100 rounded-full text-sm hover:bg-electric-600 transition-colors cursor-pointer"
+                      className="px-4 py-2 bg-foreground text-background rounded-full text-sm hover:opacity-90 transition-opacity cursor-pointer font-medium"
                     >
                       {category}
                     </span>
@@ -176,7 +182,7 @@ const Blog = () => {
                     <Link
                       key={category}
                       to={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="px-4 py-2 bg-electric-700 text-electric-100 rounded-full text-sm hover:bg-electric-600 transition-colors"
+                      className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors font-medium"
                     >
                       {category}
                     </Link>

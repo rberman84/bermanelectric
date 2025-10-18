@@ -155,31 +155,38 @@ const BlogCategory = () => {
       <Navbar />
       <div className="pt-20">
         {/* Header */}
-        <div className="py-16 bg-gradient-to-b from-electric-900 to-electric-800 text-white">
-          <div className="container">
+        <div className="relative min-h-[60vh] flex items-center overflow-hidden">
+          {/* Gradient Blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
+          </div>
+
+          <div className="container relative py-16">
             <Link 
               to="/blog"
-              className="inline-flex items-center gap-2 text-electric-200 hover:text-white mb-6"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-foreground mb-8 font-medium"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to All Articles
             </Link>
             
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <Tag className="w-6 h-6 text-electric-300" />
-                <span className="text-electric-200 text-lg">Category</span>
+              <div className="flex items-center gap-3 mb-6">
+                <Tag className="w-6 h-6 text-foreground" />
+                <span className="text-gray-600 text-lg font-medium">Category</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
                 {actualCategory}
               </h1>
               
-              <p className="text-xl text-electric-100 mb-8">
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
                 {categoryDescriptions[actualCategory]}
               </p>
               
-              <div className="text-electric-200">
+              <div className="text-gray-500 font-medium">
                 {categoryPosts.length} article{categoryPosts.length !== 1 ? 's' : ''} in this category
               </div>
             </div>
