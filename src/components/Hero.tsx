@@ -1,4 +1,3 @@
-import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface HeroProps {
@@ -12,36 +11,82 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   const isHomePage = !title && !subtitle && !description;
 
   return (
-    <div className="relative min-h-[90svh] flex items-center bg-cream-100">
+    <div className="relative min-h-[90svh] flex items-center overflow-hidden">
+      {/* Gradient Blobs */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Top left coral blob */}
+        <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-40 blur-3xl" />
+        
+        {/* Top right coral blob */}
+        <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-40 blur-3xl" />
+        
+        {/* Center white spotlight */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
+      </div>
+
       {/* Content */}
-      <div className="container relative py-32">
-        <div className="max-w-5xl mx-auto text-center fade-in">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-[1.1]">
+      <div className="container relative py-20 md:py-32">
+        <div className="max-w-6xl mx-auto text-center fade-in">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-normal text-foreground mb-6 md:mb-8 leading-[0.95] tracking-tight">
             {title || (
               <>
-                Reliable <span className="text-electric-600">Electrical</span><br />Solutions in Ronkonkoma
+                Power your home.
+                <br />
+                Light your life.
               </>
             )}
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-            {subtitle || description || "Experience top-notch electrical services with Berman Electric, your local expert for over 20 years."}
-          </p>
+          
           {isHomePage && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105"
-              >
-                Get Started
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Link>
-              <a
-                href="tel:+15163614068"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-foreground bg-white rounded-full hover:bg-cream-200 transition-all border border-border"
-              >
-                Call (516) 361-4068
-              </a>
-            </div>
+            <>
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 md:mb-12 leading-relaxed font-light">
+                All your{" "}
+                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(15,100%,95%)] text-[hsl(15,80%,40%)] font-medium">
+                  electrical needs
+                </span>{" "}
+                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(25,100%,95%)] text-[hsl(25,80%,40%)] font-medium">
+                  installations
+                </span>{" "}
+                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(200,100%,95%)] text-[hsl(200,80%,40%)] font-medium">
+                  repairs
+                </span>{" "}
+                and{" "}
+                <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(280,100%,95%)] text-[hsl(280,60%,50%)] font-medium">
+                  upgrades
+                </span>{" "}
+                in one place.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 md:mb-16">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold text-white bg-foreground rounded-full hover:bg-foreground/90 transition-all hover:scale-105 shadow-lg"
+                >
+                  Get Free Quote
+                </Link>
+                <a
+                  href="tel:+15163614068"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold text-foreground bg-transparent rounded-full hover:bg-foreground/5 transition-all border-2 border-foreground"
+                >
+                  Call (516) 361-4068
+                </a>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center text-sm md:text-base text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-[hsl(15,100%,60%)]" />
+                  24/7 Emergency Service
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-[hsl(45,100%,60%)]" />
+                  Licensed & Insured
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-[hsl(200,100%,60%)]" />
+                  Serving Long Island
+                </span>
+              </div>
+            </>
           )}
         </div>
       </div>
