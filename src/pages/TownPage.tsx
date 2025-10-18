@@ -20,6 +20,8 @@ import ReviewsSection, {
 import { getTownBySlug, getTownCanonicalUrl } from "@/lib/townContent";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import NotFound from "./NotFound";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/shared/Footer";
 
 const TownPage = () => {
   const { townSlug } = useParams();
@@ -74,6 +76,7 @@ const TownPage = () => {
         <meta name="ICBM" content={`${town.coordinates.latitude}, ${town.coordinates.longitude}`} />
       </Helmet>
 
+      <Navbar />
       <TownSchema town={town} averageRating={averageRating} totalReviews={totalReviews} />
       <BreadcrumbSchema
         items={[
@@ -96,6 +99,7 @@ const TownPage = () => {
       />
       <TownKeywords town={town} />
       <NearbyTowns currentTown={town} />
+      <Footer />
     </div>
   );
 };
