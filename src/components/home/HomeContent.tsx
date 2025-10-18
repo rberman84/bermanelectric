@@ -144,14 +144,35 @@ const HomeContent = () => {
             {/* Right Column - Why Choose */}
             <div className="bg-[hsl(140,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all">
               <div className="mb-8">
-                <div className="w-full h-48 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden mb-6">
-                  <img 
-                    src={bermanVan} 
-                    alt="Berman Electric service van and electrician"
-                    className="w-full h-full object-cover"
-                  />
+                {/* Photo + Badge */}
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="relative">
+                    <div className="w-24 h-24 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden">
+                      <img 
+                        src={bermanVan} 
+                        alt="Berman Electric service van and electrician"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* Badge overlay */}
+                    <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(140,70%,88%)]">
+                      <Shield className="w-5 h-5 text-[hsl(140,60%,35%)]" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2">Why Choose Us</h3>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(140,60%,35%)]">
+                        <Clock className="w-3 h-3" />
+                        24/7 Available
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(140,60%,35%)]">
+                        <Star className="w-3 h-3" />
+                        5-Star Rated
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h3>
               </div>
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
