@@ -101,29 +101,22 @@ const Residential = () => {
       <BreadcrumbSchema items={[{ name: "Residential Electrical Services" }]} />
       <div className="pt-4">
         {/* Hero Section */}
-        <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
-            <img
-              src="/lovable-uploads/b61607ee-62cf-4e15-b67c-d0b367895173.png"
-              alt="Vintage light bulb representing quality residential electrical services craftsmanship Long Island Suffolk County"
-              className="w-full h-full object-cover opacity-70"
-              loading="lazy"
-            />
+        <div className="relative min-h-[70vh] flex items-center overflow-hidden">
+          {/* Gradient Blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
           </div>
-          <div className="container relative">
-            <div className="max-w-3xl mx-auto text-center">
-              <Home className="w-16 h-16 mx-auto mb-6 text-electric-400 drop-shadow-lg" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.4)]">
+
+          <div className="container relative py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <Home className="w-16 h-16 mx-auto mb-6 text-foreground" />
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
                 Residential Electrical Services
               </h1>
-              <p className="text-xl text-electric-100 mb-8 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
-                Powering Your Home with Safety & Expertise
-              </p>
-              <p className="text-lg text-white mb-8 leading-relaxed bg-black/30 p-6 rounded-lg backdrop-blur-sm">
-                At Berman Electric, we provide top-tier residential electrical services to homeowners 
-                across Long Island. Whether you need new installations, repairs, or energy-efficient 
-                upgrades, our licensed and experienced electricians are here to ensure your home is 
-                powered safely and efficiently.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                Power your Long Island home with safety and expertise. Licensed electrician providing installations, repairs, panel upgrades, and smart home solutions.
               </p>
             </div>
           </div>

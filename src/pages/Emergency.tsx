@@ -154,33 +154,26 @@ const Emergency = () => {
       <BreadcrumbSchema items={[{ name: "Emergency Electrical Services" }]} />
       <div className="pt-4">
         {/* Hero Section */}
-        <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
-            <img
-              src="/lovable-uploads/9bf575d7-694f-4bc8-943d-7452fc34b82a.png"
-              alt="24/7 emergency electrician service vehicle rapid response electrical repairs Long Island Suffolk County"
-              className="w-full h-full object-cover opacity-70"
-              loading="lazy"
-            />
+        <div className="relative min-h-[70vh] flex items-center overflow-hidden">
+          {/* Gradient Blobs - Red theme for emergency */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-red-500/40 to-orange-500/40 opacity-50 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-red-400/40 to-orange-400/40 opacity-50 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
           </div>
-          <div className="container relative">
-            <div className="max-w-3xl mx-auto text-center">
-              <BellRing className="w-16 h-16 mx-auto mb-6 text-red-400 animate-pulse drop-shadow-lg" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.4)]">
+
+          <div className="container relative py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <BellRing className="w-16 h-16 mx-auto mb-6 text-red-600 animate-pulse" />
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
                 Emergency Electrical Services
               </h1>
-              <p className="text-xl text-red-100 mb-8 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
-                24/7 Emergency Electricians – Fast, Reliable, and Ready When You Need Us
-              </p>
-              <p className="text-lg text-white mb-8 leading-relaxed bg-black/30 p-6 rounded-lg backdrop-blur-sm">
-                Electrical emergencies can happen at any time—power outages, faulty wiring, sparking outlets, 
-                or electrical failures can disrupt your home or business and pose serious safety risks. At 
-                Berman Electric, we provide 24/7 emergency electrical services across Long Island to ensure 
-                your safety and restore power quickly.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                24/7 emergency electricians across Long Island. Fast response for power outages, electrical fires, and urgent repairs. Licensed and ready when you need us.
               </p>
               <a
                 href="tel:+15163614068"
-                className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors animate-pulse focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-700"
+                className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-full hover:bg-red-700 transition-all hover:scale-105 shadow-lg font-semibold"
               >
                 <Phone className="w-6 h-6 mr-2" />
                 Call Now: (516) 361-4068

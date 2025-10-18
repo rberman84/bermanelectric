@@ -7,7 +7,6 @@ import NAP from "@/components/shared/NAP";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
-import { generateAltText } from "@/lib/utils";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 
 const Contact = () => {
@@ -23,30 +22,21 @@ const Contact = () => {
       <Navbar />
       <Breadcrumb items={[{ label: "Contact Us" }]} />
       <div className="pt-20">
-        <div className="relative py-24 bg-gradient-to-b from-gray-900 to-gray-800">
-          <div className="absolute inset-0 z-0 opacity-30" aria-hidden="true">
-            <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-              alt={generateAltText(
-                "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-                "Background image showing professional electrical service"
-              )}
-              loading="lazy"
-              className="object-cover w-full h-full"
-            />
+        <div className="relative min-h-[70vh] flex items-center overflow-hidden">
+          {/* Gradient Blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
           </div>
-          <div className="container relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+
+          <div className="container relative py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
                 Contact Berman Electric
               </h1>
-              <p className="text-xl text-gray-300 mb-4">
-                Reliable Electrical Services – One Call Away
-              </p>
-              <p className="text-lg text-gray-300">
-                Whether you need electrical repairs, installations, upgrades, or emergency services, 
-                Berman Electric is here to help. Our licensed and experienced electricians serve 
-                homes and businesses across Long Island, ensuring top-quality service and customer satisfaction.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                Reliable electrical services – one call away. Licensed electricians serving Long Island homes and businesses with repairs, installations, upgrades, and emergency services.
               </p>
             </div>
           </div>

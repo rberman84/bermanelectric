@@ -104,29 +104,22 @@ const Commercial = () => {
       <BreadcrumbSchema items={[{ name: "Commercial Electrical Services" }]} />
       <div className="pt-4">
         {/* Hero Section */}
-        <div className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/70" aria-hidden="true">
-            <img
-              src="/lovable-uploads/c867126f-321b-4d27-b41c-c3b7b160cd63.png"
-              alt="Modern commercial building exterior professional electrical contractor services Long Island business electrician"
-              className="w-full h-full object-cover opacity-70"
-              loading="lazy"
-            />
+        <div className="relative min-h-[70vh] flex items-center overflow-hidden">
+          {/* Gradient Blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-40 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-90 blur-[100px]" />
           </div>
-          <div className="container relative">
-            <div className="max-w-3xl mx-auto text-center">
-              <Building2 className="w-16 h-16 mx-auto mb-6 text-electric-400 drop-shadow-lg" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.4)]">
+
+          <div className="container relative py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <Building2 className="w-16 h-16 mx-auto mb-6 text-foreground" />
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
                 Commercial Electrical Services
               </h1>
-              <p className="text-xl text-electric-100 mb-8 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
-                Reliable Power Solutions for Your Business
-              </p>
-              <p className="text-lg text-white mb-8 leading-relaxed bg-black/30 p-6 rounded-lg backdrop-blur-sm">
-                At Berman Electric, we specialize in providing top-tier commercial electrical services for businesses 
-                across Long Island. Our expert electricians ensure that your commercial space is safe, energy-efficient, 
-                and up to code—so you can focus on running your business. Whether you need new installations, upgrades, 
-                maintenance, or emergency repairs, we've got you covered.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                Reliable power solutions for Long Island businesses. Licensed electrician providing installations, upgrades, maintenance, and emergency repairs across Suffolk County.
               </p>
             </div>
           </div>
