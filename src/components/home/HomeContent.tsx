@@ -1,5 +1,6 @@
 import { CheckCircle2, Star, Clock, Shield, Award, Zap, Home, Building2, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import bermanElectrician from "@/assets/berman-electrician.jpeg";
 
 const HomeContent = () => {
   const services = [
@@ -98,8 +99,8 @@ const HomeContent = () => {
                   <div className="relative">
                     <div className="w-24 h-24 rounded-2xl bg-[hsl(200,70%,88%)] overflow-hidden">
                       <img 
-                        src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=200&h=200&fit=crop" 
-                        alt="Licensed electrician at work"
+                        src={bermanElectrician} 
+                        alt="Berman Electric licensed electrician"
                         className="w-full h-full object-cover"
                       />
                     </div>
