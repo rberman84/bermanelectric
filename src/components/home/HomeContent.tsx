@@ -93,10 +93,35 @@ const HomeContent = () => {
             {/* Left Column - About */}
             <div className="bg-[hsl(200,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all">
               <div className="mb-8">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-[hsl(200,70%,88%)] mb-6">
-                  <Award className="w-10 h-10 text-[hsl(200,70%,40%)]" />
+                {/* Photo + Badge */}
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="relative">
+                    <div className="w-24 h-24 rounded-2xl bg-[hsl(200,70%,88%)] overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=200&h=200&fit=crop" 
+                        alt="Licensed electrician at work"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* Certification badge overlay */}
+                    <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(200,70%,88%)]">
+                      <Award className="w-5 h-5 text-[hsl(200,70%,40%)]" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2">About Berman Electric</h3>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(200,70%,40%)]">
+                        <Shield className="w-3 h-3" />
+                        Licensed
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(200,70%,40%)]">
+                        <Award className="w-3 h-3" />
+                        20+ Years
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">About Berman Electric</h3>
               </div>
               
               <div className="space-y-4 text-gray-700 leading-relaxed">

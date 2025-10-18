@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ReviewBadge from "./shared/ReviewBadge";
 
 interface HeroProps {
   title?: string;
@@ -64,6 +65,11 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
                 >
                   Call (516) 361-4068
                 </a>
+              </div>
+
+              {/* Social Proof Badge */}
+              <div className="flex justify-center mb-8">
+                <ReviewBadge />
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center text-sm md:text-base text-muted-foreground">
