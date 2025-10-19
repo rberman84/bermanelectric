@@ -5,6 +5,7 @@ import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
+import FAQSchema from "@/components/schema/FAQSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import RelatedServices from "@/components/service/RelatedServices";
 import ServiceCluster from "@/components/service/ServiceCluster";
@@ -77,6 +78,7 @@ const Residential = () => {
         keywords="residential electrician Long Island, home electrical services Suffolk County, electrical panel upgrades, home rewiring, lighting installation, EV charger installation, smart home wiring, GFCI installation"
         canonical="https://bermanelectrical.com/residential"
       />
+      <FAQSchema faqs={faqs} />
       <ServiceSchema
         serviceName="Residential Electrical Services"
         serviceType="ElectricalService"

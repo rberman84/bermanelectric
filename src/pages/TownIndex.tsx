@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { towns, buildTownPath } from "@/lib/townContent";
+import { towns, nassauTowns, buildTownPath } from "@/lib/townContent";
 import StructuredData from "@/components/town/StructuredData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
@@ -64,10 +64,10 @@ const TownIndex = () => {
           <div className="container relative py-20">
             <div className="mx-auto max-w-4xl text-center">
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
-                Licensed Electricians Serving All Suffolk County Towns
+                Licensed Electricians Serving Long Island
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
-                Professional electrical services in 13 Suffolk County communities. From <Link to="/locations/huntington" className="text-foreground underline hover:opacity-70 transition-opacity font-medium">Huntington</Link> to <Link to="/locations/shelter-island" className="text-foreground underline hover:opacity-70 transition-opacity font-medium">Shelter Island</Link>, we're your trusted local electrical contractor.
+                Professional electrical services across Nassau and Suffolk Counties. Serving 15+ communities from Garden City to the Hamptons.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
                 <Link to="/residential" className="hover:text-foreground font-medium underline">Residential Services</Link>
@@ -104,8 +104,16 @@ const TownIndex = () => {
               </div>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {towns.map((town) => (
+            {/* Suffolk County Section */}
+            <div className="mb-12">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-3xl font-bold text-gray-900">Suffolk County</h2>
+                <Link to="/locations/suffolk-county" className="text-electric-600 hover:text-electric-700 font-semibold">
+                  View County Page →
+                </Link>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {towns.map((town) => (
                 <Link
                   to={buildTownPath(town.slug)}
                   key={town.slug}
@@ -136,6 +144,46 @@ const TownIndex = () => {
                   </dl>
                 </Link>
               ))}
+              </div>
+            </div>
+
+            {/* Nassau County Section */}
+            <div className="mb-12">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-3xl font-bold text-gray-900">Nassau County</h2>
+                <Link to="/locations/nassau-county" className="text-electric-600 hover:text-electric-700 font-semibold">
+                  View County Page →
+                </Link>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {nassauTowns.map((town) => (
+                  <Link
+                    to={buildTownPath(town.slug)}
+                    key={town.slug}
+                    className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-electric-400 hover:shadow-lg"
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-electric-600 transition-colors">
+                        {town.name}, NY
+                      </h3>
+                      <span className="rounded-full bg-electric-50 px-3 py-1 text-xs font-semibold uppercase text-electric-700 group-hover:bg-electric-600 group-hover:text-white transition-colors">
+                        View Page
+                      </span>
+                    </div>
+                    <p className="flex-1 text-sm text-gray-600 leading-relaxed">{town.seo.description}</p>
+                    <dl className="mt-6 space-y-3 text-sm border-t border-gray-100 pt-4">
+                      <div>
+                        <dt className="font-semibold text-gray-700 mb-1">Areas Served</dt>
+                        <dd className="text-gray-600">{town.neighborhoods.slice(0, 3).join(", ")}{town.neighborhoods.length > 3 ? "..." : ""}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold text-gray-700 mb-1">ZIP Codes</dt>
+                        <dd className="text-gray-600">{town.zipCodes.join(", ")}</dd>
+                      </div>
+                    </dl>
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="mt-16 bg-electric-50 rounded-2xl p-8 text-center">

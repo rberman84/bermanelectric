@@ -35,6 +35,8 @@ const GoogleReviewsSetup = lazy(() => import("./pages/GoogleReviewsSetup"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const TownIndex = lazy(() => import("./pages/TownIndex"));
 const TownPage = lazy(() => import("./pages/TownPage"));
+const SuffolkCounty = lazy(() => import("./pages/SuffolkCounty"));
+const NassauCounty = lazy(() => import("./pages/NassauCounty"));
 
 const queryClient = new QueryClient();
 
@@ -68,6 +70,8 @@ const App = () => (
           <Route path="/electrician-suffolk-county" element={<ElectricianSuffolkCounty />} />
           <Route path="/electrician-long-island" element={<ElectricianLongIsland />} />
           <Route path="/locations" element={<TownIndex />} />
+          <Route path="/locations/suffolk-county" element={<SuffolkCounty />} />
+          <Route path="/locations/nassau-county" element={<NassauCounty />} />
           <Route path="/locations/:townSlug" element={<TownPage />} />
           <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<RonkonkomaServiceUpgradeCaseStudy />} />
           <Route path="/google-reviews-setup" element={<GoogleReviewsSetup />} />

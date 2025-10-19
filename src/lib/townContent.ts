@@ -1,4 +1,5 @@
 import townsJson from "@/data/suffolkTowns.json";
+import nassauTownsJson from "@/data/nassauTowns.json";
 
 export interface TownService {
   title: string;
@@ -76,9 +77,11 @@ export interface TownData {
 }
 
 export const towns = townsJson as TownData[];
+export const nassauTowns = nassauTownsJson as TownData[];
+export const allTowns = [...towns, ...nassauTowns];
 
 export const getTownBySlug = (slug: string | undefined) =>
-  towns.find((town) => town.slug === slug);
+  allTowns.find((town) => town.slug === slug);
 
 export const buildTownPath = (slug: string) => `/locations/${slug}`;
 

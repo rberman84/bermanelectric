@@ -1,0 +1,365 @@
+[
+  {
+    "name": "Garden City",
+    "slug": "garden-city",
+    "seo": {
+      "title": "Licensed Garden City Electricians | Berman Electric",
+      "description": "Expert electrical services for Garden City homes and businesses. Panel upgrades, lighting design, EV chargers, and emergency repairs by licensed Nassau County electricians."
+    },
+    "hero": {
+      "heading": "Garden City Electricians for Village Homes & Medical Offices",
+      "subheading": "Master electricians serving Garden City's tree-lined residential streets and thriving medical district.",
+      "ctaLabel": "Schedule Garden City Service"
+    },
+    "intro": "Garden City's historic village homes and modern medical facilities require reliable electrical systems. Berman Electric provides comprehensive electrical services for residences near Cathedral Avenue, medical offices along Stewart Avenue, and commercial properties throughout this prestigious Nassau County community.",
+    "serviceArea": "Serving Garden City Village, Garden City Park, and surrounding Nassau County neighborhoods.",
+    "map": {
+      "query": "Garden City NY Village Hall",
+      "description": "Our electricians provide fast response to Garden City via the Northern State Parkway and Meadowbrook Parkway, typically arriving within 40 minutes.",
+      "note": "We coordinate with the Village of Garden City Building Department for all permits and inspections."
+    },
+    "coordinates": {
+      "latitude": 40.7268,
+      "longitude": -73.6343
+    },
+    "zipCodes": ["11530", "11531"],
+    "neighborhoods": ["Garden City Village", "Garden City Park", "Stewart Manor"],
+    "landmarks": ["Adelphi University", "Nassau County Museum", "Roosevelt Field Mall"],
+    "serviceCatalog": [
+      "Residential panel upgrades and rewiring",
+      "Medical office electrical systems",
+      "Landscape and security lighting",
+      "EV charger installation for garages"
+    ],
+    "services": [
+      {
+        "title": "Historic Home Electrical Modernization",
+        "description": "Garden City's beautiful older homes often need electrical updates to support modern appliances and technology. We specialize in upgrading panels, adding circuits, and rewiring while preserving architectural character.",
+        "highlights": [
+          "200-amp service upgrades for colonial and Tudor homes",
+          "Whole-home surge protection for sensitive electronics",
+          "Code-compliant GFCI and AFCI protection"
+        ]
+      },
+      {
+        "title": "Medical Office Power Solutions",
+        "description": "Medical facilities along Stewart Avenue require uninterrupted power and specialized circuits. We install backup generators, dedicated circuits for medical equipment, and emergency lighting systems.",
+        "highlights": [
+          "Backup generator systems for continuous operation",
+          "Dedicated circuits for imaging and diagnostic equipment",
+          "Emergency lighting and exit sign maintenance"
+        ]
+      },
+      {
+        "title": "Smart Home & EV Charging",
+        "description": "Modern Garden City residents want smart home integration and electric vehicle charging. We install Level 2 EV chargers, smart lighting systems, and whole-home automation.",
+        "highlights": [
+          "Tesla and universal EV charger installation",
+          "Smart lighting and home automation integration",
+          "Garage and driveway power upgrades"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you service Garden City Village and Garden City Park?",
+        "answer": "Yes, we provide full electrical services throughout Garden City Village, Garden City Park, and all surrounding Nassau County areas. Our electricians are familiar with local building codes and permit requirements."
+      },
+      {
+        "question": "Can you upgrade my older Garden City home's electrical panel?",
+        "answer": "Absolutely. Many Garden City homes were built with 100-amp service that needs upgrading. We regularly upgrade to 200-amp panels to support modern appliances, HVAC systems, and EV chargers."
+      },
+      {
+        "question": "Do you work with medical offices in Garden City?",
+        "answer": "Yes, we specialize in medical office electrical systems including backup generators, dedicated circuits for medical equipment, emergency lighting, and ongoing maintenance programs."
+      },
+      {
+        "question": "How quickly can you respond to electrical emergencies in Garden City?",
+        "answer": "We provide 24/7 emergency service and typically arrive in Garden City within 40 minutes. Call us immediately at 516-361-4068 for urgent electrical issues."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Service in Garden City",
+      "description": "Getting professional electrical work done in Garden City is straightforward with Berman Electric.",
+      "steps": [
+        {
+          "title": "Contact Us",
+          "detail": "Call 516-361-4068 or use our online booking form to describe your electrical needs."
+        },
+        {
+          "title": "Get Your Estimate",
+          "detail": "We'll provide a detailed estimate with transparent pricing for your Garden City project."
+        },
+        {
+          "title": "Schedule Installation",
+          "detail": "We work around your schedule and coordinate Village permits if needed."
+        },
+        {
+          "title": "Expert Installation",
+          "detail": "Our licensed electricians complete your project efficiently and to code."
+        }
+      ],
+      "successNarrative": "Garden City homeowners and businesses trust Berman Electric for reliable electrical service."
+    },
+    "drivingDirections": {
+      "summary": "Berman Electric serves Garden City from our Ronkonkoma location with quick access via major parkways.",
+      "startingPoint": "From Berman Electric in Ronkonkoma",
+      "steps": [
+        {
+          "title": "Take Northern State Parkway West",
+          "detail": "Head west on Northern State Parkway toward Garden City (approximately 20 miles)"
+        },
+        {
+          "title": "Exit at Meadowbrook Parkway",
+          "detail": "Take Exit 31A to Meadowbrook Parkway South"
+        },
+        {
+          "title": "Exit at Stewart Avenue",
+          "detail": "Take Exit M4 to Stewart Avenue and head into Garden City Village"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Hempstead",
+    "slug": "hempstead",
+    "seo": {
+      "title": "Licensed Hempstead Electricians | Berman Electric", 
+      "description": "Professional electrical services for Hempstead homes and businesses. Emergency repairs, panel upgrades, commercial electrical, and more by licensed Nassau electricians."
+    },
+    "hero": {
+      "heading": "Hempstead Electricians for Residential & Commercial Properties",
+      "subheading": "Licensed electricians serving Hempstead's diverse residential neighborhoods and commercial districts.",
+      "ctaLabel": "Schedule Hempstead Service"
+    },
+    "intro": "Hempstead's mix of residential neighborhoods and commercial corridors requires versatile electrical expertise. Berman Electric serves homeowners, retailers, and property managers throughout this vibrant Nassau County community with reliable electrical solutions.",
+    "serviceArea": "Serving Hempstead Village, West Hempstead, and surrounding Nassau County areas.",
+    "map": {
+      "query": "Hempstead NY Village Hall",
+      "description": "We reach Hempstead quickly via the Southern State Parkway and Meadowbrook Parkway, typically within 35 minutes.",
+      "note": "We handle all permitting with the Village of Hempstead Building Department."
+    },
+    "coordinates": {
+      "latitude": 40.7062,
+      "longitude": -73.6187
+    },
+    "zipCodes": ["11549", "11550", "11551"],
+    "neighborhoods": ["Hempstead Village", "West Hempstead", "Uniondale"],
+    "landmarks": ["Hofstra University", "Nassau Coliseum", "Hempstead Lake State Park"],
+    "serviceCatalog": [
+      "Residential electrical repairs and upgrades",
+      "Commercial storefront electrical",
+      "Apartment building maintenance",
+      "Emergency electrical service"
+    ],
+    "services": [
+      {
+        "title": "Residential Electrical Service",
+        "description": "Hempstead homeowners count on us for panel upgrades, circuit additions, outlet installation, and whole-home electrical safety inspections.",
+        "highlights": [
+          "Panel upgrades from 100 to 200 amps",
+          "GFCI and AFCI protection installation",
+          "Ceiling fan and fixture installation"
+        ]
+      },
+      {
+        "title": "Commercial Property Electrical",
+        "description": "Retail shops and office buildings need reliable power systems. We provide commercial electrical installation, lighting retrofits, and ongoing maintenance.",
+        "highlights": [
+          "Storefront lighting design and installation",
+          "Electrical code compliance upgrades",
+          "Emergency lighting and exit signs"
+        ]
+      },
+      {
+        "title": "Multi-Family Building Services",
+        "description": "Property managers rely on us for apartment building electrical maintenance, common area lighting, and emergency repairs.",
+        "highlights": [
+          "Building-wide electrical troubleshooting",
+          "Common area lighting upgrades",
+          "24/7 emergency response for buildings"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you serve both Hempstead Village and West Hempstead?",
+        "answer": "Yes, we provide complete electrical services throughout Hempstead Village, West Hempstead, and all surrounding Nassau County communities."
+      },
+      {
+        "question": "Can you help with commercial electrical for my Hempstead business?",
+        "answer": "Absolutely. We work with retailers, restaurants, offices, and other businesses throughout Hempstead for installations, upgrades, and ongoing electrical maintenance."
+      },
+      {
+        "question": "Do you offer emergency electrical service in Hempstead?",
+        "answer": "Yes, we provide 24/7 emergency service throughout Hempstead. Call 516-361-4068 immediately for any electrical emergency."
+      },
+      {
+        "question": "What electrical permits do you handle in Hempstead?",
+        "answer": "We handle all electrical permits and inspections with the Village of Hempstead Building Department as part of our comprehensive service."
+      }
+    ],
+    "howTo": {
+      "title": "How to Get Electrical Service in Hempstead",
+      "description": "Berman Electric makes it easy to get professional electrical work done in Hempstead.",
+      "steps": [
+        {
+          "title": "Call or Book Online",
+          "detail": "Reach us at 516-361-4068 or use our online scheduling form."
+        },
+        {
+          "title": "Discuss Your Needs",
+          "detail": "We'll review your electrical project and provide expert recommendations."
+        },
+        {
+          "title": "Receive Your Quote",
+          "detail": "Get a detailed estimate with no hidden fees or surprises."
+        },
+        {
+          "title": "Professional Installation",
+          "detail": "Our licensed electricians complete your Hempstead project on time and to code."
+        }
+      ],
+      "successNarrative": "Hempstead residents and business owners choose Berman Electric for honest, reliable electrical service."
+    },
+    "drivingDirections": {
+      "summary": "We serve Hempstead from our Ronkonkoma headquarters with convenient parkway access.",
+      "startingPoint": "From Berman Electric in Ronkonkoma",
+      "steps": [
+        {
+          "title": "Take Southern State Parkway West",
+          "detail": "Head west on Southern State Parkway toward Hempstead (approximately 22 miles)"
+        },
+        {
+          "title": "Exit at Peninsula Boulevard",
+          "detail": "Take Exit 18 to Peninsula Boulevard North"
+        },
+        {
+          "title": "Enter Hempstead Village",
+          "detail": "Continue north into Hempstead Village center"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Oyster Bay",
+    "slug": "oyster-bay",
+    "seo": {
+      "title": "Licensed Oyster Bay Electricians | Berman Electric",
+      "description": "Expert electrical services for Oyster Bay waterfront homes and businesses. Panel upgrades, marine electrical, smart home systems, and emergency service."
+    },
+    "hero": {
+      "heading": "Oyster Bay Electricians for Gold Coast Estates & Waterfront Homes",
+      "subheading": "Master electricians specializing in Oyster Bay's historic estates, waterfront properties, and commercial spaces.",
+      "ctaLabel": "Schedule Oyster Bay Service"
+    },
+    "intro": "Oyster Bay's prestigious Gold Coast estates and waterfront properties demand exceptional electrical expertise. Berman Electric specializes in high-end residential electrical systems, marine power solutions, and commercial installations throughout this historic North Shore community.",
+    "serviceArea": "Serving Oyster Bay, Bayville, Mill Neck, Lattingtown, and surrounding North Shore estates.",
+    "map": {
+      "query": "Oyster Bay NY Town Hall",
+      "description": "Our electricians reach Oyster Bay estates via the Long Island Expressway and Northern State Parkway, arriving typically within 45 minutes.",
+      "note": "We coordinate with the Town of Oyster Bay Building Department for all high-end installations and permits."
+    },
+    "coordinates": {
+      "latitude": 40.8654,
+      "longitude": -73.5320
+    },
+    "zipCodes": ["11771", "11732", "11765"],
+    "neighborhoods": ["Oyster Bay", "Bayville", "Mill Neck", "Lattingtown", "Cove Neck"],
+    "landmarks": ["Sagamore Hill", "Planting Fields Arboretum", "Theodore Roosevelt Sanctuary"],
+    "serviceCatalog": [
+      "Gold Coast estate electrical systems",
+      "Waterfront and marine electrical",
+      "Luxury smart home integration",
+      "Commercial marina electrical"
+    ],
+    "services": [
+      {
+        "title": "Estate Electrical Systems",
+        "description": "Oyster Bay's Gold Coast estates require sophisticated electrical infrastructure. We design and install comprehensive systems for mansions, guest houses, pool houses, and extensive grounds.",
+        "highlights": [
+          "400-amp and larger service installations",
+          "Multi-building electrical distribution",
+          "Landscape and architectural lighting design"
+        ]
+      },
+      {
+        "title": "Waterfront Marine Electrical",
+        "description": "Waterfront properties need specialized electrical solutions for docks, boat lifts, and marine environments. We install marine-grade systems built to withstand salt air and moisture.",
+        "highlights": [
+          "Dock and boat lift electrical systems",
+          "Marine-grade wiring and weatherproof installations",
+          "Shoreline lighting and power pedestals"
+        ]
+      },
+      {
+        "title": "Luxury Smart Home Integration",
+        "description": "High-end homes in Oyster Bay demand cutting-edge technology. We integrate whole-home automation, advanced security systems, and sophisticated lighting control.",
+        "highlights": [
+          "Whole-home automation and control systems",
+          "Integrated lighting, climate, and security",
+          "Home theater and multi-room audio electrical"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you work on Gold Coast estates in Oyster Bay?",
+        "answer": "Yes, we specialize in high-end electrical systems for Oyster Bay's prestigious estates, including large service upgrades, landscape lighting, and sophisticated smart home integration."
+      },
+      {
+        "question": "Can you handle marine electrical for waterfront properties?",
+        "answer": "Absolutely. We have extensive experience with dock electrical systems, boat lift wiring, and marine-grade installations designed for Oyster Bay's waterfront environment."
+      },
+      {
+        "question": "Do you integrate smart home systems in Oyster Bay?",
+        "answer": "Yes, we design and install comprehensive smart home systems including lighting control, automated shades, security integration, and whole-home automation for luxury properties."
+      },
+      {
+        "question": "What size electrical services can you install for large estates?",
+        "answer": "We regularly install 400-amp and larger electrical services for Oyster Bay estates, including multi-building distribution systems and complex power requirements."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Estate Electrical Service in Oyster Bay",
+      "description": "Berman Electric provides white-glove electrical service for Oyster Bay's finest properties.",
+      "steps": [
+        {
+          "title": "Initial Consultation",
+          "detail": "Contact us at 516-361-4068 to discuss your estate's electrical needs and project scope."
+        },
+        {
+          "title": "Site Assessment",
+          "detail": "We visit your property to assess requirements and develop comprehensive electrical plans."
+        },
+        {
+          "title": "Detailed Proposal",
+          "detail": "Receive a thorough proposal with specifications, timeline, and transparent pricing."
+        },
+        {
+          "title": "Expert Installation",
+          "detail": "Our master electricians execute your project with precision and professionalism."
+        }
+      ],
+      "successNarrative": "Oyster Bay's most discerning property owners trust Berman Electric for exceptional electrical craftsmanship."
+    },
+    "drivingDirections": {
+      "summary": "We serve Oyster Bay's North Shore estates from our Ronkonkoma location via major expressways.",
+      "startingPoint": "From Berman Electric in Ronkonkoma",
+      "steps": [
+        {
+          "title": "Take Long Island Expressway West",
+          "detail": "Head west on LIE (I-495) toward Oyster Bay (approximately 25 miles)"
+        },
+        {
+          "title": "Exit at Route 106/107",
+          "detail": "Take Exit 41N to Route 106/107 North"
+        },
+        {
+          "title": "Head to Oyster Bay",
+          "detail": "Continue north through Hicksville and Syosset to reach Oyster Bay and North Shore estates"
+        }
+      ]
+    }
+  }
+]
