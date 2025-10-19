@@ -11,15 +11,15 @@ const corsHeaders = {
 };
 
 const requestSchema = z.object({
-  imageBase64: z.string().min(100),
+  imageBase64: z.string().min(100).max(10485760, "Image data too large"), // ~10MB base64 limit
   fileName: z.string().min(3).max(200),
-  mimeType: z.string().optional(),
+  mimeType: z.string().max(100).optional(),
   consentToStore: z.boolean().optional().default(false),
   zipCode: z.string().trim().regex(/^\d{5}$/, "Valid 5 digit ZIP code required"),
-  description: z.string().optional(),
-  clientName: z.string().optional(),
-  clientEmail: z.string().email().optional(),
-  clientPhone: z.string().optional(),
+  description: z.string().trim().max(2000, "Description must be less than 2000 characters").optional(),
+  clientName: z.string().trim().max(100).optional(),
+  clientEmail: z.string().email().max(255).optional(),
+  clientPhone: z.string().trim().max(30).optional(),
 });
 
 const zipHints: Record<string, string> = {

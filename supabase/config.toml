@@ -28,7 +28,7 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.portal-admin-submissions]
-verify_jwt = false
+verify_jwt = true
 
 [functions.ai-help-chat]
 verify_jwt = false

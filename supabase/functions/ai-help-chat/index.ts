@@ -1,11 +1,16 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { z } from "https://esm.sh/zod@3.23.8";
 import { checkRateLimit, getClientIP, rateLimitErrorResponse, RATE_LIMITS } from "../_shared/rateLimit.ts";
-import { handleError, handleApiError, ErrorCode } from "../_shared/errorHandler.ts";
+import { handleError, handleApiError, handleValidationError, ErrorCode } from "../_shared/errorHandler.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+const messageSchema = z.object({
+  message: z.string().trim().min(1).max(2000, "Message must be less than 2000 characters"),
+});
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -22,7 +27,14 @@ serve(async (req) => {
   }
 
   try {
-    const { message } = await req.json();
+    const body = await req.json();
+    const parsed = messageSchema.safeParse(body);
+    
+    if (!parsed.success) {
+      return handleValidationError(parsed.error, "ai-help-chat", corsHeaders);
+    }
+    
+    const { message } = parsed.data;
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     
     if (!LOVABLE_API_KEY) {
