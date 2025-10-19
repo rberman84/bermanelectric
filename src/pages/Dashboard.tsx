@@ -13,6 +13,8 @@ import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import { BookNowStrip } from "@/components/shared/BookNowStrip";
+import { BlogManager } from "@/components/dashboard/BlogManager";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const serviceRequestSchema = z.object({
   serviceType: z.string().min(1, { message: "Please select a service type" }),
@@ -334,14 +336,49 @@ const Dashboard = () => {
           {/* Admin Link - only show for admin users */}
           {isAdmin && (
             <section className="mb-8">
-              <Link
-                to="/admin"
-                className="inline-flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50 transition"
-              >
-                View Admin Submissions →
-              </Link>
+              <div className="flex gap-4">
+                <Link
+                  to="/admin"
+                  className="inline-flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50 transition"
+                >
+                  View Admin Submissions →
+                </Link>
+              </div>
             </section>
           )}
+
+          {/* Tabs for different dashboard sections */}
+          {isAdmin && (
+            <Tabs defaultValue="overview" className="space-y-6">
+              <TabsList className="grid w-full grid-cols-2 max-w-md">
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="blog">Blog Manager</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="overview" className="space-y-6">
+                {/* Existing dashboard content */}
+                {renderDashboardContent()}
+              </TabsContent>
+
+              <TabsContent value="blog">
+                <BlogManager />
+              </TabsContent>
+            </Tabs>
+          )}
+
+          {/* Non-admin users see regular dashboard */}
+          {!isAdmin && renderDashboardContent()}
+        </div>
+      </main>
+      <BookNowStrip />
+      <Footer />
+    </div>
+  );
+
+  // Helper function to render the main dashboard content
+  function renderDashboardContent() {
+    return (
+      <>
 
           {/* Content Grid */}
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2 mb-8">
@@ -614,12 +651,9 @@ const Dashboard = () => {
             © {new Date().getFullYear()} Berman Electric — Licensed & Insured —
             Ronkonkoma, NY
           </footer>
-        </div>
-      </main>
-      <BookNowStrip />
-      <Footer />
-    </div>
-  );
+        </>
+    );
+  }
 };
 
 export default Dashboard;

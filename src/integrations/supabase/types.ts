@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          author: string
+          category: string
+          content: string
+          created_at: string
+          created_by: string | null
+          excerpt: string
+          featured: boolean
+          id: string
+          image_url: string | null
+          published_at: string | null
+          read_time: string
+          slug: string
+          status: string
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string
+          category: string
+          content: string
+          created_at?: string
+          created_by?: string | null
+          excerpt: string
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          published_at?: string | null
+          read_time?: string
+          slug: string
+          status?: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          content?: string
+          created_at?: string
+          created_by?: string | null
+          excerpt?: string
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          published_at?: string | null
+          read_time?: string
+          slug?: string
+          status?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       google_reviews: {
         Row: {
           author_name: string
