@@ -8,6 +8,7 @@ import { allTowns, towns as suffolkTowns } from "@/lib/townContent";
 import { electricalProblems } from "@/data/electricalProblems";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import FAQSchema, { FAQItem } from "@/components/schema/FAQSchema";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const ServiceLocationProblem = () => {
@@ -60,6 +61,29 @@ const ServiceLocationProblem = () => {
     { name: problemData.name, url: window.location.pathname }
   ];
 
+  const faqs: FAQItem[] = [
+    {
+      question: `What causes ${problemData.name.toLowerCase()} in ${townData.name}?`,
+      answer: problemData.causes.join(". ") + "."
+    },
+    {
+      question: `How quickly can you fix ${problemData.name.toLowerCase()}?`,
+      answer: `We provide ${problemData.urgency === "emergency" ? "emergency 24/7" : "same-day"} service for ${problemData.name.toLowerCase()} in ${townData.name}. Response time depends on the severity, but we typically arrive within ${problemData.urgency === "emergency" ? "1-2 hours for emergencies" : "24 hours for scheduled appointments"}.`
+    },
+    {
+      question: `Is ${problemData.name.toLowerCase()} dangerous?`,
+      answer: problemData.safetyWarning || `${problemData.name} can pose safety risks and should be addressed by a licensed electrician. We recommend ${problemData.urgency === "emergency" ? "immediate professional attention" : "scheduling an inspection soon"}.`
+    },
+    {
+      question: `What are the signs of ${problemData.name.toLowerCase()}?`,
+      answer: problemData.symptoms.join(". ") + "."
+    },
+    {
+      question: `How can I prevent ${problemData.name.toLowerCase()} in the future?`,
+      answer: problemData.preventionTips.join(". ") + "."
+    }
+  ];
+
   return (
     <>
       <Helmet>
@@ -79,6 +103,7 @@ const ServiceLocationProblem = () => {
         areaServed={[townData.name, county]}
       />
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
 
       <div className="min-h-screen flex flex-col">
         <Navbar />
