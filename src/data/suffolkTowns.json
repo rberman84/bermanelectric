@@ -60,6 +60,94 @@
         ]
       }
     ],
+    "commonIssues": [
+      {
+        "title": "Saltwater Corrosion of Electrical Components",
+        "description": "Huntington's waterfront properties experience accelerated corrosion of outlets, fixtures, and service equipment due to salt air exposure. Coastal homes near Huntington Harbor often show signs of corroded connections, rusted boxes, and deteriorating insulation on outdoor circuits within just a few years of installation.",
+        "solution": "We replace standard components with marine-grade, corrosion-resistant materials including stainless steel hardware, sealed weatherproof enclosures, and copper-free aluminum wiring in coastal applications. All exterior circuits receive enhanced GFCI protection and annual corrosion inspections.",
+        "prevalence": "Common in waterfront homes"
+      },
+      {
+        "title": "Undersized Electrical Panels in Historic Homes",
+        "description": "Many of Huntington's beautiful colonial and Tudor homes from the 1920s-1950s still operate on 60-100 amp electrical services. These legacy systems cannot safely support modern HVAC, kitchen appliances, home offices, and electric vehicle charging that today's families require.",
+        "solution": "Our panel upgrade process involves load calculation, coordination with PSEG Long Island, permit filing with the Town of Huntington Building Department, and installation of 200-amp service with modern circuit breaker protection. We preserve architectural details while routing new service entrance cables.",
+        "prevalence": "Very common in pre-1970 construction"
+      },
+      {
+        "title": "Storm-Related Power Surge Damage",
+        "description": "Huntington's tree-canopied streets and waterfront location make it vulnerable to storm damage and lightning strikes. Nor'easters and summer thunderstorms frequently cause power surges that destroy electronics, HVAC controls, and sensitive appliances throughout the home.",
+        "solution": "We install whole-home surge protection at the main panel combined with point-of-use suppressors for critical equipment. Our surge protection systems are rated for Long Island's coastal electrical conditions and include warranty coverage for connected equipment.",
+        "prevalence": "Frequent during storm season"
+      },
+      {
+        "title": "Dock and Marina Power System Failures",
+        "description": "Private docks along Huntington Bay require specialized electrical systems for boat lifts, underwater lighting, and shore power pedestals. Standard residential wiring fails quickly in marine environments, causing safety hazards and code violations.",
+        "solution": "We design and install marine electrical systems using UL-approved dockside equipment, properly bonded grounding systems, and GFCI protection meeting National Electrical Code Article 555. All installations coordinate with NY State Department of Environmental Conservation requirements.",
+        "prevalence": "Common in waterfront properties with docks"
+      }
+    ],
+    "electricalCodes": [
+      {
+        "topic": "Town of Huntington Permit Requirements",
+        "requirement": "All electrical work including panel upgrades, circuit additions, and service changes require permits from the Town of Huntington Department of Engineering Services.",
+        "details": "Permit applications must include load calculations, site plans, and specifications. Inspections are required at rough-in and final stages. Berman Electric maintains pre-approved permit relationships and handles all submissions, scheduling, and inspector coordination for Huntington projects."
+      },
+      {
+        "topic": "Waterfront Property Special Requirements",
+        "requirement": "Properties within 100 feet of Huntington Harbor or Long Island Sound must meet enhanced NEC Article 555 requirements for marinas and boatyards.",
+        "details": "Installations require corrosion-resistant materials, enhanced bonding and grounding, and GFCI protection on all 15A and 20A, 125V receptacles in wet locations. Equipment must be rated for marine environments and meet Coast Guard electrical safety standards where applicable."
+      },
+      {
+        "topic": "AFCI Protection in Residential Remodels",
+        "requirement": "Arc-fault circuit interrupter (AFCI) protection is required for bedroom circuits in any residential renovation affecting electrical systems in homes built before 2002.",
+        "details": "Huntington enforces current NEC AFCI requirements strictly during permit inspections. Combination-type AFCIs must be installed in panels or as first outlets on affected circuits. Our crews include AFCI upgrades in all panel and circuit modification projects."
+      },
+      {
+        "topic": "EV Charging Installation Standards",
+        "requirement": "Electric vehicle charging equipment must be installed on dedicated circuits with appropriate load calculations and permit approval.",
+        "details": "Town of Huntington requires 240V Level 2 chargers to have dedicated 40-60 amp circuits, proper conduit installation, and GFCI protection. We provide turnkey permitting and installation meeting both Tesla and universal J1772 standards."
+      }
+    ],
+    "caseStudies": [
+      {
+        "title": "Waterfront Estate Full Electrical Modernization",
+        "location": "Huntington Bay",
+        "challenge": "A 1935 colonial overlooking Huntington Harbor was experiencing frequent power outages, had an undersized 100-amp service, and suffered from severe corrosion on exterior circuits. The homeowner wanted to add central air conditioning, modernize lighting, and install an electric vehicle charger while preserving the home's historic character.",
+        "solution": "We upgraded to 400-amp service with dual panels to support both house loads and future pool equipment. All exterior wiring was replaced with marine-grade components. We installed whole-home surge protection, added 12 new circuits for modern loads, and ran a dedicated 60-amp line to the garage for EV charging. All work was coordinated with Huntington Building Department inspections.",
+        "results": [
+          "Upgraded from 100A to 400A service capacity",
+          "Installed marine-grade corrosion-resistant components throughout",
+          "Added 12 new dedicated circuits for modern appliances",
+          "Level 2 EV charger installation with smart load management",
+          "Whole-home surge protection for coastal storm conditions",
+          "Full project completed in 6 days with minimal disruption"
+        ],
+        "testimonial": {
+          "text": "Berman Electric transformed our 1930s home's electrical system while respecting its architectural integrity. Their team handled all permits, worked around our schedule, and the marine-grade components they specified are holding up perfectly in our waterfront location. The upgrade has been flawless for two years.",
+          "author": "Patricia K.",
+          "role": "Homeowner, Huntington Bay"
+        }
+      },
+      {
+        "title": "Downtown Restaurant Emergency Power Restoration",
+        "location": "Huntington Village",
+        "challenge": "A popular restaurant on New York Avenue experienced complete power failure during dinner service on a Friday evening. The main breaker repeatedly tripped, all refrigeration was failing, and they faced thousands in lost revenue and spoiled inventory.",
+        "solution": "Our emergency crew arrived within 25 minutes and diagnosed a failed main breaker and deteriorated service entrance connections. We coordinated emergency permit approval with Town of Huntington, sourced replacement components, and performed complete service entrance rebuilding overnight. Kitchen equipment was back online by Saturday lunch service.",
+        "results": [
+          "Emergency response within 25 minutes",
+          "Overnight service entrance replacement completed",
+          "Zero food loss - all refrigeration maintained",
+          "Restaurant opened on schedule Saturday",
+          "Upgraded to commercial-grade components preventing future failures",
+          "Established ongoing maintenance agreement"
+        ],
+        "testimonial": {
+          "text": "When our entire electrical system failed on our busiest night, Berman Electric saved our business. They responded immediately, worked through the night, and had us operational by morning. Their professionalism and technical expertise were outstanding.",
+          "author": "Michael R.",
+          "role": "Restaurant Owner, Huntington Village"
+        }
+      }
+    ],
     "faq": [
       {
         "question": "Do Huntington electrical projects require permits?",

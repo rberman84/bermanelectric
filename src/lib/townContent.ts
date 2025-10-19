@@ -35,6 +35,32 @@ export interface TownDirections {
   steps: TownDirectionsStep[];
 }
 
+export interface CommonIssue {
+  title: string;
+  description: string;
+  solution: string;
+  prevalence: string;
+}
+
+export interface ElectricalCode {
+  topic: string;
+  requirement: string;
+  details: string;
+}
+
+export interface CaseStudy {
+  title: string;
+  location: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  testimonial?: {
+    text: string;
+    author: string;
+    role: string;
+  };
+}
+
 export interface TownHero {
   heading: string;
   subheading: string;
@@ -71,6 +97,9 @@ export interface TownData {
   landmarks: string[];
   serviceCatalog: string[];
   services: TownService[];
+  commonIssues?: CommonIssue[];
+  electricalCodes?: ElectricalCode[];
+  caseStudies?: CaseStudy[];
   faq: TownFaq[];
   howTo: TownHowTo;
   drivingDirections: TownDirections;

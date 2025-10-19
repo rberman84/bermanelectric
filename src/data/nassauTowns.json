@@ -60,6 +60,94 @@
         ]
       }
     ],
+    "commonIssues": [
+      {
+        "title": "Outdated Aluminum Wiring in 1960s-70s Homes",
+        "description": "Many Garden City homes built between 1965-1975 contain aluminum branch circuit wiring that poses serious fire hazards. Aluminum wiring connections deteriorate over time, causing overheating, arcing, and potential fire risks. These homes often experience flickering lights, warm outlets, and intermittent circuit failures.",
+        "solution": "We provide comprehensive aluminum wiring remediation using copper pigtailing at all connections, specialized CO/ALR-rated devices, and complete rewiring where necessary. All remediation work meets current CPSC guidelines and includes thermal imaging inspection to identify hot spots before they become dangerous.",
+        "prevalence": "Common in homes built 1965-1975"
+      },
+      {
+        "title": "Insufficient Electrical Capacity for Medical Equipment",
+        "description": "Garden City's concentration of medical offices along Stewart Avenue frequently requires specialized electrical infrastructure for diagnostic imaging, laboratory equipment, and life-safety systems that standard commercial wiring cannot support. Many older medical buildings lack proper dedicated circuits and backup power.",
+        "solution": "Our medical facility electrical team designs and installs isolated ground circuits, backup generator systems with automatic transfer switches, and dedicated power distribution for critical medical equipment. All installations meet Joint Commission standards and Nassau County health facility requirements.",
+        "prevalence": "Very common in medical district"
+      },
+      {
+        "title": "Underground Service Entrance Failures",
+        "description": "Garden City's underground utility infrastructure means many homes experience service entrance cable failures that are difficult to diagnose. Water infiltration, ground settling, and cable degradation cause intermittent power loss, partial outages, and dangerous voltage fluctuations.",
+        "solution": "We use specialized fault location equipment to pinpoint underground cable failures, then coordinate with PSEG Long Island to replace damaged service entrance cables. Our crews install enhanced waterproofing, proper grounding, and surge protection to prevent future underground service issues.",
+        "prevalence": "Occasional in older neighborhoods"
+      },
+      {
+        "title": "Historic Home Knob-and-Tube Wiring",
+        "description": "Garden City's beautiful Tudor and colonial homes from the 1920s-1940s often contain original knob-and-tube wiring in walls and attics. This ungrounded, cloth-insulated wiring is a fire hazard, fails to support modern loads, and violates insurance requirements.",
+        "solution": "We provide complete home rewiring that preserves architectural details while installing modern NM cable with proper grounding. Projects include panel upgrades to 200-amp service, AFCI/GFCI protection, and coordinated drywall repair to minimize disruption. All permits handled through Village of Garden City.",
+        "prevalence": "Common in pre-1950 homes"
+      }
+    ],
+    "electricalCodes": [
+      {
+        "topic": "Village of Garden City Building Permits",
+        "requirement": "All electrical work in Garden City Village requires permits from the Village Building Department. This includes panel upgrades, new circuits, service changes, and generator installations.",
+        "details": "The Village of Garden City enforces strict adherence to current NEC with additional local amendments. Inspections are mandatory at rough-in and final stages. Berman Electric maintains excellent working relationships with Village inspectors and handles all permit applications, plan submissions, and inspection scheduling."
+      },
+      {
+        "topic": "Historic District Electrical Guidelines",
+        "requirement": "Properties in Garden City's historic districts must maintain exterior architectural integrity when upgrading electrical service entrance equipment and installing exterior fixtures.",
+        "details": "Service entrance conduit, meter bases, and exterior lighting must be positioned to minimize visual impact on historic facades. We coordinate with the Garden City Historic Preservation Commission when required and design installations that meet both electrical code and historic preservation standards."
+      },
+      {
+        "topic": "Medical Facility Electrical Requirements",
+        "requirement": "Medical offices and healthcare facilities must meet enhanced NEC Article 517 requirements for healthcare facilities including isolated ground systems and emergency power.",
+        "details": "Garden City medical facilities require backup generator systems with automatic transfer switches, isolated ground receptacles for sensitive equipment, and emergency lighting meeting NFPA 99 standards. We maintain specialized expertise in medical facility electrical design and work with Nassau County Department of Health inspectors."
+      },
+      {
+        "topic": "EV Charging and Load Management",
+        "requirement": "Electric vehicle charging installations must include proper load calculations to ensure existing electrical service can support additional load without overloading the system.",
+        "details": "Village of Garden City requires dedicated circuits for EV chargers with appropriate wire sizing and overcurrent protection. We provide complete load analysis, service upgrade recommendations when needed, and smart charger installations that can manage loads to prevent service overload."
+      }
+    ],
+    "caseStudies": [
+      {
+        "title": "Complete Home Rewire in Historic Tudor",
+        "location": "Garden City Village",
+        "challenge": "A 1928 Tudor Revival home on Cathedral Avenue still operated on original knob-and-tube wiring with a 60-amp fuse panel. The homeowners' insurance company required complete electrical modernization, but they wanted to preserve all original plaster walls, crown molding, and architectural details.",
+        "solution": "We developed a minimally invasive rewiring strategy using existing wall cavities, attic access, and basement routing to install modern NM cable throughout the home. Upgraded to 200-amp panel with 42 new circuits, installed AFCI/GFCI protection, added recessed lighting, and ran dedicated circuits for kitchen and laundry. Coordinated with Village inspectors and worked with skilled plasterers to restore all wall penetrations.",
+        "results": [
+          "Complete home rewired from knob-and-tube to modern NM cable",
+          "Upgraded from 60A fuse panel to 200A circuit breaker panel",
+          "Added 42 dedicated circuits for modern living",
+          "Preserved 95% of original plaster walls and molding",
+          "Full AFCI/GFCI protection throughout",
+          "Project completed in 9 days over two-week period"
+        ],
+        "testimonial": {
+          "text": "We thought rewiring our 1928 home would destroy the beautiful original plasterwork, but Berman Electric found ways to route all new wiring with minimal wall damage. Their craftsmen respected our home's historic character while bringing it up to modern safety standards. The insurance company approved immediately.",
+          "author": "Robert and Susan M.",
+          "role": "Homeowners, Garden City Village"
+        }
+      },
+      {
+        "title": "Medical Office Generator and Power Upgrade",
+        "location": "Stewart Avenue Medical District",
+        "challenge": "A multi-physician practice needed to install a backup generator to maintain operations during power outages, upgrade to 400-amp service for new MRI equipment, and install isolated ground circuits for diagnostic equipment. The practice could not close during construction.",
+        "solution": "We phased the work across three weekends to avoid disrupting patient care. Coordinated emergency generator installation with automatic transfer switch, upgraded main service to 400-amp, installed 20 isolated ground circuits for medical equipment, and added surge protection throughout. All work met Article 517 healthcare facility requirements and passed Nassau County Health Department inspection.",
+        "results": [
+          "80kW backup generator with 24-hour fuel capacity installed",
+          "Service upgraded from 200A to 400A for MRI equipment",
+          "20 isolated ground circuits for sensitive diagnostic equipment",
+          "Whole-facility surge protection system",
+          "Zero operational downtime during construction",
+          "Full compliance with healthcare facility electrical codes"
+        ],
+        "testimonial": {
+          "text": "Berman Electric transformed our aging medical facility's electrical infrastructure without forcing us to close. Their team worked weekends, coordinated all inspections, and delivered a bulletproof system that supports our advanced diagnostic equipment. The backup generator has already proven its value during two storm outages.",
+          "author": "Dr. James L.",
+          "role": "Medical Practice Owner, Garden City"
+        }
+      }
+    ],
     "faq": [
       {
         "question": "Do you service Garden City Village and Garden City Park?",

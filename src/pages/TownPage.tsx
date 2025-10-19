@@ -2,6 +2,9 @@ import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import TownHero from "@/components/town/TownHero";
 import TownServices from "@/components/town/TownServices";
+import CommonIssuesSection from "@/components/town/CommonIssuesSection";
+import ElectricalCodesSection from "@/components/town/ElectricalCodesSection";
+import CaseStudiesSection from "@/components/town/CaseStudiesSection";
 import TownMap from "@/components/town/TownMap";
 import DrivingDirections from "@/components/town/DrivingDirections";
 import FaqSection from "@/components/town/FaqSection";
@@ -87,6 +90,9 @@ const TownPage = () => {
 
       <TownHero town={town} />
       <TownServices town={town} />
+      <CommonIssuesSection town={town} />
+      <ElectricalCodesSection town={town} />
+      <CaseStudiesSection town={town} />
       <TownCTA town={town} />
       <TownTestimonials town={town} />
       <TownMap town={town} />
