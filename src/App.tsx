@@ -37,6 +37,7 @@ const TownIndex = lazy(() => import("./pages/TownIndex"));
 const TownPage = lazy(() => import("./pages/TownPage"));
 const SuffolkCounty = lazy(() => import("./pages/SuffolkCounty"));
 const NassauCounty = lazy(() => import("./pages/NassauCounty"));
+const ServiceLocation = lazy(() => import("./pages/ServiceLocation"));
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,7 @@ const App = () => (
           <Route path="/locations/suffolk-county" element={<SuffolkCounty />} />
           <Route path="/locations/nassau-county" element={<NassauCounty />} />
           <Route path="/locations/:townSlug" element={<TownPage />} />
+          <Route path="/services/:serviceSlug/:townSlug" element={<ServiceLocation />} />
           <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<RonkonkomaServiceUpgradeCaseStudy />} />
           <Route path="/google-reviews-setup" element={<GoogleReviewsSetup />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

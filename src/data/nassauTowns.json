@@ -237,8 +237,371 @@
         {
           "title": "Enter Hempstead Village",
           "detail": "Continue north into Hempstead Village center"
+  },
+  {
+    "name": "Massapequa",
+    "slug": "massapequa",
+    "seo": {
+      "title": "Licensed Massapequa Electricians | Berman Electric",
+      "description": "Expert electrical services for Massapequa homes and businesses. Panel upgrades, rewiring, EV chargers, and emergency repairs by licensed Nassau County electricians."
+    },
+    "hero": {
+      "heading": "Massapequa Electricians for Residential & Commercial Properties",
+      "subheading": "Trusted electricians serving Massapequa's family homes and local businesses with reliable electrical solutions.",
+      "ctaLabel": "Schedule Massapequa Service"
+    },
+    "intro": "Massapequa's established neighborhoods and thriving business district require dependable electrical services. Berman Electric provides comprehensive solutions for homeowners along Sunrise Highway, businesses in downtown Massapequa, and waterfront properties throughout this vibrant Nassau County community.",
+    "serviceArea": "Serving Massapequa, Massapequa Park, and surrounding South Shore neighborhoods.",
+    "map": {
+      "query": "Massapequa NY Town",
+      "description": "We serve Massapequa via the Southern State Parkway, typically arriving within 30 minutes from our Ronkonkoma location.",
+      "note": "We coordinate with Nassau County Building Department for all electrical permits."
+    },
+    "coordinates": {
+      "latitude": 40.6807,
+      "longitude": -73.4743
+    },
+    "zipCodes": ["11758", "11762"],
+    "neighborhoods": ["Massapequa", "Massapequa Park", "East Massapequa"],
+    "landmarks": ["Massapequa Preserve", "Tackapausha Museum", "Massapequa High School"],
+    "serviceCatalog": [
+      "Residential panel upgrades",
+      "Home rewiring and circuit additions",
+      "Commercial storefront electrical",
+      "EV charger installation"
+    ],
+    "services": [
+      {
+        "title": "Residential Electrical Services",
+        "description": "Massapequa homeowners trust us for panel upgrades, circuit additions, whole-home rewiring, and modern electrical solutions for their family homes.",
+        "highlights": [
+          "200-amp service upgrades",
+          "GFCI and AFCI protection",
+          "Ceiling fan and fixture installation"
+        ]
+      },
+      {
+        "title": "Commercial Electrical Solutions",
+        "description": "Local businesses rely on us for storefront lighting, power upgrades, and ongoing electrical maintenance to keep operations running smoothly.",
+        "highlights": [
+          "Retail and restaurant electrical",
+          "Office power systems",
+          "Emergency lighting installation"
+        ]
+      },
+      {
+        "title": "Smart Home & EV Charging",
+        "description": "Modern Massapequa residents want smart technology and EV charging. We install Level 2 chargers and integrate smart home systems.",
+        "highlights": [
+          "Tesla and universal EV chargers",
+          "Smart lighting systems",
+          "Home automation wiring"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you service both Massapequa and Massapequa Park?",
+        "answer": "Yes, we provide complete electrical services throughout Massapequa, Massapequa Park, and all surrounding Nassau County areas."
+      },
+      {
+        "question": "Can you upgrade my home's electrical panel in Massapequa?",
+        "answer": "Absolutely. We regularly upgrade Massapequa homes from 100-amp to 200-amp service to support modern appliances, HVAC systems, and EV chargers."
+      },
+      {
+        "question": "Do you offer emergency electrical service?",
+        "answer": "Yes, we provide 24/7 emergency service throughout Massapequa. Call 516-361-4068 immediately for urgent electrical issues."
+      },
+      {
+        "question": "How long does electrical work take in Massapequa?",
+        "answer": "Most residential projects are completed in 1-2 days. Panel upgrades typically take 6-8 hours. We provide detailed timelines during consultation."
+      }
+    ],
+    "howTo": {
+      "title": "How to Get Electrical Service in Massapequa",
+      "description": "Scheduling professional electrical work in Massapequa is simple with Berman Electric.",
+      "steps": [
+        {
+          "title": "Contact Us",
+          "detail": "Call 516-361-4068 or book online to discuss your electrical needs."
+        },
+        {
+          "title": "Free Estimate",
+          "detail": "Receive transparent pricing with no hidden fees."
+        },
+        {
+          "title": "Schedule Service",
+          "detail": "We work around your schedule and handle all permits."
+        },
+        {
+          "title": "Expert Work",
+          "detail": "Licensed electricians complete your project to code."
+        }
+      ],
+      "successNarrative": "Massapequa homeowners and businesses choose Berman Electric for reliable electrical service."
+    },
+    "drivingDirections": {
+      "summary": "We serve Massapequa from Ronkonkoma with convenient Southern State Parkway access.",
+      "startingPoint": "From Berman Electric in Ronkonkoma",
+      "steps": [
+        {
+          "title": "Take Southern State Parkway West",
+          "detail": "Head west on Southern State Parkway (approximately 15 miles)"
+        },
+        {
+          "title": "Exit at Seaford-Oyster Bay Expressway",
+          "detail": "Take Exit 27S toward Massapequa"
+        },
+        {
+          "title": "Enter Massapequa",
+          "detail": "Continue south to reach Massapequa neighborhoods"
         }
       ]
+    }
+  },
+  {
+    "name": "Levittown",
+    "slug": "levittown",
+    "seo": {
+      "title": "Licensed Levittown Electricians | Berman Electric",
+      "description": "Professional electrical services for Levittown homes. Panel upgrades, rewiring, lighting, and emergency repairs by experienced Nassau County electricians."
+    },
+    "hero": {
+      "heading": "Levittown Electricians for Cape Cod & Ranch Homes",
+      "subheading": "Specialized electrical services for Levittown's iconic post-war homes and modern upgrades.",
+      "ctaLabel": "Schedule Levittown Service"
+    },
+    "intro": "Levittown's historic Cape Cod and ranch-style homes often need electrical modernization. Berman Electric specializes in upgrading older electrical systems while preserving the character of these iconic Nassau County homes.",
+    "serviceArea": "Serving all Levittown sections and Island Trees.",
+    "map": {
+      "query": "Levittown NY",
+      "description": "We reach Levittown quickly via the Southern State and Wantagh Parkways, typically within 35 minutes.",
+      "note": "We handle all Nassau County electrical permits and inspections."
+    },
+    "coordinates": {
+      "latitude": 40.7259,
+      "longitude": -73.5143
+    },
+    "zipCodes": ["11756"],
+    "neighborhoods": ["Levittown", "Island Trees", "Wantagh"],
+    "landmarks": ["Levittown Library", "Eisenhower Park", "Island Trees Memorial"],
+    "serviceCatalog": [
+      "Electrical panel modernization",
+      "Whole-home rewiring for older homes",
+      "Lighting upgrades and additions",
+      "GFCI and AFCI installations"
+    ],
+    "services": [
+      {
+        "title": "Vintage Home Electrical Upgrades",
+        "description": "Many Levittown homes were built in the 1950s with 60-amp service. We specialize in upgrading to modern 200-amp panels while maintaining home character.",
+        "highlights": [
+          "60-amp to 200-amp service upgrades",
+          "Knob-and-tube wiring replacement",
+          "Modern code-compliant installations"
+        ]
+      },
+      {
+        "title": "Kitchen & Bathroom Renovations",
+        "description": "Renovation projects require updated electrical systems. We install dedicated circuits for modern appliances and GFCI protection.",
+        "highlights": [
+          "Kitchen appliance circuits",
+          "Bathroom GFCI installations",
+          "Recessed lighting additions"
+        ]
+      },
+      {
+        "title": "EV Chargers & Modern Technology",
+        "description": "Even older homes can support EV charging and smart technology with proper electrical upgrades from our experienced team.",
+        "highlights": [
+          "Panel capacity assessments",
+          "Level 2 EV charger installation",
+          "Smart home electrical integration"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can you upgrade electrical panels in older Levittown homes?",
+        "answer": "Yes! We specialize in upgrading Levittown's older electrical systems from 60-amp or 100-amp service to modern 200-amp panels capable of supporting today's electrical demands."
+      },
+      {
+        "question": "Do I need to rewire my entire Levittown home?",
+        "answer": "Not always. We assess your existing wiring and recommend targeted upgrades. Some homes need complete rewiring, while others just need panel upgrades and selective circuit additions."
+      },
+      {
+        "question": "How long does a panel upgrade take?",
+        "answer": "Most residential panel upgrades in Levittown are completed in one day (6-8 hours). We coordinate with PSEG Long Island for service disconnection and reconnection."
+      },
+      {
+        "question": "Do you service all Levittown sections?",
+        "answer": "Yes, we service all Levittown sections and the surrounding Island Trees area with the same professional electrical service."
+      }
+    ],
+    "howTo": {
+      "title": "How to Schedule Electrical Upgrades in Levittown",
+      "description": "Getting your Levittown home's electrical system upgraded is straightforward.",
+      "steps": [
+        {
+          "title": "Free Assessment",
+          "detail": "We evaluate your current electrical system and discuss your needs."
+        },
+        {
+          "title": "Detailed Proposal",
+          "detail": "Receive a comprehensive quote with all costs and timeline."
+        },
+        {
+          "title": "Permit Coordination",
+          "detail": "We handle all Nassau County permits and utility coordination."
+        },
+        {
+          "title": "Professional Installation",
+          "detail": "Licensed electricians complete your upgrade efficiently and safely."
+        }
+      ],
+      "successNarrative": "Levittown homeowners trust Berman Electric to modernize their electrical systems safely."
+    },
+    "drivingDirections": {
+      "summary": "We serve Levittown from Ronkonkoma with easy parkway access.",
+      "startingPoint": "From Berman Electric in Ronkonkoma",
+      "steps": [
+        {
+          "title": "Take Southern State Parkway West",
+          "detail": "Head west on Southern State Parkway toward Levittown"
+        },
+        {
+          "title": "Exit at Wantagh Parkway",
+          "detail": "Take Exit 27 to Wantagh Parkway North"
+        },
+        {
+          "title": "Enter Levittown",
+          "detail": "Exit at Hempstead Turnpike and head into Levittown"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Rockville Centre",
+    "slug": "rockville-centre",
+    "seo": {
+      "title": "Licensed Rockville Centre Electricians | Berman Electric",
+      "description": "Expert electrical services for Rockville Centre homes and businesses. Panel upgrades, smart home systems, commercial electrical, and 24/7 emergency service."
+    },
+    "hero": {
+      "heading": "Rockville Centre Electricians for Village Homes & Businesses",
+      "subheading": "Professional electricians serving Rockville Centre's charming residential neighborhoods and thriving business district.",
+      "ctaLabel": "Schedule Rockville Centre Service"
+    },
+    "intro": "Rockville Centre's mix of historic village homes and modern commercial spaces demands versatile electrical expertise. Berman Electric provides comprehensive electrical solutions for this vibrant Nassau County community.",
+    "serviceArea": "Serving Rockville Centre Village and surrounding South Shore areas.",
+    "map": {
+      "query": "Rockville Centre NY Village Hall",
+      "description": "We reach Rockville Centre via the Southern State Parkway, typically within 35 minutes from Ronkonkoma.",
+      "note": "We coordinate with the Village of Rockville Centre Building Department for permits."
+    },
+    "coordinates": {
+      "latitude": 40.6587,
+      "longitude": -73.6413
+    },
+    "zipCodes": ["11570", "11571"],
+    "neighborhoods": ["Rockville Centre", "Lakeview", "South Lynbrook"],
+    "landmarks": ["Rockville Centre LIRR Station", "Village Green", "Molloy University"],
+    "serviceCatalog": [
+      "Historic home electrical upgrades",
+      "Commercial storefront electrical",
+      "Smart home integration",
+      "Emergency electrical service"
+    ],
+    "services": [
+      {
+        "title": "Village Home Electrical Services",
+        "description": "Rockville Centre's beautiful homes deserve expert electrical care. We provide panel upgrades, rewiring, and modern electrical solutions.",
+        "highlights": [
+          "Whole-home electrical upgrades",
+          "Landscape and security lighting",
+          "Generator installation"
+        ]
+      },
+      {
+        "title": "Downtown Business Electrical",
+        "description": "Village businesses along Sunrise Highway and Park Avenue rely on us for reliable electrical systems and maintenance.",
+        "highlights": [
+          "Retail and restaurant electrical",
+          "Office building power systems",
+          "After-hours installation available"
+        ]
+      },
+      {
+        "title": "Modern Technology Integration",
+        "description": "Smart homes and EV charging are increasingly popular in Rockville Centre. We install and integrate the latest electrical technology.",
+        "highlights": [
+          "Level 2 EV charger installation",
+          "Whole-home automation",
+          "Smart lighting and climate control"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Do you work in Rockville Centre Village?",
+        "answer": "Yes, we provide comprehensive electrical services throughout Rockville Centre Village and surrounding Nassau County areas."
+      },
+      {
+        "question": "Can you handle commercial electrical for my Rockville Centre business?",
+        "answer": "Absolutely. We work with retailers, restaurants, offices, and other businesses throughout Rockville Centre for installations, repairs, and maintenance."
+      },
+      {
+        "question": "Do you offer after-hours service for businesses?",
+        "answer": "Yes, we can schedule electrical work during off-hours or weekends to minimize disruption to your business operations."
+      },
+      {
+        "question": "How do I know if my home needs an electrical panel upgrade?",
+        "answer": "Signs include frequent breaker trips, flickering lights, buzzing sounds, or if your home has a panel over 25 years old. We offer free electrical assessments."
+      }
+    ],
+    "howTo": {
+      "title": "How to Get Electrical Service in Rockville Centre",
+      "description": "Professional electrical service for Rockville Centre is just a call away.",
+      "steps": [
+        {
+          "title": "Call or Book Online",
+          "detail": "Reach us at 516-361-4068 or use our online scheduling."
+        },
+        {
+          "title": "Consultation",
+          "detail": "We discuss your needs and provide expert recommendations."
+        },
+        {
+          "title": "Transparent Quote",
+          "detail": "Receive detailed pricing with no surprises."
+        },
+        {
+          "title": "Expert Installation",
+          "detail": "Licensed electricians complete your project professionally."
+        }
+      ],
+      "successNarrative": "Rockville Centre residents and business owners choose Berman Electric for honest, reliable service."
+    },
+    "drivingDirections": {
+      "summary": "We serve Rockville Centre from Ronkonkoma via the Southern State Parkway.",
+      "startingPoint": "From Berman Electric in Ronkonkoma",
+      "steps": [
+        {
+          "title": "Take Southern State Parkway West",
+          "detail": "Head west toward Rockville Centre (approximately 20 miles)"
+        },
+        {
+          "title": "Exit at Peninsula Boulevard",
+          "detail": "Take Exit 18 to Peninsula Boulevard South"
+        },
+        {
+          "title": "Enter Rockville Centre",
+          "detail": "Continue south into Rockville Centre Village"
+        }
+      ]
+    }
+  }
+]
     }
   },
   {
