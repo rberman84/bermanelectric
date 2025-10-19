@@ -14,6 +14,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
 import { BookNowStrip } from "@/components/shared/BookNowStrip";
 import { BlogManager } from "@/components/dashboard/BlogManager";
+import { ServiceRequestsManager } from "@/components/dashboard/ServiceRequestsManager";
+import { ReviewsManager } from "@/components/dashboard/ReviewsManager";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const serviceRequestSchema = z.object({
@@ -350,14 +352,24 @@ const Dashboard = () => {
           {/* Tabs for different dashboard sections */}
           {isAdmin && (
             <Tabs defaultValue="overview" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-2 max-w-md">
+              <TabsList className="grid w-full grid-cols-4 max-w-4xl">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="blog">Blog Manager</TabsTrigger>
+                <TabsTrigger value="service-requests">Service Requests</TabsTrigger>
+                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                <TabsTrigger value="blog">Blog</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6">
                 {/* Existing dashboard content */}
                 {renderDashboardContent()}
+              </TabsContent>
+
+              <TabsContent value="service-requests">
+                <ServiceRequestsManager />
+              </TabsContent>
+
+              <TabsContent value="reviews">
+                <ReviewsManager />
               </TabsContent>
 
               <TabsContent value="blog">

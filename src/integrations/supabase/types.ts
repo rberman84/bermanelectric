@@ -71,6 +71,74 @@ export type Database = {
         }
         Relationships: []
       }
+      customer_reviews: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          created_at: string | null
+          featured: boolean | null
+          id: string
+          moderation_notes: string | null
+          photo_urls: string[] | null
+          professionalism: number | null
+          rating: number
+          review_text: string
+          service_quality: number | null
+          service_request_id: string | null
+          status: string
+          title: string
+          updated_at: string | null
+          user_id: string | null
+          would_recommend: boolean | null
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string | null
+          featured?: boolean | null
+          id?: string
+          moderation_notes?: string | null
+          photo_urls?: string[] | null
+          professionalism?: number | null
+          rating: number
+          review_text: string
+          service_quality?: number | null
+          service_request_id?: string | null
+          status?: string
+          title: string
+          updated_at?: string | null
+          user_id?: string | null
+          would_recommend?: boolean | null
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string | null
+          featured?: boolean | null
+          id?: string
+          moderation_notes?: string | null
+          photo_urls?: string[] | null
+          professionalism?: number | null
+          rating?: number
+          review_text?: string
+          service_quality?: number | null
+          service_request_id?: string | null
+          status?: string
+          title?: string
+          updated_at?: string | null
+          user_id?: string | null
+          would_recommend?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customer_reviews_service_request_id_fkey"
+            columns: ["service_request_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       google_reviews: {
         Row: {
           author_name: string
@@ -161,11 +229,14 @@ export type Database = {
       service_requests: {
         Row: {
           address: string
+          completed_at: string | null
           created_at: string
           description: string
           id: string
+          internal_notes: string | null
           phone: string
           preferred_date: string | null
+          review_requested_at: string | null
           service_type: string
           status: string
           updated_at: string
@@ -173,11 +244,14 @@ export type Database = {
         }
         Insert: {
           address: string
+          completed_at?: string | null
           created_at?: string
           description: string
           id?: string
+          internal_notes?: string | null
           phone: string
           preferred_date?: string | null
+          review_requested_at?: string | null
           service_type: string
           status?: string
           updated_at?: string
@@ -185,11 +259,14 @@ export type Database = {
         }
         Update: {
           address?: string
+          completed_at?: string | null
           created_at?: string
           description?: string
           id?: string
+          internal_notes?: string | null
           phone?: string
           preferred_date?: string | null
+          review_requested_at?: string | null
           service_type?: string
           status?: string
           updated_at?: string
