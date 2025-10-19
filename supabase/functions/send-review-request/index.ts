@@ -71,7 +71,7 @@ serve(async (req) => {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: Deno.env.get("RESEND_FROM") || "Berman Electric <noreply@bermanelectrical.com>",
+        from: Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>",
         to: [user.email],
         subject: "How did we do? Share your experience with Berman Electric",
         html: `

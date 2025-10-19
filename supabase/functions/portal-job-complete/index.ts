@@ -101,7 +101,7 @@ const handler = async (req: Request): Promise<Response> => {
       to: [email],
       subject: `How did we do on your ${service || 'service'}?`,
       html,
-      reply_to: Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com",
+      reply_to: Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com",
     });
 
     const emailError = (emailResponse as any)?.error;

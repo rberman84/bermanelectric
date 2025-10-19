@@ -81,7 +81,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { name, email, phone, address, projectType, budgetRange, timeline, notes } = parsed.data;
     
-    const dest = (Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com")
+    const dest = (Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);

@@ -449,7 +449,7 @@ const handler = async (req: Request): Promise<Response> => {
           from: Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>",
           to: [
             email,
-            selectedCrew.email || "dispatch@bermanelectrical.com",
+            selectedCrew.email || "contact@bermanelectrical.com",
           ].filter(Boolean),
           subject: `Confirmed: ${serviceType} on ${formatHuman(slot.start)}`,
           html: `

@@ -475,10 +475,10 @@ const Dashboard = () => {
                   <div>
                     <div className="text-sm text-neutral-500">Email us</div>
                     <a
-                      href="mailto:info@bermanelectrical.com"
+                      href="mailto:contact@bermanelectrical.com"
                       className="font-semibold hover:underline"
                     >
-                      info@bermanelectrical.com
+                      contact@bermanelectrical.com
                     </a>
                   </div>
                 </div>

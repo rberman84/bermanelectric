@@ -11,9 +11,9 @@ const ContactInfo = () => {
             <Phone className="w-5 h-5 mr-2" />
             516-361-4068
           </a>
-          <a href="mailto:Rob@bermanelectrical.com" className="flex items-center text-gray-700 hover:text-electric-600">
+          <a href="mailto:contact@bermanelectrical.com" className="flex items-center text-gray-700 hover:text-electric-600">
             <Mail className="w-5 h-5 mr-2" />
-            Rob@bermanelectrical.com
+            contact@bermanelectrical.com
           </a>
           <div className="flex items-start">
             <MapPin className="w-5 h-5 mr-2 mt-1" />

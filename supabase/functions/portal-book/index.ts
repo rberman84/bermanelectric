@@ -82,7 +82,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { name, email, phone, address, serviceType, preferredDate, notes, membership } = parsed.data;
     
-    const dest = (Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com")
+    const dest = (Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
@@ -159,7 +159,7 @@ const handler = async (req: Request): Promise<Response> => {
         to: [email],
         subject: `We got your request: ${serviceType}`,
         html: customerHtml,
-        reply_to: Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com",
+        reply_to: Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com",
       },
       metadata: {
         leadType: "booking",

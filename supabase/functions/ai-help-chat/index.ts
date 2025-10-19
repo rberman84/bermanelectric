@@ -60,7 +60,7 @@ Key information about Berman Electric:
 - Services: Residential electrical work, commercial electrical services, emergency repairs, panel upgrades, lighting installation, EV charger installation, generator installation
 - Service areas: Long Island, Nassau County, Suffolk County, Ronkonkoma NY
 - Phone: (516) 361-4068
-- Email: info@bermanelectrical.com
+- Email: contact@bermanelectrical.com
 - Hours: Monday-Friday 7:00 AM - 7:00 PM, Emergency services available on weekends
 
 Be helpful, professional, and concise. If someone needs immediate assistance, direct them to call (516) 361-4068. For quotes, suggest using the contact form or calling directly.` 

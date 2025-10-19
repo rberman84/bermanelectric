@@ -179,7 +179,7 @@ const handler = async (req: Request): Promise<Response> => {
           to: [email],
           subject: "Quick electrical safety check?",
           html,
-          reply_to: Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com",
+          reply_to: Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com",
         });
 
         console.log(`Sent maintenance reminder to ${email}`);

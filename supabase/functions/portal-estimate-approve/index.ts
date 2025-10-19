@@ -60,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { estimateId, name, email, upsells } = parsed.data;
     
-    const dest = (Deno.env.get("DEST_EMAIL") || "info@bermanelectrical.com")
+    const dest = (Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
