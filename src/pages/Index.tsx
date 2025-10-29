@@ -14,6 +14,7 @@ import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import StructuredData from "@/components/town/StructuredData";
 
 const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
+const GoogleBusinessProfile = lazy(() => import("@/components/shared/GoogleBusinessProfile").then(m => ({ default: m.GoogleBusinessProfile })));
 const AiHelpChat = lazy(() => import("@/components/shared/AiHelpChat").then(m => ({ default: m.AiHelpChat })));
 
 
@@ -121,6 +122,9 @@ const Index = () => {
             <GoogleReviews />
           </Suspense>
         ) : null}
+        <Suspense fallback={<div className="py-16 text-center"><div className="animate-pulse">Loading...</div></div>}>
+          <GoogleBusinessProfile />
+        </Suspense>
         <section className="cv-auto">
           <CTASection
             variant="emergency"
