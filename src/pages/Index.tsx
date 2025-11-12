@@ -15,6 +15,10 @@ import ProfessionalServiceSchema from "@/components/schema/ProfessionalServiceSc
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import StructuredData from "@/components/town/StructuredData";
+import UrgencyBanner from "@/components/shared/UrgencyBanner";
+import ExitIntentPopup from "@/components/shared/ExitIntentPopup";
+import MobileStickyBar from "@/components/shared/MobileStickyBar";
+import PricingTransparency from "@/components/shared/PricingTransparency";
 
 const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
 const GoogleBusinessProfile = lazy(() => import("@/components/shared/GoogleBusinessProfile").then(m => ({ default: m.GoogleBusinessProfile })));
@@ -103,7 +107,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-[100svh] overflow-x-hidden flex flex-col">
+    <div className="min-h-[100svh] overflow-x-hidden flex flex-col pb-16 md:pb-0">
       <SEO 
         title="Berman Electric - Licensed Electrician Long Island NY"
         description="Licensed electrician serving Long Island 20+ years. Residential & commercial electrical services, emergency repairs, panel upgrades. Call (516) 361-4068"
@@ -126,10 +130,13 @@ const Index = () => {
         areaServed={["Suffolk County NY", "Nassau County NY", "Long Island NY"]}
       />
       {aggregateRating && <StructuredData data={aggregateRating} id="aggregate-rating-schema" />}
+      
+      <UrgencyBanner />
       <Navbar />
-      {/* <ScrollDoctor /> */}
+      
       <main className="grow">
         <Hero />
+        <PricingTransparency />
         <section className="cv-auto"><HomeContent /></section>
         <div ref={reviewsRef} />
         {showReviews ? (
@@ -150,6 +157,11 @@ const Index = () => {
         </section>
       </main>
       <Footer />
+      
+      {/* Optimization Components */}
+      <ExitIntentPopup />
+      <MobileStickyBar />
+      
       {showChat ? (
         <Suspense fallback={null}>
           <AiHelpChat />

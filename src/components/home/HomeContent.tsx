@@ -39,37 +39,6 @@ const HomeContent = () => {
     }
   ];
 
-  const trustSignals = [
-    {
-      icon: <Award className="w-10 h-10" />,
-      title: "20+ Years Experience",
-      description: "Over two decades serving Long Island with reliable electrical solutions",
-      bgColor: "bg-[hsl(45,85%,92%)]",
-      iconColor: "text-[hsl(45,70%,45%)]"
-    },
-    {
-      icon: <Shield className="w-10 h-10" />,
-      title: "Licensed & Insured",
-      description: "Fully licensed electricians with comprehensive insurance coverage",
-      bgColor: "bg-[hsl(140,75%,92%)]",
-      iconColor: "text-[hsl(140,60%,40%)]"
-    },
-    {
-      icon: <Star className="w-10 h-10" />,
-      title: "5-Star Rated Service",
-      description: "Consistently rated 5 stars by satisfied customers across Suffolk County",
-      bgColor: "bg-[hsl(280,75%,92%)]",
-      iconColor: "text-[hsl(280,65%,50%)]"
-    },
-    {
-      icon: <Clock className="w-10 h-10" />,
-      title: "24/7 Emergency Service",
-      description: "Available around the clock for electrical emergencies and urgent repairs",
-      bgColor: "bg-[hsl(200,75%,92%)]",
-      iconColor: "text-[hsl(200,70%,45%)]"
-    }
-  ];
-
   const serviceAreas = [
     "Ronkonkoma", "Huntington", "Massapequa", "Smithtown", "Babylon", 
     "Bay Shore", "Commack", "Deer Park", "East Islip", "Farmingdale"
@@ -217,26 +186,7 @@ const HomeContent = () => {
           </div>
         </div>
 
-        {/* Trust Signals */}
-        <div className="mb-32 max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">Why Choose <span className="text-electric-600">Berman</span></h2>
-            <p className="text-xl text-muted-foreground font-light">Commitment to excellence in every project</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trustSignals.map((signal, index) => (
-              <div key={index} className={`${signal.bgColor} rounded-[32px] p-8 hover:shadow-lg transition-all`}>
-                <div className="mb-6">
-                  <div className={`inline-flex ${signal.iconColor}`}>
-                    {signal.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{signal.title}</h3>
-                <p className="text-base text-gray-700 leading-relaxed">{signal.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Removed redundant trust signals - now in hero as risk reversal badges */}
 
         {/* Service Areas */}
         <div className="mb-32 max-w-5xl mx-auto">
