@@ -9,6 +9,9 @@ import SEO from "@/components/SEO";
 import WebsiteSchema from "@/components/schema/WebsiteSchema";
 import OrganizationSchema from "@/components/schema/OrganizationSchema";
 import HomeFAQSchema from "@/components/schema/HomeFAQSchema";
+import SiteNavigationSchema from "@/components/schema/SiteNavigationSchema";
+import SpeakableSchema from "@/components/schema/SpeakableSchema";
+import ProfessionalServiceSchema from "@/components/schema/ProfessionalServiceSchema";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import StructuredData from "@/components/town/StructuredData";
@@ -110,6 +113,18 @@ const Index = () => {
       <WebsiteSchema />
       <OrganizationSchema />
       <HomeFAQSchema />
+      <SiteNavigationSchema />
+      <SpeakableSchema 
+        pageUrl="https://bermanelectrical.com/"
+        cssSelectors={["h1", "h2", ".hero-content", ".service-description"]}
+      />
+      <ProfessionalServiceSchema
+        serviceName="Professional Electrical Services"
+        serviceType="Electrical Services"
+        description="Licensed electrician serving Long Island with over 20 years of experience in residential and commercial electrical work"
+        pageUrl="/"
+        areaServed={["Suffolk County NY", "Nassau County NY", "Long Island NY"]}
+      />
       {aggregateRating && <StructuredData data={aggregateRating} id="aggregate-rating-schema" />}
       <Navbar />
       {/* <ScrollDoctor /> */}
