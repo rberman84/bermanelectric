@@ -8,7 +8,7 @@ const RiskReversalBadges = () => {
     },
     {
       icon: <Shield className="w-5 h-5" />,
-      text: "Licensed & Insured - ME-44927",
+      text: "Licensed & Insured",
     },
     {
       icon: <Clock className="w-5 h-5" />,
