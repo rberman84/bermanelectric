@@ -1,7 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@4.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { getSmtpSender } from "../_shared/smtp.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -89,12 +87,8 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    if (!Deno.env.get("RESEND_API_KEY")) {
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
+    const smtp = getSmtpSender();
+    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
 
     const csvResult = await fetchCsvData();
     if (!csvResult.ok) {
@@ -125,98 +119,100 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     let sent = 0;
-    const FROM = Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>";
-    const siteUrl = Deno.env.get("SITE_URL") || "https://bermanelectrical.com";
+    for (const [customerEmail, { row, timestamp }] of latestByEmail) {
+      const age = now - timestamp;
+      if (age < sixMonths) continue;
 
-    for (const [email, { row, timestamp }] of latestByEmail.entries()) {
-      // Skip if less than 6 months old
-      if (now - timestamp < sixMonths) continue;
-
-      // Check if reminder already sent
+      // Check if we already sent a reminder
       const alreadySent = rows.some(
         (r) =>
-          (r.type || "").toLowerCase() === "reminder_sent" &&
-          (r.email || "").toLowerCase().trim() === email
+          (r.email || "").toLowerCase().trim() === customerEmail &&
+          (r.type || "").toLowerCase().trim() === "reminder_sent"
       );
       if (alreadySent) continue;
 
-      const name = row.name || "valued customer";
+      const customerName = row.name || "Valued Customer";
+      const lastService = row.service || "electrical service";
 
-      const html = `
-        <div style="font-family:system-ui,Arial,sans-serif;font-size:16px;line-height:1.6">
-          <h2>It's been a while — want a quick checkup?</h2>
-          <p>Hi ${escapeHtml(name)},</p>
-          <p>We recommend a periodic electrical safety check to keep your home safe and efficient.</p>
-          
-          <h3 style="margin-top:24px;color:#16a34a">What we check:</h3>
-          <ul style="margin-top:10px;padding-left:20px">
-            <li style="margin-bottom:8px">Panel tune-up and inspection</li>
-            <li style="margin-bottom:8px">GFCI/AFCI outlet testing</li>
-            <li style="margin-bottom:8px">Smoke and CO detector check</li>
-            <li style="margin-bottom:8px">Identify potential safety issues</li>
-          </ul>
-          
-          <p style="margin-top:20px">
-            <a href="${siteUrl}/dashboard" style="display:inline-block;padding:12px 24px;background:#16a34a;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600">
-              Book a Visit
-            </a>
-          </p>
-          
-          <p style="margin-top:24px;padding:15px;background:#f3f4f6;border-left:4px solid #16a34a">
-            <b>Not interested?</b> No worries — just reply and let us know to hold off.
-          </p>
-          
-          <p style="margin-top:20px;color:#6b7280;font-size:14px">
-            — The Berman Electric Team<br>
-            <a href="tel:5163614068" style="color:#16a34a">516-361-4068</a>
-          </p>
+      const htmlBody = `
+        <div style="font-family:system-ui,Arial,sans-serif;font-size:16px;line-height:1.6;max-width:600px;margin:0 auto">
+          <div style="background:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);padding:30px;text-align:center;border-radius:10px 10px 0 0">
+            <h1 style="color:#fff;margin:0;font-size:24px">Time for Your Electrical Check-Up!</h1>
+          </div>
+          <div style="background:#fff;padding:40px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 10px 10px">
+            <p>Hi ${escapeHtml(customerName)},</p>
+            <p>It's been over 6 months since your last <strong>${escapeHtml(lastService)}</strong> with Berman Electric!</p>
+            <p>Regular maintenance helps prevent costly repairs and keeps your home safe.</p>
+            <div style="text-align:center;margin:40px 0">
+              <a href="https://bermanelectrical.com/contact" style="display:inline-block;padding:16px 32px;background:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:18px">
+                Schedule Your Maintenance
+              </a>
+            </div>
+            <p style="font-size:14px;color:#6b7280">
+              <strong>Benefits of regular electrical maintenance:</strong><br>
+              ✓ Prevent electrical fires<br>
+              ✓ Lower energy bills<br>
+              ✓ Extend equipment lifespan<br>
+              ✓ Maintain home value
+            </p>
+            <div style="background:#f3f4f6;padding:20px;border-radius:8px;margin-top:30px">
+              <p style="margin:0;font-size:14px;color:#4b5563">
+                Questions? Call us at <a href="tel:+15163614068" style="color:#1e40af">(516) 361-4068</a>
+              </p>
+            </div>
+          </div>
         </div>
       `;
 
       try {
-        await resend.emails.send({
-          from: FROM,
-          to: [email],
-          subject: "Quick electrical safety check?",
-          html,
-          reply_to: Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com",
+        const result = await smtp.send({
+          from: fromEmail,
+          to: customerEmail,
+          subject: "Time for Your Electrical System Check-Up!",
+          html: htmlBody,
         });
+        console.log(`Sent reminder to ${customerEmail}:`, result);
 
-        console.log(`Sent maintenance reminder to ${email}`);
+        if (result.success) {
+          sent++;
 
-        // Log to webhook
-        const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
-        if (webhookUrl) {
-          try {
-            await fetch(webhookUrl, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                type: "reminder_sent",
-                name,
-                email,
-                service: "maintenance",
-                extra: "6mo",
-                timestamp: new Date().toISOString(),
-              }),
-            });
-          } catch {}
+          // Log the reminder in the webhook (fire and forget)
+          const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
+          if (webhookUrl) {
+            try {
+              await fetch(webhookUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  type: "reminder_sent",
+                  name: customerName,
+                  email: customerEmail,
+                  date: new Date().toISOString(),
+                  service: lastService,
+                }),
+              });
+            } catch (err) {
+              console.error("Webhook error (non-blocking):", err);
+            }
+          }
         }
-
-        sent++;
       } catch (emailError) {
-        console.error(`Failed to send reminder to ${email}:`, emailError);
+        console.error(`Failed to send to ${customerEmail}:`, emailError);
       }
     }
 
     return new Response(
-      JSON.stringify({ ok: true, sent, checked: latestByEmail.size }),
+      JSON.stringify({
+        success: true,
+        message: `Maintenance reminders sent to ${sent} customer(s)`,
+        sent,
+      }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Error in portal-maintenance-reminders function:", error);
+    console.error("Error in portal-maintenance-reminders:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: error.message || "Internal server error" }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }

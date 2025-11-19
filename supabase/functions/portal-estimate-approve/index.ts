@@ -1,8 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { getSmtpSender } from "../_shared/smtp.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -41,12 +39,9 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    if (!Deno.env.get("RESEND_API_KEY")) {
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
+    const smtp = getSmtpSender();
+    const destEmail = Deno.env.get("DEST_EMAIL") || "Rob@bermanelectrical.com";
+    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
 
     const body = await req.json();
     const parsed = approveEstimateSchema.safeParse(body);
@@ -60,12 +55,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { estimateId, name, email, upsells } = parsed.data;
     
-    const dest = (Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com")
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-
-    const FROM = Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>";
+    const dest = destEmail.split(",").map((s) => s.trim()).filter(Boolean);
     const subject = `Estimate Approved: ${estimateId} — ${name}`;
     
     const upsellsSection = upsells && upsells.length > 0 
@@ -90,24 +80,23 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending estimate approval email:", { estimateId, name, email, upsells: upsells?.length || 0 });
 
-    const emailResponse = await resend.emails.send({
-      from: FROM,
+    const emailResponse = await smtp.send({
+      from: fromEmail,
       to: dest,
       subject,
       html,
-      reply_to: email,
+      replyTo: email,
     });
 
-    const emailError = (emailResponse as any)?.error;
-    if (emailError) {
-      console.error("Email send error:", emailError);
+    if (!emailResponse.success) {
+      console.error("Email send error:", emailResponse.error);
       return new Response(
-        JSON.stringify({ error: "Failed to send email", details: emailError }),
+        JSON.stringify({ error: "Failed to send email", details: emailResponse.error }),
         { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
-    console.log("Estimate approval email sent successfully:", emailResponse);
+    console.log("Estimate approval email sent successfully");
 
     // Forward to Google Sheet webhook (fire and forget)
     const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
@@ -117,28 +106,27 @@ const handler = async (req: Request): Promise<Response> => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            type: "estimate_approval",
+            type: "estimate_approved",
             estimateId,
             name,
             email,
-            upsells: upsells || [],
+            upsells,
             timestamp: new Date().toISOString(),
           }),
         });
-        console.log("Forwarded estimate approval to Google Sheet webhook");
-      } catch (webhookError) {
-        console.error("Failed to forward to webhook:", webhookError);
+      } catch (err) {
+        console.error("Webhook error (non-blocking):", err);
       }
     }
 
     return new Response(
-      JSON.stringify({ ok: true, id: (emailResponse as any)?.data?.id }),
+      JSON.stringify({ success: true, message: "Estimate approval recorded" }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Error in portal-estimate-approve function:", error);
+    console.error("Error in portal-estimate-approve:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: error.message || "Internal server error" }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }

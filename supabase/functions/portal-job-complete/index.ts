@@ -1,8 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@4.0.0";
 import { z } from "https://esm.sh/zod@3.23.8";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { getSmtpSender } from "../_shared/smtp.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -41,12 +39,8 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    if (!Deno.env.get("RESEND_API_KEY")) {
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
+    const smtp = getSmtpSender();
+    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
 
     const body = await req.json();
     const parsed = jobCompleteSchema.safeParse(body);
@@ -59,8 +53,6 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const { jobId, name, email, service } = parsed.data;
-    
-    const FROM = Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>";
     
     // TODO: Replace with actual Google review link
     const reviewUrl = "https://g.page/r/REPLACE_WITH_YOUR_GOOGLE_REVIEW_LINK/review";
@@ -96,24 +88,23 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending job completion review request:", { jobId, name, email, service });
 
-    const emailResponse = await resend.emails.send({
-      from: FROM,
-      to: [email],
+    const emailResponse = await smtp.send({
+      from: fromEmail,
+      to: email,
       subject: `How did we do on your ${service || 'service'}?`,
       html,
-      reply_to: Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com",
+      replyTo: Deno.env.get("DEST_EMAIL") || "contact@bermanelectrical.com",
     });
 
-    const emailError = (emailResponse as any)?.error;
-    if (emailError) {
-      console.error("Email send error:", emailError);
+    if (!emailResponse.success) {
+      console.error("Email send error:", emailResponse.error);
       return new Response(
-        JSON.stringify({ error: "Failed to send email", details: emailError }),
+        JSON.stringify({ error: "Failed to send email", details: emailResponse.error }),
         { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
-    console.log("Review request email sent successfully:", emailResponse);
+    console.log("Job completion email sent successfully");
 
     // Forward to Google Sheet webhook (fire and forget)
     const webhookUrl = Deno.env.get("PROCESS_WEBHOOK_URL");
@@ -123,28 +114,27 @@ const handler = async (req: Request): Promise<Response> => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            type: "review_request",
+            type: "job_complete",
             jobId,
             name,
             email,
-            service: service || "",
+            service,
             timestamp: new Date().toISOString(),
           }),
         });
-        console.log("Forwarded review request to Google Sheet webhook");
-      } catch (webhookError) {
-        console.error("Failed to forward to webhook:", webhookError);
+      } catch (err) {
+        console.error("Webhook error (non-blocking):", err);
       }
     }
 
     return new Response(
-      JSON.stringify({ ok: true, id: (emailResponse as any)?.data?.id }),
+      JSON.stringify({ success: true, message: "Review request sent" }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
-    console.error("Error in portal-job-complete function:", error);
+    console.error("Error in portal-job-complete:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: error.message || "Internal server error" }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }

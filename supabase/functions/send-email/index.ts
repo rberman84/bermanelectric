@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { getProviders, getReliabilityManager } from "../_shared/delivery.ts";
+import { getSmtpSender } from "../_shared/smtp.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 interface ContactFormEmail {
-  type: "contact";
+  type: "contact_form";
   name: string;
   email: string;
   phone: string;
@@ -16,21 +16,17 @@ interface ContactFormEmail {
 }
 
 interface ServiceRequestEmail {
-  type: "service-request";
-  customerName: string;
-  customerEmail: string;
+  type: "service_request";
+  name: string;
+  email: string;
   phone: string;
-  serviceType: string;
-  description: string;
+  service: string;
   address: string;
   preferredDate?: string;
-  membership?: boolean;
+  description: string;
 }
 
 type EmailRequest = ContactFormEmail | ServiceRequestEmail;
-
-const providers = getProviders();
-const reliabilityManager = getReliabilityManager();
 
 function buildResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -48,181 +44,123 @@ const handler = async (req: Request): Promise<Response> => {
     return buildResponse({ error: "Method not allowed" }, 405);
   }
 
-  if (providers.length === 0) {
-    return buildResponse({ error: "Email service not configured" }, 503);
-  }
-
   try {
-    const emailData: EmailRequest = await req.json();
-    const requestId = crypto.randomUUID();
-    const businessEmail = "contact@bermanelectrical.com";
-    const fromEmail = Deno.env.get("RESEND_FROM") || "Berman Electric <onboarding@resend.dev>";
+    const smtp = getSmtpSender();
+    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
 
-    if (emailData.type === "contact") {
+    const emailData: EmailRequest = await req.json();
+
+    if (emailData.type === "contact_form") {
       const { name, email, phone, service, message } = emailData;
 
-      const businessPayload = {
-        from: fromEmail,
-        to: businessEmail,
-        reply_to: email,
-        subject: `New Contact: ${name} - ${service}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Service:</strong> ${service}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        `,
-      } as Record<string, unknown>;
+      const businessHtml = `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `;
 
-      const businessDelivery = await reliabilityManager.deliver({
-        jobType: "contact-business",
-        resendPayload: businessPayload,
-        metadata: {
-          requestId,
-          leadType: "contact",
-          customerEmail: email,
-          customerName: name,
-          phone,
-        },
-        description: `Contact lead from ${name}`,
-        priority: 10,
-        alertMessage: `Contact lead from ${name} could not be emailed. Check queue immediately.`,
-        notifyOwner: true,
+      const customerHtml = `
+        <h2>Thank you for contacting Berman Electric</h2>
+        <p>Hi ${name},</p>
+        <p>We've received your inquiry about ${service} and will get back to you shortly.</p>
+        <p><strong>Your message:</strong></p>
+        <p>${message}</p>
+        <br>
+        <p>Best regards,<br>Berman Electric Team</p>
+        <p>📞 (516) 361-4068</p>
+      `;
+
+      console.log("Sending contact form emails...");
+      const [businessResult, customerResult] = await Promise.all([
+        smtp.send({
+          from: fromEmail,
+          to: "Rob@bermanelectrical.com",
+          subject: `New Contact Form: ${service}`,
+          html: businessHtml,
+        }),
+        smtp.send({
+          from: fromEmail,
+          to: email,
+          subject: "Thank you for contacting Berman Electric",
+          html: customerHtml,
+        }),
+      ]);
+
+      console.log("Business email result:", businessResult);
+      console.log("Customer email result:", customerResult);
+
+      return buildResponse({
+        success: businessResult.success && customerResult.success,
+        businessEmail: businessResult.success ? "sent" : "failed",
+        customerEmail: customerResult.success ? "sent" : "failed",
       });
-
-      const customerPayload = {
-        from: fromEmail,
-        to: email,
-        subject: "We received your request",
-        html: `
-          <h2>Thank you for contacting Berman Electric</h2>
-          <p>Hi ${name},</p>
-          <p>We've received your message and will get back to you within 24 hours.</p>
-          <p><strong>Your request details:</strong></p>
-          <p><strong>Service:</strong> ${service}</p>
-          <p><strong>Message:</strong> ${message}</p>
-          <br>
-          <p>Best regards,<br>Berman Electric Team</p>
-        `,
-      } as Record<string, unknown>;
-
-      const confirmationDelivery = await reliabilityManager.deliver({
-        jobType: "contact-customer",
-        resendPayload: customerPayload,
-        metadata: {
-          requestId,
-          leadType: "contact",
-          customerEmail: email,
-          customerName: name,
-        },
-        description: `Contact confirmation for ${email}`,
-        notifyOwner: false,
-      });
-
-      const status = businessDelivery.status === "sent" ? 200 : 202;
-      return buildResponse(
-        {
-          success: businessDelivery.status === "sent",
-          business: businessDelivery,
-          confirmation: confirmationDelivery,
-          requestId,
-        },
-        status,
-      );
     }
 
-    if (emailData.type === "service-request") {
-      const { customerName, customerEmail, phone, serviceType, description, address, preferredDate, membership } =
-        emailData;
+    if (emailData.type === "service_request") {
+      const { name, email, phone, service, address, preferredDate, description } = emailData;
 
-      const businessPayload = {
-        from: fromEmail,
-        to: businessEmail,
-        reply_to: customerEmail,
-        subject: `New Service Request: ${serviceType} - ${customerName}`,
-        html: `
-          <h2>New Service Request</h2>
-          <p><strong>Customer:</strong> ${customerName}</p>
-          <p><strong>Email:</strong> ${customerEmail}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Service Type:</strong> ${serviceType}</p>
-          <p><strong>Address:</strong> ${address}</p>
-          ${preferredDate ? `<p><strong>Preferred Date:</strong> ${preferredDate}</p>` : ''}
-          ${membership ? `<p><strong>⭐ Membership Requested</strong></p>` : ''}
-          <p><strong>Description:</strong></p>
-          <p>${description}</p>
-        `,
-      } as Record<string, unknown>;
+      const businessHtml = `
+        <h2>New Service Request</h2>
+        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Preferred Date:</strong> ${preferredDate || "Not specified"}</p>
+        <p><strong>Description:</strong></p>
+        <p>${description}</p>
+      `;
 
-      const businessDelivery = await reliabilityManager.deliver({
-        jobType: "service-request-business",
-        resendPayload: businessPayload,
-        metadata: {
-          requestId,
-          leadType: "service-request",
-          customerEmail,
-          customerName,
-          phone,
-          membership: Boolean(membership),
-        },
-        description: `Service request from ${customerName}`,
-        priority: 10,
-        alertMessage: `Service request from ${customerName} could not be emailed. Check queue immediately.`,
-        notifyOwner: true,
+      const customerHtml = `
+        <h2>Service Request Received</h2>
+        <p>Hi ${name},</p>
+        <p>Thank you for choosing Berman Electric! We've received your service request for ${service}.</p>
+        <p><strong>Your details:</strong></p>
+        <ul>
+          <li>Address: ${address}</li>
+          <li>Preferred Date: ${preferredDate || "To be scheduled"}</li>
+          <li>Description: ${description}</li>
+        </ul>
+        <p>We'll contact you shortly to confirm the appointment.</p>
+        <br>
+        <p>Best regards,<br>Berman Electric Team</p>
+        <p>📞 (516) 361-4068</p>
+      `;
+
+      console.log("Sending service request emails...");
+      const [businessResult, customerResult] = await Promise.all([
+        smtp.send({
+          from: fromEmail,
+          to: "Rob@bermanelectrical.com",
+          subject: `New Service Request: ${service}`,
+          html: businessHtml,
+        }),
+        smtp.send({
+          from: fromEmail,
+          to: email,
+          subject: "Service Request Received - Berman Electric",
+          html: customerHtml,
+        }),
+      ]);
+
+      console.log("Business email result:", businessResult);
+      console.log("Customer email result:", customerResult);
+
+      return buildResponse({
+        success: businessResult.success && customerResult.success,
+        businessEmail: businessResult.success ? "sent" : "failed",
+        customerEmail: customerResult.success ? "sent" : "failed",
       });
-
-      const customerPayload = {
-        from: fromEmail,
-        to: customerEmail,
-        subject: "Service Request Received",
-        html: `
-          <h2>Thank you for your service request</h2>
-          <p>Hi ${customerName},</p>
-          <p>We've received your service request and will contact you shortly to schedule your appointment.</p>
-          <p><strong>Request details:</strong></p>
-          <p><strong>Service Type:</strong> ${serviceType}</p>
-          <p><strong>Address:</strong> ${address}</p>
-          ${preferredDate ? `<p><strong>Preferred Date:</strong> ${preferredDate}</p>` : ''}
-          ${membership ? `<p><strong>Membership:</strong> You've requested to join our maintenance membership program. We'll include details in our follow-up.</p>` : ''}
-          <br>
-          <p>Best regards,<br>Berman Electric Team</p>
-        `,
-      } as Record<string, unknown>;
-
-      const confirmationDelivery = await reliabilityManager.deliver({
-        jobType: "service-request-customer",
-        resendPayload: customerPayload,
-        metadata: {
-          requestId,
-          leadType: "service-request",
-          customerEmail,
-          customerName,
-          membership: Boolean(membership),
-        },
-        description: `Service request confirmation for ${customerEmail}`,
-        notifyOwner: false,
-      });
-
-      const status = businessDelivery.status === "sent" ? 200 : 202;
-      return buildResponse(
-        {
-          success: businessDelivery.status === "sent",
-          business: businessDelivery,
-          confirmation: confirmationDelivery,
-          requestId,
-        },
-        status,
-      );
     }
 
     return buildResponse({ error: "Invalid email type" }, 400);
-  } catch (error: unknown) {
-    console.error("Error handling lead email", error);
-    const message = error instanceof Error ? error.message : String(error);
-    return buildResponse({ error: message }, 500);
+  } catch (error: any) {
+    console.error("Error in send-email function:", error);
+    return buildResponse({ error: error.message }, 500);
   }
 };
 
