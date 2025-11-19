@@ -21,7 +21,7 @@ const ContactForm = () => {
     try {
       const formData = new FormData(e.currentTarget);
       const payload = {
-        type: "contact",
+        type: "contact_form",
         name: formData.get('name') as string,
         email: formData.get('email') as string,
         phone: formData.get('phone') as string,
