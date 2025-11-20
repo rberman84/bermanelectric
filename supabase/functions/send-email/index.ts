@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { getSmtpSender } from "../_shared/smtp.ts";
+import { getReliabilityManager } from "../_shared/delivery.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -45,8 +45,10 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const smtp = getSmtpSender();
-    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
+    const manager = getReliabilityManager();
+    const fromEmail =
+      Deno.env.get("RESEND_FROM") ||
+      "Berman Electric <contact@bermanelectrical.com>";
 
     const emailData: EmailRequest = await req.json();
 
@@ -74,34 +76,63 @@ const handler = async (req: Request): Promise<Response> => {
         <p>📞 (516) 361-4068</p>
       `;
 
-      console.log("Sending contact form emails...");
-      const [businessResult, customerResult] = await Promise.all([
-        smtp.send({
-          from: fromEmail,
-          to: "Rob@bermanelectrical.com",
-          subject: `New Contact Form: ${service}`,
-          html: businessHtml,
+      console.log("Sending contact form emails via reliability manager...");
+
+      const [businessOutcome, customerOutcome] = await Promise.all([
+        manager.deliver({
+          jobType: "contact_form_business",
+          resendPayload: {
+            from: fromEmail,
+            to: ["Rob@bermanelectrical.com"],
+            subject: `New Contact Form: ${service}`,
+            html: businessHtml,
+          },
+          metadata: {
+            type: "contact_form",
+            recipient: "business",
+            email,
+            phone,
+            service,
+          },
+          description: `Contact form submission from ${name} for ${service}`,
         }),
-        smtp.send({
-          from: fromEmail,
-          to: email,
-          subject: "Thank you for contacting Berman Electric",
-          html: customerHtml,
+        manager.deliver({
+          jobType: "contact_form_customer",
+          resendPayload: {
+            from: fromEmail,
+            to: [email],
+            subject: "Thank you for contacting Berman Electric",
+            html: customerHtml,
+          },
+          metadata: {
+            type: "contact_form",
+            recipient: "customer",
+            email,
+            phone,
+            service,
+          },
+          description: `Contact form confirmation email to ${name} for ${service}`,
         }),
       ]);
 
-      console.log("Business email result:", businessResult);
-      console.log("Customer email result:", customerResult);
+      console.log("Business email outcome:", businessOutcome);
+      console.log("Customer email outcome:", customerOutcome);
+
+      const businessSuccess =
+        businessOutcome.status === "sent" || businessOutcome.status === "queued";
+      const customerSuccess =
+        customerOutcome.status === "sent" || customerOutcome.status === "queued";
 
       return buildResponse({
-        success: businessResult.success && customerResult.success,
-        businessEmail: businessResult.success ? "sent" : "failed",
-        customerEmail: customerResult.success ? "sent" : "failed",
+        success: businessSuccess && customerSuccess,
+        businessEmail: businessOutcome.status,
+        customerEmail: customerOutcome.status,
       });
     }
 
     if (emailData.type === "service_request") {
-      const { name, email, phone, service, address, preferredDate, description } = emailData;
+      const { name, email, phone, service, address, preferredDate, description } =
+        emailData;
 
       const businessHtml = `
         <h2>New Service Request</h2>
@@ -131,29 +162,59 @@ const handler = async (req: Request): Promise<Response> => {
         <p>📞 (516) 361-4068</p>
       `;
 
-      console.log("Sending service request emails...");
-      const [businessResult, customerResult] = await Promise.all([
-        smtp.send({
-          from: fromEmail,
-          to: "Rob@bermanelectrical.com",
-          subject: `New Service Request: ${service}`,
-          html: businessHtml,
+      console.log("Sending service request emails via reliability manager...");
+
+      const [businessOutcome, customerOutcome] = await Promise.all([
+        manager.deliver({
+          jobType: "service_request_business",
+          resendPayload: {
+            from: fromEmail,
+            to: ["Rob@bermanelectrical.com"],
+            subject: `New Service Request: ${service}`,
+            html: businessHtml,
+          },
+          metadata: {
+            type: "service_request",
+            recipient: "business",
+            email,
+            phone,
+            service,
+            address,
+          },
+          description: `Service request from ${name} for ${service}`,
         }),
-        smtp.send({
-          from: fromEmail,
-          to: email,
-          subject: "Service Request Received - Berman Electric",
-          html: customerHtml,
+        manager.deliver({
+          jobType: "service_request_customer",
+          resendPayload: {
+            from: fromEmail,
+            to: [email],
+            subject: "Service Request Received - Berman Electric",
+            html: customerHtml,
+          },
+          metadata: {
+            type: "service_request",
+            recipient: "customer",
+            email,
+            phone,
+            service,
+            address,
+          },
+          description: `Service request confirmation email to ${name} for ${service}`,
         }),
       ]);
 
-      console.log("Business email result:", businessResult);
-      console.log("Customer email result:", customerResult);
+      console.log("Business email outcome:", businessOutcome);
+      console.log("Customer email outcome:", customerOutcome);
+
+      const businessSuccess =
+        businessOutcome.status === "sent" || businessOutcome.status === "queued";
+      const customerSuccess =
+        customerOutcome.status === "sent" || customerOutcome.status === "queued";
 
       return buildResponse({
-        success: businessResult.success && customerResult.success,
-        businessEmail: businessResult.success ? "sent" : "failed",
-        customerEmail: customerResult.success ? "sent" : "failed",
+        success: businessSuccess && customerSuccess,
+        businessEmail: businessOutcome.status,
+        customerEmail: customerOutcome.status,
       });
     }
 
