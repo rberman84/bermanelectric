@@ -40,6 +40,7 @@ const NassauCounty = lazy(() => import("./pages/NassauCounty"));
 const ServiceLocation = lazy(() => import("./pages/ServiceLocation"));
 const ServiceLocationProblem = lazy(() => import("./pages/ServiceLocationProblem"));
 const SubmitReview = lazy(() => import("./pages/SubmitReview"));
+const LeadIntake = lazy(() => import("./pages/LeadIntake"));
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,7 @@ const App = () => (
           <Route path="/services/:serviceSlug/:townSlug/:problemSlug" element={<ServiceLocationProblem />} />
           <Route path="/services/:serviceSlug/:townSlug" element={<ServiceLocation />} />
           <Route path="/review/:serviceRequestId" element={<SubmitReview />} />
+          <Route path="/lead-intake" element={<LeadIntake />} />
           <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<RonkonkomaServiceUpgradeCaseStudy />} />
           <Route path="/google-reviews-setup" element={<GoogleReviewsSetup />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -199,6 +199,107 @@ export type Database = {
         }
         Relationships: []
       }
+      lead_media: {
+        Row: {
+          created_at: string
+          file_type: string
+          file_url: string
+          id: string
+          lead_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_type: string
+          file_url: string
+          id?: string
+          lead_id: string
+        }
+        Update: {
+          created_at?: string
+          file_type?: string
+          file_url?: string
+          id?: string
+          lead_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_media_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          access_notes: string | null
+          address_line1: string
+          address_line2: string | null
+          budget_range: string | null
+          city: string
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          job_description: string
+          job_priority: string
+          job_type: string
+          phone: string
+          preferred_contact_method: string
+          referral_code: string | null
+          source: string
+          state: string
+          status: string
+          updated_at: string
+          zip: string
+        }
+        Insert: {
+          access_notes?: string | null
+          address_line1: string
+          address_line2?: string | null
+          budget_range?: string | null
+          city: string
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          job_description: string
+          job_priority: string
+          job_type: string
+          phone: string
+          preferred_contact_method: string
+          referral_code?: string | null
+          source?: string
+          state: string
+          status?: string
+          updated_at?: string
+          zip: string
+        }
+        Update: {
+          access_notes?: string | null
+          address_line1?: string
+          address_line2?: string | null
+          budget_range?: string | null
+          city?: string
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          job_description?: string
+          job_priority?: string
+          job_type?: string
+          phone?: string
+          preferred_contact_method?: string
+          referral_code?: string | null
+          source?: string
+          state?: string
+          status?: string
+          updated_at?: string
+          zip?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string | null
