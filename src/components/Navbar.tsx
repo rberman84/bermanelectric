@@ -72,15 +72,13 @@ const Navbar = () => {
             to="/"
             className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16"
           >
-            <img 
-              src={bermanLogo} 
-              alt="Berman Electric" 
-              className="h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            <div
+              className="h-14 w-44 rounded-sm shadow-2xl transition-transform duration-300 group-hover:scale-105 bg-center bg-cover"
               style={{
-                filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.6))",
-                aspectRatio: "auto",
-                maxWidth: "220px"
+                backgroundImage: `url(${bermanLogo})`,
               }}
+              aria-label="Berman Electric"
+              role="img"
             />
           </Link>
 
