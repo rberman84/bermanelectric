@@ -61,8 +61,20 @@ const Navbar = () => {
       )}
       style={{
         backgroundImage: isScrolled 
-          ? "linear-gradient(180deg, hsl(0,0%,20%) 0%, hsl(0,0%,18%) 100%)"
-          : "linear-gradient(180deg, hsl(0,0%,25%) 0%, hsl(0,0%,22%) 100%)"
+          ? `
+            linear-gradient(180deg, hsl(0,0%,20%) 0%, hsl(0,0%,18%) 100%),
+            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+            repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px)
+          `
+          : `
+            linear-gradient(180deg, hsl(0,0%,25%) 0%, hsl(0,0%,22%) 100%),
+            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px),
+            repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px)
+          `,
+        backgroundBlendMode: 'normal, overlay, overlay',
+        boxShadow: isScrolled 
+          ? '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03)'
+          : '0 4px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
       }}
     >
       <div className="container">
@@ -70,16 +82,27 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16"
+            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16 relative"
           >
             <div
-              className="h-14 w-44 rounded-sm shadow-2xl transition-transform duration-300 group-hover:scale-105 bg-center bg-cover"
+              className="h-14 w-44 rounded-sm transition-transform duration-300 group-hover:scale-105 bg-center bg-cover relative overflow-hidden"
               style={{
                 backgroundImage: `url(${bermanLogo})`,
+                boxShadow: '0 4px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.3)'
               }}
               aria-label="Berman Electric"
               role="img"
-            />
+            >
+              <div 
+                className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay"
+                style={{
+                  backgroundImage: `
+                    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,.1) 10px, rgba(0,0,0,.1) 20px),
+                    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,.1) 10px, rgba(0,0,0,.1) 20px)
+                  `
+                }}
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
