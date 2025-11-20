@@ -88,6 +88,44 @@ const Navbar = () => {
         }}
       />
       
+      {/* Concrete chips and light catches */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 15% 40%, rgba(255,255,255,0.15) 0%, transparent 2px),
+            radial-gradient(circle at 45% 25%, rgba(255,255,255,0.12) 0%, transparent 1.5px),
+            radial-gradient(circle at 78% 60%, rgba(255,255,255,0.18) 0%, transparent 2.5px),
+            radial-gradient(circle at 32% 75%, rgba(255,255,255,0.1) 0%, transparent 1px),
+            radial-gradient(circle at 88% 30%, rgba(255,255,255,0.14) 0%, transparent 2px),
+            radial-gradient(circle at 62% 85%, rgba(255,255,255,0.11) 0%, transparent 1.5px),
+            radial-gradient(circle at 25% 15%, rgba(255,255,255,0.16) 0%, transparent 2px),
+            radial-gradient(circle at 92% 70%, rgba(255,255,255,0.13) 0%, transparent 1.8px),
+            radial-gradient(circle at 8% 65%, rgba(255,255,255,0.09) 0%, transparent 1.2px),
+            radial-gradient(circle at 55% 45%, rgba(255,255,255,0.17) 0%, transparent 2.2px)
+          `,
+          backgroundSize: '100% 100%',
+          filter: 'blur(0.3px)'
+        }}
+      />
+      
+      {/* Larger worn spots with subtle glow */}
+      <div 
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-opacity duration-500",
+          isScrolled ? "opacity-25" : "opacity-15"
+        )}
+        style={{
+          backgroundImage: `
+            radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 15%),
+            radial-gradient(ellipse at 75% 35%, rgba(255,255,255,0.06) 0%, transparent 12%),
+            radial-gradient(ellipse at 50% 70%, rgba(255,255,255,0.07) 0%, transparent 18%),
+            radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.05) 0%, transparent 10%)
+          `,
+          filter: 'blur(2px)'
+        }}
+      />
+      
       {/* Concrete crack patterns */}
       <div 
         className={cn(
