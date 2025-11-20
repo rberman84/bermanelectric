@@ -39,8 +39,17 @@ const ContactForm = () => {
 
       if (error) {
         console.error('Email send error:', error);
-        const details = (error as any)?.context?.response?.error || (error as any)?.message || 'There was an error sending your message.';
+        const details =
+          (error as any)?.context?.response?.error ||
+          (error as any)?.message ||
+          'There was an error sending your message.';
         toast.error(details);
+        return;
+      }
+
+      if (!data?.success) {
+        console.error('Email send failed according to backend response:', data);
+        toast.error("We couldn't send your message right now. Please try again later.");
         return;
       }
 
