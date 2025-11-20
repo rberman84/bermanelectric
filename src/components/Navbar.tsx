@@ -70,20 +70,21 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-12"
           >
             <img 
               src={bermanLogo} 
               alt="Berman Electric" 
-              className="h-12 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-2xl"
+              className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-2xl"
               style={{
-                filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))"
+                filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))",
+                maxWidth: "200px"
               }}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8 md:ml-auto">
+          <div className="hidden md:flex md:items-center md:space-x-6 md:ml-auto">
             <ServicesDropdown />
             <AboutDropdown />
             {user && <NavLink to="/dashboard">Dashboard</NavLink>}
