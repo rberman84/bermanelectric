@@ -130,6 +130,17 @@ const Navbar = () => {
                 </Link>
               )}
               <Link
+                to="/lead-intake"
+                className={cn(
+                  "inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2",
+                  isScrolled
+                    ? "text-white bg-electric-600 hover:bg-electric-700 focus-visible:ring-offset-foreground"
+                    : "text-white bg-electric-600 hover:bg-electric-700 focus-visible:ring-offset-cream-50"
+                )}
+              >
+                Submit Lead
+              </Link>
+              <Link
                 to="/contact"
                 className={cn(
                   "inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105",
