@@ -66,25 +66,26 @@ const Navbar = () => {
       }}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 py-4">
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-12"
+            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16"
           >
             <img 
               src={bermanLogo} 
               alt="Berman Electric" 
-              className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-2xl"
+              className="h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105"
               style={{
-                filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))",
-                maxWidth: "200px"
+                filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.6))",
+                aspectRatio: "auto",
+                maxWidth: "220px"
               }}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-6 md:ml-auto">
+          <div className="hidden md:flex md:items-center md:space-x-8 md:ml-auto">
             <ServicesDropdown />
             <AboutDropdown />
             {user && <NavLink to="/dashboard">Dashboard</NavLink>}
