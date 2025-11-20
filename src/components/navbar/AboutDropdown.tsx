@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useEffect, useId, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
 
-interface AboutDropdownProps {
-  isScrolled: boolean;
-}
+interface AboutDropdownProps {}
 
-const AboutDropdown = ({ isScrolled }: AboutDropdownProps) => {
+const AboutDropdown = ({}: AboutDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -86,12 +84,7 @@ const AboutDropdown = ({ isScrolled }: AboutDropdownProps) => {
       onBlur={handleBlur}
     >
       <button
-        className={cn(
-          "nav-link inline-flex items-center gap-1",
-          isScrolled
-            ? "text-white hover:text-electric-400 focus-visible:ring-offset-foreground"
-            : "text-muted-foreground hover:text-electric-600 focus-visible:ring-offset-cream-50"
-        )}
+        className="nav-link inline-flex items-center gap-1 text-white/90 hover:text-electric-400 focus-visible:ring-offset-[hsl(0,0%,20%)]"
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls={menuId}
@@ -111,13 +104,13 @@ const AboutDropdown = ({ isScrolled }: AboutDropdownProps) => {
           isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1"
         )}
       >
-        <div className="py-2 bg-card rounded-2xl shadow-xl border border-border">
+        <div className="py-2 bg-[hsl(0,0%,18%)] rounded-2xl shadow-2xl border border-white/10 backdrop-blur-lg">
           {aboutDropdown.map((item) => (
             <Link
               key={item.name}
               to={item.href}
               role="menuitem"
-              className="block px-4 py-2.5 text-sm text-foreground hover:bg-cream-200 hover:text-electric-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-card transition-colors"
+              className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-electric-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,18%)] transition-colors border-l-4 border-transparent hover:border-electric-400"
               onClick={() => setIsOpen(false)}
             >
               {item.name}
