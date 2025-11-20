@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative overflow-hidden",
         isScrolled
           ? "bg-[hsl(0,0%,20%)] backdrop-blur-md shadow-2xl border-b border-white/5"
           : "bg-[hsl(0,0%,25%)] backdrop-blur-sm border-b border-white/10"
@@ -77,6 +77,38 @@ const Navbar = () => {
           : '0 4px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
       }}
     >
+      {/* Concrete crack patterns */}
+      <div 
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-opacity duration-700",
+          isScrolled ? "opacity-40" : "opacity-0"
+        )}
+        style={{
+          backgroundImage: `
+            linear-gradient(135deg, transparent 0%, transparent 48%, rgba(0,0,0,0.3) 48%, rgba(0,0,0,0.3) 49%, transparent 49%, transparent 100%),
+            linear-gradient(45deg, transparent 0%, transparent 78%, rgba(0,0,0,0.2) 78%, rgba(0,0,0,0.2) 79%, transparent 79%, transparent 100%),
+            linear-gradient(95deg, transparent 0%, transparent 35%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.15) 36%, transparent 36%, transparent 100%),
+            linear-gradient(165deg, transparent 0%, transparent 62%, rgba(0,0,0,0.25) 62%, rgba(0,0,0,0.25) 63%, transparent 63%, transparent 100%)
+          `,
+          backgroundSize: '800px 400px, 1200px 300px, 600px 500px, 900px 350px',
+          backgroundPosition: '10% 0%, 80% 0%, 45% 0%, 25% 0%',
+          mixBlendMode: 'multiply'
+        }}
+      />
+      
+      {/* Additional distress overlay */}
+      <div 
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-opacity duration-700",
+          isScrolled ? "opacity-30" : "opacity-0"
+        )}
+        style={{
+          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(0,0,0,0.3) 0%, transparent 30%),
+                           radial-gradient(circle at 75% 30%, rgba(0,0,0,0.2) 0%, transparent 25%),
+                           radial-gradient(circle at 60% 80%, rgba(0,0,0,0.25) 0%, transparent 35%)`,
+          filter: 'blur(1px)'
+        }}
+      />
       <div className="container">
         <div className="flex items-center justify-between h-24 py-4">
           {/* Logo */}
