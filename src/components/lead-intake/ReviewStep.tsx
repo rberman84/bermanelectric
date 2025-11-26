@@ -138,7 +138,7 @@ export const ReviewStep = ({ data, onBack, onEdit, onSubmit, isSubmitting }: Rev
         </CardContent>
       </Card>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 pt-4 pb-8 md:pb-4">
         <Button onClick={onBack} variant="outline" className="flex-1" disabled={isSubmitting}>
           Back
         </Button>

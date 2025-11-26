@@ -191,7 +191,7 @@ const LeadIntake = () => {
         description="Submit your electrical service request with detailed information and photos for a precise quote."
       />
       
-      <div className="min-h-screen bg-background py-8 px-4">
+      <div className="min-h-screen bg-background py-8 px-4 pb-20 md:pb-8">
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-center mb-2">Lead Intake Portal</h1>
