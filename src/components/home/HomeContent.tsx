@@ -1,8 +1,8 @@
 import { CheckCircle2, Star, Clock, Shield, Award, Zap, Home, Building2, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import bermanElectrician from "@/assets/berman-electrician.jpeg";
-import bermanVan from "@/assets/berman-van.jpeg";
 import electricianWork from "@/assets/electrician-work.png";
+import outdoorElectricalWork from "@/assets/outdoor-electrical-work.webp";
 
 const HomeContent = () => {
   const services = [
@@ -162,8 +162,8 @@ const HomeContent = () => {
                   <div className="relative">
                     <div className="w-24 h-24 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden">
                       <img 
-                        src={bermanVan} 
-                        alt="Berman Electric service van and electrician"
+                        src={outdoorElectricalWork} 
+                        alt="Berman Electric technician performing outdoor electrical installation"
                         className="w-full h-full object-cover"
                       />
                     </div>
