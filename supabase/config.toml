@@ -41,3 +41,6 @@ verify_jwt = false
 
 [functions.get-google-reviews]
 verify_jwt = false
+
+[functions.faq-answer]
+verify_jwt = false
