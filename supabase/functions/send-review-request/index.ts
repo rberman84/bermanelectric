@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
-import { getSmtpSender } from "../_shared/smtp.ts";
+import { getReliabilityManager } from "../_shared/delivery.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -59,8 +59,8 @@ serve(async (req) => {
     const reviewUrl = `${Deno.env.get("SUPABASE_URL").replace(".supabase.co", ".lovable.app")}/review/${serviceRequestId}`;
     const customerName = serviceRequest.profiles?.display_name || "Valued Customer";
 
-    const smtp = getSmtpSender();
-    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
+    const manager = getReliabilityManager();
+    const fromEmail = Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>";
 
     const emailHtml = `
       <!DOCTYPE html>
@@ -103,17 +103,26 @@ serve(async (req) => {
       </html>
     `;
 
-    const emailResult = await smtp.send({
-      from: fromEmail,
-      to: user.email,
-      subject: `Thanks for choosing Berman Electric! Share your experience`,
-      html: emailHtml,
+    const emailOutcome = await manager.deliver({
+      jobType: "review_request",
+      resendPayload: {
+        from: fromEmail,
+        to: [user.email],
+        subject: `Thanks for choosing Berman Electric! Share your experience`,
+        html: emailHtml,
+      },
+      metadata: {
+        type: "review_request",
+        serviceRequestId,
+        customerEmail: user.email,
+      },
+      description: `Review request email to ${customerName} for ${serviceRequest.service_type}`,
     });
 
-    console.log("Review request email sent:", emailResult);
+    console.log("Review request email outcome:", emailOutcome);
 
-    if (!emailResult.success) {
-      throw new Error(`Failed to send email: ${emailResult.error}`);
+    if (emailOutcome.status !== "sent" && emailOutcome.status !== "queued") {
+      throw new Error(`Failed to send email: ${emailOutcome.status}`);
     }
 
     return new Response(
