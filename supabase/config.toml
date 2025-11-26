@@ -44,3 +44,6 @@ verify_jwt = false
 
 [functions.faq-answer]
 verify_jwt = false
+
+[functions.send-lead-notification]
+verify_jwt = false
