@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative overflow-hidden",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative overflow-visible",
         isScrolled
           ? "bg-[hsl(0,0%,20%)] backdrop-blur-md shadow-2xl border-b border-white/5"
           : "bg-[hsl(0,0%,25%)] backdrop-blur-sm border-b border-white/10"
