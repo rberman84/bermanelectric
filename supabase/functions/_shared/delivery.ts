@@ -1,5 +1,6 @@
 import { Resend } from "npm:resend@4.0.0";
 import { EmailReliabilityManager, type EmailProvider } from "./reliability.ts";
+import { getSmtpSender } from "./smtp.ts";
 
 let cachedProviders: EmailProvider[] | null = null;
 let cachedManager: EmailReliabilityManager | null = null;
@@ -13,6 +14,23 @@ export function parseEnvInt(name: string, defaultValue: number): number {
 
 function buildProviders(): EmailProvider[] {
   const providers: EmailProvider[] = [];
+  
+  // Try Hostinger SMTP first
+  try {
+    const smtpSender = getSmtpSender();
+    if (smtpSender) {
+      providers.push({
+        name: "hostinger-smtp",
+        client: smtpSender,
+        maxAttempts: parseEnvInt("EMAIL_PROVIDER_ATTEMPTS", 3),
+      });
+      console.log("✅ Hostinger SMTP provider configured");
+    }
+  } catch (error: any) {
+    console.log("⚠️ Hostinger SMTP not available:", error.message);
+  }
+  
+  // Fallback to Resend if configured
   const primaryKey = Deno.env.get("RESEND_API_KEY");
   const fallbackKey = Deno.env.get("RESEND_FALLBACK_API_KEY");
 
@@ -22,6 +40,7 @@ function buildProviders(): EmailProvider[] {
       client: new Resend(primaryKey),
       maxAttempts: parseEnvInt("EMAIL_PROVIDER_ATTEMPTS", 3),
     });
+    console.log("✅ Resend fallback configured");
   }
 
   if (fallbackKey) {
