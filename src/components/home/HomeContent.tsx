@@ -2,6 +2,7 @@ import { CheckCircle2, Star, Clock, Shield, Award, Zap, Home, Building2, AlertCi
 import { Link } from "react-router-dom";
 import bermanElectrician from "@/assets/berman-electrician.jpeg";
 import bermanVan from "@/assets/berman-van.jpeg";
+import electricianWork from "@/assets/electrician-work.png";
 
 const HomeContent = () => {
   const services = [
@@ -57,6 +58,49 @@ const HomeContent = () => {
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
               Serving Suffolk County with excellence for over 20 years
             </p>
+          </div>
+
+          {/* Featured Work Section */}
+          <div className="mb-20">
+            <div className="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[hsl(45,100%,96%)] to-[hsl(35,100%,94%)] p-8 md:p-12">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="order-2 lg:order-1">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(45,100%,50%)] text-gray-900 rounded-full text-sm font-bold mb-6">
+                    <Star className="w-4 h-4 fill-current" />
+                    Professional Craftsmanship
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                    Expert Installation & <span className="text-[hsl(35,90%,45%)]">Quality Service</span>
+                  </h3>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    From elegant lighting installations to complex electrical systems, our licensed electricians bring precision and expertise to every project. We take pride in delivering work that not only meets code but exceeds expectations.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl">
+                      <Shield className="w-5 h-5 text-[hsl(35,90%,45%)]" />
+                      <span className="text-sm font-semibold text-gray-900">Licensed & Insured</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl">
+                      <Award className="w-5 h-5 text-[hsl(35,90%,45%)]" />
+                      <span className="text-sm font-semibold text-gray-900">20+ Years Experience</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <div className="relative">
+                    <img 
+                      src={electricianWork} 
+                      alt="Berman Electric professional electrician installing decorative lighting fixture"
+                      className="rounded-2xl shadow-2xl w-full h-auto"
+                    />
+                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-xl shadow-lg">
+                      <div className="text-2xl font-bold text-[hsl(35,90%,45%)]">5★</div>
+                      <div className="text-xs text-gray-600 font-semibold">Rated Service</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           
           {/* Two Column Layout */}
