@@ -4,6 +4,7 @@ import SocialProofInline from "./shared/SocialProofInline";
 import RiskReversalBadges from "./shared/RiskReversalBadges";
 import BitcoinPayment from "./shared/BitcoinPayment";
 import { Phone } from "lucide-react";
+import heroHeader from "@/assets/hero-header.png";
 
 interface HeroProps {
   title?: string;
@@ -18,8 +19,15 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
 
   return (
     <div className="relative min-h-[70svh] md:min-h-[85svh] flex items-center overflow-hidden">
-      {/* Optimized Gradient Background */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[hsl(15,100%,95%)] via-white to-[hsl(200,100%,95%)] opacity-60" />
+      {/* Hero Header Background Image */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img 
+          src={heroHeader} 
+          alt="Berman Electric - We Keep The Lights On"
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+      </div>
 
       {/* Content */}
       <div className="container relative py-16 md:py-24">
