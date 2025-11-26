@@ -138,27 +138,7 @@ export const ReviewStep = ({ data, onBack, onEdit, onSubmit, isSubmitting }: Rev
         </CardContent>
       </Card>
 
-      {/* Mobile: Fixed bottom buttons */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-background border-t shadow-lg z-50">
-        <div className="flex gap-4 max-w-2xl mx-auto">
-          <Button onClick={onBack} variant="outline" className="flex-1" disabled={isSubmitting}>
-            Back
-          </Button>
-          <Button onClick={onSubmit} className="flex-1" disabled={isSubmitting}>
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              "Submit Lead"
-            )}
-          </Button>
-        </div>
-      </div>
-
-      {/* Desktop: Regular buttons */}
-      <div className="hidden md:flex gap-4 pt-4">
+      <div className="flex gap-4 pt-4">
         <Button onClick={onBack} variant="outline" className="flex-1" disabled={isSubmitting}>
           Back
         </Button>
@@ -173,9 +153,6 @@ export const ReviewStep = ({ data, onBack, onEdit, onSubmit, isSubmitting }: Rev
           )}
         </Button>
       </div>
-
-      {/* Spacer for fixed buttons on mobile */}
-      <div className="md:hidden h-20" />
     </div>
   );
 };
