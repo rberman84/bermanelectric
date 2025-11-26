@@ -41,6 +41,7 @@ const ServiceLocation = lazy(() => import("./pages/ServiceLocation"));
 const ServiceLocationProblem = lazy(() => import("./pages/ServiceLocationProblem"));
 const SubmitReview = lazy(() => import("./pages/SubmitReview"));
 const LeadIntake = lazy(() => import("./pages/LeadIntake"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 
 const queryClient = new QueryClient();
 
@@ -69,6 +70,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/category/:category" element={<BlogCategory />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/electrician-ronkonkoma" element={<ElectricianRonkonkoma />} />
           <Route path="/electrician-suffolk-county" element={<ElectricianSuffolkCounty />} />

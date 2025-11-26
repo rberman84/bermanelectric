@@ -43,6 +43,9 @@ const Footer = () => {
     name: "Electrical Blog",
     href: "/blog"
   }, {
+    name: "FAQ",
+    href: "/faq"
+  }, {
     name: "Resources & Tools",
     href: "/resources"
   }];

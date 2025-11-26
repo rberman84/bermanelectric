@@ -17,6 +17,7 @@ const AboutDropdown = ({}: AboutDropdownProps) => {
     { name: "About Us", href: "/about" },
     { name: "Projects", href: "/projects" },
     { name: "Blog", href: "/blog" },
+    { name: "FAQ", href: "/faq" },
     { name: "Testimonials", href: "/testimonials" },
   ];
 
