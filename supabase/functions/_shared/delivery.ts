@@ -1,6 +1,5 @@
 import { Resend } from "npm:resend@4.0.0";
 import { EmailReliabilityManager, type EmailProvider } from "./reliability.ts";
-import { getSmtpSender } from "./smtp.ts";
 
 let cachedProviders: EmailProvider[] | null = null;
 let cachedManager: EmailReliabilityManager | null = null;
@@ -15,35 +14,7 @@ export function parseEnvInt(name: string, defaultValue: number): number {
 function buildProviders(): EmailProvider[] {
   const providers: EmailProvider[] = [];
   
-  // Try Hostinger SMTP first
-  try {
-    const smtpSender = getSmtpSender();
-    if (smtpSender) {
-      // Wrap SMTP sender to match ResendLikeClient interface
-      providers.push({
-        name: "hostinger-smtp",
-        client: {
-          emails: {
-            send: async (payload: Record<string, unknown>) => {
-              return await smtpSender.send({
-                from: payload.from as string,
-                to: payload.to as string | string[],
-                subject: payload.subject as string,
-                html: payload.html as string,
-                replyTo: payload.reply_to as string | undefined,
-              });
-            }
-          }
-        },
-        maxAttempts: parseEnvInt("EMAIL_PROVIDER_ATTEMPTS", 3),
-      });
-      console.log("✅ Hostinger SMTP provider configured");
-    }
-  } catch (error: any) {
-    console.log("⚠️ Hostinger SMTP not available:", error.message);
-  }
-  
-  // Fallback to Resend if configured
+  // Use Resend as primary provider
   const primaryKey = Deno.env.get("RESEND_API_KEY");
   const fallbackKey = Deno.env.get("RESEND_FALLBACK_API_KEY");
 
@@ -53,7 +24,7 @@ function buildProviders(): EmailProvider[] {
       client: new Resend(primaryKey),
       maxAttempts: parseEnvInt("EMAIL_PROVIDER_ATTEMPTS", 3),
     });
-    console.log("✅ Resend fallback configured");
+    console.log("✅ Resend configured as primary email provider");
   }
 
   if (fallbackKey) {
@@ -62,6 +33,7 @@ function buildProviders(): EmailProvider[] {
       client: new Resend(fallbackKey),
       maxAttempts: parseEnvInt("EMAIL_FALLBACK_ATTEMPTS", 2),
     });
+    console.log("✅ Resend fallback configured");
   }
 
   return providers;
