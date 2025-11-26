@@ -100,7 +100,7 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
         id={menuId}
         role="menu"
         className={cn(
-          "absolute left-0 mt-2 w-56 transition-all duration-200 transform",
+          "absolute left-0 mt-2 w-56 transition-all duration-200 transform z-[100]",
           isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1"
         )}
       >
