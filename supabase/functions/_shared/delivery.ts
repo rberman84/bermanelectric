@@ -19,9 +19,22 @@ function buildProviders(): EmailProvider[] {
   try {
     const smtpSender = getSmtpSender();
     if (smtpSender) {
+      // Wrap SMTP sender to match ResendLikeClient interface
       providers.push({
         name: "hostinger-smtp",
-        client: smtpSender,
+        client: {
+          emails: {
+            send: async (payload: Record<string, unknown>) => {
+              return await smtpSender.send({
+                from: payload.from as string,
+                to: payload.to as string | string[],
+                subject: payload.subject as string,
+                html: payload.html as string,
+                replyTo: payload.reply_to as string | undefined,
+              });
+            }
+          }
+        },
         maxAttempts: parseEnvInt("EMAIL_PROVIDER_ATTEMPTS", 3),
       });
       console.log("✅ Hostinger SMTP provider configured");
