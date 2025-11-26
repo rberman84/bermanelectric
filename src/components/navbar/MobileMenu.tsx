@@ -32,6 +32,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     onClose();
   };
 
+  const handleSubmitLead = () => {
+    navigate('/lead-intake');
+    onClose();
+  };
+
   const handleSignOut = async () => {
     await signOut();
     onClose();
@@ -112,6 +117,12 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             Sign In
           </button>
         )}
+        <button
+          onClick={handleSubmitLead}
+          className="button-primary w-full text-center bg-electric-600 hover:bg-electric-700 text-white focus-visible:ring-offset-[hsl(0,0%,18%)] shadow-lg"
+        >
+          Submit Lead
+        </button>
         <button
           onClick={handleGetQuote}
           className="button-primary w-full text-center bg-electric-600 hover:bg-electric-700 text-white focus-visible:ring-offset-[hsl(0,0%,18%)] shadow-lg"
