@@ -41,7 +41,7 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const manager = getReliabilityManager();
-    const fromEmail = Deno.env.get("RESEND_FROM") || "Berman Electric <contact@bermanelectrical.com>";
+    const fromEmail = Deno.env.get("HOSTINGER_SMTP_USER") || "contact@bermanelectrical.com";
     
     const { lead, mediaUrls }: LeadNotificationRequest = await req.json();
 
