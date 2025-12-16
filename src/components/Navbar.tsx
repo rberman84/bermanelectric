@@ -7,7 +7,7 @@ import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import AboutDropdown from "./navbar/AboutDropdown";
 import MobileMenu from "./navbar/MobileMenu";
-import bermanLogo from "@/assets/berman-logo.png";
+import bermanLogo from "@/assets/berman-electric-logo.png";
 
 
 const Navbar = () => {
