@@ -19,6 +19,7 @@ import UrgencyBanner from "@/components/shared/UrgencyBanner";
 import ExitIntentPopup from "@/components/shared/ExitIntentPopup";
 import MobileStickyBar from "@/components/shared/MobileStickyBar";
 import PricingTransparency from "@/components/shared/PricingTransparency";
+import LiveReviewsFeed from "@/components/shared/LiveReviewsFeed";
 
 const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
 const GoogleBusinessProfile = lazy(() => import("@/components/shared/GoogleBusinessProfile").then(m => ({ default: m.GoogleBusinessProfile })));
@@ -138,6 +139,7 @@ const Index = () => {
         <Hero />
         <PricingTransparency />
         <section className="cv-auto"><HomeContent /></section>
+        <LiveReviewsFeed />
         <div ref={reviewsRef} />
         {showReviews ? (
           <Suspense fallback={<div className="py-16 text-center"><div className="animate-pulse">Loading...</div></div>}>
