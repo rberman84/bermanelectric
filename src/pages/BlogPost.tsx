@@ -1,4 +1,5 @@
 import { Calendar, User, Clock, Tag, ArrowLeft, Share2 } from "lucide-react";
+import DOMPurify from "dompurify";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
@@ -198,7 +199,12 @@ const BlogPost = () => {
               {/* Article Content */}
               <div 
                 className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-headings:scroll-mt-16"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ 
+                  __html: DOMPurify.sanitize(post.content, {
+                    ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'strong', 'em', 'img', 'blockquote', 'code', 'pre', 'br', 'span', 'div', 'table', 'thead', 'tbody', 'tr', 'th', 'td'],
+                    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel']
+                  })
+                }}
               />
               
               {/* Social Share */}
