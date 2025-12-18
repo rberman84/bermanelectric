@@ -19,6 +19,12 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
 
   return (
     <div className="relative min-h-[70svh] md:min-h-[85svh] flex items-center overflow-hidden">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[hsl(15,100%,70%)] to-[hsl(25,100%,75%)] opacity-30 blur-3xl" />
+        <div className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-[hsl(10,100%,70%)] to-[hsl(20,100%,75%)] opacity-30 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-white opacity-80 blur-[100px]" />
+      </div>
 
       {/* Content */}
       <div className="container relative py-16 md:py-24">

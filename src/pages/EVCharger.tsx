@@ -103,7 +103,7 @@ const EVCharger = () => {
   return (
     <>
       <SEO 
-        title="EV Charger Installation Long Island - Electric Vehicle Charging Stations"
+        title="EV Charger Installation Long Island | Tesla & Level 2"
         description="Professional EV charger installation on Long Island. Tesla, ChargePoint & JuiceBox Level 2 stations. Panel upgrades included. Call (516) 361-4068"
         keywords="EV charger installation Long Island, electric vehicle charging station Suffolk County, Tesla charger installation, Level 2 EV charger, home EV charging, commercial EV charging, electric car charger electrician"
         canonical="https://bermanelectrical.com/ev-charger"

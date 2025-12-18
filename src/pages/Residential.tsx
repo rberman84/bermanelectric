@@ -73,7 +73,7 @@ const Residential = () => {
 
   return <>
       <SEO 
-        title="Residential Electrical Services Long Island - Licensed Home Electrician"
+        title="Home Electrician Long Island | Residential Services"
         description="Licensed Long Island electrician for home wiring, panel upgrades, lighting, EV chargers & smart home. Serving Suffolk & Nassau County. Call (516) 361-4068"
         keywords="residential electrician Long Island, home electrical services Suffolk County, electrical panel upgrades, home rewiring, lighting installation, EV charger installation, smart home wiring, GFCI installation"
         canonical="https://bermanelectrical.com/residential"
