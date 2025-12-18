@@ -74,8 +74,8 @@ const Commercial = () => {
 
   return <>
       <SEO 
-        title="Commercial Electrical Services Long Island - Licensed Business Electrician"
-        description="Licensed commercial electrician for Long Island businesses. Offices, retail, warehouses & restaurants. Emergency repairs & maintenance. Call (516) 361-4068"
+        title="Commercial Electrician Long Island | Business Services"
+        description="Licensed commercial electrician for Long Island businesses. Offices, retail, warehouses & restaurants. 24/7 emergency repairs. Call (516) 361-4068"
         keywords="commercial electrician Long Island, business electrical services Suffolk County, commercial electrical contractor Nassau County, office electrical installation, retail lighting, warehouse electrical, restaurant electrical"
         canonical="https://bermanelectrical.com/commercial"
       />

@@ -92,6 +92,7 @@ const HomeContent = () => {
                       src={electricianWork} 
                       alt="Berman Electric professional electrician installing decorative lighting fixture"
                       className="rounded-2xl shadow-2xl w-full h-auto"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-xl shadow-lg">
                       <div className="text-2xl font-bold text-[hsl(35,90%,45%)]">5★</div>
@@ -116,6 +117,7 @@ const HomeContent = () => {
                         src={bermanElectrician} 
                         alt="Berman Electric licensed electrician"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                     {/* Certification badge overlay */}
@@ -165,6 +167,7 @@ const HomeContent = () => {
                         src={outdoorElectricalWork} 
                         alt="Berman Electric technician performing outdoor electrical installation"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                     {/* Badge overlay */}

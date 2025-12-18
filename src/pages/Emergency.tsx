@@ -124,7 +124,7 @@ const Emergency = () => {
   return (
     <>
       <SEO
-        title="24/7 Emergency Electrician Long Island - Emergency Electrical Repairs" 
+        title="24/7 Emergency Electrician Long Island | Fast Response" 
         description="24/7 emergency electrician on Long Island. Fast response for power outages, sparking outlets & electrical fires. Licensed repairs. Call (516) 361-4068"
         keywords="emergency electrician Long Island, 24/7 electrical repairs Suffolk County, electrical emergency Nassau County, power outage repair, electrical fire safety, emergency electrical service"
         canonical="https://bermanelectrical.com/emergency"
