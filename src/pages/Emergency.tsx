@@ -27,6 +27,15 @@ import logoOptimized from "@/assets/logo-optimized.webp";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import EmergencyFAQSchema from "@/components/schema/EmergencyFAQSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
+
+const emergencyPricedServices: ServicePricing[] = [
+  { name: "Emergency Service Call", description: "24/7 emergency electrician dispatch", priceRange: "$150 - $300", priceCurrency: "USD", minPrice: 150, maxPrice: 300 },
+  { name: "Power Restoration", description: "Emergency power outage diagnosis and repair", priceRange: "$200 - $500", priceCurrency: "USD", minPrice: 200, maxPrice: 500 },
+  { name: "Electrical Fire Safety Inspection", description: "Emergency electrical safety assessment", priceRange: "$150 - $250", priceCurrency: "USD", minPrice: 150, maxPrice: 250 },
+  { name: "Storm Damage Repair", description: "Post-storm electrical system repair", priceRange: "$300 - $1,500", priceCurrency: "USD", minPrice: 300, maxPrice: 1500 },
+  { name: "Generator Emergency Repair", description: "Emergency generator troubleshooting and repair", priceRange: "$250 - $800", priceCurrency: "USD", minPrice: 250, maxPrice: 800 },
+];
 
 const Emergency = () => {
   const services = [{
@@ -145,6 +154,15 @@ const Emergency = () => {
         serviceName="24/7 Emergency Electrical Services"
         serviceDescription="24/7 emergency electrician on Long Island providing rapid response for power outages, electrical fires, sparking outlets, and storm damage. Licensed emergency electricians available around the clock."
         pageUrl="/emergency"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
+      <ServiceWithPricingSchema
+        serviceName="24/7 Emergency Electrical Services"
+        serviceType="EmergencyService"
+        description="24/7 emergency electrician with transparent pricing. Power outage repair, fire safety inspection, storm damage repair."
+        url="/emergency"
+        services={emergencyPricedServices}
         averageRating={averageRating}
         reviewCount={totalReviews}
       />

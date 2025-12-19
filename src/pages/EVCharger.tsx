@@ -13,6 +13,15 @@ import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/compon
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import EVChargerFAQSchema from "@/components/schema/EVChargerFAQSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
+
+const pricedServices: ServicePricing[] = [
+  { name: "Level 2 EV Charger Installation", description: "Complete Level 2 home charging station installation", priceRange: "$500 - $1,500", priceCurrency: "USD", minPrice: 500, maxPrice: 1500 },
+  { name: "Panel Upgrade for EV Charging", description: "Electrical panel upgrade to support EV charger", priceRange: "$1,500 - $3,500", priceCurrency: "USD", minPrice: 1500, maxPrice: 3500 },
+  { name: "Tesla Wall Connector Installation", description: "Tesla Wall Connector professional installation", priceRange: "$400 - $1,200", priceCurrency: "USD", minPrice: 400, maxPrice: 1200 },
+  { name: "Commercial EV Charging Station", description: "Multi-unit commercial EV charging installation", priceRange: "$2,000 - $10,000", priceCurrency: "USD", minPrice: 2000, maxPrice: 10000 },
+  { name: "Dedicated 240V Circuit", description: "Install dedicated 240V circuit for EV charging", priceRange: "$300 - $800", priceCurrency: "USD", minPrice: 300, maxPrice: 800 },
+];
 
 const services = [
   {
@@ -124,6 +133,15 @@ const EVCharger = () => {
         serviceName="EV Charger Installation"
         serviceDescription="Professional EV charger installation on Long Island for residential and commercial properties. Expert Tesla, ChargePoint, and JuiceBox installation with panel upgrades and dedicated circuits."
         pageUrl="/ev-charger"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
+      <ServiceWithPricingSchema
+        serviceName="EV Charger Installation Services"
+        serviceType="ElectricalService"
+        description="Professional EV charger installation with transparent pricing. Tesla, ChargePoint, and Level 2 charging stations for homes and businesses."
+        url="/ev-charger"
+        services={pricedServices}
         averageRating={averageRating}
         reviewCount={totalReviews}
       />
