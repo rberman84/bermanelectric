@@ -20,11 +20,13 @@ import ReviewsSection, {
   getReviewStats,
   transformGoogleReviews,
 } from "@/components/shared/ReviewsSection";
-import { getTownBySlug, getTownCanonicalUrl } from "@/lib/townContent";
+import { getTownBySlug, getTownCanonicalUrl, allTowns } from "@/lib/townContent";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import NotFound from "./NotFound";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/shared/Footer";
+import InternalLinkingSidebar from "@/components/seo/InternalLinkingSidebar";
+import { getNearbyTowns } from "@/data/internalLinks";
 
 const TownPage = () => {
   const { townSlug } = useParams();
@@ -40,6 +42,22 @@ const TownPage = () => {
     : defaultReviews;
 
   const { averageRating, totalReviews } = getReviewStats(reviews);
+
+  // Determine county based on which JSON file the town came from
+  const county: 'nassau' | 'suffolk' = town.slug.includes('nassau') || 
+    ['garden-city', 'great-neck', 'manhasset', 'port-washington', 'roslyn', 'oyster-bay', 'glen-cove', 'hempstead', 'freeport', 'long-beach', 'valley-stream', 'mineola', 'westbury', 'new-hyde-park', 'floral-park'].includes(town.slug) 
+    ? 'nassau' : 'suffolk';
+
+  // Get nearby towns for internal linking
+  const nearbyTowns = getNearbyTowns(
+    town.slug,
+    county,
+    allTowns.map(t => ({ name: t.name, slug: t.slug })),
+    5
+  );
+
+  // Build content string for keyword matching
+  const pageContent = `${town.name} ${town.intro} ${town.serviceArea} ${town.serviceCatalog.join(' ')}`;
 
   const townKeywords = [
     `${town.name} electrician`,
@@ -89,10 +107,33 @@ const TownPage = () => {
       />
 
       <TownHero town={town} />
-      <TownServices town={town} />
-      <CommonIssuesSection town={town} />
-      <ElectricalCodesSection town={town} />
-      <CaseStudiesSection town={town} />
+      
+      {/* Main content with sidebar */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main content area */}
+          <div className="lg:col-span-2 space-y-8">
+            <TownServices town={town} />
+            <CommonIssuesSection town={town} />
+            <ElectricalCodesSection town={town} />
+            <CaseStudiesSection town={town} />
+          </div>
+          
+          {/* Internal linking sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24">
+              <InternalLinkingSidebar
+                currentContent={pageContent}
+                currentSlug={`/locations/${town.slug}`}
+                townName={town.name}
+                county={county}
+                nearbyTowns={nearbyTowns}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <TownCTA town={town} />
       <TownTestimonials town={town} />
       <TownMap town={town} />
