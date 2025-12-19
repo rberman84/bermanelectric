@@ -6,6 +6,7 @@ import BitcoinPayment from "./shared/BitcoinPayment";
 import LiveAvailability from "./shared/LiveAvailability";
 import CostEstimator from "./shared/CostEstimator";
 import AiTroubleshootChat from "./shared/AiTroubleshootChat";
+import BookingCalendar from "./shared/BookingCalendar";
 import { Phone } from "lucide-react";
 
 
@@ -82,6 +83,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
 
                 {/* Secondary CTA - Scheduled + Tools */}
                 <div className="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-3xl mx-auto flex-wrap">
+                  <BookingCalendar />
                   <Link
                     to="/contact"
                     className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105 shadow-lg"

@@ -71,6 +71,116 @@ export type Database = {
         }
         Relationships: []
       }
+      crew_calendar: {
+        Row: {
+          buffer_after_minutes: number | null
+          buffer_before_minutes: number | null
+          created_at: string
+          crew_id: string
+          customer_email: string | null
+          customer_name: string | null
+          customer_phone: string | null
+          end_time: string
+          id: string
+          job_length_minutes: number
+          job_zip: string
+          notes: string | null
+          source: string | null
+          start_time: string
+          status: string
+          title: string | null
+          travel_minutes: number | null
+          updated_at: string
+        }
+        Insert: {
+          buffer_after_minutes?: number | null
+          buffer_before_minutes?: number | null
+          created_at?: string
+          crew_id: string
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          end_time: string
+          id?: string
+          job_length_minutes: number
+          job_zip: string
+          notes?: string | null
+          source?: string | null
+          start_time: string
+          status?: string
+          title?: string | null
+          travel_minutes?: number | null
+          updated_at?: string
+        }
+        Update: {
+          buffer_after_minutes?: number | null
+          buffer_before_minutes?: number | null
+          created_at?: string
+          crew_id?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          end_time?: string
+          id?: string
+          job_length_minutes?: number
+          job_zip?: string
+          notes?: string | null
+          source?: string | null
+          start_time?: string
+          status?: string
+          title?: string | null
+          travel_minutes?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crew_calendar_crew_id_fkey"
+            columns: ["crew_id"]
+            isOneToOne: false
+            referencedRelation: "crew_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crew_members: {
+        Row: {
+          active: boolean | null
+          created_at: string
+          default_buffer_after_minutes: number | null
+          default_buffer_before_minutes: number | null
+          email: string | null
+          home_zip: string | null
+          id: string
+          name: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string
+          default_buffer_after_minutes?: number | null
+          default_buffer_before_minutes?: number | null
+          email?: string | null
+          home_zip?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string
+          default_buffer_after_minutes?: number | null
+          default_buffer_before_minutes?: number | null
+          email?: string | null
+          home_zip?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       customer_reviews: {
         Row: {
           approved_at: string | null
