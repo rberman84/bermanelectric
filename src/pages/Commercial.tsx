@@ -14,6 +14,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import CommercialFAQSchema from "@/components/schema/CommercialFAQSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
+import InternalLinkingSidebar from "@/components/seo/InternalLinkingSidebar";
 
 const Commercial = () => {
   const pricedServices: ServicePricing[] = [
@@ -249,6 +250,31 @@ const Commercial = () => {
             { title: "Hurricane Electrical Preparedness", url: "/blog/hurricane-electrical-preparedness-long-island" }
           ]}
         />
+
+        {/* Internal Linking Sidebar Section */}
+        <div className="py-16 bg-white">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold mb-4">Commercial Electrical Expertise for Long Island Businesses</h2>
+                <p className="text-gray-600 mb-4">
+                  Your business deserves an electrical system that's reliable, efficient, and code-compliant. From retail stores to warehouses, 
+                  restaurants to medical facilities, our commercial electricians understand the unique demands of business electrical systems.
+                </p>
+                <p className="text-gray-600">
+                  We minimize downtime with flexible scheduling, including nights and weekends, and provide 24/7 emergency service 
+                  to keep your operations running smoothly across Nassau and Suffolk County.
+                </p>
+              </div>
+              <InternalLinkingSidebar
+                currentContent="commercial business office retail warehouse restaurant industrial electrical contractor"
+                currentSlug="/commercial"
+                blogCategory="Commercial"
+                blogTags={["commercial", "business", "office", "industrial"]}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Related Services */}
         <RelatedServices currentService="commercial" />

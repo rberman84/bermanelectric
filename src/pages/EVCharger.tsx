@@ -14,6 +14,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import EVChargerFAQSchema from "@/components/schema/EVChargerFAQSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
+import InternalLinkingSidebar from "@/components/seo/InternalLinkingSidebar";
 
 const pricedServices: ServicePricing[] = [
   { name: "Level 2 EV Charger Installation", description: "Complete Level 2 home charging station installation", priceRange: "$500 - $1,500", priceCurrency: "USD", minPrice: 500, maxPrice: 1500 },
@@ -286,6 +287,31 @@ const EVCharger = () => {
             { title: "Panel Upgrade Guide", url: "/blog/when-to-upgrade-electrical-panel" }
           ]}
         />
+
+        {/* Internal Linking Sidebar Section */}
+        <div className="py-16 bg-white">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold mb-4">EV Charger Installation Experts on Long Island</h2>
+                <p className="text-gray-600 mb-4">
+                  As electric vehicles become more popular, having a reliable home charging station is essential. Our licensed electricians 
+                  specialize in Tesla Wall Connector, ChargePoint, and JuiceBox installations, ensuring your EV is always ready to go.
+                </p>
+                <p className="text-gray-600">
+                  We handle everything from panel upgrades to dedicated 240V circuits, providing turnkey EV charging solutions 
+                  for homes and businesses across Nassau and Suffolk County.
+                </p>
+              </div>
+              <InternalLinkingSidebar
+                currentContent="ev charger electric vehicle tesla chargepoint level 2 charging station panel upgrade"
+                currentSlug="/ev-charger"
+                blogCategory="EV Charging"
+                blogTags={["ev charger", "electric vehicle", "tesla", "charging"]}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Related Services */}
         <RelatedServices currentService="evcharger" />
