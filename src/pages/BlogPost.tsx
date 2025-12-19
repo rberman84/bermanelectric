@@ -14,6 +14,7 @@ import { generateAltText } from "@/lib/utils";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
+import InternalLinkingSidebar from "@/components/seo/InternalLinkingSidebar";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -192,57 +193,75 @@ const BlogPost = () => {
         {/* Content */}
         <div className="py-16 bg-white">
           <div className="container">
-            <div className="max-w-4xl mx-auto">
-              {/* Table of Contents */}
-              <TableOfContents content={post.content} />
-              
-              {/* Article Content */}
-              <div 
-                className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-headings:scroll-mt-16"
-                dangerouslySetInnerHTML={{ 
-                  __html: DOMPurify.sanitize(post.content, {
-                    ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'strong', 'em', 'img', 'blockquote', 'code', 'pre', 'br', 'span', 'div', 'table', 'thead', 'tbody', 'tr', 'th', 'td'],
-                    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel']
-                  })
-                }}
-              />
-              
-              {/* Social Share */}
-              <div className="mt-12">
-                <SocialShare 
-                  title={post.title}
-                  url={currentUrl}
-                  description={cleanDescription}
-                  hashtags={socialHashtags}
-                />
-              </div>
-              
-              {/* Tags */}
-              <div className="mt-8 pt-8 border-t">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Tag className="w-4 h-4 text-gray-500" />
-                  <span className="text-sm text-gray-500 mr-2">Tags:</span>
-                  {post.tags.map((tag: string) => (
-                    <span 
-                      key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-electric-50 hover:text-electric-700 transition-colors cursor-pointer"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Main content area */}
+              <div className="lg:col-span-2">
+                <div className="max-w-none">
+                  {/* Table of Contents */}
+                  <TableOfContents content={post.content} />
+                  
+                  {/* Article Content */}
+                  <div 
+                    className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-headings:scroll-mt-16"
+                    dangerouslySetInnerHTML={{ 
+                      __html: DOMPurify.sanitize(post.content, {
+                        ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'strong', 'em', 'img', 'blockquote', 'code', 'pre', 'br', 'span', 'div', 'table', 'thead', 'tbody', 'tr', 'th', 'td'],
+                        ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel']
+                      })
+                    }}
+                  />
+                  
+                  {/* Social Share */}
+                  <div className="mt-12">
+                    <SocialShare 
+                      title={post.title}
+                      url={currentUrl}
+                      description={cleanDescription}
+                      hashtags={socialHashtags}
+                    />
+                  </div>
+                  
+                  {/* Tags */}
+                  <div className="mt-8 pt-8 border-t">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <Tag className="w-4 h-4 text-gray-500" />
+                      <span className="text-sm text-gray-500 mr-2">Tags:</span>
+                      {post.tags.map((tag: string) => (
+                        <span 
+                          key={tag}
+                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-electric-50 hover:text-electric-700 transition-colors cursor-pointer"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Author Bio */}
+                  <AuthorBio author={post.author} />
+
+                  {/* Related Posts */}
+                  {post && allBlogPosts.length > 0 && (
+                    <RelatedPosts 
+                      currentPost={post} 
+                      allPosts={allBlogPosts} 
+                    />
+                  )}
                 </div>
               </div>
-
-              {/* Author Bio */}
-              <AuthorBio author={post.author} />
-
-              {/* Related Posts */}
-              {post && allBlogPosts.length > 0 && (
-                <RelatedPosts 
-                  currentPost={post} 
-                  allPosts={allBlogPosts} 
-                />
-              )}
+              
+              {/* Internal linking sidebar */}
+              <div className="lg:col-span-1">
+                <div className="sticky top-24">
+                  <InternalLinkingSidebar
+                    currentContent={post.content}
+                    currentSlug={`/blog/${slug}`}
+                    blogCategory={post.category}
+                    blogTags={post.tags}
+                    excludeBlogSlug={slug}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
