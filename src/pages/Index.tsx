@@ -12,6 +12,7 @@ import HomeFAQSchema from "@/components/schema/HomeFAQSchema";
 import SiteNavigationSchema from "@/components/schema/SiteNavigationSchema";
 import SpeakableSchema from "@/components/schema/SpeakableSchema";
 import ProfessionalServiceSchema from "@/components/schema/ProfessionalServiceSchema";
+import ReviewRichSnippetSchema from "@/components/schema/ReviewRichSnippetSchema";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import StructuredData from "@/components/town/StructuredData";
@@ -131,6 +132,18 @@ const Index = () => {
         areaServed={["Suffolk County NY", "Nassau County NY", "Long Island NY"]}
       />
       {aggregateRating && <StructuredData data={aggregateRating} id="aggregate-rating-schema" />}
+      {reviews && reviews.length > 0 && (
+        <ReviewRichSnippetSchema
+          reviews={reviews.slice(0, 5).map(r => ({
+            author: r.author_name,
+            reviewBody: r.text,
+            ratingValue: r.rating,
+            datePublished: new Date(r.time * 1000).toISOString().split('T')[0]
+          }))}
+          averageRating={reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length}
+          totalReviews={reviews.length}
+        />
+      )}
       
       <UrgencyBanner />
       <Navbar />

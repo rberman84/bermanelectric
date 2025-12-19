@@ -13,8 +13,17 @@ import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/compon
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import CommercialFAQSchema from "@/components/schema/CommercialFAQSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
 
 const Commercial = () => {
+  const pricedServices: ServicePricing[] = [
+    { name: "Commercial Panel Upgrade", description: "Upgrade commercial electrical panel capacity", priceRange: "$3,000 - $10,000", priceCurrency: "USD", minPrice: 3000, maxPrice: 10000 },
+    { name: "LED Lighting Retrofit", description: "Commercial LED lighting installation and retrofit", priceRange: "$50 - $150 per fixture", priceCurrency: "USD", minPrice: 50, maxPrice: 150 },
+    { name: "Emergency Lighting Installation", description: "Install emergency exit and backup lighting", priceRange: "$200 - $500 per unit", priceCurrency: "USD", minPrice: 200, maxPrice: 500 },
+    { name: "Dedicated Circuit Installation", description: "Install dedicated circuits for equipment", priceRange: "$300 - $800", priceCurrency: "USD", minPrice: 300, maxPrice: 800 },
+    { name: "Commercial Generator Installation", description: "Backup generator installation for businesses", priceRange: "$5,000 - $20,000", priceCurrency: "USD", minPrice: 5000, maxPrice: 20000 },
+    { name: "Data Cabling", description: "Structured data and network cabling", priceRange: "$100 - $250 per drop", priceCurrency: "USD", minPrice: 100, maxPrice: 250 },
+  ];
   const services = [{
     title: "Electrical Installations & Upgrades",
     icon: <Plug className="w-6 h-6 text-electric-600" />,
@@ -95,6 +104,15 @@ const Commercial = () => {
         serviceName="Commercial Electrical Services"
         serviceDescription="Professional commercial electrical contractor serving Long Island businesses including offices, retail, warehouses, and restaurants. 24/7 emergency service, preventative maintenance, and code-compliant installations."
         pageUrl="/commercial"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
+      <ServiceWithPricingSchema
+        serviceName="Commercial Electrical Services"
+        serviceType="ElectricalService"
+        description="Commercial electrical contractor services with transparent pricing for Long Island businesses. Panel upgrades, LED retrofits, generators, and data cabling."
+        url="/commercial"
+        services={pricedServices}
         averageRating={averageRating}
         reviewCount={totalReviews}
       />

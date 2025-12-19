@@ -13,8 +13,17 @@ import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
 
 const Residential = () => {
+  const pricedServices: ServicePricing[] = [
+    { name: "Electrical Panel Upgrade", description: "Upgrade your electrical panel for increased capacity", priceRange: "$1,500 - $3,500", priceCurrency: "USD", minPrice: 1500, maxPrice: 3500 },
+    { name: "Outlet Installation", description: "Install new electrical outlets", priceRange: "$150 - $300", priceCurrency: "USD", minPrice: 150, maxPrice: 300 },
+    { name: "Recessed Lighting Installation", description: "Install recessed LED lighting fixtures", priceRange: "$150 - $250 per light", priceCurrency: "USD", minPrice: 150, maxPrice: 250 },
+    { name: "GFCI Outlet Installation", description: "Install ground fault circuit interrupter outlets", priceRange: "$150 - $250", priceCurrency: "USD", minPrice: 150, maxPrice: 250 },
+    { name: "Whole Home Surge Protection", description: "Protect your home from power surges", priceRange: "$300 - $600", priceCurrency: "USD", minPrice: 300, maxPrice: 600 },
+    { name: "Smart Home Wiring", description: "Wire your home for smart devices and automation", priceRange: "$500 - $2,000", priceCurrency: "USD", minPrice: 500, maxPrice: 2000 },
+  ];
   const services = [{
     title: "Electrical Installations & Upgrades",
     icon: <Plug className="w-6 h-6 text-electric-600" />,
@@ -95,6 +104,15 @@ const Residential = () => {
         serviceName="Residential Electrical Services"
         serviceDescription="Licensed electrician providing comprehensive residential electrical services on Long Island including home wiring, panel upgrades, lighting installation, EV charger installation, and smart home automation."
         pageUrl="/residential"
+        averageRating={averageRating}
+        reviewCount={totalReviews}
+      />
+      <ServiceWithPricingSchema
+        serviceName="Residential Electrical Services"
+        serviceType="ElectricalService"
+        description="Professional residential electrical services with transparent pricing. Panel upgrades, outlet installation, lighting, and smart home wiring."
+        url="/residential"
+        services={pricedServices}
         averageRating={averageRating}
         reviewCount={totalReviews}
       />
