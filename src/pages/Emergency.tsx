@@ -28,6 +28,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import EmergencyFAQSchema from "@/components/schema/EmergencyFAQSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
+import InternalLinkingSidebar from "@/components/seo/InternalLinkingSidebar";
 
 const emergencyPricedServices: ServicePricing[] = [
   { name: "Emergency Service Call", description: "24/7 emergency electrician dispatch", priceRange: "$150 - $300", priceCurrency: "USD", minPrice: 150, maxPrice: 300 },
@@ -317,6 +318,31 @@ const Emergency = () => {
             { title: "5 Electrical Mistakes to Avoid", url: "/blog/5-electrical-mistakes-homeowners-make-cost-thousands" }
           ]}
         />
+
+        {/* Internal Linking Sidebar Section */}
+        <div className="py-16 bg-white">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold mb-4">24/7 Emergency Electricians You Can Trust</h2>
+                <p className="text-gray-600 mb-4">
+                  Electrical emergencies don't wait for business hours. Whether it's a power outage, sparking outlet, or storm damage, 
+                  our emergency electricians are available around the clock to protect your home and family.
+                </p>
+                <p className="text-gray-600">
+                  We provide rapid response across Long Island with upfront pricing—no hidden fees, no surprises. 
+                  Call us anytime for fast, professional emergency electrical service.
+                </p>
+              </div>
+              <InternalLinkingSidebar
+                currentContent="emergency 24/7 power outage electrical fire sparking storm damage urgent electrical repair"
+                currentSlug="/emergency"
+                blogCategory="Safety"
+                blogTags={["emergency", "safety", "power outage", "storm"]}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Related Services */}
         <RelatedServices currentService="emergency" />

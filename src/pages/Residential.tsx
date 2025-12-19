@@ -14,6 +14,7 @@ import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/compon
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 import ServiceWithPricingSchema, { ServicePricing } from "@/components/schema/ServiceWithPricingSchema";
+import InternalLinkingSidebar from "@/components/seo/InternalLinkingSidebar";
 
 const Residential = () => {
   const pricedServices: ServicePricing[] = [
@@ -237,6 +238,32 @@ const Residential = () => {
             { title: "Why Licensed Electricians Save Money", url: "/blog/licensed-electricians-save-money" }
           ]}
         />
+
+        {/* Internal Linking Sidebar Section */}
+        <div className="py-16 bg-white">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold mb-4">Why Choose Professional Residential Electrical Services?</h2>
+                <p className="text-gray-600 mb-4">
+                  Your home's electrical system is the backbone of modern living. From powering your appliances to keeping your family safe, 
+                  professional electrical services ensure everything runs smoothly. Whether you need a panel upgrade, smart home installation, 
+                  or emergency repairs, our licensed electricians deliver quality workmanship across Long Island.
+                </p>
+                <p className="text-gray-600">
+                  We serve homeowners throughout Nassau County and Suffolk County, providing fast response times and upfront pricing 
+                  for all residential electrical work.
+                </p>
+              </div>
+              <InternalLinkingSidebar
+                currentContent="residential home electrical panel upgrade lighting smart home outlet wiring installation"
+                currentSlug="/residential"
+                blogCategory="Electrical Tips"
+                blogTags={["residential", "home", "panel upgrade", "lighting"]}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Related Services */}
         <RelatedServices currentService="residential" />
