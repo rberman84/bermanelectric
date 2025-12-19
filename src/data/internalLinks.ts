@@ -81,18 +81,18 @@ export function findRelatedBlogPosts(content: string, limit = 3): string[] {
 // Get nearby towns for a given town
 export function getNearbyTowns(
   townSlug: string, 
-  county: 'nassau' | 'suffolk',
+  _county: 'nassau' | 'suffolk',
   allTowns: { name: string; slug: string }[],
   limit = 4
 ): { name: string; slug: string; url: string }[] {
-  // Filter out current town and return random nearby ones
+  // Filter out current town and return nearby ones
   return allTowns
     .filter(t => t.slug !== townSlug)
     .slice(0, limit)
     .map(t => ({
       name: t.name,
       slug: t.slug,
-      url: `/${county}-county/${t.slug}-electrician`
+      url: `/locations/${t.slug}`
     }));
 }
 
