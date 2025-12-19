@@ -1,32 +1,47 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { z } from "https://esm.sh/zod@3.23.8";
 import { getReliabilityManager } from "../_shared/delivery.ts";
+import { checkRateLimit, RATE_LIMITS, rateLimitErrorResponse, getClientIP } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-interface ContactFormEmail {
-  type: "contact_form";
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  message: string;
-}
+// Zod schemas for input validation
+const contactFormSchema = z.object({
+  type: z.literal("contact_form"),
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(30, "Phone must be less than 30 characters"),
+  service: z.string().trim().min(1, "Service is required").max(100, "Service must be less than 100 characters"),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+});
 
-interface ServiceRequestEmail {
-  type: "service_request";
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  address: string;
-  preferredDate?: string;
-  description: string;
-}
+const serviceRequestSchema = z.object({
+  type: z.literal("service_request"),
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(30, "Phone must be less than 30 characters"),
+  service: z.string().trim().min(1, "Service is required").max(100, "Service must be less than 100 characters"),
+  address: z.string().trim().min(1, "Address is required").max(500, "Address must be less than 500 characters"),
+  preferredDate: z.string().trim().max(50, "Preferred date must be less than 50 characters").optional(),
+  description: z.string().trim().min(1, "Description is required").max(2000, "Description must be less than 2000 characters"),
+});
 
-type EmailRequest = ContactFormEmail | ServiceRequestEmail;
+const emailRequestSchema = z.discriminatedUnion("type", [contactFormSchema, serviceRequestSchema]);
+
+// HTML escaping function to prevent XSS/injection
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
 
 function buildResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -44,33 +59,64 @@ const handler = async (req: Request): Promise<Response> => {
     return buildResponse({ error: "Method not allowed" }, 405);
   }
 
+  // Rate limiting
+  const clientIP = getClientIP(req);
+  const rateLimitResult = await checkRateLimit(clientIP, RATE_LIMITS.EMAIL);
+  
+  if (!rateLimitResult.allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return rateLimitErrorResponse(rateLimitResult, corsHeaders);
+  }
+
   try {
     const manager = getReliabilityManager();
     const fromEmail =
       Deno.env.get("RESEND_FROM") ||
       "Berman Electric <contact@bermanelectrical.com>";
 
-    const emailData: EmailRequest = await req.json();
+    // Parse and validate input
+    const rawBody = await req.json();
+    const parseResult = emailRequestSchema.safeParse(rawBody);
+    
+    if (!parseResult.success) {
+      console.warn("Validation failed:", parseResult.error.errors);
+      return buildResponse({
+        error: "Validation failed",
+        details: parseResult.error.errors.map(e => ({
+          field: e.path.join("."),
+          message: e.message,
+        })),
+      }, 400);
+    }
+
+    const emailData = parseResult.data;
 
     if (emailData.type === "contact_form") {
       const { name, email, phone, service, message } = emailData;
 
+      // Escape all user-provided values for HTML
+      const safeName = escapeHtml(name);
+      const safeEmail = escapeHtml(email);
+      const safePhone = escapeHtml(phone);
+      const safeService = escapeHtml(service);
+      const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+
       const businessHtml = `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Service:</strong> ${safeService}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone}</p>
         <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p>${safeMessage}</p>
       `;
 
       const customerHtml = `
         <h2>Thank you for contacting Berman Electric</h2>
-        <p>Hi ${name},</p>
-        <p>We've received your inquiry about ${service} and will get back to you shortly.</p>
+        <p>Hi ${safeName},</p>
+        <p>We've received your inquiry about ${safeService} and will get back to you shortly.</p>
         <p><strong>Your message:</strong></p>
-        <p>${message}</p>
+        <p>${safeMessage}</p>
         <br>
         <p>Best regards,<br>Berman Electric Team</p>
         <p>📞 (516) 361-4068</p>
@@ -84,7 +130,7 @@ const handler = async (req: Request): Promise<Response> => {
           resendPayload: {
             from: fromEmail,
             to: ["Rob@bermanelectrical.com"],
-            subject: `New Contact Form: ${service}`,
+            subject: `New Contact Form: ${safeService}`,
             html: businessHtml,
           },
           metadata: {
@@ -134,27 +180,36 @@ const handler = async (req: Request): Promise<Response> => {
       const { name, email, phone, service, address, preferredDate, description } =
         emailData;
 
+      // Escape all user-provided values for HTML
+      const safeName = escapeHtml(name);
+      const safeEmail = escapeHtml(email);
+      const safePhone = escapeHtml(phone);
+      const safeService = escapeHtml(service);
+      const safeAddress = escapeHtml(address);
+      const safePreferredDate = preferredDate ? escapeHtml(preferredDate) : null;
+      const safeDescription = escapeHtml(description).replace(/\n/g, "<br>");
+
       const businessHtml = `
         <h2>New Service Request</h2>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Address:</strong> ${address}</p>
-        <p><strong>Preferred Date:</strong> ${preferredDate || "Not specified"}</p>
+        <p><strong>Service:</strong> ${safeService}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone}</p>
+        <p><strong>Address:</strong> ${safeAddress}</p>
+        <p><strong>Preferred Date:</strong> ${safePreferredDate || "Not specified"}</p>
         <p><strong>Description:</strong></p>
-        <p>${description}</p>
+        <p>${safeDescription}</p>
       `;
 
       const customerHtml = `
         <h2>Service Request Received</h2>
-        <p>Hi ${name},</p>
-        <p>Thank you for choosing Berman Electric! We've received your service request for ${service}.</p>
+        <p>Hi ${safeName},</p>
+        <p>Thank you for choosing Berman Electric! We've received your service request for ${safeService}.</p>
         <p><strong>Your details:</strong></p>
         <ul>
-          <li>Address: ${address}</li>
-          <li>Preferred Date: ${preferredDate || "To be scheduled"}</li>
-          <li>Description: ${description}</li>
+          <li>Address: ${safeAddress}</li>
+          <li>Preferred Date: ${safePreferredDate || "To be scheduled"}</li>
+          <li>Description: ${safeDescription}</li>
         </ul>
         <p>We'll contact you shortly to confirm the appointment.</p>
         <br>
@@ -170,7 +225,7 @@ const handler = async (req: Request): Promise<Response> => {
           resendPayload: {
             from: fromEmail,
             to: ["Rob@bermanelectrical.com"],
-            subject: `New Service Request: ${service}`,
+            subject: `New Service Request: ${safeService}`,
             html: businessHtml,
           },
           metadata: {
@@ -221,7 +276,7 @@ const handler = async (req: Request): Promise<Response> => {
     return buildResponse({ error: "Invalid email type" }, 400);
   } catch (error: any) {
     console.error("Error in send-email function:", error);
-    return buildResponse({ error: error.message }, 500);
+    return buildResponse({ error: "An error occurred processing your request" }, 500);
   }
 };
 
