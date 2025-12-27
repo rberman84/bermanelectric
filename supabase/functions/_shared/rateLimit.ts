@@ -1,6 +1,7 @@
 /**
- * Rate limiting utility using Deno KV
- * Implements a sliding window rate limiter to prevent abuse of public endpoints
+ * Rate limiting utility using in-memory storage
+ * Implements a simple sliding window rate limiter to prevent abuse of public endpoints
+ * Note: In-memory storage resets on function cold starts, which is acceptable for edge functions
  */
 
 interface RateLimitConfig {
@@ -15,6 +16,24 @@ interface RateLimitResult {
   resetAt: Date;
 }
 
+// In-memory store for rate limiting (resets on cold starts)
+const rateLimitStore = new Map<string, { timestamps: number[] }>();
+
+/**
+ * Clean up old entries from the store periodically
+ */
+function cleanupStore(windowMs: number): void {
+  const now = Date.now();
+  for (const [key, value] of rateLimitStore.entries()) {
+    const validTimestamps = value.timestamps.filter((ts) => ts > now - windowMs);
+    if (validTimestamps.length === 0) {
+      rateLimitStore.delete(key);
+    } else {
+      rateLimitStore.set(key, { timestamps: validTimestamps });
+    }
+  }
+}
+
 /**
  * Check if a request is within rate limits
  * @param identifier - Usually IP address or user ID
@@ -25,15 +44,19 @@ export async function checkRateLimit(
   identifier: string,
   config: RateLimitConfig
 ): Promise<RateLimitResult> {
-  const kv = await Deno.openKv();
   const now = Date.now();
   const windowStart = now - config.windowMs;
-  const key = [config.keyPrefix, identifier];
+  const key = `${config.keyPrefix}:${identifier}`;
 
   try {
+    // Cleanup old entries occasionally (1% chance per request)
+    if (Math.random() < 0.01) {
+      cleanupStore(config.windowMs);
+    }
+
     // Get current request log
-    const entry = await kv.get<{ timestamps: number[] }>(key);
-    let timestamps = entry.value?.timestamps || [];
+    const entry = rateLimitStore.get(key);
+    let timestamps = entry?.timestamps || [];
 
     // Remove timestamps outside the current window
     timestamps = timestamps.filter((ts) => ts > windowStart);
@@ -45,11 +68,7 @@ export async function checkRateLimit(
     if (allowed) {
       // Add current timestamp
       timestamps.push(now);
-      
-      // Store updated timestamps with expiration
-      await kv.set(key, { timestamps }, {
-        expireIn: config.windowMs * 2, // Keep data for 2x window for safety
-      });
+      rateLimitStore.set(key, { timestamps });
     }
 
     const oldestTimestamp = timestamps[0] || now;
