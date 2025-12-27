@@ -127,30 +127,30 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8 md:ml-auto">
+          <div className="hidden md:flex md:items-center md:space-x-4 lg:space-x-8 md:ml-auto">
             <ServicesDropdown />
             <AboutDropdown />
-            {user && <NavLink to="/dashboard">Dashboard</NavLink>}
-            <NavLink to="/locations">Service Areas</NavLink>
+            <div className="hidden lg:block">{user && <NavLink to="/dashboard">Dashboard</NavLink>}</div>
+            <div className="hidden lg:block"><NavLink to="/locations">Service Areas</NavLink></div>
             <NavLink to="/contact">Contact</NavLink>
 
             {/* CTAs */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 lg:space-x-4">
               <a href="tel:+15163614068" className="inline-flex items-center text-sm font-medium transition-colors text-white/90 hover:text-electric-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
-                <Phone className="mr-2 h-4 w-4" />
-                (516) 361-4068
+                <Phone className="h-4 w-4 lg:mr-2" />
+                <span className="hidden lg:inline">(516) 361-4068</span>
               </a>
-              {user ? <button onClick={signOut} className="inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full text-white/90 hover:text-electric-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
+              {user ? <button onClick={signOut} className="hidden lg:inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full text-white/90 hover:text-electric-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
                   <User className="mr-2 h-4 w-4" />
                   Sign Out
-                </button> : <Link to="/auth" className="inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full text-white/90 hover:text-electric-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
+                </button> : <Link to="/auth" className="hidden lg:inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full text-white/90 hover:text-electric-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
                   <User className="mr-2 h-4 w-4" />
                   Sign In
                 </Link>}
-              <Link to="/lead-intake" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 text-white bg-electric-600 hover:bg-electric-700 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg">
+              <Link to="/lead-intake" className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 text-white bg-electric-600 hover:bg-electric-700 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg">
                 Submit Lead
               </Link>
-              <Link to="/contact" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg">
+              <Link to="/contact" className="inline-flex items-center justify-center px-4 py-2 lg:px-6 lg:py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg">
                 Get a Quote
               </Link>
             </div>
