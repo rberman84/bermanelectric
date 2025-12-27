@@ -8,7 +8,7 @@ import LiveAvailability from "./shared/LiveAvailability";
 import CostEstimator from "./shared/CostEstimator";
 import AiTroubleshootChat from "./shared/AiTroubleshootChat";
 import BookingCalendar from "./shared/BookingCalendar";
-import { Phone } from "lucide-react";
+import { Phone, ChevronDown } from "lucide-react";
 
 // Custom hook for mobile detection with SSR safety
 const useIsMobile = () => {
@@ -221,6 +221,38 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           )}
         </div>
       </motion.div>
+
+      {/* Floating Scroll Indicator */}
+      {isHomePage && (
+        <motion.button
+          onClick={() => {
+            window.scrollTo({ top: window.innerHeight * 0.7, behavior: 'smooth' });
+          }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer group"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          aria-label="Scroll down"
+        >
+          <span className="text-xs font-medium uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity">
+            Scroll
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+          >
+            <div className="w-6 h-10 rounded-full border-2 border-current flex items-start justify-center p-1.5">
+              <motion.div
+                className="w-1.5 h-1.5 rounded-full bg-current"
+                animate={{ y: [0, 16, 0], opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+          </motion.div>
+          <ChevronDown className="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity" />
+        </motion.button>
+      )}
     </div>
   );
 };
