@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import SocialProofInline from "./shared/SocialProofInline";
 import RiskReversalBadges from "./shared/RiskReversalBadges";
 import BitcoinPayment from "./shared/BitcoinPayment";
@@ -32,13 +33,33 @@ interface HeroProps {
 const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   const [showBitcoinModal, setShowBitcoinModal] = useState(false);
   const isMobile = useIsMobile();
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  // Parallax scroll effect
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  // Background moves slower than scroll (parallax effect)
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
+  
   // Use default content for home page, custom content for other pages
   const isHomePage = !title && !subtitle && !description;
 
   return (
-    <div className="relative min-h-[70svh] md:min-h-[85svh] flex items-center overflow-hidden">
+    <div ref={heroRef} className="relative min-h-[70svh] md:min-h-[85svh] flex items-center overflow-hidden">
       {/* Background - Static image on mobile, video on desktop for performance */}
-      <div className="absolute inset-0 pointer-events-none">
+      <motion.div 
+        className="absolute inset-0 pointer-events-none"
+        style={{ 
+          y: backgroundY,
+          scale: backgroundScale,
+        }}
+      >
         {isMobile ? (
           // Static optimized image for mobile (saves ~2-5MB bandwidth)
           <img
@@ -63,26 +84,47 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
         )}
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-white/70" />
-      </div>
+      </motion.div>
 
-      {/* Content */}
-      <div className="container relative py-16 md:py-24">
+      {/* Content with parallax */}
+      <motion.div 
+        className="container relative py-16 md:py-24"
+        style={{ 
+          y: contentY,
+          opacity: contentOpacity,
+        }}
+      >
         <div className="max-w-6xl mx-auto text-center fade-in">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-foreground mb-6 leading-[1] tracking-tight">
+          <motion.h1 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-foreground mb-6 leading-[1] tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             {title || "Professional Electrical Services in Suffolk County, NY"}
-          </h1>
+          </motion.h1>
           
           {/* Social Proof + Live Availability */}
           {isHomePage && (
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            >
               <SocialProofInline />
               <LiveAvailability />
-            </div>
+            </motion.div>
           )}
           
           {isHomePage && (
             <>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 leading-relaxed font-normal max-w-4xl mx-auto">
+              <motion.p 
+                className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 leading-relaxed font-normal max-w-4xl mx-auto"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 Licensed electrician providing{" "}
                 <span className="inline-block px-3 py-1 rounded-full bg-[hsl(15,100%,95%)] text-[hsl(15,80%,40%)] font-medium text-sm sm:text-base">
                   panel upgrades
@@ -98,10 +140,15 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
                   electrical solutions
                 </span>{" "}
                 across Long Island.
-              </p>
+              </motion.p>
 
               {/* Split CTAs - Emergency vs Scheduled */}
-              <div className="space-y-4 mb-10">
+              <motion.div 
+                className="space-y-4 mb-10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 {/* Primary CTA - Emergency */}
                 <div className="bg-red-600 text-white rounded-2xl p-6 max-w-2xl mx-auto">
                   <p className="text-sm font-semibold mb-2 uppercase tracking-wide">⚡ EMERGENCY SERVICE</p>
@@ -137,16 +184,26 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
                     Bitcoin Accepted
                   </button>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Risk Reversal Badges */}
-              <div className="mb-10">
+              <motion.div 
+                className="mb-10"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 <RiskReversalBadges />
-              </div>
+              </motion.div>
 
               <BitcoinPayment open={showBitcoinModal} onOpenChange={setShowBitcoinModal} />
 
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center text-sm md:text-base text-muted-foreground">
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center text-sm md:text-base text-muted-foreground"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.55 }}
+              >
                 <span className="flex items-center gap-2">
                   <span className="inline-block w-2 h-2 rounded-full bg-[hsl(15,100%,60%)]" />
                   24/7 Emergency Service
@@ -159,11 +216,11 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
                   <span className="inline-block w-2 h-2 rounded-full bg-[hsl(200,100%,60%)]" />
                   Serving Long Island
                 </span>
-              </div>
+              </motion.div>
             </>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
