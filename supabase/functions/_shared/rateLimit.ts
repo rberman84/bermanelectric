@@ -153,6 +153,12 @@ export const RATE_LIMITS = {
     windowMs: 300000, // 20 requests per 5 minutes
     keyPrefix: "ratelimit:estimate",
   },
+  // Email endpoints
+  EMAIL: {
+    maxRequests: 15,
+    windowMs: 60000, // 15 requests per minute
+    keyPrefix: "ratelimit:email",
+  },
   // General endpoints
   GENERAL: {
     maxRequests: 30,
