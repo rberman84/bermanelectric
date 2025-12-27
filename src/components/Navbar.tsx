@@ -165,25 +165,19 @@ const Navbar = () => {
             to="/"
             className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16 relative"
           >
-            <div
-              className="h-14 w-44 rounded-sm transition-transform duration-300 group-hover:scale-105 bg-center bg-cover relative overflow-hidden"
+            <img
+              src={bermanLogo}
+              alt="Berman Electric"
+              width="176"
+              height="56"
+              className="h-14 w-44 object-contain transition-transform duration-300 group-hover:scale-105"
               style={{
-                backgroundImage: `url(${bermanLogo})`,
-                boxShadow: '0 4px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.3)'
+                filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.8))'
               }}
-              aria-label="Berman Electric"
-              role="img"
-            >
-              <div 
-                className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay"
-                style={{
-                  backgroundImage: `
-                    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,.1) 10px, rgba(0,0,0,.1) 20px),
-                    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,.1) 10px, rgba(0,0,0,.1) 20px)
-                  `
-                }}
-              />
-            </div>
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
+            />
           </Link>
 
           {/* Desktop Navigation */}
