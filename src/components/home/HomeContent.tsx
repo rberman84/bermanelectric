@@ -110,104 +110,140 @@ const HomeContent = () => {
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
             {/* Left Column - About */}
             <ScrollReveal animation="fade-right" delay={0.1}>
-              <div className="bg-[hsl(200,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all h-full">
-                <div className="mb-8">
-                  {/* Photo + Badge */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="relative">
-                      <div className="w-24 h-24 rounded-2xl bg-[hsl(200,70%,88%)] overflow-hidden">
-                        <img 
-                          src={bermanElectrician} 
-                          alt="Berman Electric licensed electrician"
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
+              <div 
+                className="group bg-[hsl(200,75%,94%)] rounded-[32px] p-10 transition-all duration-300 ease-out h-full relative overflow-hidden hover:-translate-y-2 hover:scale-[1.01]"
+                style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 25px 50px -12px hsla(200, 70%, 40%, 0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                }}
+              >
+                {/* Glow effect overlay */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle at 50% 0%, hsla(200, 70%, 40%, 0.12), transparent 70%)',
+                  }}
+                />
+                <div className="relative z-10">
+                  <div className="mb-8">
+                    {/* Photo + Badge */}
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="relative">
+                        <div className="w-24 h-24 rounded-2xl bg-[hsl(200,70%,88%)] overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                          <img 
+                            src={bermanElectrician} 
+                            alt="Berman Electric licensed electrician"
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                        {/* Certification badge overlay */}
+                        <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(200,70%,88%)] transition-transform duration-300 group-hover:scale-110">
+                          <Award className="w-5 h-5 text-[hsl(200,70%,40%)]" />
+                        </div>
                       </div>
-                      {/* Certification badge overlay */}
-                      <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(200,70%,88%)]">
-                        <Award className="w-5 h-5 text-[hsl(200,70%,40%)]" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-2">About Berman Electric</h3>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(200,70%,40%)]">
-                          <Shield className="w-3 h-3" />
-                          Licensed
-                        </span>
-                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(200,70%,40%)]">
-                          <Award className="w-3 h-3" />
-                          20+ Years
-                        </span>
+                      <div className="flex-1">
+                        <h3 className="text-3xl font-bold text-gray-900 mb-2">About Berman Electric</h3>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(200,70%,40%)]">
+                            <Shield className="w-3 h-3" />
+                            Licensed
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(200,70%,40%)]">
+                            <Award className="w-3 h-3" />
+                            20+ Years
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="space-y-4 text-gray-700 leading-relaxed">
-                  <p>
-                    <strong className="text-gray-900">Berman Electric</strong> has been Long Island's premier electrical contractor since 2003, providing reliable, safe, and professional electrical services to homeowners and businesses throughout <Link to="/electrician-suffolk-county" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">Suffolk County</Link> and Nassau County.
-                  </p>
                   
-                  <p>
-                    Based in <Link to="/electrician-ronkonkoma" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">Ronkonkoma</Link>, our <strong className="text-gray-900">licensed electricians</strong> bring decades of experience to every project, from simple outlet repairs to complex <Link to="/commercial" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">commercial electrical installations</Link>.
-                  </p>
-                  
-                  <p>
-                    Whether you need <Link to="/emergency" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">emergency electrical repairs</Link>, panel upgrades, lighting installation, or cutting-edge <Link to="/ev-charger" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">EV charger installation</Link>, we deliver quality workmanship with a commitment to safety and customer satisfaction.
-                  </p>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      <strong className="text-gray-900">Berman Electric</strong> has been Long Island's premier electrical contractor since 2003, providing reliable, safe, and professional electrical services to homeowners and businesses throughout <Link to="/electrician-suffolk-county" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">Suffolk County</Link> and Nassau County.
+                    </p>
+                    
+                    <p>
+                      Based in <Link to="/electrician-ronkonkoma" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">Ronkonkoma</Link>, our <strong className="text-gray-900">licensed electricians</strong> bring decades of experience to every project, from simple outlet repairs to complex <Link to="/commercial" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">commercial electrical installations</Link>.
+                    </p>
+                    
+                    <p>
+                      Whether you need <Link to="/emergency" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">emergency electrical repairs</Link>, panel upgrades, lighting installation, or cutting-edge <Link to="/ev-charger" className="text-[hsl(200,70%,40%)] hover:text-[hsl(200,70%,30%)] font-semibold transition-colors underline decoration-2">EV charger installation</Link>, we deliver quality workmanship with a commitment to safety and customer satisfaction.
+                    </p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
             
             {/* Right Column - Why Choose */}
             <ScrollReveal animation="fade-left" delay={0.2}>
-              <div className="bg-[hsl(140,75%,94%)] rounded-[32px] p-10 hover:shadow-lg transition-all h-full">
-                <div className="mb-8">
-                  {/* Photo + Badge */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="relative">
-                      <div className="w-24 h-24 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden">
-                        <img 
-                          src={outdoorElectricalWork} 
-                          alt="Berman Electric technician performing outdoor electrical installation"
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
+              <div 
+                className="group bg-[hsl(140,75%,94%)] rounded-[32px] p-10 transition-all duration-300 ease-out h-full relative overflow-hidden hover:-translate-y-2 hover:scale-[1.01]"
+                style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 25px 50px -12px hsla(140, 60%, 35%, 0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                }}
+              >
+                {/* Glow effect overlay */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle at 50% 0%, hsla(140, 60%, 35%, 0.12), transparent 70%)',
+                  }}
+                />
+                <div className="relative z-10">
+                  <div className="mb-8">
+                    {/* Photo + Badge */}
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="relative">
+                        <div className="w-24 h-24 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                          <img 
+                            src={outdoorElectricalWork} 
+                            alt="Berman Electric technician performing outdoor electrical installation"
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                        {/* Badge overlay */}
+                        <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(140,70%,88%)] transition-transform duration-300 group-hover:scale-110">
+                          <Shield className="w-5 h-5 text-[hsl(140,60%,35%)]" />
+                        </div>
                       </div>
-                      {/* Badge overlay */}
-                      <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(140,70%,88%)]">
-                        <Shield className="w-5 h-5 text-[hsl(140,60%,35%)]" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-2">Why Choose Us</h3>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(140,60%,35%)]">
-                          <Clock className="w-3 h-3" />
-                          24/7 Available
-                        </span>
-                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(140,60%,35%)]">
-                          <Star className="w-3 h-3" />
-                          5-Star Rated
-                        </span>
+                      <div className="flex-1">
+                        <h3 className="text-3xl font-bold text-gray-900 mb-2">Why Choose Us</h3>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(140,60%,35%)]">
+                            <Clock className="w-3 h-3" />
+                            24/7 Available
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-xs font-semibold text-[hsl(140,60%,35%)]">
+                            <Star className="w-3 h-3" />
+                            5-Star Rated
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="space-y-4 text-gray-700 leading-relaxed">
-                  <p>
-                    We understand that electrical issues can be stressful and potentially dangerous. That's why we offer <Link to="/emergency" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2"><strong className="text-gray-900">24/7 emergency services</strong></Link> and guarantee transparent, upfront pricing with no hidden fees.
-                  </p>
                   
-                  <p>
-                    Our <strong className="text-gray-900">licensed electricians</strong> are fully insured and committed to completing every job safely and to code. Our team stays current with the latest electrical codes and technologies to ensure your electrical systems are safe, efficient, and compliant.
-                  </p>
-                  
-                  <p>
-                    From smart home automation and energy-efficient LED lighting to <Link to="/projects" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2">backup generator installations</Link> and electrical safety inspections, we handle all your electrical needs with professionalism and expertise. Read our <Link to="/testimonials" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2">customer testimonials</Link> to see why Long Island trusts Berman Electric.
-                  </p>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      We understand that electrical issues can be stressful and potentially dangerous. That's why we offer <Link to="/emergency" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2"><strong className="text-gray-900">24/7 emergency services</strong></Link> and guarantee transparent, upfront pricing with no hidden fees.
+                    </p>
+                    
+                    <p>
+                      Our <strong className="text-gray-900">licensed electricians</strong> are fully insured and committed to completing every job safely and to code. Our team stays current with the latest electrical codes and technologies to ensure your electrical systems are safe, efficient, and compliant.
+                    </p>
+                    
+                    <p>
+                      From smart home automation and energy-efficient LED lighting to <Link to="/projects" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2">backup generator installations</Link> and electrical safety inspections, we handle all your electrical needs with professionalism and expertise. Read our <Link to="/testimonials" className="text-[hsl(140,60%,35%)] hover:text-[hsl(140,60%,25%)] font-semibold transition-colors underline decoration-2">customer testimonials</Link> to see why Long Island trusts Berman Electric.
+                    </p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
