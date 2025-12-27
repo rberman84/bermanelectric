@@ -1,10 +1,9 @@
 import { CheckCircle2, Star, Clock, Shield, Award, Zap, Home, Building2, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import bermanElectrician from "@/assets/berman-electrician.jpeg";
-import electricianWork from "@/assets/electrician-work.png";
-import outdoorElectricalWork from "@/assets/outdoor-electrical-work.webp";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import StaggerChildren from "@/components/shared/StaggerChildren";
+
 const HomeContent = () => {
   const services = [{
     title: "Residential Electrical Services",
