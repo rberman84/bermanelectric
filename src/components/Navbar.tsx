@@ -168,9 +168,9 @@ const Navbar = () => {
             <img
               src={bermanLogo}
               alt="Berman Electric"
-              width="176"
-              height="56"
-              className="h-14 w-44 object-contain transition-transform duration-300 group-hover:scale-105"
+              width="220"
+              height="70"
+              className="h-[70px] w-[220px] object-contain transition-transform duration-300 group-hover:scale-105"
               style={{
                 filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.8))'
               }}
