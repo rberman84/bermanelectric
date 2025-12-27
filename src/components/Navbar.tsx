@@ -118,7 +118,7 @@ const Navbar = () => {
       filter: 'blur(1px)'
     }} />
       <div className="container">
-        <div className="flex items-center justify-between h-24 py-4">
+        <div className="flex items-center justify-between h-16 py-2 md:h-24 md:py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16 relative">
             <img src={bermanLogo} alt="Berman Electric" width="300" height="96" style={{
