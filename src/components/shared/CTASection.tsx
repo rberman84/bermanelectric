@@ -1,5 +1,6 @@
 import { Phone, Mail, Calendar, MessageCircle, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import ScrollReveal from "./ScrollReveal";
 
 interface CTASectionProps {
   variant?: 'default' | 'emergency' | 'service' | 'footer';
@@ -35,7 +36,7 @@ const CTASection = ({
     return (
       <div className={`py-12 bg-red-600 text-white ${className}`}>
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
+          <ScrollReveal animation="fade-up" className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4 animate-pulse">
               {title || "Electrical Emergency? We're Here 24/7!"}
             </h2>
@@ -69,7 +70,7 @@ const CTASection = ({
                 Emergency Info
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     );
@@ -164,7 +165,7 @@ const CTASection = ({
   return (
     <div className={`py-16 ${backgroundColor} text-white ${className}`}>
       <div className="container">
-        <div className="max-w-3xl mx-auto text-center">
+        <ScrollReveal animation="fade-up" className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">
             {title || "Get Professional Electrical Services Today"}
           </h2>
@@ -203,7 +204,7 @@ const CTASection = ({
           <p className="mt-6 text-electric-200 text-sm">
             ✓ Free estimates • ✓ Licensed & insured • ✓ Same-day service available
           </p>
-        </div>
+        </ScrollReveal>
       </div>
     </div>
   );

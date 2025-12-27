@@ -4,6 +4,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import ScrollReveal from "./ScrollReveal";
+import StaggerChildren from "./StaggerChildren";
 
 interface GoogleReview {
   id: string;
@@ -77,7 +79,7 @@ const GoogleReviews = () => {
     <div className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="container">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <ScrollReveal animation="fade-up" className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               What Our Customers Say
             </h2>
@@ -101,14 +103,16 @@ const GoogleReviews = () => {
                 )}
               </div>
             )}
-          </div>
+          </ScrollReveal>
 
           {reviews.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-2xl shadow-sm border border-gray-100">
-              <p className="text-gray-600">No reviews yet. Click "Sync Reviews" to fetch from Google.</p>
-            </div>
+            <ScrollReveal animation="fade">
+              <div className="text-center py-12 bg-white rounded-2xl shadow-sm border border-gray-100">
+                <p className="text-gray-600">No reviews yet. Click "Sync Reviews" to fetch from Google.</p>
+              </div>
+            </ScrollReveal>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <StaggerChildren staggerDelay={0.1} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {reviews.slice(0, 6).map((review) => (
                 <div
                   key={review.id}
@@ -147,7 +151,7 @@ const GoogleReviews = () => {
                   </p>
                 </div>
               ))}
-            </div>
+            </StaggerChildren>
           )}
         </div>
       </div>
