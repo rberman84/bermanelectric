@@ -132,8 +132,12 @@ const LiveReviewsFeed = () => {
                 <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
                   {review.author_photo_url ? (
                     <img 
-                      src={review.author_photo_url} 
+                      src={review.author_photo_url.replace('=s128', '=s40')} 
                       alt={review.author_name}
+                      width="40"
+                      height="40"
+                      loading="lazy"
+                      decoding="async"
                       className="w-10 h-10 rounded-full object-cover"
                     />
                   ) : (

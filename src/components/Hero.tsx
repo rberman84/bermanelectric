@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SocialProofInline from "./shared/SocialProofInline";
 import RiskReversalBadges from "./shared/RiskReversalBadges";
 import BitcoinPayment from "./shared/BitcoinPayment";
@@ -9,6 +9,19 @@ import AiTroubleshootChat from "./shared/AiTroubleshootChat";
 import BookingCalendar from "./shared/BookingCalendar";
 import { Phone } from "lucide-react";
 
+// Custom hook for mobile detection with SSR safety
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
 
 interface HeroProps {
   title?: string;
@@ -18,22 +31,36 @@ interface HeroProps {
 
 const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   const [showBitcoinModal, setShowBitcoinModal] = useState(false);
+  const isMobile = useIsMobile();
   // Use default content for home page, custom content for other pages
   const isHomePage = !title && !subtitle && !description;
 
   return (
     <div className="relative min-h-[70svh] md:min-h-[85svh] flex items-center overflow-hidden">
-      {/* Video Background */}
+      {/* Background - Static image on mobile, video on desktop for performance */}
       <div className="absolute inset-0 pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+        {isMobile ? (
+          // Static optimized image for mobile (saves ~2-5MB bandwidth)
+          <img
+            src="/hero-mobile-optimized.webp"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        ) : (
+          // Video only loads on desktop
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/hero-video.mp4" type="video/mp4" />
+          </video>
+        )}
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-white/70" />
       </div>
