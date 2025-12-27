@@ -5,50 +5,38 @@ import electricianWork from "@/assets/electrician-work.png";
 import outdoorElectricalWork from "@/assets/outdoor-electrical-work.webp";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import StaggerChildren from "@/components/shared/StaggerChildren";
-
 const HomeContent = () => {
-  const services = [
-    {
-      title: "Residential Electrical Services",
-      description: "Complete home electrical solutions from panel upgrades to smart home installations",
-      link: "/residential",
-      icon: <Home className="w-12 h-12" />,
-      bgColor: "bg-[hsl(15,85%,92%)]",
-      iconColor: "text-[hsl(15,70%,45%)]"
-    },
-    {
-      title: "Commercial Electrical Services", 
-      description: "Professional electrical services for businesses, offices, and industrial facilities",
-      link: "/commercial",
-      icon: <Building2 className="w-12 h-12" />,
-      bgColor: "bg-[hsl(200,75%,92%)]",
-      iconColor: "text-[hsl(200,70%,45%)]"
-    },
-    {
-      title: "Emergency Electrical Repairs",
-      description: "24/7 emergency electrical services across Long Island for urgent electrical issues",
-      link: "/emergency",
-      icon: <AlertCircle className="w-12 h-12" />,
-      bgColor: "bg-[hsl(0,75%,92%)]",
-      iconColor: "text-[hsl(0,70%,50%)]"
-    },
-    {
-      title: "EV Charger Installation",
-      description: "Professional electric vehicle charging station installation with permits and upgrades",
-      link: "/ev-charger",
-      icon: <Zap className="w-12 h-12" />,
-      bgColor: "bg-[hsl(280,75%,92%)]",
-      iconColor: "text-[hsl(280,65%,50%)]"
-    }
-  ];
-
-  const serviceAreas = [
-    "Ronkonkoma", "Huntington", "Massapequa", "Smithtown", "Babylon", 
-    "Bay Shore", "Commack", "Deer Park", "East Islip", "Farmingdale"
-  ];
-
-  return (
-    <div className="py-32 bg-background">
+  const services = [{
+    title: "Residential Electrical Services",
+    description: "Complete home electrical solutions from panel upgrades to smart home installations",
+    link: "/residential",
+    icon: <Home className="w-12 h-12" />,
+    bgColor: "bg-[hsl(15,85%,92%)]",
+    iconColor: "text-[hsl(15,70%,45%)]"
+  }, {
+    title: "Commercial Electrical Services",
+    description: "Professional electrical services for businesses, offices, and industrial facilities",
+    link: "/commercial",
+    icon: <Building2 className="w-12 h-12" />,
+    bgColor: "bg-[hsl(200,75%,92%)]",
+    iconColor: "text-[hsl(200,70%,45%)]"
+  }, {
+    title: "Emergency Electrical Repairs",
+    description: "24/7 emergency electrical services across Long Island for urgent electrical issues",
+    link: "/emergency",
+    icon: <AlertCircle className="w-12 h-12" />,
+    bgColor: "bg-[hsl(0,75%,92%)]",
+    iconColor: "text-[hsl(0,70%,50%)]"
+  }, {
+    title: "EV Charger Installation",
+    description: "Professional electric vehicle charging station installation with permits and upgrades",
+    link: "/ev-charger",
+    icon: <Zap className="w-12 h-12" />,
+    bgColor: "bg-[hsl(280,75%,92%)]",
+    iconColor: "text-[hsl(280,65%,50%)]"
+  }];
+  const serviceAreas = ["Ronkonkoma", "Huntington", "Massapequa", "Smithtown", "Babylon", "Bay Shore", "Commack", "Deer Park", "East Islip", "Farmingdale"];
+  return <div className="py-32 bg-background">
       <div className="container">
         {/* Main Content Section */}
         <div className="max-w-5xl mx-auto mb-32">
@@ -90,12 +78,7 @@ const HomeContent = () => {
                 </div>
                 <div className="order-1 lg:order-2">
                   <div className="relative">
-                    <img 
-                      src={electricianWork} 
-                      alt="Berman Electric professional electrician installing decorative lighting fixture"
-                      className="rounded-2xl shadow-2xl w-full h-auto"
-                      loading="lazy"
-                    />
+                    <img alt="Berman Electric professional electrician installing decorative lighting fixture" className="rounded-2xl shadow-2xl w-full h-auto" loading="lazy" src="/lovable-uploads/6babda08-e210-4d86-a2bb-f6b38c279294.jpg" />
                     <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-xl shadow-lg">
                       <div className="text-2xl font-bold text-[hsl(35,90%,45%)]">5★</div>
                       <div className="text-xs text-gray-600 font-semibold">Rated Service</div>
@@ -110,35 +93,24 @@ const HomeContent = () => {
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
             {/* Left Column - About */}
             <ScrollReveal animation="fade-right" delay={0.1}>
-              <div 
-                className="group bg-[hsl(200,75%,94%)] rounded-[32px] p-10 transition-all duration-300 ease-out h-full relative overflow-hidden hover:-translate-y-2 hover:scale-[1.01]"
-                style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 25px 50px -12px hsla(200, 70%, 40%, 0.25)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
-                }}
-              >
+              <div className="group bg-[hsl(200,75%,94%)] rounded-[32px] p-10 transition-all duration-300 ease-out h-full relative overflow-hidden hover:-translate-y-2 hover:scale-[1.01]" style={{
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+            }} onMouseEnter={e => {
+              e.currentTarget.style.boxShadow = '0 25px 50px -12px hsla(200, 70%, 40%, 0.25)';
+            }} onMouseLeave={e => {
+              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            }}>
                 {/* Glow effect overlay */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: 'radial-gradient(circle at 50% 0%, hsla(200, 70%, 40%, 0.12), transparent 70%)',
-                  }}
-                />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
+                background: 'radial-gradient(circle at 50% 0%, hsla(200, 70%, 40%, 0.12), transparent 70%)'
+              }} />
                 <div className="relative z-10">
                   <div className="mb-8">
                     {/* Photo + Badge */}
                     <div className="flex items-start gap-4 mb-6">
                       <div className="relative">
                         <div className="w-24 h-24 rounded-2xl bg-[hsl(200,70%,88%)] overflow-hidden transition-transform duration-300 group-hover:scale-105">
-                          <img 
-                            src={bermanElectrician} 
-                            alt="Berman Electric licensed electrician"
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
+                          <img src={bermanElectrician} alt="Berman Electric licensed electrician" className="w-full h-full object-cover" loading="lazy" />
                         </div>
                         {/* Certification badge overlay */}
                         <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(200,70%,88%)] transition-transform duration-300 group-hover:scale-110">
@@ -180,35 +152,24 @@ const HomeContent = () => {
             
             {/* Right Column - Why Choose */}
             <ScrollReveal animation="fade-left" delay={0.2}>
-              <div 
-                className="group bg-[hsl(140,75%,94%)] rounded-[32px] p-10 transition-all duration-300 ease-out h-full relative overflow-hidden hover:-translate-y-2 hover:scale-[1.01]"
-                style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 25px 50px -12px hsla(140, 60%, 35%, 0.25)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
-                }}
-              >
+              <div className="group bg-[hsl(140,75%,94%)] rounded-[32px] p-10 transition-all duration-300 ease-out h-full relative overflow-hidden hover:-translate-y-2 hover:scale-[1.01]" style={{
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+            }} onMouseEnter={e => {
+              e.currentTarget.style.boxShadow = '0 25px 50px -12px hsla(140, 60%, 35%, 0.25)';
+            }} onMouseLeave={e => {
+              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            }}>
                 {/* Glow effect overlay */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: 'radial-gradient(circle at 50% 0%, hsla(140, 60%, 35%, 0.12), transparent 70%)',
-                  }}
-                />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
+                background: 'radial-gradient(circle at 50% 0%, hsla(140, 60%, 35%, 0.12), transparent 70%)'
+              }} />
                 <div className="relative z-10">
                   <div className="mb-8">
                     {/* Photo + Badge */}
                     <div className="flex items-start gap-4 mb-6">
                       <div className="relative">
                         <div className="w-24 h-24 rounded-2xl bg-[hsl(140,70%,88%)] overflow-hidden transition-transform duration-300 group-hover:scale-105">
-                          <img 
-                            src={outdoorElectricalWork} 
-                            alt="Berman Electric technician performing outdoor electrical installation"
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
+                          <img alt="Berman Electric technician performing outdoor electrical installation" className="w-full h-full object-cover" loading="lazy" src="/lovable-uploads/95dce9e4-eba5-4141-8980-2226c570e55e.webp" />
                         </div>
                         {/* Badge overlay */}
                         <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg border-2 border-[hsl(140,70%,88%)] transition-transform duration-300 group-hover:scale-110">
@@ -257,33 +218,17 @@ const HomeContent = () => {
             <p className="text-xl text-muted-foreground font-light">Professional solutions for all your electrical needs</p>
           </ScrollReveal>
           <StaggerChildren staggerDelay={0.15} className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <Link 
-                key={index}
-                to={service.link}
-                className={`group p-10 ${service.bgColor} rounded-[32px] transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden`}
-                style={{
-                  boxShadow: 'none',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = `0 25px 50px -12px ${service.iconColor.includes('15,') ? 'hsla(15, 70%, 45%, 0.25)' : 
-                    service.iconColor.includes('200,') ? 'hsla(200, 70%, 45%, 0.25)' : 
-                    service.iconColor.includes('0,') ? 'hsla(0, 70%, 50%, 0.25)' : 
-                    'hsla(280, 65%, 50%, 0.25)'}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
+            {services.map((service, index) => <Link key={index} to={service.link} className={`group p-10 ${service.bgColor} rounded-[32px] transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden`} style={{
+            boxShadow: 'none'
+          }} onMouseEnter={e => {
+            e.currentTarget.style.boxShadow = `0 25px 50px -12px ${service.iconColor.includes('15,') ? 'hsla(15, 70%, 45%, 0.25)' : service.iconColor.includes('200,') ? 'hsla(200, 70%, 45%, 0.25)' : service.iconColor.includes('0,') ? 'hsla(0, 70%, 50%, 0.25)' : 'hsla(280, 65%, 50%, 0.25)'}`;
+          }} onMouseLeave={e => {
+            e.currentTarget.style.boxShadow = 'none';
+          }}>
                 {/* Glow effect overlay */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at 50% 0%, ${service.iconColor.includes('15,') ? 'hsla(15, 70%, 45%, 0.15)' : 
-                      service.iconColor.includes('200,') ? 'hsla(200, 70%, 45%, 0.15)' : 
-                      service.iconColor.includes('0,') ? 'hsla(0, 70%, 50%, 0.15)' : 
-                      'hsla(280, 65%, 50%, 0.15)'}, transparent 70%)`,
-                  }}
-                />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
+              background: `radial-gradient(circle at 50% 0%, ${service.iconColor.includes('15,') ? 'hsla(15, 70%, 45%, 0.15)' : service.iconColor.includes('200,') ? 'hsla(200, 70%, 45%, 0.15)' : service.iconColor.includes('0,') ? 'hsla(0, 70%, 50%, 0.15)' : 'hsla(280, 65%, 50%, 0.15)'}, transparent 70%)`
+            }} />
                 <div className="relative z-10">
                   <div className="mb-6">
                     <div className={`inline-flex ${service.iconColor} mb-4 transition-transform duration-300 group-hover:scale-110`}>
@@ -293,8 +238,7 @@ const HomeContent = () => {
                   <h3 className="text-2xl font-bold mb-4 text-gray-900 transition-colors duration-300">{service.title}</h3>
                   <p className="text-lg text-gray-700 leading-relaxed">{service.description}</p>
                 </div>
-              </Link>
-            ))}
+              </Link>)}
           </StaggerChildren>
         </div>
 
@@ -309,12 +253,10 @@ const HomeContent = () => {
             </div>
             
             <StaggerChildren staggerDelay={0.05} className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-8 md:mb-10">
-              {serviceAreas.map((area, index) => (
-                <div key={index} className="flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 bg-cream-100 rounded-2xl border border-border">
+              {serviceAreas.map((area, index) => <div key={index} className="flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 bg-cream-100 rounded-2xl border border-border">
                   <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-electric-600 flex-shrink-0" />
                   <span className="text-foreground text-xs md:text-sm font-medium break-words leading-tight">{area}</span>
-                </div>
-              ))}
+                </div>)}
             </StaggerChildren>
             
             <div className="text-center pt-6 md:pt-8 border-t border-border">
@@ -335,24 +277,16 @@ const HomeContent = () => {
               Get a free estimate on your electrical project today
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="tel:+15163614068"
-                className="inline-flex items-center justify-center px-10 py-5 bg-white text-electric-600 rounded-full hover:bg-cream-200 transition-all font-semibold text-lg hover:scale-105"
-              >
+              <a href="tel:+15163614068" className="inline-flex items-center justify-center px-10 py-5 bg-white text-electric-600 rounded-full hover:bg-cream-200 transition-all font-semibold text-lg hover:scale-105">
                 Call (516) 361-4068
               </a>
-              <Link 
-                to="/contact"
-                className="inline-flex items-center justify-center px-10 py-5 bg-transparent text-white rounded-full hover:bg-electric-700 transition-all font-semibold text-lg border-2 border-white"
-              >
+              <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 bg-transparent text-white rounded-full hover:bg-electric-700 transition-all font-semibold text-lg border-2 border-white">
                 Request Free Quote
               </Link>
             </div>
           </div>
         </ScrollReveal>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HomeContent;
