@@ -225,15 +225,38 @@ const HomeContent = () => {
               <Link 
                 key={index}
                 to={service.link}
-                className={`group p-10 ${service.bgColor} rounded-[32px] hover:shadow-lg transition-all`}
+                className={`group p-10 ${service.bgColor} rounded-[32px] transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden`}
+                style={{
+                  boxShadow: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = `0 25px 50px -12px ${service.iconColor.includes('15,') ? 'hsla(15, 70%, 45%, 0.25)' : 
+                    service.iconColor.includes('200,') ? 'hsla(200, 70%, 45%, 0.25)' : 
+                    service.iconColor.includes('0,') ? 'hsla(0, 70%, 50%, 0.25)' : 
+                    'hsla(280, 65%, 50%, 0.25)'}`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <div className="mb-6">
-                  <div className={`inline-flex ${service.iconColor} mb-4`}>
-                    {service.icon}
+                {/* Glow effect overlay */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 50% 0%, ${service.iconColor.includes('15,') ? 'hsla(15, 70%, 45%, 0.15)' : 
+                      service.iconColor.includes('200,') ? 'hsla(200, 70%, 45%, 0.15)' : 
+                      service.iconColor.includes('0,') ? 'hsla(0, 70%, 50%, 0.15)' : 
+                      'hsla(280, 65%, 50%, 0.15)'}, transparent 70%)`,
+                  }}
+                />
+                <div className="relative z-10">
+                  <div className="mb-6">
+                    <div className={`inline-flex ${service.iconColor} mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                      {service.icon}
+                    </div>
                   </div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 transition-colors duration-300">{service.title}</h3>
+                  <p className="text-lg text-gray-700 leading-relaxed">{service.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.title}</h3>
-                <p className="text-lg text-gray-700 leading-relaxed">{service.description}</p>
               </Link>
             ))}
           </StaggerChildren>
