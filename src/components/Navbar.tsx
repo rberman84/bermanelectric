@@ -123,7 +123,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16 relative">
             <img src={bermanLogo} alt="Berman Electric" width="300" height="96" style={{
             filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.8))'
-          }} loading="eager" fetchPriority="high" decoding="sync" className="h-24 w-[300px] transition-transform duration-300 group-hover:scale-105 object-cover" />
+          }} loading="eager" fetchPriority="high" decoding="sync" className="h-14 w-[175px] sm:h-16 sm:w-[200px] md:h-24 md:w-[300px] transition-transform duration-300 group-hover:scale-105 object-cover" />
           </Link>
 
           {/* Desktop Navigation */}
