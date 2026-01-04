@@ -4,6 +4,8 @@ export interface ServiceLink {
   slug: string;
   keywords: string[];
   description: string;
+  relatedServices?: string[];
+  semanticKeywords?: string[];
 }
 
 export interface TownLink {
@@ -11,33 +13,69 @@ export interface TownLink {
   slug: string;
   county: 'nassau' | 'suffolk';
   keywords: string[];
+  nearbyTowns?: string[];
 }
 
-// Core service pages for internal linking
+// LSI (Latent Semantic Indexing) keywords for better semantic SEO
+export const lsiKeywords = {
+  residential: ["home wiring", "house electrical", "domestic electrician", "household power", "home circuit"],
+  commercial: ["business electrical", "corporate wiring", "office power", "commercial contractor", "industrial power"],
+  emergency: ["urgent electrical", "after hours electrician", "electrical breakdown", "power failure", "immediate service"],
+  evCharger: ["electric car charging", "EV charging station", "home charger", "vehicle charger", "charging point"],
+  panel: ["breaker box", "fuse box", "electrical box", "service panel", "main panel", "load center"],
+  lighting: ["light fixture", "LED installation", "recessed lighting", "track lighting", "chandelier installation"],
+  generator: ["backup power", "standby generator", "whole house generator", "power backup", "generator transfer switch"]
+};
+
+// Core service pages for internal linking - Enhanced with semantic keywords
 export const serviceLinks: ServiceLink[] = [
   {
     name: "Residential Electrical",
     slug: "/residential",
     keywords: ["home", "house", "residential", "panel upgrade", "outlet", "lighting", "rewiring", "smart home"],
-    description: "Home electrical services including panel upgrades, lighting, and smart home wiring"
+    semanticKeywords: ["home wiring", "domestic electrician", "household electrical", "home circuit breaker"],
+    description: "Home electrical services including panel upgrades, lighting, and smart home wiring",
+    relatedServices: ["/commercial", "/ev-charger"]
   },
   {
     name: "Commercial Electrical",
     slug: "/commercial",
     keywords: ["business", "commercial", "office", "retail", "warehouse", "restaurant", "industrial"],
-    description: "Commercial electrical services for businesses across Long Island"
+    semanticKeywords: ["corporate electrical", "business wiring", "commercial contractor"],
+    description: "Commercial electrical services for businesses across Long Island",
+    relatedServices: ["/residential", "/emergency"]
   },
   {
     name: "EV Charger Installation",
     slug: "/ev-charger",
     keywords: ["ev charger", "electric vehicle", "tesla", "charging station", "level 2", "chargepoint"],
-    description: "Professional EV charger installation for homes and businesses"
+    semanticKeywords: ["electric car charging", "home EV charger", "vehicle charging point", "EVSE"],
+    description: "Professional EV charger installation for homes and businesses",
+    relatedServices: ["/residential", "/commercial"]
   },
   {
     name: "Emergency Electrical",
     slug: "/emergency",
     keywords: ["emergency", "24/7", "power outage", "sparking", "electrical fire", "urgent"],
-    description: "24/7 emergency electrical services across Long Island"
+    semanticKeywords: ["after hours electrician", "urgent electrical repair", "emergency power"],
+    description: "24/7 emergency electrical services across Long Island",
+    relatedServices: ["/residential", "/commercial"]
+  },
+  {
+    name: "Panel Upgrades",
+    slug: "/residential#panel-upgrades",
+    keywords: ["panel upgrade", "electrical panel", "200 amp", "breaker box", "service upgrade"],
+    semanticKeywords: ["breaker panel", "fuse box upgrade", "electrical service upgrade", "load center"],
+    description: "Upgrade your home's electrical panel for modern power demands",
+    relatedServices: ["/residential", "/ev-charger"]
+  },
+  {
+    name: "Generator Installation",
+    slug: "/emergency#generators",
+    keywords: ["generator", "backup power", "standby", "generac", "kohler"],
+    semanticKeywords: ["whole house generator", "automatic transfer switch", "backup electricity"],
+    description: "Whole-house generator installation for reliable backup power",
+    relatedServices: ["/emergency", "/residential"]
   }
 ];
 
