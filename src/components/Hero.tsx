@@ -24,7 +24,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
+  
   
   const isHomePage = !title && !subtitle && !description;
 
@@ -50,7 +50,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
       {/* Content */}
       <motion.div 
         className="container relative py-20 md:py-28"
-        style={{ y: contentY, opacity: contentOpacity }}
+        style={{ y: contentY }}
       >
         <div className="max-w-5xl mx-auto">
           {isHomePage ? (

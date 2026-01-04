@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 interface NavLinkProps {
@@ -10,24 +9,18 @@ interface NavLinkProps {
 const NavLink = ({ to, children, onClick }: NavLinkProps) => {
   const isHashLink = to.startsWith('#');
   
+  const className = "px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-foreground/5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
+  
   if (isHashLink) {
     return (
-      <a
-        href={to}
-        className="nav-link text-white/90 hover:text-electric-400 focus-visible:ring-offset-[hsl(0,0%,20%)]"
-        onClick={onClick}
-      >
+      <a href={to} className={className} onClick={onClick}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link
-      to={to}
-      className="nav-link text-white/90 hover:text-electric-400 focus-visible:ring-offset-[hsl(0,0%,20%)]"
-      onClick={onClick}
-    >
+    <Link to={to} className={className} onClick={onClick}>
       {children}
     </Link>
   );
