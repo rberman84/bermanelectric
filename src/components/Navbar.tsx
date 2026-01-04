@@ -7,7 +7,7 @@ import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import AboutDropdown from "./navbar/AboutDropdown";
 import MobileMenu from "./navbar/MobileMenu";
-import bermanLogo from "@/assets/berman-logo.png";
+import bermanLogo from "@/assets/berman-logo-new.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,18 +54,16 @@ const Navbar = () => {
             to="/"
             className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            <div className="relative px-4 py-2 bg-[hsl(0,0%,20%)] rounded-xl shadow-lg">
-              <img
-                src={bermanLogo}
-                alt="Berman Electric"
-                width="200"
-                height="64"
-                loading="eager"
-                fetchPriority="high"
-                decoding="sync"
-                className="h-10 w-[125px] md:h-12 md:w-[150px] transition-transform duration-300 group-hover:scale-105 object-contain"
-              />
-            </div>
+            <img
+              src={bermanLogo}
+              alt="Berman Electrical Services"
+              width="180"
+              height="60"
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
+              className="h-14 w-auto md:h-16 lg:h-[72px] transition-transform duration-300 group-hover:scale-105 object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
