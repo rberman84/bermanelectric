@@ -9,6 +9,8 @@ import FAQSchema from "@/components/schema/FAQSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import RelatedServices from "@/components/service/RelatedServices";
 import ServiceCluster from "@/components/service/ServiceCluster";
+import ServiceTownLinks from "@/components/service/ServiceTownLinks";
+import ServiceLongIslandSection from "@/components/service/ServiceLongIslandSection";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 import Breadcrumb from "@/components/shared/Breadcrumb";
@@ -134,10 +136,10 @@ const Residential = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Home className="w-16 h-16 mx-auto mb-6 text-foreground" />
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
-                Residential Electrical Services
+                Residential Electrical Services on Long Island
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
-                Power your Long Island home with safety and expertise. Licensed electrician providing installations, repairs, panel upgrades, and smart home solutions.
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                Power your Long Island home with safety and expertise. Licensed electrician providing installations, repairs, panel upgrades, and smart home solutions across Nassau and Suffolk County.
               </p>
             </div>
           </div>
@@ -221,6 +223,25 @@ const Residential = () => {
         <ServiceFAQ 
           title="Residential Electrical Services FAQ"
           faqs={faqs}
+        />
+
+        {/* Long Island Specific Content */}
+        <ServiceLongIslandSection
+          serviceType="residential"
+          issues={[
+            { title: "Outdated Electrical Panels", description: "Many Long Island homes built before 1970 have 60-100 amp panels that can't support modern appliances, HVAC, and EV chargers.", solution: "200-amp panel upgrade with modern circuit protection" },
+            { title: "Knob-and-Tube Wiring", description: "Pre-1950s homes in areas like Huntington and Garden City often contain dangerous knob-and-tube wiring hidden in walls.", solution: "Complete home rewiring with updated code-compliant wiring" },
+            { title: "Aluminum Wiring Issues", description: "Homes built in the 1960s-70s may have aluminum branch wiring, which can cause loose connections and fire hazards.", solution: "COPALUM or AlumiConn connector retrofits or full rewiring" },
+            { title: "Salt Air Corrosion", description: "Waterfront properties on the North and South Shores experience accelerated corrosion of electrical components.", solution: "Marine-grade components and corrosion-resistant installations" },
+            { title: "Storm Surge Damage", description: "Nor'easters and hurricanes cause power surges that destroy electronics and damage electrical systems.", solution: "Whole-home surge protection and generator installation" },
+            { title: "Insufficient Outlets", description: "Older homes lack sufficient outlets for modern device charging and appliance needs, leading to dangerous extension cord use.", solution: "Additional outlet installation and circuit additions" }
+          ]}
+        />
+
+        {/* Town Links for Internal Linking */}
+        <ServiceTownLinks 
+          serviceName="Residential Electrical Services"
+          maxTowns={12}
         />
 
         {/* Topic Cluster */}

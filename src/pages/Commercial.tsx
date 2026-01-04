@@ -8,6 +8,8 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import RelatedServices from "@/components/service/RelatedServices";
 import ServiceCluster from "@/components/service/ServiceCluster";
+import ServiceTownLinks from "@/components/service/ServiceTownLinks";
+import ServiceLongIslandSection from "@/components/service/ServiceLongIslandSection";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { getReviewStats, transformGoogleReviews, defaultReviews } from "@/components/shared/ReviewsSection";
 import Breadcrumb from "@/components/shared/Breadcrumb";
@@ -135,10 +137,10 @@ const Commercial = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Building2 className="w-16 h-16 mx-auto mb-6 text-foreground" />
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight">
-                Commercial Electrical Services
+                Commercial Electrical Services on Long Island
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
-                Reliable power solutions for Long Island businesses. Licensed electrician providing installations, upgrades, maintenance, and emergency repairs across Suffolk County.
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-normal mb-8 max-w-3xl mx-auto leading-relaxed">
+                Reliable power solutions for Long Island businesses. Licensed electrician providing installations, upgrades, maintenance, and emergency repairs across Nassau and Suffolk County.
               </p>
             </div>
           </div>
@@ -234,6 +236,25 @@ const Commercial = () => {
         <ServiceFAQ 
           title="Commercial Electrical Services FAQ"
           faqs={faqs}
+        />
+
+        {/* Long Island Specific Content */}
+        <ServiceLongIslandSection
+          serviceType="commercial"
+          issues={[
+            { title: "Outdated Commercial Panels", description: "Many Long Island strip malls and office buildings from the 1970s-80s have undersized electrical services that can't support modern HVAC and equipment loads.", solution: "Commercial panel upgrade with load balancing" },
+            { title: "Three-Phase Power Issues", description: "Industrial facilities experience phase imbalance and voltage drops that damage sensitive manufacturing equipment.", solution: "Three-phase power correction and monitoring systems" },
+            { title: "Emergency Lighting Compliance", description: "Fire marshal inspections find emergency lighting and exit sign failures in older commercial buildings.", solution: "Emergency lighting system upgrades and testing programs" },
+            { title: "Restaurant Kitchen Circuits", description: "Long Island restaurants struggle with tripped breakers and inadequate power for commercial kitchen equipment.", solution: "Dedicated circuits and panel upgrades for commercial kitchens" },
+            { title: "Data Center Power", description: "Growing data needs require redundant power systems and UPS installations for business continuity.", solution: "Redundant power systems with generator backup" },
+            { title: "Retail Lighting Retrofits", description: "Outdated fluorescent lighting increases energy costs and reduces merchandise appeal in retail spaces.", solution: "LED retrofit with dimming and smart controls" }
+          ]}
+        />
+
+        {/* Town Links for Internal Linking */}
+        <ServiceTownLinks 
+          serviceName="Commercial Electrical Services"
+          maxTowns={12}
         />
 
         {/* Topic Cluster */}
