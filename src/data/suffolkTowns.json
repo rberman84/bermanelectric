@@ -1607,5 +1607,285 @@
         }
       ]
     }
+  },
+  {
+    "name": "Setauket",
+    "slug": "setauket",
+    "seo": {
+      "title": "Licensed Setauket Electricians | Berman Electric",
+      "description": "Professional electrical services for Setauket homes. Panel upgrades, lighting, EV chargers, and emergency repairs by licensed Suffolk County electricians."
+    },
+    "hero": {
+      "heading": "Setauket Electricians for Historic Homes & Modern Living",
+      "subheading": "Master electricians serving Setauket's colonial homes and waterfront properties.",
+      "ctaLabel": "Schedule Setauket Service"
+    },
+    "intro": "Setauket's historic village character and waterfront location require specialized electrical expertise. Berman Electric provides comprehensive services for this beautiful Three Village community.",
+    "serviceArea": "Serving Setauket, East Setauket, and surrounding Three Village area.",
+    "map": { "query": "Setauket NY", "description": "Quick access via 25A from Ronkonkoma.", "note": "We coordinate with Brookhaven Town for permits." },
+    "coordinates": { "latitude": 40.9312, "longitude": -73.1015 },
+    "zipCodes": ["11733", "11720"],
+    "neighborhoods": ["Old Field", "Stony Brook Harbor", "East Setauket"],
+    "landmarks": ["Stony Brook University", "Ward Melville Heritage Organization", "Setauket Harbor"],
+    "serviceCatalog": ["Historic home rewiring", "Panel upgrades", "EV charger installation", "Waterfront electrical"],
+    "services": [{ "title": "Historic Home Electrical", "description": "Upgrading colonial homes while preserving character.", "highlights": ["200A panel upgrades", "Knob-and-tube replacement", "Period-appropriate fixtures"] }],
+    "commonIssues": [{ "title": "Outdated Wiring in Colonial Homes", "description": "Many Setauket homes have original wiring.", "solution": "Complete rewiring with minimal disruption.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "All work requires Brookhaven Town permits.", "details": "We handle all permit applications." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work in Setauket?", "answer": "Yes, we provide full electrical services throughout Setauket and the Three Village area." }],
+    "howTo": { "title": "Schedule Setauket Service", "description": "Contact us for fast service.", "steps": [{ "title": "Call us", "detail": "516-361-4068" }], "successNarrative": "Fast, reliable service." },
+    "drivingDirections": { "summary": "20 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take 25A West", "detail": "Direct route to Setauket" }] }
+  },
+  {
+    "name": "Port Jefferson",
+    "slug": "port-jefferson",
+    "seo": {
+      "title": "Port Jefferson Electricians | Berman Electric",
+      "description": "Expert electrical services for Port Jefferson homes and businesses. Marina electrical, panel upgrades, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Port Jefferson Electricians for Village & Marina Properties",
+      "subheading": "Licensed electricians serving Port Jefferson's waterfront village and residential areas.",
+      "ctaLabel": "Schedule Port Jefferson Service"
+    },
+    "intro": "Port Jefferson's vibrant village and marina require reliable electrical systems. Berman Electric serves homes, restaurants, and waterfront properties throughout this charming harbor community.",
+    "serviceArea": "Serving Port Jefferson Village and surrounding areas.",
+    "map": { "query": "Port Jefferson NY", "description": "Easy access via 25A.", "note": "Marina electrical specialists." },
+    "coordinates": { "latitude": 40.9465, "longitude": -73.0690 },
+    "zipCodes": ["11777"],
+    "neighborhoods": ["Port Jefferson Village", "Belle Terre", "Mt. Sinai"],
+    "landmarks": ["Port Jefferson Ferry Terminal", "Theatre Three", "Port Jefferson Harbor"],
+    "serviceCatalog": ["Marina electrical", "Restaurant power systems", "Residential upgrades", "Generator installation"],
+    "services": [{ "title": "Marina & Waterfront Electrical", "description": "Specialized marine electrical systems.", "highlights": ["Dock power", "Shore power pedestals", "Corrosion-resistant materials"] }],
+    "commonIssues": [{ "title": "Salt Air Corrosion", "description": "Waterfront properties face accelerated corrosion.", "solution": "Marine-grade components and regular maintenance.", "prevalence": "Very common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required for all work.", "details": "We handle permit coordination." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you service Port Jefferson marina properties?", "answer": "Yes, we specialize in marina and waterfront electrical." }],
+    "howTo": { "title": "Schedule Port Jefferson Service", "description": "Contact us today.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert marina electrical service." },
+    "drivingDirections": { "summary": "25 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take 347 to 25A", "detail": "North to Port Jefferson" }] }
+  },
+  {
+    "name": "Lake Grove",
+    "slug": "lake-grove",
+    "seo": {
+      "title": "Lake Grove Electricians | Berman Electric",
+      "description": "Professional electrical services for Lake Grove homes and businesses. Panel upgrades, commercial electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Lake Grove Electricians for Homes & Retail Centers",
+      "subheading": "Licensed electricians serving Lake Grove's residential and commercial properties.",
+      "ctaLabel": "Schedule Lake Grove Service"
+    },
+    "intro": "Lake Grove's mix of residential neighborhoods and major retail centers requires versatile electrical expertise. Berman Electric provides comprehensive services throughout this central Suffolk location.",
+    "serviceArea": "Serving Lake Grove and surrounding communities.",
+    "map": { "query": "Lake Grove NY", "description": "Central Suffolk location.", "note": "Quick response times." },
+    "coordinates": { "latitude": 40.8529, "longitude": -73.1154 },
+    "zipCodes": ["11755"],
+    "neighborhoods": ["Lake Grove Village", "Centereach border"],
+    "landmarks": ["Smith Haven Mall", "Lake Grove Village Center"],
+    "serviceCatalog": ["Residential electrical", "Commercial retail", "Panel upgrades", "Lighting retrofits"],
+    "services": [{ "title": "Residential & Commercial", "description": "Full-service electrical for homes and businesses.", "highlights": ["Panel upgrades", "Commercial lighting", "Emergency service"] }],
+    "commonIssues": [{ "title": "Aging Panel Infrastructure", "description": "Many homes need panel upgrades.", "solution": "200A service upgrades.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required.", "details": "Full permit handling." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you service Lake Grove businesses?", "answer": "Yes, we provide commercial electrical services." }],
+    "howTo": { "title": "Schedule Lake Grove Service", "description": "Easy scheduling.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Fast service." },
+    "drivingDirections": { "summary": "10 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take 347 West", "detail": "Direct route" }] }
+  },
+  {
+    "name": "Holbrook",
+    "slug": "holbrook",
+    "seo": {
+      "title": "Holbrook Electricians | Berman Electric",
+      "description": "Licensed electrical services for Holbrook homes. Panel upgrades, lighting, and emergency repairs by certified electricians."
+    },
+    "hero": {
+      "heading": "Holbrook Electricians for Residential Properties",
+      "subheading": "Trusted electricians serving Holbrook's family neighborhoods.",
+      "ctaLabel": "Schedule Holbrook Service"
+    },
+    "intro": "Holbrook's family-friendly neighborhoods deserve reliable electrical service. Berman Electric provides expert residential electrical work throughout this Brookhaven Town community.",
+    "serviceArea": "Serving Holbrook and surrounding areas.",
+    "map": { "query": "Holbrook NY", "description": "Close to our Ronkonkoma location.", "note": "Fast response times." },
+    "coordinates": { "latitude": 40.8115, "longitude": -73.0782 },
+    "zipCodes": ["11741"],
+    "neighborhoods": ["Holbrook", "East Holbrook"],
+    "landmarks": ["Holbrook Country Club", "Sachem Schools"],
+    "serviceCatalog": ["Residential electrical", "Panel upgrades", "Ceiling fans", "Outlet installation"],
+    "services": [{ "title": "Residential Electrical", "description": "Complete home electrical services.", "highlights": ["Panel upgrades", "Lighting installation", "Safety inspections"] }],
+    "commonIssues": [{ "title": "Outdated Electrical Panels", "description": "Many 1970s homes need upgrades.", "solution": "Modern 200A panels.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required.", "details": "We handle all permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "How quickly can you get to Holbrook?", "answer": "We're just minutes away and can respond quickly." }],
+    "howTo": { "title": "Schedule Holbrook Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Reliable service." },
+    "drivingDirections": { "summary": "5 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Head south", "detail": "Short drive to Holbrook" }] }
+  },
+  {
+    "name": "Sayville",
+    "slug": "sayville",
+    "seo": {
+      "title": "Sayville Electricians | Berman Electric",
+      "description": "Expert electrical services for Sayville homes and businesses. Panel upgrades, waterfront electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Sayville Electricians for Village Homes & Waterfront Properties",
+      "subheading": "Licensed electricians serving Sayville's charming downtown and waterfront areas.",
+      "ctaLabel": "Schedule Sayville Service"
+    },
+    "intro": "Sayville's beautiful village and waterfront location require expert electrical care. Berman Electric serves homes, businesses, and properties throughout this South Shore gem.",
+    "serviceArea": "Serving Sayville, West Sayville, and Bayport.",
+    "map": { "query": "Sayville NY", "description": "South Shore access via Sunrise Highway.", "note": "Waterfront specialists." },
+    "coordinates": { "latitude": 40.7351, "longitude": -73.0821 },
+    "zipCodes": ["11782", "11796"],
+    "neighborhoods": ["Sayville Village", "West Sayville", "Bayport"],
+    "landmarks": ["Fire Island Ferry Terminal", "Sayville Main Street", "Great South Bay"],
+    "serviceCatalog": ["Waterfront electrical", "Village storefront power", "Residential upgrades", "Generator installation"],
+    "services": [{ "title": "Waterfront & Residential", "description": "Specialized coastal electrical.", "highlights": ["Marine-grade materials", "Generator backup", "Panel upgrades"] }],
+    "commonIssues": [{ "title": "Coastal Electrical Challenges", "description": "Salt air affects equipment.", "solution": "Corrosion-resistant installations.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Islip Town Permits", "requirement": "Permits required.", "details": "Full permit coordination." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work on Sayville waterfront properties?", "answer": "Yes, we specialize in waterfront electrical." }],
+    "howTo": { "title": "Schedule Sayville Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "15 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Sunrise Highway", "detail": "South to Sayville" }] }
+  },
+  {
+    "name": "Patchogue",
+    "slug": "patchogue",
+    "seo": {
+      "title": "Patchogue Electricians | Berman Electric",
+      "description": "Professional electrical services for Patchogue homes and businesses. Panel upgrades, commercial electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Patchogue Electricians for Village & Commercial Properties",
+      "subheading": "Licensed electricians serving Patchogue's vibrant downtown and residential areas.",
+      "ctaLabel": "Schedule Patchogue Service"
+    },
+    "intro": "Patchogue's revitalized downtown and diverse neighborhoods need reliable electrical service. Berman Electric serves homes, restaurants, and businesses throughout this thriving community.",
+    "serviceArea": "Serving Patchogue Village and surrounding areas.",
+    "map": { "query": "Patchogue NY", "description": "Easy access via Sunrise Highway.", "note": "Commercial specialists." },
+    "coordinates": { "latitude": 40.7654, "longitude": -73.0154 },
+    "zipCodes": ["11772"],
+    "neighborhoods": ["Patchogue Village", "North Patchogue", "East Patchogue"],
+    "landmarks": ["Patchogue Theatre", "Shorefront Park", "Main Street District"],
+    "serviceCatalog": ["Restaurant electrical", "Residential upgrades", "Commercial lighting", "Emergency service"],
+    "services": [{ "title": "Commercial & Residential", "description": "Full-service electrical.", "highlights": ["Restaurant power", "LED retrofits", "Panel upgrades"] }],
+    "commonIssues": [{ "title": "Commercial Power Demands", "description": "Downtown businesses need reliable power.", "solution": "Commercial-grade installations.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work in downtown Patchogue?", "answer": "Yes, we serve Patchogue businesses and homes." }],
+    "howTo": { "title": "Schedule Patchogue Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Fast service." },
+    "drivingDirections": { "summary": "15 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Sunrise Highway East", "detail": "To Patchogue" }] }
+  },
+  {
+    "name": "Islip",
+    "slug": "islip",
+    "seo": {
+      "title": "Islip Electricians | Berman Electric",
+      "description": "Licensed electrical services for Islip homes. Panel upgrades, waterfront electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Islip Electricians for South Shore Homes",
+      "subheading": "Trusted electricians serving Islip's waterfront and residential properties.",
+      "ctaLabel": "Schedule Islip Service"
+    },
+    "intro": "Islip's South Shore location and waterfront properties require expert electrical service. Berman Electric provides comprehensive solutions for this historic community.",
+    "serviceArea": "Serving Islip, East Islip, and Islip Terrace.",
+    "map": { "query": "Islip NY", "description": "South Shore access.", "note": "Waterfront specialists." },
+    "coordinates": { "latitude": 40.7298, "longitude": -73.2106 },
+    "zipCodes": ["11751", "11730", "11752"],
+    "neighborhoods": ["Islip Village", "East Islip", "Islip Terrace"],
+    "landmarks": ["MacArthur Airport", "Islip Beach", "Great South Bay"],
+    "serviceCatalog": ["Waterfront electrical", "Residential upgrades", "Generator installation", "Panel upgrades"],
+    "services": [{ "title": "Residential Electrical", "description": "Complete home electrical.", "highlights": ["Panel upgrades", "Generator backup", "Lighting"] }],
+    "commonIssues": [{ "title": "Coastal Environment Challenges", "description": "Waterfront homes face unique issues.", "solution": "Marine-grade solutions.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Islip Town Permits", "requirement": "Permits required.", "details": "Full permit handling." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you serve all of Islip Town?", "answer": "Yes, we cover all Islip Town communities." }],
+    "howTo": { "title": "Schedule Islip Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "10 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Head south", "detail": "To Islip" }] }
+  },
+  {
+    "name": "Medford",
+    "slug": "medford",
+    "seo": {
+      "title": "Medford Electricians | Berman Electric",
+      "description": "Professional electrical services for Medford homes. Panel upgrades, lighting, and emergency repairs by licensed electricians."
+    },
+    "hero": {
+      "heading": "Medford Electricians for Residential Properties",
+      "subheading": "Licensed electricians serving Medford's family neighborhoods.",
+      "ctaLabel": "Schedule Medford Service"
+    },
+    "intro": "Medford's growing community deserves reliable electrical service. Berman Electric provides expert residential electrical work throughout this Brookhaven Town neighborhood.",
+    "serviceArea": "Serving Medford and surrounding areas.",
+    "map": { "query": "Medford NY", "description": "Central Suffolk location.", "note": "Fast response." },
+    "coordinates": { "latitude": 40.8176, "longitude": -72.9851 },
+    "zipCodes": ["11763"],
+    "neighborhoods": ["Medford", "North Medford"],
+    "landmarks": ["Medford Athletic Complex", "Oregon Road Corridor"],
+    "serviceCatalog": ["Residential electrical", "Panel upgrades", "Lighting", "Outlet installation"],
+    "services": [{ "title": "Residential Electrical", "description": "Home electrical services.", "highlights": ["Panel upgrades", "Lighting", "Safety inspections"] }],
+    "commonIssues": [{ "title": "Aging Electrical Systems", "description": "Older homes need updates.", "solution": "Modern electrical upgrades.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "How quickly can you get to Medford?", "answer": "We're nearby and respond quickly." }],
+    "howTo": { "title": "Schedule Medford Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Reliable service." },
+    "drivingDirections": { "summary": "10 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Head east on LIE", "detail": "To Medford" }] }
+  },
+  {
+    "name": "Miller Place",
+    "slug": "miller-place",
+    "seo": {
+      "title": "Miller Place Electricians | Berman Electric",
+      "description": "Expert electrical services for Miller Place homes. Panel upgrades, lighting, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Miller Place Electricians for North Shore Homes",
+      "subheading": "Licensed electricians serving Miller Place's beautiful residential community.",
+      "ctaLabel": "Schedule Miller Place Service"
+    },
+    "intro": "Miller Place's tree-lined streets and quality homes deserve expert electrical care. Berman Electric provides comprehensive residential services throughout this North Shore community.",
+    "serviceArea": "Serving Miller Place and surrounding areas.",
+    "map": { "query": "Miller Place NY", "description": "North Shore access via 25A.", "note": "Residential specialists." },
+    "coordinates": { "latitude": 40.9601, "longitude": -72.9962 },
+    "zipCodes": ["11764"],
+    "neighborhoods": ["Miller Place", "Sound Beach border"],
+    "landmarks": ["Miller Place High School", "North Country Road"],
+    "serviceCatalog": ["Residential electrical", "Panel upgrades", "Generator installation", "Lighting"],
+    "services": [{ "title": "Residential Electrical", "description": "Complete home electrical.", "highlights": ["Panel upgrades", "Generator backup", "Smart home"] }],
+    "commonIssues": [{ "title": "Storm-Related Outages", "description": "Wooded areas prone to outages.", "solution": "Generator backup systems.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required.", "details": "Full permit handling." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you install generators in Miller Place?", "answer": "Yes, we specialize in whole-home generators." }],
+    "howTo": { "title": "Schedule Miller Place Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "20 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take 347 to 25A", "detail": "North to Miller Place" }] }
+  },
+  {
+    "name": "Mount Sinai",
+    "slug": "mount-sinai",
+    "seo": {
+      "title": "Mount Sinai Electricians | Berman Electric",
+      "description": "Professional electrical services for Mount Sinai homes. Panel upgrades, lighting, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Mount Sinai Electricians for Residential Properties",
+      "subheading": "Trusted electricians serving Mount Sinai's family neighborhoods.",
+      "ctaLabel": "Schedule Mount Sinai Service"
+    },
+    "intro": "Mount Sinai's quiet neighborhoods and waterfront areas deserve reliable electrical service. Berman Electric provides expert residential electrical work throughout this North Shore community.",
+    "serviceArea": "Serving Mount Sinai and surrounding areas.",
+    "map": { "query": "Mount Sinai NY", "description": "North Shore location.", "note": "Fast response times." },
+    "coordinates": { "latitude": 40.9368, "longitude": -73.0290 },
+    "zipCodes": ["11766"],
+    "neighborhoods": ["Mount Sinai", "Crystal Brook"],
+    "landmarks": ["Mount Sinai Harbor", "Cedar Beach"],
+    "serviceCatalog": ["Residential electrical", "Waterfront electrical", "Panel upgrades", "Generator installation"],
+    "services": [{ "title": "Residential & Waterfront", "description": "Home and waterfront electrical.", "highlights": ["Panel upgrades", "Marine electrical", "Generators"] }],
+    "commonIssues": [{ "title": "Coastal Electrical Issues", "description": "Waterfront homes face unique challenges.", "solution": "Marine-grade solutions.", "prevalence": "Common near harbor" }],
+    "electricalCodes": [{ "topic": "Brookhaven Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work on Mount Sinai waterfront properties?", "answer": "Yes, we serve all Mount Sinai areas." }],
+    "howTo": { "title": "Schedule Mount Sinai Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Reliable service." },
+    "drivingDirections": { "summary": "20 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take 347 North", "detail": "To Mount Sinai" }] }
   }
 ]

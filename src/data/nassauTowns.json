@@ -812,5 +812,285 @@
         }
       ]
     }
+  },
+  {
+    "name": "Mineola",
+    "slug": "mineola",
+    "seo": {
+      "title": "Mineola Electricians | Berman Electric",
+      "description": "Licensed electrical services for Mineola homes and businesses. Panel upgrades, commercial electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Mineola Electricians for Village Homes & Businesses",
+      "subheading": "Licensed electricians serving Mineola's residential and commercial properties.",
+      "ctaLabel": "Schedule Mineola Service"
+    },
+    "intro": "Mineola's central Nassau location and mix of residential and commercial properties require reliable electrical expertise. Berman Electric serves this vibrant village community.",
+    "serviceArea": "Serving Mineola and surrounding areas.",
+    "map": { "query": "Mineola NY", "description": "Central Nassau access.", "note": "County seat location." },
+    "coordinates": { "latitude": 40.7490, "longitude": -73.6407 },
+    "zipCodes": ["11501"],
+    "neighborhoods": ["Mineola Village", "Garden City Park border"],
+    "landmarks": ["Nassau County Courthouse", "NYU Winthrop Hospital", "Mineola LIRR Station"],
+    "serviceCatalog": ["Residential electrical", "Commercial power", "Panel upgrades", "Emergency service"],
+    "services": [{ "title": "Residential & Commercial", "description": "Full electrical services.", "highlights": ["Panel upgrades", "Commercial lighting", "Emergency repairs"] }],
+    "commonIssues": [{ "title": "Older Home Wiring", "description": "Many homes need updates.", "solution": "Modern electrical upgrades.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Village Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you serve Mineola businesses?", "answer": "Yes, we provide commercial electrical services." }],
+    "howTo": { "title": "Schedule Mineola Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Fast service." },
+    "drivingDirections": { "summary": "35 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take LIE West", "detail": "To Mineola" }] }
+  },
+  {
+    "name": "Westbury",
+    "slug": "westbury",
+    "seo": {
+      "title": "Westbury Electricians | Berman Electric",
+      "description": "Professional electrical services for Westbury homes and businesses. Panel upgrades, lighting, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Westbury Electricians for Residential & Commercial Properties",
+      "subheading": "Licensed electricians serving Westbury's diverse community.",
+      "ctaLabel": "Schedule Westbury Service"
+    },
+    "intro": "Westbury's residential neighborhoods and commercial corridors need reliable electrical service. Berman Electric provides comprehensive electrical solutions throughout this Nassau County community.",
+    "serviceArea": "Serving Westbury, Old Westbury, and surrounding areas.",
+    "map": { "query": "Westbury NY", "description": "Central Nassau location.", "note": "Quick response." },
+    "coordinates": { "latitude": 40.7565, "longitude": -73.5871 },
+    "zipCodes": ["11590", "11568"],
+    "neighborhoods": ["Westbury", "Old Westbury", "New Cassel"],
+    "landmarks": ["Westbury Music Fair", "Old Westbury Gardens", "SUNY Old Westbury"],
+    "serviceCatalog": ["Residential electrical", "Commercial power", "Panel upgrades", "Lighting retrofits"],
+    "services": [{ "title": "Full Electrical Services", "description": "Residential and commercial.", "highlights": ["Panel upgrades", "Lighting design", "Emergency service"] }],
+    "commonIssues": [{ "title": "Aging Electrical Infrastructure", "description": "Many properties need updates.", "solution": "Modern upgrades.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Village Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work in Old Westbury?", "answer": "Yes, we serve all Westbury areas." }],
+    "howTo": { "title": "Schedule Westbury Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "30 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take LIE West", "detail": "To Westbury" }] }
+  },
+  {
+    "name": "Hicksville",
+    "slug": "hicksville",
+    "seo": {
+      "title": "Hicksville Electricians | Berman Electric",
+      "description": "Expert electrical services for Hicksville homes and businesses. Panel upgrades, commercial electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Hicksville Electricians for Homes & Commercial Properties",
+      "subheading": "Licensed electricians serving Hicksville's residential and business community.",
+      "ctaLabel": "Schedule Hicksville Service"
+    },
+    "intro": "Hicksville's central location and diverse property types require versatile electrical expertise. Berman Electric serves homes, retail centers, and industrial properties throughout this major Nassau hub.",
+    "serviceArea": "Serving Hicksville and surrounding areas.",
+    "map": { "query": "Hicksville NY", "description": "Major Nassau transportation hub.", "note": "Central location." },
+    "coordinates": { "latitude": 40.7682, "longitude": -73.5251 },
+    "zipCodes": ["11801", "11802"],
+    "neighborhoods": ["Hicksville", "Jericho border", "Plainview border"],
+    "landmarks": ["Broadway Mall", "Hicksville LIRR Hub", "Cantiague Park"],
+    "serviceCatalog": ["Residential electrical", "Commercial power", "Industrial electrical", "Panel upgrades"],
+    "services": [{ "title": "Residential & Commercial", "description": "Full electrical services.", "highlights": ["Panel upgrades", "Commercial installations", "Emergency service"] }],
+    "commonIssues": [{ "title": "Commercial Power Demands", "description": "Businesses need reliable power.", "solution": "Commercial-grade installations.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Town of Oyster Bay Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you serve Hicksville commercial properties?", "answer": "Yes, we provide full commercial services." }],
+    "howTo": { "title": "Schedule Hicksville Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Fast service." },
+    "drivingDirections": { "summary": "25 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take LIE West", "detail": "To Hicksville" }] }
+  },
+  {
+    "name": "Massapequa",
+    "slug": "massapequa",
+    "seo": {
+      "title": "Massapequa Electricians | Berman Electric",
+      "description": "Professional electrical services for Massapequa homes. Panel upgrades, waterfront electrical, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Massapequa Electricians for South Shore Homes",
+      "subheading": "Licensed electricians serving Massapequa's residential and waterfront properties.",
+      "ctaLabel": "Schedule Massapequa Service"
+    },
+    "intro": "Massapequa's family neighborhoods and waterfront areas deserve reliable electrical service. Berman Electric provides expert residential electrical work throughout this popular South Shore community.",
+    "serviceArea": "Serving Massapequa, Massapequa Park, and North Massapequa.",
+    "map": { "query": "Massapequa NY", "description": "South Shore access via Sunrise Highway.", "note": "Waterfront specialists." },
+    "coordinates": { "latitude": 40.6807, "longitude": -73.4690 },
+    "zipCodes": ["11758", "11762"],
+    "neighborhoods": ["Massapequa", "Massapequa Park", "North Massapequa"],
+    "landmarks": ["Massapequa Preserve", "Sunrise Mall", "South Oyster Bay"],
+    "serviceCatalog": ["Residential electrical", "Waterfront electrical", "Panel upgrades", "Generator installation"],
+    "services": [{ "title": "Residential Electrical", "description": "Home electrical services.", "highlights": ["Panel upgrades", "Waterfront electrical", "Generators"] }],
+    "commonIssues": [{ "title": "Coastal Environment", "description": "Waterfront homes face unique challenges.", "solution": "Marine-grade materials.", "prevalence": "Common near water" }],
+    "electricalCodes": [{ "topic": "Town of Oyster Bay Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work on Massapequa waterfront homes?", "answer": "Yes, we specialize in waterfront electrical." }],
+    "howTo": { "title": "Schedule Massapequa Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "35 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Southern State West", "detail": "To Massapequa" }] }
+  },
+  {
+    "name": "Syosset",
+    "slug": "syosset",
+    "seo": {
+      "title": "Syosset Electricians | Berman Electric",
+      "description": "Licensed electrical services for Syosset homes. Panel upgrades, smart home, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Syosset Electricians for Upscale Residential Properties",
+      "subheading": "Master electricians serving Syosset's prestigious neighborhoods.",
+      "ctaLabel": "Schedule Syosset Service"
+    },
+    "intro": "Syosset's upscale homes demand premium electrical service. Berman Electric provides expert residential electrical work for this prestigious North Shore community.",
+    "serviceArea": "Serving Syosset, Muttontown, and surrounding areas.",
+    "map": { "query": "Syosset NY", "description": "North Shore access via LIE.", "note": "Luxury home specialists." },
+    "coordinates": { "latitude": 40.8265, "longitude": -73.5024 },
+    "zipCodes": ["11791"],
+    "neighborhoods": ["Syosset", "Muttontown", "Woodbury border"],
+    "landmarks": ["Syosset LIRR Station", "Stillwell Woods", "Cold Spring Country Club"],
+    "serviceCatalog": ["Luxury home electrical", "Smart home systems", "Panel upgrades", "Generator installation"],
+    "services": [{ "title": "Luxury Residential", "description": "Premium electrical services.", "highlights": ["Smart home integration", "Whole-home generators", "Custom lighting"] }],
+    "commonIssues": [{ "title": "High-End System Integration", "description": "Luxury homes need sophisticated systems.", "solution": "Expert smart home electrical.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Town of Oyster Bay Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you install smart home systems in Syosset?", "answer": "Yes, we specialize in smart home electrical." }],
+    "howTo": { "title": "Schedule Syosset Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Premium service." },
+    "drivingDirections": { "summary": "25 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take LIE West", "detail": "Exit at Syosset" }] }
+  },
+  {
+    "name": "Plainview",
+    "slug": "plainview",
+    "seo": {
+      "title": "Plainview Electricians | Berman Electric",
+      "description": "Professional electrical services for Plainview homes. Panel upgrades, lighting, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Plainview Electricians for Residential Properties",
+      "subheading": "Licensed electricians serving Plainview's family neighborhoods.",
+      "ctaLabel": "Schedule Plainview Service"
+    },
+    "intro": "Plainview's established neighborhoods deserve reliable electrical service. Berman Electric provides expert residential electrical work throughout this central Nassau community.",
+    "serviceArea": "Serving Plainview and Old Bethpage.",
+    "map": { "query": "Plainview NY", "description": "Central Nassau location.", "note": "Fast response." },
+    "coordinates": { "latitude": 40.7765, "longitude": -73.4676 },
+    "zipCodes": ["11803"],
+    "neighborhoods": ["Plainview", "Old Bethpage"],
+    "landmarks": ["Old Bethpage Village Restoration", "Plainview-Old Bethpage Schools"],
+    "serviceCatalog": ["Residential electrical", "Panel upgrades", "Lighting", "Generator installation"],
+    "services": [{ "title": "Residential Electrical", "description": "Home electrical services.", "highlights": ["Panel upgrades", "Lighting design", "Emergency service"] }],
+    "commonIssues": [{ "title": "Aging Electrical Panels", "description": "1960s-70s homes need upgrades.", "solution": "200A panel upgrades.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Town of Oyster Bay Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "How quickly can you respond to Plainview?", "answer": "We provide fast response throughout Plainview." }],
+    "howTo": { "title": "Schedule Plainview Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Reliable service." },
+    "drivingDirections": { "summary": "25 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take LIE West", "detail": "To Plainview" }] }
+  },
+  {
+    "name": "Levittown",
+    "slug": "levittown",
+    "seo": {
+      "title": "Levittown Electricians | Berman Electric",
+      "description": "Expert electrical services for Levittown homes. Panel upgrades, lighting, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Levittown Electricians for Classic American Homes",
+      "subheading": "Licensed electricians serving Levittown's iconic residential community.",
+      "ctaLabel": "Schedule Levittown Service"
+    },
+    "intro": "Levittown's historic post-war homes often need electrical modernization. Berman Electric specializes in upgrading these classic homes while preserving their character.",
+    "serviceArea": "Serving Levittown and surrounding areas.",
+    "map": { "query": "Levittown NY", "description": "Central Nassau location.", "note": "Post-war home specialists." },
+    "coordinates": { "latitude": 40.7257, "longitude": -73.5143 },
+    "zipCodes": ["11756"],
+    "neighborhoods": ["Levittown", "Island Trees"],
+    "landmarks": ["Levittown History Museum", "Nassau Community College"],
+    "serviceCatalog": ["Panel upgrades", "Whole-home rewiring", "Lighting", "EV charger installation"],
+    "services": [{ "title": "Post-War Home Upgrades", "description": "Modernizing classic homes.", "highlights": ["Panel upgrades", "Rewiring", "Modern circuits"] }],
+    "commonIssues": [{ "title": "Original 1950s Wiring", "description": "Many homes have original wiring.", "solution": "Complete electrical modernization.", "prevalence": "Very common" }],
+    "electricalCodes": [{ "topic": "Town of Hempstead Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Can you upgrade my Levittown Cape Cod's electrical?", "answer": "Yes, we specialize in Levittown home upgrades." }],
+    "howTo": { "title": "Schedule Levittown Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "30 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Southern State West", "detail": "To Levittown" }] }
+  },
+  {
+    "name": "Rockville Centre",
+    "slug": "rockville-centre",
+    "seo": {
+      "title": "Rockville Centre Electricians | Berman Electric",
+      "description": "Licensed electrical services for Rockville Centre homes and businesses. Panel upgrades, lighting, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Rockville Centre Electricians for Village Properties",
+      "subheading": "Master electricians serving Rockville Centre's charming village community.",
+      "ctaLabel": "Schedule Rockville Centre Service"
+    },
+    "intro": "Rockville Centre's beautiful village homes and thriving downtown deserve expert electrical care. Berman Electric provides comprehensive services for this premier South Shore community.",
+    "serviceArea": "Serving Rockville Centre and surrounding areas.",
+    "map": { "query": "Rockville Centre NY", "description": "South Shore village.", "note": "Village specialists." },
+    "coordinates": { "latitude": 40.6587, "longitude": -73.6412 },
+    "zipCodes": ["11570", "11571"],
+    "neighborhoods": ["Rockville Centre Village", "South Side"],
+    "landmarks": ["Sunrise Highway Corridor", "Rockville Centre LIRR", "Mercy Medical Center"],
+    "serviceCatalog": ["Residential electrical", "Commercial power", "Panel upgrades", "Lighting design"],
+    "services": [{ "title": "Village Electrical Services", "description": "Residential and commercial.", "highlights": ["Panel upgrades", "Lighting", "Emergency service"] }],
+    "commonIssues": [{ "title": "Older Home Electrical", "description": "Many homes need modernization.", "solution": "Complete upgrades.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Village Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you serve Rockville Centre downtown businesses?", "answer": "Yes, we provide commercial electrical services." }],
+    "howTo": { "title": "Schedule Rockville Centre Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "40 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Southern State West", "detail": "To Rockville Centre" }] }
+  },
+  {
+    "name": "Freeport",
+    "slug": "freeport",
+    "seo": {
+      "title": "Freeport Electricians | Berman Electric",
+      "description": "Professional electrical services for Freeport homes and businesses. Marina electrical, panel upgrades, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Freeport Electricians for Nautical Mile & Residential Properties",
+      "subheading": "Licensed electricians serving Freeport's waterfront and residential areas.",
+      "ctaLabel": "Schedule Freeport Service"
+    },
+    "intro": "Freeport's famous Nautical Mile and diverse neighborhoods require reliable electrical expertise. Berman Electric serves restaurants, marinas, and homes throughout this vibrant waterfront community.",
+    "serviceArea": "Serving Freeport and surrounding areas.",
+    "map": { "query": "Freeport NY", "description": "South Shore waterfront.", "note": "Marina specialists." },
+    "coordinates": { "latitude": 40.6576, "longitude": -73.5832 },
+    "zipCodes": ["11520"],
+    "neighborhoods": ["Freeport", "Nautical Mile"],
+    "landmarks": ["Nautical Mile", "Freeport Recreation Center", "Freeport LIRR Station"],
+    "serviceCatalog": ["Marina electrical", "Restaurant power", "Residential electrical", "Panel upgrades"],
+    "services": [{ "title": "Waterfront & Commercial", "description": "Marina and restaurant electrical.", "highlights": ["Dock power", "Commercial kitchens", "Residential"] }],
+    "commonIssues": [{ "title": "Marine Environment Challenges", "description": "Waterfront properties face corrosion.", "solution": "Marine-grade electrical.", "prevalence": "Common" }],
+    "electricalCodes": [{ "topic": "Village Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you work on Nautical Mile businesses?", "answer": "Yes, we serve Freeport restaurants and marinas." }],
+    "howTo": { "title": "Schedule Freeport Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Expert service." },
+    "drivingDirections": { "summary": "40 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Southern State West", "detail": "To Freeport" }] }
+  },
+  {
+    "name": "Long Beach",
+    "slug": "long-beach",
+    "seo": {
+      "title": "Long Beach Electricians | Berman Electric",
+      "description": "Expert electrical services for Long Beach homes and businesses. Coastal electrical, panel upgrades, and emergency repairs."
+    },
+    "hero": {
+      "heading": "Long Beach Electricians for Barrier Island Living",
+      "subheading": "Licensed electricians serving Long Beach's oceanfront and bay-side properties.",
+      "ctaLabel": "Schedule Long Beach Service"
+    },
+    "intro": "Long Beach's unique barrier island location demands specialized electrical expertise. Berman Electric provides coastal-rated electrical solutions for this oceanfront community.",
+    "serviceArea": "Serving Long Beach, Lido Beach, and Point Lookout.",
+    "map": { "query": "Long Beach NY", "description": "Barrier island location.", "note": "Coastal specialists." },
+    "coordinates": { "latitude": 40.5884, "longitude": -73.6579 },
+    "zipCodes": ["11561", "11569"],
+    "neighborhoods": ["Long Beach", "Lido Beach", "Point Lookout"],
+    "landmarks": ["Long Beach Boardwalk", "Reynolds Channel", "Atlantic Beach Bridge"],
+    "serviceCatalog": ["Coastal electrical", "Flood-resistant installations", "Panel upgrades", "Generator installation"],
+    "services": [{ "title": "Coastal Electrical", "description": "Barrier island specialists.", "highlights": ["Flood-resistant", "Salt-air rated", "Generators"] }],
+    "commonIssues": [{ "title": "Coastal Electrical Challenges", "description": "Salt air and flooding risks.", "solution": "Marine-grade, elevated installations.", "prevalence": "Very common" }],
+    "electricalCodes": [{ "topic": "City of Long Beach Permits", "requirement": "Permits required.", "details": "We handle permits." }],
+    "caseStudies": [],
+    "faq": [{ "question": "Do you specialize in coastal electrical work?", "answer": "Yes, we're experts in barrier island electrical." }],
+    "howTo": { "title": "Schedule Long Beach Service", "description": "Contact us.", "steps": [{ "title": "Call", "detail": "516-361-4068" }], "successNarrative": "Coastal experts." },
+    "drivingDirections": { "summary": "45 minutes from Ronkonkoma", "startingPoint": "Ronkonkoma", "steps": [{ "title": "Take Southern State to Loop Parkway", "detail": "To Long Beach" }] }
   }
 ]
