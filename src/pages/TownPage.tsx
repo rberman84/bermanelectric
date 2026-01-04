@@ -70,7 +70,7 @@ const TownPage = () => {
   ].join(", ");
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <Helmet>
         <title>{town.seo.title}</title>
         <meta name="description" content={town.seo.description} />
@@ -102,6 +102,7 @@ const TownPage = () => {
       <BreadcrumbSchema
         items={[
           { name: "Service Areas", url: "/locations" },
+          { name: county === 'nassau' ? "Nassau County" : "Suffolk County", url: county === 'nassau' ? "/locations/nassau-county" : "/locations/suffolk-county" },
           { name: `${town.name}, NY` },
         ]}
       />
@@ -109,10 +110,10 @@ const TownPage = () => {
       <TownHero town={town} />
       
       {/* Main content with sidebar */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main content area */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-12">
             <TownServices town={town} />
             <CommonIssuesSection town={town} />
             <ElectricalCodesSection town={town} />
@@ -121,7 +122,7 @@ const TownPage = () => {
           
           {/* Internal linking sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24">
+            <div className="sticky top-24 space-y-6">
               <InternalLinkingSidebar
                 currentContent={pageContent}
                 currentSlug={`/locations/${town.slug}`}
@@ -129,6 +130,20 @@ const TownPage = () => {
                 county={county}
                 nearbyTowns={nearbyTowns}
               />
+              
+              {/* Quick contact card */}
+              <div className="bg-primary rounded-xl p-6 text-primary-foreground">
+                <h3 className="font-bold text-lg mb-2">Need an Electrician in {town.name}?</h3>
+                <p className="text-primary-foreground/90 text-sm mb-4">
+                  Same-day service available. Licensed & insured.
+                </p>
+                <a
+                  href="tel:+15163614068"
+                  className="block w-full text-center bg-primary-foreground text-primary font-semibold py-3 rounded-lg hover:bg-primary-foreground/90 transition-colors"
+                >
+                  (516) 361-4068
+                </a>
+              </div>
             </div>
           </div>
         </div>
