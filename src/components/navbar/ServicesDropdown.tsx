@@ -1,12 +1,9 @@
-
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useEffect, useId, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
 
-interface ServicesDropdownProps {}
-
-const ServicesDropdown = ({}: ServicesDropdownProps) => {
+const ServicesDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,20 +18,14 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
   ];
 
   useEffect(() => {
-    if (!isOpen || !openedViaKeyboard.current) {
-      return;
-    }
-
+    if (!isOpen || !openedViaKeyboard.current) return;
     const firstLink = menuRef.current?.querySelector<HTMLAnchorElement>("a");
     firstLink?.focus();
     openedViaKeyboard.current = false;
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
+    if (!isOpen) return;
     const handleKeyDown = (event: Event) => {
       const keyEvent = event as globalThis.KeyboardEvent;
       if (keyEvent.key === "Escape") {
@@ -42,7 +33,6 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
         (containerRef.current?.querySelector("button") as HTMLButtonElement | null)?.focus();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
@@ -57,7 +47,6 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
     setIsOpen(true);
   };
   const handleMouseLeave = () => setIsOpen(false);
-
   const handleFocus = () => setIsOpen(true);
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
@@ -84,7 +73,7 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
       onBlur={handleBlur}
     >
       <button
-        className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg"
+        className="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-foreground/5 rounded-full transition-colors"
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls={menuId}
@@ -93,7 +82,7 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
         type="button"
       >
         Services
-        <ChevronDown className="ml-1 h-4 w-4" />
+        <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
       </button>
       <div
         ref={menuRef}
@@ -101,16 +90,16 @@ const ServicesDropdown = ({}: ServicesDropdownProps) => {
         role="menu"
         className={cn(
           "absolute left-0 mt-2 w-56 transition-all duration-200 transform z-[100]",
-          isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1"
+          isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
         )}
       >
-        <div className="py-2 bg-[hsl(0,0%,18%)] rounded-2xl shadow-2xl border border-white/10 backdrop-blur-lg">
+        <div className="py-2 bg-white rounded-xl shadow-xl shadow-black/10 border border-gray-100">
           {servicesDropdown.map((item) => (
             <Link
               key={item.name}
               to={item.href}
               role="menuitem"
-              className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-electric-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,18%)] transition-colors border-l-4 border-transparent hover:border-electric-400"
+              className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-gray-50 hover:text-foreground transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {item.name}

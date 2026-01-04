@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, User } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
@@ -8,162 +8,118 @@ import ServicesDropdown from "./navbar/ServicesDropdown";
 import AboutDropdown from "./navbar/AboutDropdown";
 import MobileMenu from "./navbar/MobileMenu";
 import bermanLogo from "@/assets/berman-logo.png";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const {
-    user,
-    signOut
-  } = useAuth();
+  const { user } = useAuth();
+
   useEffect(() => {
     let rafId: number;
     const handleScroll = () => {
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
+      if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 0);
+        setIsScrolled(window.scrollY > 20);
       });
     };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
+
   useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
+    if (!isOpen) return;
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-      }
+      if (event.key === "Escape") setIsOpen(false);
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
-  return <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative overflow-visible", isScrolled ? "bg-[hsl(0,0%,20%)] backdrop-blur-md shadow-2xl border-b border-white/5" : "bg-[hsl(0,0%,25%)] backdrop-blur-sm border-b border-white/10")} style={{
-    backgroundImage: isScrolled ? `
-            linear-gradient(180deg, hsl(0,0%,20%) 0%, hsl(0,0%,18%) 100%),
-            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
-            repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px)
-          ` : `
-            linear-gradient(180deg, hsl(0,0%,25%) 0%, hsl(0,0%,22%) 100%),
-            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px),
-            repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px)
-          `,
-    backgroundBlendMode: 'normal, overlay, overlay',
-    boxShadow: isScrolled ? '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03)' : '0 4px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
-  }}>
-      {/* Noise/Grain texture overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-60" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-      backgroundSize: '200px 200px',
-      mixBlendMode: 'overlay',
-      opacity: 0.15
-    }} />
-      
-      {/* Concrete chips and light catches */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-      backgroundImage: `
-            radial-gradient(circle at 15% 40%, rgba(255,255,255,0.15) 0%, transparent 2px),
-            radial-gradient(circle at 45% 25%, rgba(255,255,255,0.12) 0%, transparent 1.5px),
-            radial-gradient(circle at 78% 60%, rgba(255,255,255,0.18) 0%, transparent 2.5px),
-            radial-gradient(circle at 32% 75%, rgba(255,255,255,0.1) 0%, transparent 1px),
-            radial-gradient(circle at 88% 30%, rgba(255,255,255,0.14) 0%, transparent 2px),
-            radial-gradient(circle at 62% 85%, rgba(255,255,255,0.11) 0%, transparent 1.5px),
-            radial-gradient(circle at 25% 15%, rgba(255,255,255,0.16) 0%, transparent 2px),
-            radial-gradient(circle at 92% 70%, rgba(255,255,255,0.13) 0%, transparent 1.8px),
-            radial-gradient(circle at 8% 65%, rgba(255,255,255,0.09) 0%, transparent 1.2px),
-            radial-gradient(circle at 55% 45%, rgba(255,255,255,0.17) 0%, transparent 2.2px)
-          `,
-      backgroundSize: '100% 100%',
-      filter: 'blur(0.3px)'
-    }} />
-      
-      {/* Larger worn spots with subtle glow */}
-      <div className={cn("absolute inset-0 pointer-events-none transition-opacity duration-500", isScrolled ? "opacity-25" : "opacity-15")} style={{
-      backgroundImage: `
-            radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 15%),
-            radial-gradient(ellipse at 75% 35%, rgba(255,255,255,0.06) 0%, transparent 12%),
-            radial-gradient(ellipse at 50% 70%, rgba(255,255,255,0.07) 0%, transparent 18%),
-            radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.05) 0%, transparent 10%)
-          `,
-      filter: 'blur(2px)'
-    }} />
-      
-      {/* Concrete crack patterns */}
-      <div className={cn("absolute inset-0 pointer-events-none transition-opacity duration-700", isScrolled ? "opacity-40" : "opacity-0")} style={{
-      backgroundImage: `
-            linear-gradient(135deg, transparent 0%, transparent 48%, rgba(0,0,0,0.3) 48%, rgba(0,0,0,0.3) 49%, transparent 49%, transparent 100%),
-            linear-gradient(45deg, transparent 0%, transparent 78%, rgba(0,0,0,0.2) 78%, rgba(0,0,0,0.2) 79%, transparent 79%, transparent 100%),
-            linear-gradient(95deg, transparent 0%, transparent 35%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.15) 36%, transparent 36%, transparent 100%),
-            linear-gradient(165deg, transparent 0%, transparent 62%, rgba(0,0,0,0.25) 62%, rgba(0,0,0,0.25) 63%, transparent 63%, transparent 100%)
-          `,
-      backgroundSize: '800px 400px, 1200px 300px, 600px 500px, 900px 350px',
-      backgroundPosition: '10% 0%, 80% 0%, 45% 0%, 25% 0%',
-      mixBlendMode: 'multiply'
-    }} />
-      
-      {/* Additional distress overlay */}
-      <div className={cn("absolute inset-0 pointer-events-none transition-opacity duration-700", isScrolled ? "opacity-30" : "opacity-0")} style={{
-      backgroundImage: `radial-gradient(circle at 20% 50%, rgba(0,0,0,0.3) 0%, transparent 30%),
-                           radial-gradient(circle at 75% 30%, rgba(0,0,0,0.2) 0%, transparent 25%),
-                           radial-gradient(circle at 60% 80%, rgba(0,0,0,0.25) 0%, transparent 35%)`,
-      filter: 'blur(1px)'
-    }} />
+
+  return (
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        isScrolled
+          ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-gray-200/50"
+          : "bg-white/80 backdrop-blur-md"
+      )}
+    >
       <div className="container">
-        <div className="flex items-center justify-between h-16 py-2 md:h-24 md:py-4">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent mr-16 relative">
-            <img src={bermanLogo} alt="Berman Electric" width="300" height="96" style={{
-            filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.8))'
-          }} loading="eager" fetchPriority="high" decoding="sync" className="h-14 w-[175px] sm:h-16 sm:w-[200px] md:h-24 md:w-[300px] transition-transform duration-300 group-hover:scale-105 object-cover" />
+          <Link
+            to="/"
+            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <div className="relative px-4 py-2 bg-[hsl(0,0%,20%)] rounded-xl shadow-lg">
+              <img
+                src={bermanLogo}
+                alt="Berman Electric"
+                width="200"
+                height="64"
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                className="h-10 w-[125px] md:h-12 md:w-[150px] transition-transform duration-300 group-hover:scale-105 object-contain"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-4 lg:space-x-8 md:ml-auto">
+          <div className="hidden md:flex md:items-center md:gap-1 lg:gap-2">
             <ServicesDropdown />
             <AboutDropdown />
-            <div className="hidden lg:block">{user && <NavLink to="/dashboard">Dashboard</NavLink>}</div>
-            <div className="hidden lg:block"><NavLink to="/locations">Service Areas</NavLink></div>
+            <NavLink to="/locations">Service Areas</NavLink>
             <NavLink to="/contact">Contact</NavLink>
+            {user && <NavLink to="/dashboard">Dashboard</NavLink>}
+          </div>
 
-            {/* CTAs */}
-            <div className="flex items-center space-x-2 lg:space-x-4">
-              <a href="tel:+15163614068" className="inline-flex items-center text-sm font-medium transition-colors text-white/90 hover:text-electric-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
-                <Phone className="h-4 w-4 lg:mr-2" />
-                <span className="hidden lg:inline">(516) 361-4068</span>
-              </a>
-              {user ? <button onClick={signOut} className="hidden lg:inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full text-white/90 hover:text-electric-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
-                  <User className="mr-2 h-4 w-4" />
-                  Sign Out
-                </button> : <Link to="/auth" className="hidden lg:inline-flex items-center text-sm font-medium transition-colors px-4 py-2 rounded-full text-white/90 hover:text-electric-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]">
-                  <User className="mr-2 h-4 w-4" />
-                  Sign In
-                </Link>}
-              <Link to="/lead-intake" className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 text-white bg-electric-600 hover:bg-electric-700 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg">
-                Submit Lead
-              </Link>
-              <Link to="/contact" className="inline-flex items-center justify-center px-4 py-2 lg:px-6 lg:py-2.5 text-sm font-semibold text-white bg-electric-600 rounded-full hover:bg-electric-700 transition-all hover:scale-105 focus-visible:ring-offset-[hsl(0,0%,20%)] shadow-lg">
-                Get a Quote
-              </Link>
-            </div>
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="tel:+15163614068"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              <span className="hidden lg:inline">(516) 361-4068</span>
+            </a>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-foreground rounded-full hover:bg-foreground/90 transition-all hover:scale-105 shadow-lg shadow-foreground/20"
+            >
+              Get a Quote
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 transition-colors text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,20%)]" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-controls="mobile-navigation" aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"} type="button">
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <a
+              href="tel:+15163614068"
+              className="inline-flex items-center justify-center w-10 h-10 text-foreground"
+              aria-label="Call us"
+            >
+              <Phone className="h-5 w-5" />
+            </a>
+            <button
+              className="inline-flex items-center justify-center w-10 h-10 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              type="button"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
       </div>
-    </nav>;
+    </nav>
+  );
 };
+
 export default Navbar;
