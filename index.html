@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,33 +7,67 @@
     <meta name="description" content="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience in residential & commercial electrical services. Call (516) 361-4068" />
     <meta name="keywords" content="electrician Long Island, licensed electrician Suffolk County, electrical services Ronkonkoma NY, emergency electrician, panel upgrades, EV charger installation" />
     <meta name="author" content="Berman Electric" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href="https://bermanelectrical.com/" />
+    
+    <!-- Geographic SEO Meta Tags -->
+    <meta name="geo.region" content="US-NY" />
+    <meta name="geo.placename" content="Long Island, New York" />
+    <meta name="geo.position" content="40.8134;-73.1123" />
+    <meta name="ICBM" content="40.8134, -73.1123" />
+    
+    <!-- Business Verification -->
+    <meta name="msvalidate.01" content="" />
+    <meta name="yandex-verification" content="" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     
-    <!-- Open Graph -->
+    <!-- Open Graph Enhanced -->
     <meta property="og:title" content="Berman Electric - Licensed Electrician Long Island NY" />
     <meta property="og:description" content="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience." />
-    <meta property="og:image" content="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" />
+    <meta property="og:image" content="https://bermanelectrical.com/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Berman Electric - Licensed Electrician Long Island" />
     <meta property="og:url" content="https://bermanelectrical.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Berman Electric" />
+    <meta property="og:locale" content="en_US" />
     
-    <!-- Twitter -->
+    <!-- Twitter Enhanced -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Berman Electric - Licensed Electrician Long Island NY" />
     <meta name="twitter:description" content="Trusted licensed electrician serving Long Island, Suffolk County & Ronkonkoma NY. 20+ years experience." />
-    <meta name="twitter:image" content="/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" />
+    <meta name="twitter:image" content="https://bermanelectrical.com/lovable-uploads/a4a19e90-b47c-4918-b9e7-4a0153e7a336.png" />
+    <meta name="twitter:image:alt" content="Berman Electric - Licensed Electrician Long Island" />
+    
+    <!-- Mobile & PWA -->
+    <meta name="theme-color" content="#B8713F" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Berman Electric" />
+    <meta name="format-detection" content="telephone=yes" />
     
     <!-- Preload local fonts -->
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
     
-    <!-- Preload critical LCP image (logo) -->
+    <!-- Preload critical hero image for mobile -->
+    <link rel="preload" as="image" href="/hero-mobile-optimized.webp" type="image/webp" fetchpriority="high" media="(max-width: 767px)" />
     
+    <!-- DNS Prefetch & Preconnect for external resources -->
+    <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
+    <link rel="dns-prefetch" href="//www.google.com" />
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
+    <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.supabase.co" crossorigin />
+    <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.functions.supabase.co" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     
     <!-- Inline Critical CSS for above-the-fold content -->
     <style>
@@ -43,23 +76,12 @@
       #root{min-height:100vh}
       header{position:fixed;top:0;width:100%;background:#FDFCFA;z-index:50;border-bottom:1px solid #EDE6D9}
       .hero{display:flex;align-items:center;justify-content:center;min-height:100vh;position:relative}
-      /* Additional critical styles for above-fold */
       .container{max-width:1280px;margin:0 auto;padding:0 1rem}
       .button-primary{display:inline-flex;align-items:center;padding:1rem 2rem;background:#B8713F;color:#fff;border-radius:9999px;font-weight:600;transition:all 0.2s}
       .fade-in{animation:fadeIn 0.6s ease-in}
       @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+      .cv-auto{content-visibility:auto;contain-intrinsic-size:1px 1000px}
     </style>
-    
-    
-    <!-- Preload critical hero image for mobile -->
-    <link rel="preload" as="image" href="/hero-mobile-optimized.webp" type="image/webp" fetchpriority="high" media="(max-width: 767px)" />
-    
-    <!-- DNS Prefetch & Preconnect for external resources -->
-    <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
-    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
-    <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.supabase.co" crossorigin />
-    <link rel="preconnect" href="https://ivmnpukucidiclxcbugp.functions.supabase.co" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     
     <!-- Google tag (gtag.js) - Deferred for performance -->
     <script>

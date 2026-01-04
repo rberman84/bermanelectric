@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HomeContent from "@/components/home/HomeContent";
@@ -21,6 +20,12 @@ import ExitIntentPopup from "@/components/shared/ExitIntentPopup";
 import MobileStickyBar from "@/components/shared/MobileStickyBar";
 import PricingTransparency from "@/components/shared/PricingTransparency";
 import LiveReviewsFeed from "@/components/shared/LiveReviewsFeed";
+// Advanced SEO components
+import ServiceAreaGeoSchema from "@/components/schema/ServiceAreaGeoSchema";
+import PriceSpecificationSchema from "@/components/schema/PriceSpecificationSchema";
+import SitelinksSearchBoxSchema from "@/components/schema/SitelinksSearchBoxSchema";
+import PerformanceResourceHints from "@/components/seo/PerformanceResourceHints";
+import CriticalCSSInliner from "@/components/seo/CriticalCSSInliner";
 
 const GoogleReviews = lazy(() => import("@/components/shared/GoogleReviews"));
 const GoogleBusinessProfile = lazy(() => import("@/components/shared/GoogleBusinessProfile").then(m => ({ default: m.GoogleBusinessProfile })));
@@ -144,6 +149,13 @@ const Index = () => {
           totalReviews={reviews.length}
         />
       )}
+      
+      {/* Advanced SEO Schemas */}
+      <ServiceAreaGeoSchema />
+      <PriceSpecificationSchema services={[]} />
+      <SitelinksSearchBoxSchema />
+      <PerformanceResourceHints prerenderRoutes={['/residential', '/commercial', '/contact']} />
+      <CriticalCSSInliner />
       
       <UrgencyBanner />
       <Navbar />
