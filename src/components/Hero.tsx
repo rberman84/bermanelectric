@@ -42,9 +42,9 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
           loading="eager"
           fetchPriority="high"
         />
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/50 to-white/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-white/40" />
+        {/* Stronger gradient overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/75 to-white/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/30 to-white/50" />
       </motion.div>
 
       {/* Content */}
@@ -73,7 +73,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
 
               {/* Main Headline */}
               <motion.h1 
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-serif font-normal text-foreground mb-6 leading-[0.95] tracking-tight drop-shadow-sm"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -85,7 +85,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
               
               {/* Subheadline */}
               <motion.p 
-                className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl text-foreground/80 mb-4 max-w-2xl mx-auto leading-relaxed font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -129,7 +129,7 @@ const Hero = ({ title, subtitle, description }: HeroProps = {}) => {
 
               {/* Trust Indicators */}
               <motion.div 
-                className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-muted-foreground"
+                className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-foreground/70 font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
