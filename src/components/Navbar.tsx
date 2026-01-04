@@ -48,7 +48,7 @@ const Navbar = () => {
       )}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-24 md:h-28">
+        <div className="flex items-center justify-between h-28 md:h-32">
           {/* Logo */}
           <Link
             to="/"
@@ -57,12 +57,12 @@ const Navbar = () => {
             <img
               src={bermanLogo}
               alt="Berman Electrical Services"
-              width="220"
-              height="80"
+              width="280"
+              height="100"
               loading="eager"
               fetchPriority="high"
               decoding="sync"
-              className="h-16 w-auto md:h-20 lg:h-24 transition-transform duration-300 group-hover:scale-105 object-contain drop-shadow-md"
+              className="h-20 w-auto md:h-24 lg:h-28 transition-transform duration-300 group-hover:scale-105 object-contain drop-shadow-md"
             />
           </Link>
 
