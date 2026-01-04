@@ -2,7 +2,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HomeContent from "@/components/home/HomeContent";
-
+import QuickTools from "@/components/home/QuickTools";
 import CTASection from "@/components/shared/CTASection";
 import Footer from "@/components/shared/Footer";
 import SEO from "@/components/SEO";
@@ -150,6 +150,7 @@ const Index = () => {
       
       <main className="grow">
         <Hero />
+        <QuickTools />
         <PricingTransparency />
         <section className="cv-auto"><HomeContent /></section>
         <LiveReviewsFeed />
