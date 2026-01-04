@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import NAP from "./NAP";
 import CTASection from "./CTASection";
-import bermanLogo from "@/assets/berman-logo.png";
+import bermanLogo from "@/assets/berman-logo-new.png";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const serviceLinks = [{
@@ -131,26 +132,12 @@ const Footer = () => {
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
             {/* Company Info & NAP */}
             <div className="lg:col-span-1">
-              <Link to="/" className="inline-flex items-center mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,18%)]">
-                <div
-                  className="h-12 w-36 rounded-sm bg-center bg-cover relative overflow-hidden"
-                  style={{
-                    backgroundImage: `url(${bermanLogo})`,
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.3)'
-                  }}
-                  aria-label="Berman Electric"
-                  role="img"
-                >
-                  <div 
-                    className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay"
-                    style={{
-                      backgroundImage: `
-                        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,.1) 10px, rgba(0,0,0,.1) 20px),
-                        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,.1) 10px, rgba(0,0,0,.1) 20px)
-                      `
-                    }}
-                  />
-                </div>
+              <Link to="/" className="inline-block mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0,0%,18%)]">
+                <img 
+                  src={bermanLogo} 
+                  alt="Berman Electrical Services" 
+                  className="h-16 w-auto object-contain drop-shadow-lg"
+                />
               </Link>
               <NAP variant="footer" showHours={true} />
               
