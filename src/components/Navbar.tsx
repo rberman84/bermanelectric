@@ -7,7 +7,7 @@ import NavLink from "./navbar/NavLink";
 import ServicesDropdown from "./navbar/ServicesDropdown";
 import AboutDropdown from "./navbar/AboutDropdown";
 import MobileMenu from "./navbar/MobileMenu";
-import bermanLogo from "@/assets/berman-logo-graffiti.png";
+import bermanLogo from "@/assets/berman-logo-new.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
