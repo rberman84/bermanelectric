@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import FibonacciHero from "@/components/FibonacciHero";
 import HomeContent from "@/components/home/HomeContent";
 import QuickTools from "@/components/home/QuickTools";
 import CTASection from "@/components/shared/CTASection";
@@ -161,7 +161,7 @@ const Index = () => {
       <Navbar />
       
       <main className="grow">
-        <Hero />
+        <FibonacciHero />
         <QuickTools />
         <PricingTransparency />
         <section className="cv-auto"><HomeContent /></section>
