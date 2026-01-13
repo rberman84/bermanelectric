@@ -191,28 +191,34 @@ const BlogPost = () => {
         </div>
 
         {/* Content */}
-        <div className="py-16 bg-white">
+        <div className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               {/* Main content area */}
-              <div className="lg:col-span-2">
-                <div className="max-w-none">
-                  {/* Table of Contents */}
-                  <TableOfContents content={post.content} />
+              <div className="lg:col-span-8">
+                <article className="max-w-none">
+                  {/* Table of Contents - Mobile friendly */}
+                  <div className="mb-10 p-6 bg-muted/50 rounded-2xl border border-border">
+                    <TableOfContents content={post.content} />
+                  </div>
                   
-                  {/* Article Content */}
+                  {/* Article Content with enhanced styling */}
                   <div 
-                    className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-headings:scroll-mt-16"
+                    className="blog-content"
                     dangerouslySetInnerHTML={{ 
                       __html: DOMPurify.sanitize(post.content, {
-                        ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'strong', 'em', 'img', 'blockquote', 'code', 'pre', 'br', 'span', 'div', 'table', 'thead', 'tbody', 'tr', 'th', 'td'],
+                        ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'strong', 'em', 'img', 'blockquote', 'code', 'pre', 'br', 'span', 'div', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'hr'],
                         ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel']
                       })
                     }}
                   />
                   
+                  {/* Divider */}
+                  <hr className="my-12 border-t-2 border-border" />
+                  
                   {/* Social Share */}
-                  <div className="mt-12">
+                  <div className="bg-muted/30 rounded-2xl p-6 sm:p-8">
+                    <p className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wide">Share this article</p>
                     <SocialShare 
                       title={post.title}
                       url={currentUrl}
@@ -222,37 +228,45 @@ const BlogPost = () => {
                   </div>
                   
                   {/* Tags */}
-                  <div className="mt-8 pt-8 border-t">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <Tag className="w-4 h-4 text-gray-500" />
-                      <span className="text-sm text-gray-500 mr-2">Tags:</span>
-                      {post.tags.map((tag: string) => (
-                        <span 
-                          key={tag}
-                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-electric-50 hover:text-electric-700 transition-colors cursor-pointer"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                  <div className="mt-8 pt-8 border-t border-border">
+                    <div className="flex items-start gap-3 flex-wrap">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Tag className="w-4 h-4" />
+                        <span className="text-sm font-medium uppercase tracking-wide">Topics:</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {post.tags.map((tag: string) => (
+                          <span 
+                            key={tag}
+                            className="px-4 py-1.5 bg-muted text-foreground rounded-full text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   {/* Author Bio */}
-                  <AuthorBio author={post.author} />
+                  <div className="mt-10">
+                    <AuthorBio author={post.author} />
+                  </div>
 
                   {/* Related Posts */}
                   {post && allBlogPosts.length > 0 && (
-                    <RelatedPosts 
-                      currentPost={post} 
-                      allPosts={allBlogPosts} 
-                    />
+                    <div className="mt-12">
+                      <RelatedPosts 
+                        currentPost={post} 
+                        allPosts={allBlogPosts} 
+                      />
+                    </div>
                   )}
-                </div>
+                </article>
               </div>
               
-              {/* Internal linking sidebar */}
-              <div className="lg:col-span-1">
-                <div className="sticky top-24">
+              {/* Sidebar */}
+              <aside className="lg:col-span-4">
+                <div className="sticky top-24 space-y-6">
                   <InternalLinkingSidebar
                     currentContent={post.content}
                     currentSlug={`/blog/${slug}`}
@@ -261,7 +275,7 @@ const BlogPost = () => {
                     excludeBlogSlug={slug}
                   />
                 </div>
-              </div>
+              </aside>
             </div>
           </div>
         </div>
