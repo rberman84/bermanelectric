@@ -37,6 +37,7 @@ const ServiceLocationProblem = lazy(() => import("@/pages/ServiceLocationProblem
 const SubmitReview = lazy(() => import("@/pages/SubmitReview"));
 const LeadIntake = lazy(() => import("@/pages/LeadIntake"));
 const FAQ = lazy(() => import("@/pages/FAQ"));
+const FirecrawlTools = lazy(() => import("@/pages/FirecrawlTools"));
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -74,6 +75,7 @@ const AnimatedRoutes = () => {
         <Route path="/lead-intake" element={<PageTransition><LeadIntake /></PageTransition>} />
         <Route path="/case-study-ronkonkoma-200-amp-service-upgrade" element={<PageTransition><RonkonkomaServiceUpgradeCaseStudy /></PageTransition>} />
         <Route path="/google-reviews-setup" element={<PageTransition><GoogleReviewsSetup /></PageTransition>} />
+        <Route path="/admin/firecrawl" element={<PageTransition><FirecrawlTools /></PageTransition>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
