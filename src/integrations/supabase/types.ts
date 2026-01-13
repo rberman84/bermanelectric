@@ -437,6 +437,60 @@ export type Database = {
         }
         Relationships: []
       }
+      saved_leads: {
+        Row: {
+          contact_info: Json | null
+          content_preview: string | null
+          created_at: string
+          description: string | null
+          followed_up_at: string | null
+          id: string
+          lead_type: string | null
+          notes: string | null
+          priority: string | null
+          saved_by: string | null
+          source_query: string | null
+          status: string
+          title: string
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          contact_info?: Json | null
+          content_preview?: string | null
+          created_at?: string
+          description?: string | null
+          followed_up_at?: string | null
+          id?: string
+          lead_type?: string | null
+          notes?: string | null
+          priority?: string | null
+          saved_by?: string | null
+          source_query?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          contact_info?: Json | null
+          content_preview?: string | null
+          created_at?: string
+          description?: string | null
+          followed_up_at?: string | null
+          id?: string
+          lead_type?: string | null
+          notes?: string | null
+          priority?: string | null
+          saved_by?: string | null
+          source_query?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
       service_requests: {
         Row: {
           address: string

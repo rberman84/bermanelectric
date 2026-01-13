@@ -8,7 +8,12 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { firecrawlApi } from '@/lib/api/firecrawl';
-import { Loader2, Search, Map, Globe, FileSearch, ExternalLink, Copy, Check, Building2, HardHat, Store, Zap, Calendar } from 'lucide-react';
+import { useSavedLeads } from '@/hooks/useSavedLeads';
+import { 
+  Loader2, Search, Map, Globe, FileSearch, ExternalLink, Copy, Check, 
+  Building2, HardHat, Store, Zap, Calendar, Bookmark, BookmarkCheck, 
+  Trash2, Star, Clock
+} from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
@@ -20,6 +25,7 @@ const FirecrawlTools = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<any>(null);
   const [copied, setCopied] = useState(false);
+  const { savedLeads, saveLead, updateLead, deleteLead, isUrlSaved, isSaving, isLoading: leadsLoading } = useSavedLeads();
 
   // Site Audit State
   const [auditUrl, setAuditUrl] = useState('https://bermanelectrical.com');
@@ -189,7 +195,7 @@ const FirecrawlTools = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="site-audit" className="flex items-center gap-2">
                 <FileSearch className="h-4 w-4" />
                 Site Audit
@@ -197,6 +203,10 @@ const FirecrawlTools = () => {
               <TabsTrigger value="leads" className="flex items-center gap-2">
                 <Search className="h-4 w-4" />
                 Lead Research
+              </TabsTrigger>
+              <TabsTrigger value="saved" className="flex items-center gap-2">
+                <Bookmark className="h-4 w-4" />
+                Saved ({savedLeads.length})
               </TabsTrigger>
               <TabsTrigger value="content" className="flex items-center gap-2">
                 <Globe className="h-4 w-4" />
@@ -417,6 +427,131 @@ const FirecrawlTools = () => {
               </div>
             </TabsContent>
 
+            {/* Saved Leads Tab */}
+            <TabsContent value="saved">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BookmarkCheck className="h-5 w-5" />
+                    Saved Leads ({savedLeads.length})
+                  </CardTitle>
+                  <CardDescription>
+                    Manage your saved leads for follow-up and outreach
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {leadsLoading ? (
+                    <div className="flex items-center justify-center py-8">
+                      <Loader2 className="h-6 w-6 animate-spin" />
+                    </div>
+                  ) : savedLeads.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <Bookmark className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                      <p>No saved leads yet</p>
+                      <p className="text-sm">Search for leads and save promising ones for follow-up</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                      {savedLeads.map((lead) => (
+                        <div key={lead.id} className="p-4 border rounded-lg space-y-3 hover:border-primary/50 transition-colors">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-1">
+                                <Badge variant={
+                                  lead.status === 'contacted' ? 'default' :
+                                  lead.status === 'qualified' ? 'secondary' :
+                                  lead.status === 'converted' ? 'default' : 'outline'
+                                }>
+                                  {lead.status}
+                                </Badge>
+                                <Badge variant="outline" className="text-xs">
+                                  {lead.priority} priority
+                                </Badge>
+                              </div>
+                              <h3 className="font-semibold text-foreground">{lead.title}</h3>
+                              {lead.description && (
+                                <p className="text-sm text-muted-foreground mt-1">{lead.description}</p>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <a 
+                                href={lead.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline flex items-center gap-1 text-sm"
+                              >
+                                Visit <ExternalLink className="h-3 w-3" />
+                              </a>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => deleteLead(lead.id)}
+                                className="text-destructive hover:text-destructive"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
+                          
+                          {/* Status & Priority Controls */}
+                          <div className="flex flex-wrap gap-2 pt-2 border-t">
+                            <Select 
+                              value={lead.status} 
+                              onValueChange={(value) => updateLead({ id: lead.id, updates: { status: value } })}
+                            >
+                              <SelectTrigger className="w-32 h-8 text-xs">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="new">New</SelectItem>
+                                <SelectItem value="contacted">Contacted</SelectItem>
+                                <SelectItem value="qualified">Qualified</SelectItem>
+                                <SelectItem value="converted">Converted</SelectItem>
+                                <SelectItem value="lost">Lost</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <Select 
+                              value={lead.priority} 
+                              onValueChange={(value) => updateLead({ id: lead.id, updates: { priority: value } })}
+                            >
+                              <SelectTrigger className="w-28 h-8 text-xs">
+                                <Star className="h-3 w-3 mr-1" />
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="low">Low</SelectItem>
+                                <SelectItem value="medium">Medium</SelectItem>
+                                <SelectItem value="high">High</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <div className="flex items-center gap-1 text-xs text-muted-foreground ml-auto">
+                              <Clock className="h-3 w-3" />
+                              {new Date(lead.created_at).toLocaleDateString()}
+                            </div>
+                          </div>
+
+                          {lead.source_query && (
+                            <p className="text-xs text-muted-foreground">
+                              Source: "{lead.source_query}"
+                            </p>
+                          )}
+
+                          {lead.content_preview && (
+                            <details className="text-sm">
+                              <summary className="cursor-pointer text-primary font-medium">View Content</summary>
+                              <pre className="mt-2 p-3 bg-muted rounded text-xs whitespace-pre-wrap max-h-48 overflow-y-auto">
+                                {lead.content_preview}
+                              </pre>
+                            </details>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
             {/* Content Research Tab */}
             <TabsContent value="content">
               <Card>
@@ -550,14 +685,37 @@ const FirecrawlTools = () => {
                               <Badge variant="outline" className="mb-2">{i + 1}</Badge>
                               <h3 className="font-semibold text-foreground">{item.title}</h3>
                             </div>
-                            <a 
-                              href={item.url} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="text-primary hover:underline flex items-center gap-1 text-sm shrink-0"
-                            >
-                              Visit <ExternalLink className="h-3 w-3" />
-                            </a>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <Button
+                                variant={isUrlSaved(item.url) ? "secondary" : "outline"}
+                                size="sm"
+                                onClick={() => saveLead({
+                                  title: item.title,
+                                  url: item.url,
+                                  description: item.description,
+                                  content_preview: item.markdown,
+                                  source_query: results.query,
+                                  lead_type: 'research',
+                                })}
+                                disabled={isUrlSaved(item.url) || isSaving(item.url)}
+                              >
+                                {isSaving(item.url) ? (
+                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                ) : isUrlSaved(item.url) ? (
+                                  <><BookmarkCheck className="h-4 w-4 mr-1" /> Saved</>
+                                ) : (
+                                  <><Bookmark className="h-4 w-4 mr-1" /> Save</>
+                                )}
+                              </Button>
+                              <a 
+                                href={item.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline flex items-center gap-1 text-sm"
+                              >
+                                Visit <ExternalLink className="h-3 w-3" />
+                              </a>
+                            </div>
                           </div>
                           {item.description && (
                             <p className="text-sm text-muted-foreground">{item.description}</p>
