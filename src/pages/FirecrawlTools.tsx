@@ -8,7 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { firecrawlApi } from '@/lib/api/firecrawl';
-import { Loader2, Search, Map, Globe, FileSearch, ExternalLink, Copy, Check } from 'lucide-react';
+import { Loader2, Search, Map, Globe, FileSearch, ExternalLink, Copy, Check, Building2, HardHat, Store, Zap, Calendar } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
 import SEOEnhanced from '@/components/SEOEnhanced';
@@ -25,6 +26,7 @@ const FirecrawlTools = () => {
   
   // Lead Research State
   const [leadQuery, setLeadQuery] = useState('');
+  const [leadTimeFilter, setLeadTimeFilter] = useState('qdr:w'); // Last week default
   
   // Content Research State
   const [contentQuery, setContentQuery] = useState('');
@@ -53,18 +55,56 @@ const FirecrawlTools = () => {
     }
   };
 
-  const handleLeadSearch = async () => {
+  const leadSearchTemplates = {
+    construction: [
+      'new construction project Long Island 2025',
+      'building permits Nassau County 2025',
+      'commercial development Suffolk County',
+      'new residential development Long Island',
+    ],
+    commercial: [
+      'new restaurant opening Long Island 2025',
+      'retail store opening Nassau County',
+      'new hotel Long Island construction',
+      'office building renovation Suffolk County',
+    ],
+    permits: [
+      'site:nassaucountyny.gov building permits',
+      'site:suffolkcountyny.gov construction permits',
+      'Long Island planning board approvals 2025',
+      'zoning variance Long Island commercial',
+    ],
+    renovation: [
+      'commercial renovation Long Island 2025',
+      'restaurant remodel Nassau County',
+      'retail renovation Suffolk County',
+      'building modernization Long Island',
+    ],
+    evcharger: [
+      'new EV charging station Long Island',
+      'electric vehicle infrastructure New York',
+      'PSEG Long Island EV program',
+      'commercial EV charger installation NYC area',
+    ],
+  };
+
+  const handleLeadSearch = async (customQuery?: string) => {
+    const query = customQuery || leadQuery;
+    if (!query) return;
+    
     setIsLoading(true);
     setResults(null);
     try {
-      const response = await firecrawlApi.search(leadQuery, { 
-        limit: 20,
+      const response = await firecrawlApi.search(query, { 
+        limit: 25,
         country: 'us',
+        tbs: leadTimeFilter,
         scrapeOptions: { formats: ['markdown'] }
       });
       if (response.success) {
-        setResults({ type: 'search', data: response });
-        toast({ title: 'Search Complete', description: `Found ${response.data?.length || 0} results` });
+        const resultCount = response.data?.length || 0;
+        setResults({ type: 'leads', data: response, query });
+        toast({ title: 'Lead Search Complete', description: `Found ${resultCount} potential leads` });
       } else {
         toast({ title: 'Error', description: response.error, variant: 'destructive' });
       }
@@ -73,6 +113,11 @@ const FirecrawlTools = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const runQuickSearch = (query: string) => {
+    setLeadQuery(query);
+    handleLeadSearch(query);
   };
 
   const handleContentResearch = async () => {
@@ -197,42 +242,179 @@ const FirecrawlTools = () => {
 
             {/* Lead Research Tab */}
             <TabsContent value="leads">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Lead Research</CardTitle>
-                  <CardDescription>
-                    Search for businesses, new construction, or properties that might need electrical services.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex gap-4">
-                    <div className="flex-1">
-                      <Label htmlFor="lead-query">Search Query</Label>
-                      <Input
-                        id="lead-query"
-                        value={leadQuery}
-                        onChange={(e) => setLeadQuery(e.target.value)}
-                        placeholder="new restaurant opening Long Island 2024"
-                      />
+              <div className="space-y-6">
+                {/* Quick Search Templates */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-primary" />
+                      Quick Lead Searches
+                    </CardTitle>
+                    <CardDescription>
+                      One-click searches for common lead types on Long Island
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {/* New Construction */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <HardHat className="h-5 w-5 text-orange-500" />
+                          <h3 className="font-semibold">New Construction</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.construction.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Commercial Openings */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Store className="h-5 w-5 text-blue-500" />
+                          <h3 className="font-semibold">Commercial Openings</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.commercial.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Permits & Approvals */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Building2 className="h-5 w-5 text-green-500" />
+                          <h3 className="font-semibold">Permits & Approvals</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.permits.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Renovations */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Building2 className="h-5 w-5 text-purple-500" />
+                          <h3 className="font-semibold">Renovations</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.renovation.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* EV Charger Opportunities */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Zap className="h-5 w-5 text-yellow-500" />
+                          <h3 className="font-semibold">EV Charger Leads</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.evcharger.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    <Button 
-                      onClick={handleLeadSearch} 
-                      disabled={isLoading || !leadQuery}
-                      className="self-end"
-                    >
-                      {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Search'}
-                    </Button>
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    <strong>Example searches:</strong>
-                    <ul className="list-disc list-inside mt-1">
-                      <li>new construction Long Island permits 2024</li>
-                      <li>commercial renovation Nassau County</li>
-                      <li>new business opening Suffolk County</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+
+                {/* Custom Search */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Custom Lead Search</CardTitle>
+                    <CardDescription>
+                      Search for specific opportunities with time filtering
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-col md:flex-row gap-4">
+                      <div className="flex-1">
+                        <Label htmlFor="lead-query">Search Query</Label>
+                        <Input
+                          id="lead-query"
+                          value={leadQuery}
+                          onChange={(e) => setLeadQuery(e.target.value)}
+                          placeholder="new restaurant opening Long Island 2025"
+                          onKeyDown={(e) => e.key === 'Enter' && handleLeadSearch()}
+                        />
+                      </div>
+                      <div className="w-full md:w-48">
+                        <Label>Time Filter</Label>
+                        <Select value={leadTimeFilter} onValueChange={setLeadTimeFilter}>
+                          <SelectTrigger>
+                            <Calendar className="h-4 w-4 mr-2" />
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="qdr:d">Last 24 hours</SelectItem>
+                            <SelectItem value="qdr:w">Last week</SelectItem>
+                            <SelectItem value="qdr:m">Last month</SelectItem>
+                            <SelectItem value="qdr:y">Last year</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <Button 
+                        onClick={() => handleLeadSearch()} 
+                        disabled={isLoading || !leadQuery}
+                        className="self-end"
+                      >
+                        {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Search Leads'}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </TabsContent>
 
             {/* Content Research Tab */}
@@ -348,6 +530,49 @@ const FirecrawlTools = () => {
                         </a>
                       </div>
                     ))}
+                  </div>
+                )}
+
+                {/* Lead Results */}
+                {results.type === 'leads' && results.data?.data && (
+                  <div className="space-y-4">
+                    {results.query && (
+                      <div className="p-3 bg-primary/10 rounded-lg">
+                        <p className="text-sm"><strong>Search:</strong> {results.query}</p>
+                        <p className="text-xs text-muted-foreground mt-1">Found {results.data.data.length} potential leads</p>
+                      </div>
+                    )}
+                    <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                      {results.data.data.map((item: any, i: number) => (
+                        <div key={i} className="p-4 border rounded-lg space-y-2 hover:border-primary/50 transition-colors">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <Badge variant="outline" className="mb-2">{i + 1}</Badge>
+                              <h3 className="font-semibold text-foreground">{item.title}</h3>
+                            </div>
+                            <a 
+                              href={item.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-primary hover:underline flex items-center gap-1 text-sm shrink-0"
+                            >
+                              Visit <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </div>
+                          {item.description && (
+                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                          )}
+                          {item.markdown && (
+                            <details className="text-sm">
+                              <summary className="cursor-pointer text-primary font-medium">View Full Content</summary>
+                              <pre className="mt-2 p-3 bg-muted rounded text-xs whitespace-pre-wrap max-h-64 overflow-y-auto">
+                                {item.markdown.slice(0, 3000)}{item.markdown.length > 3000 ? '...' : ''}
+                              </pre>
+                            </details>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
