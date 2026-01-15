@@ -12,8 +12,9 @@ import { useSavedLeads } from '@/hooks/useSavedLeads';
 import { 
   Loader2, Search, Map, Globe, FileSearch, ExternalLink, Copy, Check, 
   Building2, HardHat, Store, Zap, Calendar, Bookmark, BookmarkCheck, 
-  Trash2, Star, Clock, Mail, Phone
+  Trash2, Star, Clock, Mail, Phone, Home
 } from 'lucide-react';
+import { extractContacts } from '@/lib/extractContacts';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/shared/Footer';
@@ -39,6 +40,16 @@ const FirecrawlTools = () => {
   
   // Competitor Research State
   const [competitorUrl, setCompetitorUrl] = useState('');
+  
+  // Property Scraper State
+  const [propertyUrl, setPropertyUrl] = useState('');
+  const [scrapedContacts, setScrapedContacts] = useState<{
+    url: string;
+    title: string;
+    contacts: { emails: string[]; phones: string[]; hasContacts: boolean };
+    markdown: string;
+  } | null>(null);
+  const [isScraping, setIsScraping] = useState(false);
 
   const handleSiteAudit = async () => {
     setIsLoading(true);
@@ -196,6 +207,66 @@ const FirecrawlTools = () => {
     toast({ title: 'Copied to clipboard' });
   };
 
+  const handlePropertyScrape = async () => {
+    if (!propertyUrl) return;
+    
+    setIsScraping(true);
+    setScrapedContacts(null);
+    
+    try {
+      const response = await firecrawlApi.scrape(propertyUrl, {
+        formats: ['markdown'],
+        onlyMainContent: true,
+      });
+      
+      if (response.success) {
+        // Handle nested data structure from Firecrawl API
+        const responseData = response.data || response;
+        const markdown = responseData.data?.markdown || responseData.markdown || '';
+        const metadata = responseData.data?.metadata || responseData.metadata || {};
+        const contacts = extractContacts(markdown);
+        
+        setScrapedContacts({
+          url: propertyUrl,
+          title: metadata.title || 'Property Listing',
+          contacts,
+          markdown,
+        });
+        
+        if (contacts.hasContacts) {
+          toast({ 
+            title: 'Contacts Found!', 
+            description: `Found ${contacts.emails.length} emails and ${contacts.phones.length} phone numbers` 
+          });
+        } else {
+          toast({ 
+            title: 'Scrape Complete', 
+            description: 'No contact info found on this page',
+            variant: 'destructive'
+          });
+        }
+      } else {
+        toast({ title: 'Error', description: response.error, variant: 'destructive' });
+      }
+    } catch (error) {
+      toast({ title: 'Error', description: 'Failed to scrape property listing', variant: 'destructive' });
+    } finally {
+      setIsScraping(false);
+    }
+  };
+
+  const handleSaveScrapedLead = () => {
+    if (!scrapedContacts) return;
+    
+    saveLead({
+      title: scrapedContacts.title,
+      url: scrapedContacts.url,
+      description: `Scraped from ${new URL(scrapedContacts.url).hostname}`,
+      content_preview: scrapedContacts.markdown.slice(0, 500),
+      source_query: 'Property Listing Scrape',
+    });
+  };
+
   return (
     <>
       <SEOEnhanced
@@ -215,26 +286,30 @@ const FirecrawlTools = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-5">
+            <TabsList className="grid w-full grid-cols-6">
               <TabsTrigger value="site-audit" className="flex items-center gap-2">
                 <FileSearch className="h-4 w-4" />
-                Site Audit
+                <span className="hidden sm:inline">Site Audit</span>
               </TabsTrigger>
               <TabsTrigger value="leads" className="flex items-center gap-2">
                 <Search className="h-4 w-4" />
-                Lead Research
+                <span className="hidden sm:inline">Leads</span>
+              </TabsTrigger>
+              <TabsTrigger value="property" className="flex items-center gap-2">
+                <Home className="h-4 w-4" />
+                <span className="hidden sm:inline">Property</span>
               </TabsTrigger>
               <TabsTrigger value="saved" className="flex items-center gap-2">
                 <Bookmark className="h-4 w-4" />
-                Saved ({savedLeads.length})
+                <span className="hidden sm:inline">Saved ({savedLeads.length})</span>
               </TabsTrigger>
               <TabsTrigger value="content" className="flex items-center gap-2">
                 <Globe className="h-4 w-4" />
-                Content Ideas
+                <span className="hidden sm:inline">Content</span>
               </TabsTrigger>
               <TabsTrigger value="competitors" className="flex items-center gap-2">
                 <Map className="h-4 w-4" />
-                Competitors
+                <span className="hidden sm:inline">Competitors</span>
               </TabsTrigger>
             </TabsList>
 
@@ -512,6 +587,160 @@ const FirecrawlTools = () => {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </TabsContent>
+
+            {/* Property Listing Scraper Tab */}
+            <TabsContent value="property">
+              <div className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Home className="h-5 w-5 text-primary" />
+                      Property Listing Scraper
+                    </CardTitle>
+                    <CardDescription>
+                      Paste a LoopNet, Crexi, or other commercial real estate listing URL to extract contact information
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-col md:flex-row gap-4">
+                      <div className="flex-1">
+                        <Label htmlFor="property-url">Listing URL</Label>
+                        <Input
+                          id="property-url"
+                          value={propertyUrl}
+                          onChange={(e) => setPropertyUrl(e.target.value)}
+                          placeholder="https://www.loopnet.com/listing/..."
+                          onKeyDown={(e) => e.key === 'Enter' && handlePropertyScrape()}
+                        />
+                      </div>
+                      <Button 
+                        onClick={handlePropertyScrape} 
+                        disabled={isScraping || !propertyUrl}
+                        className="self-end"
+                      >
+                        {isScraping ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Search className="h-4 w-4 mr-2" />}
+                        Extract Contacts
+                      </Button>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      <span className="text-sm text-muted-foreground">Quick access:</span>
+                      <a 
+                        href="https://www.loopnet.com/search/retail-space/long-island-ny/for-lease/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary hover:underline flex items-center gap-1"
+                      >
+                        LoopNet Long Island <ExternalLink className="h-3 w-3" />
+                      </a>
+                      <a 
+                        href="https://www.crexi.com/properties/retail/us/new-york" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary hover:underline flex items-center gap-1"
+                      >
+                        Crexi NY Retail <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Scraped Results */}
+                {scrapedContacts && (
+                  <Card className={scrapedContacts.contacts.hasContacts ? 'border-green-500' : 'border-orange-500'}>
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <CardTitle className="text-lg">{scrapedContacts.title}</CardTitle>
+                          <CardDescription className="flex items-center gap-2 mt-1">
+                            <a 
+                              href={scrapedContacts.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="hover:underline flex items-center gap-1"
+                            >
+                              {new URL(scrapedContacts.url).hostname} <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </CardDescription>
+                        </div>
+                        <div className="flex gap-2">
+                          {!isUrlSaved(scrapedContacts.url) ? (
+                            <Button
+                              size="sm"
+                              onClick={handleSaveScrapedLead}
+                              disabled={isSaving(scrapedContacts.url)}
+                            >
+                              {isSaving(scrapedContacts.url) ? (
+                                <Loader2 className="h-4 w-4 animate-spin mr-1" />
+                              ) : (
+                                <Bookmark className="h-4 w-4 mr-1" />
+                              )}
+                              Save Lead
+                            </Button>
+                          ) : (
+                            <Badge variant="secondary" className="flex items-center gap-1">
+                              <BookmarkCheck className="h-3 w-3" /> Saved
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      {scrapedContacts.contacts.hasContacts ? (
+                        <div className="space-y-4">
+                          {scrapedContacts.contacts.emails.length > 0 && (
+                            <div>
+                              <h4 className="font-semibold flex items-center gap-2 mb-2">
+                                <Mail className="h-4 w-4 text-blue-500" />
+                                Emails Found ({scrapedContacts.contacts.emails.length})
+                              </h4>
+                              <div className="flex flex-wrap gap-2">
+                                {scrapedContacts.contacts.emails.map((email, i) => (
+                                  <a
+                                    key={i}
+                                    href={`mailto:${email}`}
+                                    className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/10 text-blue-600 rounded-full text-sm hover:bg-blue-500/20"
+                                  >
+                                    <Mail className="h-3 w-3" />
+                                    {email}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {scrapedContacts.contacts.phones.length > 0 && (
+                            <div>
+                              <h4 className="font-semibold flex items-center gap-2 mb-2">
+                                <Phone className="h-4 w-4 text-green-500" />
+                                Phone Numbers Found ({scrapedContacts.contacts.phones.length})
+                              </h4>
+                              <div className="flex flex-wrap gap-2">
+                                {scrapedContacts.contacts.phones.map((phone, i) => (
+                                  <a
+                                    key={i}
+                                    href={`tel:${phone}`}
+                                    className="inline-flex items-center gap-1 px-3 py-1 bg-green-500/10 text-green-600 rounded-full text-sm hover:bg-green-500/20"
+                                  >
+                                    <Phone className="h-3 w-3" />
+                                    {phone}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="text-center py-4 text-muted-foreground">
+                          <p>No contact information found on this page.</p>
+                          <p className="text-sm mt-1">Try scraping the broker's profile page directly.</p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
               </div>
             </TabsContent>
 
