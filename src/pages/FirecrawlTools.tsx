@@ -12,7 +12,7 @@ import { useSavedLeads } from '@/hooks/useSavedLeads';
 import { 
   Loader2, Search, Map, Globe, FileSearch, ExternalLink, Copy, Check, 
   Building2, HardHat, Store, Zap, Calendar, Bookmark, BookmarkCheck, 
-  Trash2, Star, Clock
+  Trash2, Star, Clock, Mail, Phone
 } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navbar from '@/components/Navbar';
@@ -529,6 +529,37 @@ const FirecrawlTools = () => {
                               {new Date(lead.created_at).toLocaleDateString()}
                             </div>
                           </div>
+
+                          {/* Contact Info Display */}
+                          {lead.contact_info && (lead.contact_info.emails?.length || lead.contact_info.phones?.length) && (
+                            <div className="p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg">
+                              <p className="text-xs font-medium text-green-700 dark:text-green-400 mb-2">
+                                📋 Extracted Contact Info
+                              </p>
+                              <div className="flex flex-wrap gap-3 text-sm">
+                                {lead.contact_info.emails?.map((email, i) => (
+                                  <a 
+                                    key={i}
+                                    href={`mailto:${email}`}
+                                    className="flex items-center gap-1 text-primary hover:underline"
+                                  >
+                                    <Mail className="h-3 w-3" />
+                                    {email}
+                                  </a>
+                                ))}
+                                {lead.contact_info.phones?.map((phone, i) => (
+                                  <a 
+                                    key={i}
+                                    href={`tel:${phone.replace(/\D/g, '')}`}
+                                    className="flex items-center gap-1 text-primary hover:underline"
+                                  >
+                                    <Phone className="h-3 w-3" />
+                                    {phone}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
 
                           {lead.source_query && (
                             <p className="text-xs text-muted-foreground">

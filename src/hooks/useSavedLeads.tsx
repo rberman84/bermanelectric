@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { extractContacts } from '@/lib/extractContacts';
 
 export type SavedLead = {
   id: string;
@@ -14,7 +15,10 @@ export type SavedLead = {
   status: string;
   priority: string;
   notes: string | null;
-  contact_info: Record<string, any> | null;
+  contact_info: {
+    emails?: string[];
+    phones?: string[];
+  } | null;
   saved_by: string | null;
   created_at: string;
   updated_at: string;
@@ -52,6 +56,15 @@ export const useSavedLeads = () => {
       
       const { data: { user } } = await supabase.auth.getUser();
       
+      // Auto-extract contact information from content
+      const contentToScan = [
+        lead.content_preview || '',
+        lead.description || '',
+        lead.title || '',
+      ].join('\n');
+      
+      const extractedContacts = extractContacts(contentToScan);
+      
       const { data, error } = await supabase
         .from('saved_leads')
         .insert({
@@ -62,6 +75,10 @@ export const useSavedLeads = () => {
           source_query: lead.source_query || null,
           lead_type: lead.lead_type || 'general',
           saved_by: user?.id || null,
+          contact_info: extractedContacts.hasContacts ? {
+            emails: extractedContacts.emails,
+            phones: extractedContacts.phones,
+          } : null,
         })
         .select()
         .single();
@@ -72,11 +89,17 @@ export const useSavedLeads = () => {
         }
         throw error;
       }
-      return data;
+      return { data, hasContacts: extractedContacts.hasContacts };
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['saved-leads'] });
-      toast({ title: 'Lead saved', description: 'Added to your saved leads for follow-up' });
+      const contactMsg = result.hasContacts 
+        ? ' Contact info extracted!' 
+        : '';
+      toast({ 
+        title: 'Lead saved', 
+        description: `Added to your saved leads for follow-up.${contactMsg}` 
+      });
     },
     onError: (error: Error) => {
       toast({ 
