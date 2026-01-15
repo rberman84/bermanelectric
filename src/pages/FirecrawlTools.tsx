@@ -62,6 +62,32 @@ const FirecrawlTools = () => {
   };
 
   const leadSearchTemplates = {
+    retailRenovation: [
+      '"retail renovation" OR "store remodel" Long Island 2025',
+      '"tenant improvement" retail Nassau Suffolk County',
+      '"retail buildout" OR "commercial fit-out" New York',
+      '"shopping center renovation" Long Island',
+      '"retail space upgrade" OR "storefront renovation" NYC area',
+    ],
+    retailExpansion: [
+      '"grand opening" retail Long Island 2025',
+      '"now leasing" retail space Nassau Suffolk County',
+      '"coming soon" store location Long Island',
+      '"retail expansion" OR "new location" New York 2025',
+      '"franchise opening" Long Island retail',
+    ],
+    propertyManagement: [
+      'site:loopnet.com retail Long Island renovation',
+      'site:crexi.com retail space Suffolk Nassau',
+      '"property management" retail Long Island',
+      '"commercial landlord" retail renovation New York',
+    ],
+    realEstateNews: [
+      'site:libn.com retail development Long Island',
+      'site:newsday.com retail construction Nassau Suffolk',
+      '"retail development" Long Island Business News 2025',
+      '"shopping center" development Long Island 2025',
+    ],
     construction: [
       'new construction project Long Island 2025',
       'building permits Nassau County 2025',
@@ -79,12 +105,6 @@ const FirecrawlTools = () => {
       'site:suffolkcountyny.gov construction permits',
       'Long Island planning board approvals 2025',
       'zoning variance Long Island commercial',
-    ],
-    renovation: [
-      'commercial renovation Long Island 2025',
-      'restaurant remodel Nassau County',
-      'retail renovation Suffolk County',
-      'building modernization Long Island',
     ],
     evcharger: [
       'new EV charging station Long Island',
@@ -266,6 +286,96 @@ const FirecrawlTools = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {/* Retail Renovation - PRIMARY */}
+                      <div className="p-4 border-2 border-primary rounded-lg space-y-3 bg-primary/5">
+                        <div className="flex items-center gap-2">
+                          <Store className="h-5 w-5 text-primary" />
+                          <h3 className="font-semibold">Retail Renovation</h3>
+                          <Badge variant="secondary" className="ml-auto">Top Pick</Badge>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.retailRenovation.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Retail Expansion */}
+                      <div className="p-4 border-2 border-blue-500 rounded-lg space-y-3 bg-blue-500/5">
+                        <div className="flex items-center gap-2">
+                          <Building2 className="h-5 w-5 text-blue-500" />
+                          <h3 className="font-semibold">Retail Expansion</h3>
+                          <Badge variant="secondary" className="ml-auto">Hot</Badge>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.retailExpansion.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Property Management */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Globe className="h-5 w-5 text-green-500" />
+                          <h3 className="font-semibold">Property Listings</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.propertyManagement.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Real Estate News */}
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex items-center gap-2">
+                          <FileSearch className="h-5 w-5 text-purple-500" />
+                          <h3 className="font-semibold">RE News & Press</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {leadSearchTemplates.realEstateNews.map((q, i) => (
+                            <Button 
+                              key={i} 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full justify-start text-xs h-auto py-2"
+                              onClick={() => runQuickSearch(q)}
+                              disabled={isLoading}
+                            >
+                              {q}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
                       {/* New Construction */}
                       <div className="p-4 border rounded-lg space-y-3">
                         <div className="flex items-center gap-2">
@@ -318,28 +428,6 @@ const FirecrawlTools = () => {
                         </div>
                         <div className="space-y-2">
                           {leadSearchTemplates.permits.map((q, i) => (
-                            <Button 
-                              key={i} 
-                              variant="outline" 
-                              size="sm" 
-                              className="w-full justify-start text-xs h-auto py-2"
-                              onClick={() => runQuickSearch(q)}
-                              disabled={isLoading}
-                            >
-                              {q}
-                            </Button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Renovations */}
-                      <div className="p-4 border rounded-lg space-y-3">
-                        <div className="flex items-center gap-2">
-                          <Building2 className="h-5 w-5 text-purple-500" />
-                          <h3 className="font-semibold">Renovations</h3>
-                        </div>
-                        <div className="space-y-2">
-                          {leadSearchTemplates.renovation.map((q, i) => (
                             <Button 
                               key={i} 
                               variant="outline" 
